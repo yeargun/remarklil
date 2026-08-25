@@ -1,0 +1,10 @@
+import { Lexer, Token } from "./types.lil";
+import { lex } from "./lexer.lil";
+import { tokensToMdast } from "./to-mdast.lil";
+import { Flags } from "./host.lil";
+
+export JsValue fromMarkdown(string src, Flags flags) {
+  Lexer lx = new Lexer(flags.gfm, flags.breaks, false, false);
+  Token[] tokens = lex(lx, src);
+  return tokensToMdast(tokens, flags.allowDangerousHtml);
+}

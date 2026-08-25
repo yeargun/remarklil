@@ -1,0 +1,66 @@
+{
+  "name": "@itslil/remark",
+  "version": "15.0.1",
+  "description": "remark reimplemented in LilScript",
+  "keywords": [
+    "remark",
+    "markdown",
+    "unified",
+    "lilscript",
+    "itslil"
+  ],
+  "homepage": "https://yeargun.github.io/remarklil/",
+  "bugs": "https://github.com/yeargun/remarklil/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeargun/remarklil.git"
+  },
+  "license": "MIT",
+  "author": "yeargun",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/remark.cjs",
+  "module": "./dist/remark.esm.js",
+  "types": "./dist/remark.d.ts",
+  "unpkg": "./dist/remark.umd.js",
+  "jsdelivr": "./dist/remark.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/remark.d.ts",
+      "import": "./dist/remark.esm.js",
+      "require": "./dist/remark.cjs",
+      "default": "./dist/remark.esm.js"
+    },
+    "./closed": "./dist/remark.closed.js",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "dist/remark.esm.js",
+    "dist/remark.cjs",
+    "dist/remark.umd.js",
+    "dist/remark.closed.js",
+    "dist/remark.d.ts",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs --compile",
+    "build:site": "node scripts/build-site.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check:site": "npm run build:site && node --test test/site.test.mjs",
+    "check:pack": "node scripts/check-pack.mjs",
+    "prepublishOnly": "npm test && npm run check:pack && npm run check:site"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1"
+  }
+}
