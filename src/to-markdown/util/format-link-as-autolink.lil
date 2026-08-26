@@ -1,0 +1,38 @@
+import { arrLen, jsString } from "../../parse/micromark/host.lil";
+import { mdastToString } from "../../parse/to-string.lil";
+import { opt } from "../js.lil";
+
+Regex hasProtocol = new Regex("^[a-z][a-z+.-]+:", "i");
+Regex badUrl = new Regex("[\\x00- <>\\x7F]", "");
+
+export bool formatLinkAsAutolink(JsValue node, JsValue state) {
+  if (JS.get(opt(state), "resourceLink").truthy()) {
+    return false;
+  }
+  JsValue url = JS.get(node, "url");
+  if (!url.truthy()) {
+    return false;
+  }
+  if (JS.get(node, "title").truthy()) {
+    return false;
+  }
+  JsValue children = JS.get(node, "children");
+  if (!children.truthy() || arrLen(children) != 1) {
+    return false;
+  }
+  if (jsString(JS.get(children[0], "type")) != "text") {
+    return false;
+  }
+  string raw = mdastToString(node, JS.undefined());
+  string urlStr = jsString(url);
+  if (raw != urlStr && "mailto:" + raw != urlStr) {
+    return false;
+  }
+  if (!hasProtocol.test(urlStr)) {
+    return false;
+  }
+  if (badUrl.test(urlStr)) {
+    return false;
+  }
+  return true;
+}

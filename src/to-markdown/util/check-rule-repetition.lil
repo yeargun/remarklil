@@ -1,0 +1,17 @@
+import { fail, opt } from "../js.lil";
+
+export int checkRuleRepetition(JsValue state) {
+  JsValue raw = JS.get(opt(state), "ruleRepetition");
+  int repetition = 3;
+  if (raw.truthy()) {
+    repetition = JS.number(raw).toInt();
+  }
+  if (repetition < 3) {
+    fail(
+      "Cannot serialize rules with repetition `" +
+        repetition.toString() +
+        "` for `options.ruleRepetition`, expected `3` or more"
+    );
+  }
+  return repetition;
+}

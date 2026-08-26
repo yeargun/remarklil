@@ -1,0 +1,60 @@
+import { jsString, mathMax, mathMin, objectAssign, regexTest, undef } from "../../parse/micromark/host.lil";
+import { encodeCharacterReference } from "../util/encode-character-reference.lil";
+import { formatHeadingAsSetext } from "../util/format-heading-as-setext.lil";
+
+Regex leadingWs = new Regex("^[\\t ]", "");
+
+JsValue headingHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  float depth = 1.0;
+  JsValue depthV = JS.get(node, "depth");
+  if (depthV.truthy()) {
+    depth = JS.number(depthV);
+  }
+  int rank = mathMax(mathMin(6.0, depth), 1.0).toInt();
+  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  if (formatHeadingAsSetext(node, state)) {
+    JsValue exit = JS.call(JS.get(state, "enter"), state, "headingSetext");
+    JsValue subexit = JS.call(JS.get(state, "enter"), state, "phrasing");
+    JsValue setextInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+    JS.set(setextInfo, "before", "\n");
+    JS.set(setextInfo, "after", "\n");
+    string value = jsString(JS.call(JS.get(state, "containerPhrasing"), state, node, setextInfo));
+    JS.call(subexit, undef());
+    JS.call(exit, undef());
+    string bar = "-";
+    if (rank == 1) {
+      bar = "=";
+    }
+    int lastCr = value.lastIndexOf("\r");
+    int lastLf = value.lastIndexOf("\n");
+    int afterEol = mathMax(lastCr * 1.0, lastLf * 1.0).toInt() + 1;
+    return value + "\n" + bar.repeat(value.length - afterEol);
+  }
+  string sequence = "#".repeat(rank);
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "headingAtx");
+  JsValue subexit = JS.call(JS.get(state, "enter"), state, "phrasing");
+  JS.call(JS.get(tracker, "move"), tracker, sequence + " ");
+  JsValue atxInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+  JS.set(atxInfo, "before", "# ");
+  JS.set(atxInfo, "after", "\n");
+  string value = jsString(JS.call(JS.get(state, "containerPhrasing"), state, node, atxInfo));
+  if (regexTest(leadingWs, value)) {
+    value = encodeCharacterReference(value.charCodeAt(0)) + value.slice(1);
+  }
+  if (value.length > 0) {
+    value = sequence + " " + value;
+  } else {
+    value = sequence;
+  }
+  if (JS.get(JS.get(state, "options"), "closeAtx").truthy()) {
+    value = value + " " + sequence;
+  }
+  JS.call(subexit, undef());
+  JS.call(exit, undef());
+  return value;
+}
+
+export JsValue heading = JS.methodRest(headingHandle);

@@ -1,0 +1,14 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+
+export string checkQuote(JsValue state) {
+  JsValue markerV = JS.get(opt(state), "quote");
+  string marker = "\"";
+  if (markerV.truthy()) {
+    marker = jsString(markerV);
+  }
+  if (marker != "\"" && marker != "'") {
+    fail("Cannot serialize title with `" + marker + "` for `options.quote`, expected `\"`, or `'`");
+  }
+  return marker;
+}

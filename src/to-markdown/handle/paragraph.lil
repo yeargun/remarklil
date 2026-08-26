@@ -1,0 +1,15 @@
+import { jsString, undef } from "../../parse/micromark/host.lil";
+
+JsValue paragraphHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "paragraph");
+  JsValue subexit = JS.call(JS.get(state, "enter"), state, "phrasing");
+  string value = jsString(JS.call(JS.get(state, "containerPhrasing"), state, node, info));
+  JS.call(subexit, undef());
+  JS.call(exit, undef());
+  return value;
+}
+
+export JsValue paragraph = JS.methodRest(paragraphHandle);

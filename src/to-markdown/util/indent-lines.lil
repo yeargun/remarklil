@@ -1,0 +1,29 @@
+import { jsString, push, undef } from "../../parse/micromark/host.lil";
+
+Regex eol = new Regex("\\r?\\n|\\r", "g");
+
+export string indentLines(JsValue value, JsValue mapper) {
+  string text = jsString(value);
+  JsValue result = JS.array();
+  int start = 0;
+  int line = 0;
+  JsValue found = JS.undefined();
+  while (true) {
+    found = eol.exec(text);
+    if (JS.isNullish(found)) {
+      break;
+    }
+    string piece = text.slice(start, jsIntIndex(found));
+    push(result, JS.call(mapper, undef(), piece, line, piece.length == 0));
+    push(result, found[0]);
+    start = jsIntIndex(found) + jsString(found[0]).length;
+    line = line + 1;
+  }
+  string tail = text.slice(start);
+  push(result, JS.call(mapper, undef(), tail, line, tail.length == 0));
+  return jsString(JS.call(JS.get(result, "join"), result, ""));
+}
+
+int jsIntIndex(JsValue found) {
+  return JS.number(JS.get(found, "index")).toInt();
+}

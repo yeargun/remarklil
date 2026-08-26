@@ -1,0 +1,26 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { opt } from "../js.lil";
+
+Regex hasContent = new Regex("[^ \\r\\n]", "");
+Regex blankEdges = new Regex("^[\\t ]*(?:[\\r\\n]|$)|(?:^|[\\r\\n])[\\t ]*$", "");
+
+export bool formatCodeAsIndented(JsValue node, JsValue state) {
+  if (!JS.strictEqual(JS.get(opt(state), "fences"), false)) {
+    return false;
+  }
+  JsValue raw = JS.get(node, "value");
+  if (!raw.truthy()) {
+    return false;
+  }
+  if (JS.get(node, "lang").truthy()) {
+    return false;
+  }
+  string value = jsString(raw);
+  if (!hasContent.test(value)) {
+    return false;
+  }
+  if (blankEdges.test(value)) {
+    return false;
+  }
+  return true;
+}

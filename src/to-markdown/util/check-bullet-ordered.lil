@@ -1,0 +1,14 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+
+export string checkBulletOrdered(JsValue state) {
+  JsValue markerV = JS.get(opt(state), "bulletOrdered");
+  string marker = ".";
+  if (markerV.truthy()) {
+    marker = jsString(markerV);
+  }
+  if (marker != "." && marker != ")") {
+    fail("Cannot serialize items with `" + marker + "` for `options.bulletOrdered`, expected `.` or `)`");
+  }
+  return marker;
+}

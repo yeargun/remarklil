@@ -1,0 +1,52 @@
+import { arrLen, hasOwn, objectAssign, push } from "../parse/micromark/host.lil";
+
+void listMerge(JsValue left, JsValue right) {
+  if (!right.truthy()) {
+    return;
+  }
+  int i = 0;
+  int n = arrLen(right);
+  while (i < n) {
+    push(left, right[i]);
+    i = i + 1;
+  }
+}
+
+void mapMerge(JsValue left, JsValue right) {
+  if (right.truthy()) {
+    objectAssign(left, right);
+  }
+}
+
+export JsValue configure(JsValue base, JsValue extension) {
+  if (!extension.truthy()) {
+    return base;
+  }
+  int index = -1;
+  JsValue extensions = JS.get(extension, "extensions");
+  if (extensions.truthy()) {
+    int n = arrLen(extensions);
+    while (true) {
+      index = index + 1;
+      if (index >= n) {
+        break;
+      }
+      configure(base, extensions[index]);
+    }
+  }
+  for (string key in extension) {
+    if (hasOwn(extension, key)) {
+      if (key == "extensions") {
+      } else if (key == "unsafe") {
+        listMerge(JS.get(base, "unsafe"), JS.get(extension, key));
+      } else if (key == "join") {
+        listMerge(JS.get(base, "join"), JS.get(extension, key));
+      } else if (key == "handlers") {
+        mapMerge(JS.get(base, "handlers"), JS.get(extension, key));
+      } else {
+        JS.set(JS.get(base, "options"), key, JS.get(extension, key));
+      }
+    }
+  }
+  return base;
+}

@@ -1,0 +1,164 @@
+import { arrLen, hasOwn, includesVal, jsString, push, regexExec, replaceFn } from "../../parse/micromark/host.lil";
+import { encodeCharacterReference } from "./encode-character-reference.lil";
+import { patternInScope } from "./pattern-in-scope.lil";
+
+Regex punct = new Regex("[!-/:-@[-`{-~]", "");
+
+JsValue numerical = JS.method2((JsValue _s, JsValue a, JsValue b) => {
+  return JS.number(a) - JS.number(b);
+});
+
+string escapeBackslashes(string value, string after) {
+  Regex expression = new Regex("\\\\(?=[!-/:-@[-`{-~])", "g");
+  JsValue positions = JS.array();
+  JsValue results = JS.array();
+  string whole = value + after;
+  int start = 0;
+  JsValue found = JS.undefined();
+  while (true) {
+    found = regexExec(expression, whole);
+    if (JS.isNullish(found)) {
+      break;
+    }
+    push(positions, JS.get(found, "index"));
+  }
+  int index = -1;
+  int n = arrLen(positions);
+  while (true) {
+    index = index + 1;
+    if (index >= n) {
+      break;
+    }
+    int pos = JS.number(positions[index]).toInt();
+    if (start != pos) {
+      push(results, value.slice(start, pos));
+    }
+    push(results, "\\");
+    start = pos;
+  }
+  push(results, value.slice(start));
+  return jsString(JS.call(JS.get(results, "join"), results, ""));
+}
+
+export string safe(JsValue state, JsValue input, JsValue config) {
+  string before = "";
+  string after = "";
+  if (JS.get(config, "before").truthy()) {
+    before = jsString(JS.get(config, "before"));
+  }
+  string mid = "";
+  if (input.truthy()) {
+    mid = jsString(input);
+  }
+  if (JS.get(config, "after").truthy()) {
+    after = jsString(JS.get(config, "after"));
+  }
+  string value = before + mid + after;
+  JsValue positions = JS.array();
+  JsValue result = JS.array();
+  JsValue infos = JS.object();
+  int index = -1;
+  JsValue unsafe = JS.get(state, "unsafe");
+  int un = arrLen(unsafe);
+  while (true) {
+    index = index + 1;
+    if (index >= un) {
+      break;
+    }
+    JsValue pattern = unsafe[index];
+    if (!patternInScope(JS.get(state, "stack"), pattern)) {
+      continue;
+    }
+    JsValue expression = JS.call(JS.get(state, "compilePattern"), state, pattern);
+    JsValue found = JS.undefined();
+    while (true) {
+      found = JS.call(JS.get(expression, "exec"), expression, value);
+      if (JS.isNullish(found)) {
+        break;
+      }
+      bool beforeCond = hasOwn(pattern, "before") || JS.get(pattern, "atBreak").truthy();
+      bool afterCond = hasOwn(pattern, "after");
+      int position = JS.number(JS.get(found, "index")).toInt();
+      if (beforeCond) {
+        position = position + jsString(found[1]).length;
+      }
+      if (includesVal(positions, position)) {
+        JsValue info = JS.get(infos, JS.string(position));
+        if (JS.get(info, "before").truthy() && !beforeCond) {
+          JS.set(info, "before", false);
+        }
+        if (JS.get(info, "after").truthy() && !afterCond) {
+          JS.set(info, "after", false);
+        }
+      } else {
+        push(positions, position);
+        JS.set(infos, JS.string(position), JS.object("before", beforeCond, "after", afterCond));
+      }
+    }
+  }
+  JS.call(JS.get(positions, "sort"), positions, numerical);
+  int start = 0;
+  if (before.length > 0) {
+    start = before.length;
+  }
+  int end = value.length;
+  if (after.length > 0) {
+    end = value.length - after.length;
+  }
+  index = -1;
+  int pn = arrLen(positions);
+  while (true) {
+    index = index + 1;
+    if (index >= pn) {
+      break;
+    }
+    int position = JS.number(positions[index]).toInt();
+    if (position < start || position >= end) {
+      continue;
+    }
+    bool skip = false;
+    if (position + 1 < end && index + 1 < pn && JS.strictEqual(positions[index + 1], position + 1)) {
+      JsValue here = JS.get(infos, JS.string(position));
+      JsValue nxt = JS.get(infos, JS.string(position + 1));
+      if (JS.get(here, "after").truthy() && !JS.get(nxt, "before").truthy() && !JS.get(nxt, "after").truthy()) {
+        skip = true;
+      }
+    }
+    if (!skip && index > 0 && JS.strictEqual(positions[index - 1], position - 1)) {
+      JsValue here = JS.get(infos, JS.string(position));
+      JsValue prev = JS.get(infos, JS.string(position - 1));
+      if (JS.get(here, "before").truthy() && !JS.get(prev, "before").truthy() && !JS.get(prev, "after").truthy()) {
+        skip = true;
+      }
+    }
+    if (skip) {
+      continue;
+    }
+    if (start != position) {
+      push(result, escapeBackslashes(value.slice(start, position), "\\"));
+    }
+    start = position;
+    string ch = value.charAt(position);
+    JsValue encode = JS.get(config, "encode");
+    bool encoded = false;
+    if (encode.truthy() && includesVal(encode, ch)) {
+      encoded = true;
+    }
+    if (punct.test(ch) && !encoded) {
+      push(result, "\\");
+    } else {
+      push(result, encodeCharacterReference(value.charCodeAt(position)));
+      start = start + 1;
+    }
+  }
+  string afterForEscape = "";
+  if (JS.get(config, "after").truthy()) {
+    afterForEscape = jsString(JS.get(config, "after"));
+  }
+  push(result, escapeBackslashes(value.slice(start, end), afterForEscape));
+  return jsString(JS.call(JS.get(result, "join"), result, ""));
+}
+
+export JsValue unusedReplace(JsValue value) {
+  return replaceFn(value, punct, JS.undefined());
+}

@@ -1,0 +1,118 @@
+import { ErrorRef, apply, jsString, objectAssign, push, undef } from "../parse/micromark/host.lil";
+import { zwitch } from "../deps/zwitch.lil";
+import { configure } from "./configure.lil";
+import { defaultHandlers } from "./handle/index.lil";
+import { defaultJoin } from "./join.lil";
+import { defaultUnsafe } from "./unsafe.lil";
+import { association } from "./util/association.lil";
+import { compilePattern } from "./util/compile-pattern.lil";
+import { containerPhrasing } from "./util/container-phrasing.lil";
+import { containerFlow } from "./util/container-flow.lil";
+import { indentLines } from "./util/indent-lines.lil";
+import { safe } from "./util/safe.lil";
+import { track } from "./util/track.lil";
+import { copyArray, copyHandlers } from "./js.lil";
+
+JsValue invalidNode(JsValue _self, JsValue args) {
+  throw JS.construct(ErrorRef, "Cannot handle value `" + jsString(args[0]) + "`, expected node");
+}
+
+JsValue unknownNode(JsValue _self, JsValue args) {
+  throw JS.construct(ErrorRef, "Cannot handle unknown node `" + jsString(JS.get(args[0], "type")) + "`");
+}
+
+JsValue joinDefinition(JsValue _self, JsValue args) {
+  JsValue left = args[0];
+  JsValue right = args[1];
+  if (jsString(JS.get(left, "type")) == "definition" && jsString(JS.get(left, "type")) == jsString(JS.get(right, "type"))) {
+    return 0;
+  }
+  return undef();
+}
+
+export JsValue toMarkdownImpl(JsValue tree, JsValue options) {
+  JsValue settings = options;
+  if (!settings.truthy()) {
+    settings = JS.object();
+  }
+  JsValue state = JS.object();
+  JS.set(state, "handlers", copyHandlers(defaultHandlers));
+  JS.set(state, "indexStack", JS.array());
+  JS.set(state, "join", copyArray(defaultJoin));
+  JS.set(state, "options", JS.object());
+  JS.set(state, "stack", JS.array());
+  JS.set(state, "unsafe", copyArray(defaultUnsafe));
+  JS.set(state, "associationId", JS.method1((JsValue _s, JsValue node) => {
+    return association(node);
+  }));
+  JS.set(state, "containerPhrasing", JS.method2((JsValue self, JsValue parent, JsValue info) => {
+    return containerPhrasing(parent, self, info);
+  }));
+  JS.set(state, "containerFlow", JS.method2((JsValue self, JsValue parent, JsValue info) => {
+    return containerFlow(parent, self, info);
+  }));
+  JS.set(state, "createTracker", JS.method1((JsValue _s, JsValue config) => {
+    return track(config);
+  }));
+  JS.set(state, "compilePattern", JS.method1((JsValue _s, JsValue pattern) => {
+    return compilePattern(pattern);
+  }));
+  JS.set(state, "enter", JS.method1((JsValue _s, JsValue name) => {
+    push(JS.get(state, "stack"), name);
+    return JS.method0((JsValue _e) => {
+      JS.call(JS.get(JS.get(state, "stack"), "pop"), JS.get(state, "stack"));
+      return undef();
+    });
+  }));
+  JS.set(state, "indentLines", JS.method2((JsValue _s, JsValue value, JsValue mapper) => {
+    return indentLines(value, mapper);
+  }));
+  JS.set(state, "safe", JS.method2((JsValue self, JsValue value, JsValue config) => {
+    return safe(self, value, config);
+  }));
+  configure(state, settings);
+  if (JS.get(JS.get(state, "options"), "tightDefinitions").truthy()) {
+    push(JS.get(state, "join"), JS.methodRest(joinDefinition));
+  }
+  JS.set(
+    state,
+    "handle",
+    zwitch("type", JS.object(
+      "invalid",
+      JS.methodRest(invalidNode),
+      "unknown",
+      JS.methodRest(unknownNode),
+      "handlers",
+      JS.get(state, "handlers")
+    ))
+  );
+  JsValue startInfo = JS.object(
+    "before",
+    "\n",
+    "after",
+    "\n",
+    "now",
+    JS.object("line", 1, "column", 1),
+    "lineShift",
+    0
+  );
+  JsValue handleArgs = JS.array();
+  push(handleArgs, tree);
+  push(handleArgs, undef());
+  push(handleArgs, state);
+  push(handleArgs, startInfo);
+  string result = jsString(apply(JS.get(state, "handle"), state, handleArgs));
+  if (result.length > 0) {
+    int last = result.charCodeAt(result.length - 1);
+    if (last != 10 && last != 13) {
+      result = result + "\n";
+    }
+  }
+  return result;
+}
+
+export JsValue toMarkdown = JS.method2((JsValue _s, JsValue tree, JsValue options) => {
+  return toMarkdownImpl(tree, options);
+});
+
+export JsValue defaultHandlersExport = defaultHandlers;

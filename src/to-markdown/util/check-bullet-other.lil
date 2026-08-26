@@ -1,0 +1,32 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+import { checkBullet } from "./check-bullet.lil";
+
+export string checkBulletOther(JsValue state) {
+  string bullet = checkBullet(state);
+  JsValue bulletOtherV = JS.get(opt(state), "bulletOther");
+  if (!bulletOtherV.truthy()) {
+    if (bullet == "*") {
+      return "-";
+    }
+    return "*";
+  }
+  string bulletOther = jsString(bulletOtherV);
+  if (bulletOther != "*" && bulletOther != "+" && bulletOther != "-") {
+    fail(
+      "Cannot serialize items with `" +
+        bulletOther +
+        "` for `options.bulletOther`, expected `*`, `+`, or `-`"
+    );
+  }
+  if (bulletOther == bullet) {
+    fail(
+      "Expected `bullet` (`" +
+        bullet +
+        "`) and `bulletOther` (`" +
+        bulletOther +
+        "`) to be different"
+    );
+  }
+  return bulletOther;
+}

@@ -1,0 +1,28 @@
+import { jsString } from "../parse/micromark/host.lil";
+import { TypeError } from "../unified/host.lil";
+
+export int longestStreak(JsValue value, JsValue substring) {
+  if (JS.typeOf(substring) != "string") {
+    throw JS.construct(TypeError, "Expected substring");
+  }
+  string source = jsString(value);
+  string needle = jsString(substring);
+  int index = source.indexOf(needle);
+  int expected = index;
+  int count = 0;
+  int max = 0;
+  int step = needle.length;
+  while (index != -1) {
+    if (index == expected) {
+      count = count + 1;
+      if (count > max) {
+        max = count;
+      }
+    } else {
+      count = 1;
+    }
+    expected = index + step;
+    index = source.indexOf(needle, expected);
+  }
+  return max;
+}

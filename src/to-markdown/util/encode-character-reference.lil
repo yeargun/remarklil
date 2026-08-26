@@ -1,0 +1,6 @@
+import { jsString } from "../../parse/micromark/host.lil";
+
+export string encodeCharacterReference(JsValue code) {
+  JsValue hex = JS.call(JS.get(code, "toString"), code, 16);
+  return "&#x" + jsString(hex).toUpperCase() + ";";
+}

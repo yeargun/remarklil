@@ -1,0 +1,14 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { decodeString } from "../../parse/micromark/util-decode-string.lil";
+
+export string association(JsValue node) {
+  JsValue label = JS.get(node, "label");
+  JsValue identifier = JS.get(node, "identifier");
+  if (label.truthy() || !identifier.truthy()) {
+    if (label is string) {
+      return label;
+    }
+    return "";
+  }
+  return decodeString(jsString(identifier));
+}

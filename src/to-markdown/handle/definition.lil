@@ -1,0 +1,64 @@
+import { jsString, objectAssign, regexTest, undef } from "../../parse/micromark/host.lil";
+import { checkQuote } from "../util/check-quote.lil";
+
+Regex controlOrWs = new Regex("[\\x00- \\x7F]", "");
+
+JsValue definitionHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  string quote = checkQuote(state);
+  string suffix = "Apostrophe";
+  if (quote == "\"") {
+    suffix = "Quote";
+  }
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "definition");
+  JsValue subexit = JS.call(JS.get(state, "enter"), state, "label");
+  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  string value = jsString(JS.call(JS.get(tracker, "move"), tracker, "["));
+  JsValue labelInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+  JS.set(labelInfo, "before", value);
+  JS.set(labelInfo, "after", "]");
+  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, JS.call(JS.get(state, "associationId"), state, node), labelInfo)));
+  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, "]: "));
+  JS.call(subexit, undef());
+  JsValue url = JS.get(node, "url");
+  bool literal = !url.truthy();
+  if (!literal && url is string && regexTest(controlOrWs, url)) {
+    literal = true;
+  }
+  if (literal) {
+    subexit = JS.call(JS.get(state, "enter"), state, "destinationLiteral");
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, "<"));
+    JsValue destInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+    JS.set(destInfo, "before", value);
+    JS.set(destInfo, "after", ">");
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, url, destInfo)));
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, ">"));
+  } else {
+    subexit = JS.call(JS.get(state, "enter"), state, "destinationRaw");
+    JsValue destInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+    JS.set(destInfo, "before", value);
+    if (JS.get(node, "title").truthy()) {
+      JS.set(destInfo, "after", " ");
+    } else {
+      JS.set(destInfo, "after", "\n");
+    }
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, url, destInfo)));
+  }
+  JS.call(subexit, undef());
+  if (JS.get(node, "title").truthy()) {
+    subexit = JS.call(JS.get(state, "enter"), state, "title" + suffix);
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, " " + quote));
+    JsValue titleInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+    JS.set(titleInfo, "before", value);
+    JS.set(titleInfo, "after", quote);
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, JS.get(node, "title"), titleInfo)));
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, quote));
+    JS.call(subexit, undef());
+  }
+  JS.call(exit, undef());
+  return value;
+}
+
+export JsValue definition = JS.methodRest(definitionHandle);

@@ -1,0 +1,71 @@
+import { jsString, mathCeil, undef } from "../../parse/micromark/host.lil";
+import { checkBullet } from "../util/check-bullet.lil";
+import { checkListItemIndent } from "../util/check-list-item-indent.lil";
+
+JsValue listItemHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue parent = args[1];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  string listItemIndent = checkListItemIndent(state);
+  string bullet = checkBullet(state);
+  JsValue bulletV = JS.get(state, "bulletCurrent");
+  if (bulletV.truthy()) {
+    bullet = jsString(bulletV);
+  }
+  if (parent.truthy() && jsString(JS.get(parent, "type")) == "list" && JS.get(parent, "ordered").truthy()) {
+    int start = 1;
+    JsValue startV = JS.get(parent, "start");
+    if (JS.typeOf(startV) == "number" && JS.number(startV) > -1.0) {
+      start = JS.number(startV).toInt();
+    }
+    int offset = 0;
+    if (!JS.strictEqual(JS.get(JS.get(state, "options"), "incrementListMarker"), false)) {
+      offset = JS.number(JS.call(JS.get(JS.get(parent, "children"), "indexOf"), JS.get(parent, "children"), node)).toInt();
+    }
+    bullet = (start + offset).toString() + bullet;
+  }
+  int size = bullet.length + 1;
+  bool wide = listItemIndent == "tab";
+  if (!wide && listItemIndent == "mixed") {
+    bool parentSpread = parent.truthy() && jsString(JS.get(parent, "type")) == "list" && JS.get(parent, "spread").truthy();
+    if (parentSpread || JS.get(node, "spread").truthy()) {
+      wide = true;
+    }
+  }
+  if (wide) {
+    size = mathCeil(size * 1.0 / 4.0).toInt() * 4;
+  }
+  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  JS.call(JS.get(tracker, "move"), tracker, bullet + " ".repeat(size - bullet.length));
+  JS.call(JS.get(tracker, "shift"), tracker, size);
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "listItem");
+  JsValue box = JS.object("size", size, "bullet", bullet);
+  JsValue mapper = JS.method3((JsValue _s, JsValue line, JsValue index, JsValue blank) => {
+    int sz = JS.number(JS.get(box, "size")).toInt();
+    string mark = jsString(JS.get(box, "bullet"));
+    string text = jsString(line);
+    if (JS.number(index) != 0.0) {
+      if (blank.truthy()) {
+        return text;
+      }
+      return " ".repeat(sz) + text;
+    }
+    if (blank.truthy()) {
+      return mark + text;
+    }
+    return mark + " ".repeat(sz - mark.length) + text;
+  });
+  string value = jsString(
+    JS.call(
+      JS.get(state, "indentLines"),
+      state,
+      JS.call(JS.get(state, "containerFlow"), state, node, JS.call(JS.get(tracker, "current"), tracker)),
+      mapper
+    )
+  );
+  JS.call(exit, undef());
+  return value;
+}
+
+export JsValue listItem = JS.methodRest(listItemHandle);

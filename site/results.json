@@ -10,13 +10,12 @@
   "warmupDiscard": 3,
   "comparison": "Official rows are an esbuild bundle of remark@15.0.1 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
   "spec": {
-    "total": 660,
-    "pass": 660,
-    "label": "corpus roots"
+    "total": 494,
+    "pass": 494,
+    "label": "official suite"
   },
   "play": {
     "kind": "md-md",
-    "gfm": true,
     "sample": "# Lab\n\nA [link](https://example.com \"t\") with **bold**, *em*, and `code`.\n\n- [x] tasks\n- item\n\n| a | b |\n| --- | --- |\n| 1 | 2 |\n\n```js\nconsole.log(1)\n```\n\n> quote\n\nhttps://yeargun.github.io/\n"
   },
   "size": [
@@ -57,18 +56,18 @@
     {
       "id": "itslil",
       "name": "@itslil/remark · library",
-      "raw": 40209,
-      "gzip9": 12231,
-      "brotli11": 10946,
+      "raw": 157486,
+      "gzip9": 49385,
+      "brotli11": 41503,
       "note": "LilScript js-module, extern_fields true. The npm ESM.",
       "primary": true
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/remark · closed",
-      "raw": 40134,
-      "gzip9": 12175,
-      "brotli11": 10842,
+      "raw": 157411,
+      "gzip9": 49324,
+      "brotli11": 41379,
       "note": "Same source, extern_fields false"
     }
   ],

@@ -1,265 +1,29 @@
-import { arrLen, asString, jsNull, nodeType } from "./host.lil";
+import { call1, isFn, objectAssign, undef } from "./parse/micromark/host.lil";
+import { toMarkdownImpl } from "./to-markdown/index.lil";
 
-string phrase(JsValue nodes) {
-  string out = "";
-  int n = arrLen(nodes);
-  int i = 0;
-  while (i < n) {
-    out = out + mdInline(nodes[i]);
-    i = i + 1;
+JsValue readData(JsValue self, string key) {
+  JsValue dataFn = JS.get(self, "data");
+  if (isFn(dataFn)) {
+    return call1(dataFn, self, key);
   }
-  return out;
+  return undef();
 }
 
-string mdInline(JsValue node) {
-  string t = nodeType(node);
-  if (t == "text") {
-    return asString(node["value"]);
+JsValue orEmptyList(JsValue value) {
+  if (value.truthy()) {
+    return value;
   }
-  if (t == "emphasis") {
-    return "*" + phrase(node["children"]) + "*";
-  }
-  if (t == "strong") {
-    return "**" + phrase(node["children"]) + "**";
-  }
-  if (t == "delete") {
-    return "~~" + phrase(node["children"]) + "~~";
-  }
-  if (t == "inlineCode") {
-    return "`" + asString(node["value"]) + "`";
-  }
-  if (t == "break") {
-    return "\\\n";
-  }
-  if (t == "inlineMath") {
-    return "$" + asString(node["value"]) + "$";
-  }
-  if (t == "html") {
-    return asString(node["value"]);
-  }
-  if (t == "link") {
-    string title = titleSuffix(node["title"]);
-    return "[" + phrase(node["children"]) + "](" + asString(node["url"]) + title + ")";
-  }
-  if (t == "image") {
-    string title = titleSuffix(node["title"]);
-    return "![" + asString(node["alt"]) + "](" + asString(node["url"]) + title + ")";
-  }
-  if (t == "linkReference") {
-    return "[" + phrase(node["children"]) + "][" + asString(node["label"]) + "]";
-  }
-  if (t == "imageReference") {
-    return "![" + asString(node["alt"]) + "][" + asString(node["label"]) + "]";
-  }
-  if (JS.isArray(node["children"])) {
-    return phrase(node["children"]);
-  }
-  return asString(node["value"]);
+  return JS.array();
 }
 
-string titleSuffix(JsValue title) {
-  if (JS.isUndefined(title) || JS.isNullish(title)) {
-    return "";
-  }
-  string s = asString(title);
-  if (s.length == 0) {
-    return "";
-  }
-  return " \"" + s + "\"";
+JsValue remarkStringifyCall(JsValue self, JsValue options) {
+  JS.set(self, "compiler", JS.method2((JsValue _compilerThis, JsValue tree, JsValue _file) => {
+    JsValue settings = objectAssign(JS.object(), readData(self, "settings"));
+    objectAssign(settings, options);
+    JS.set(settings, "extensions", orEmptyList(readData(self, "toMarkdownExtensions")));
+    return toMarkdownImpl(tree, settings);
+  }));
+  return undef();
 }
 
-string fenceFor(string value) {
-  int ticks = 3;
-  if (value.includes("```")) {
-    ticks = 4;
-  }
-  string fence = "";
-  int i = 0;
-  while (i < ticks) {
-    fence = fence + "`";
-    i = i + 1;
-  }
-  return fence;
-}
-
-string mdBlock(JsValue node) {
-  string t = nodeType(node);
-  if (t == "heading") {
-    int depth = JS.number(node["depth"]).toInt();
-    if (depth < 1) {
-      depth = 1;
-    }
-    if (depth > 6) {
-      depth = 6;
-    }
-    return "#".repeat(depth) + " " + phrase(node["children"]) + "\n\n";
-  }
-  if (t == "paragraph") {
-    return phrase(node["children"]) + "\n\n";
-  }
-  if (t == "thematicBreak") {
-    return "***\n\n";
-  }
-  if (t == "blockquote") {
-    string inner = mdChildren(node["children"]).trim();
-    string[] lines = inner.split("\n");
-    string out = "";
-    int i = 0;
-    while (i < lines.length) {
-      out = out + "> " + lines[i] + "\n";
-      i = i + 1;
-    }
-    return out + "\n";
-  }
-  if (t == "list") {
-    return mdList(node) + "\n";
-  }
-  if (t == "code") {
-    string lang = asString(node["lang"]);
-    string meta = asString(node["meta"]);
-    string info = lang;
-    if (meta.length > 0) {
-      info = lang + " " + meta;
-    }
-    string fence = fenceFor(asString(node["value"]));
-    return fence + info + "\n" + asString(node["value"]) + "\n" + fence + "\n\n";
-  }
-  if (t == "html") {
-    return asString(node["value"]) + "\n\n";
-  }
-  if (t == "definition") {
-    return "[" + asString(node["label"]) + "]: " + asString(node["url"]) + titleSuffix(node["title"]) + "\n\n";
-  }
-  if (t == "math") {
-    return "$$\n" + asString(node["value"]) + "\n$$\n\n";
-  }
-  if (t == "table") {
-    return mdTable(node) + "\n";
-  }
-  if (t == "listItem") {
-    return mdChildren(node["children"]);
-  }
-  if (JS.isArray(node["children"])) {
-    return mdChildren(node["children"]);
-  }
-  return "";
-}
-
-string mdChildren(JsValue nodes) {
-  string out = "";
-  if (!JS.isArray(nodes)) {
-    return out;
-  }
-  int n = arrLen(nodes);
-  int i = 0;
-  while (i < n) {
-    out = out + mdBlock(nodes[i]);
-    i = i + 1;
-  }
-  return out;
-}
-
-string mdList(JsValue node) {
-  bool ordered = node["ordered"].truthy();
-  int start = 1;
-  JsValue startV = node["start"];
-  if (!JS.isUndefined(startV) && !JS.isNullish(startV)) {
-    start = JS.number(startV).toInt();
-  }
-  JsValue items = node["children"];
-  string out = "";
-  int n = arrLen(items);
-  int i = 0;
-  while (i < n) {
-    JsValue item = items[i];
-    string marker = "-";
-    if (ordered) {
-      marker = (start + i).toString() + ".";
-    }
-    string body = mdChildren(item["children"]).trim();
-    JsValue checked = item["checked"];
-    string box = "";
-    if (!JS.isUndefined(checked) && !JS.isNullish(checked)) {
-      if (checked.truthy()) {
-        box = "[x] ";
-      } else {
-        box = "[ ] ";
-      }
-    }
-    string[] lines = body.split("\n");
-    out = out + marker + " " + box + lines[0] + "\n";
-    int j = 1;
-    while (j < lines.length) {
-      out = out + "   " + lines[j] + "\n";
-      j = j + 1;
-    }
-    i = i + 1;
-  }
-  return out;
-}
-
-string alignCell(JsValue v) {
-  if (v is string) {
-    if (v == "left") {
-      return ":---";
-    }
-    if (v == "right") {
-      return "---:";
-    }
-    if (v == "center") {
-      return ":---:";
-    }
-  }
-  return "---";
-}
-
-string mdTable(JsValue node) {
-  JsValue rows = node["children"];
-  JsValue align = node["align"];
-  int n = arrLen(rows);
-  if (n == 0) {
-    return "";
-  }
-  string out = mdTableRow(rows[0]) + "\n";
-  out = out + mdTableSep(rows[0], align) + "\n";
-  int i = 1;
-  while (i < n) {
-    out = out + mdTableRow(rows[i]) + "\n";
-    i = i + 1;
-  }
-  return out + "\n";
-}
-
-string mdTableRow(JsValue row) {
-  JsValue cells = row["children"];
-  string out = "|";
-  int n = arrLen(cells);
-  int i = 0;
-  while (i < n) {
-    out = out + " " + phrase(cells[i]["children"]) + " |";
-    i = i + 1;
-  }
-  return out;
-}
-
-string mdTableSep(JsValue row, JsValue align) {
-  int n = arrLen(row["children"]);
-  string out = "|";
-  int i = 0;
-  while (i < n) {
-    JsValue a = jsNull();
-    if (JS.isArray(align) && i < arrLen(align)) {
-      a = align[i];
-    }
-    out = out + " " + alignCell(a) + " |";
-    i = i + 1;
-  }
-  return out;
-}
-
-export string toMarkdown(JsValue tree) {
-  if (nodeType(tree) == "root") {
-    return mdChildren(tree["children"]);
-  }
-  return mdBlock(tree);
-}
+export JsValue remarkStringify = JS.method1(remarkStringifyCall);

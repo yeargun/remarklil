@@ -1,0 +1,70 @@
+import { jsString, mathMax, objectAssign, undef } from "../../parse/micromark/host.lil";
+import { longestStreak } from "../../deps/longest-streak.lil";
+import { formatCodeAsIndented } from "../util/format-code-as-indented.lil";
+import { checkFence } from "../util/check-fence.lil";
+
+JsValue mapIndented(JsValue _self, JsValue line, JsValue _index, JsValue blank) {
+  if (blank.truthy()) {
+    return jsString(line);
+  }
+  return "    " + jsString(line);
+}
+
+JsValue codeHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  string marker = checkFence(state);
+  string raw = "";
+  if (JS.get(node, "value").truthy()) {
+    raw = jsString(JS.get(node, "value"));
+  }
+  string suffix = "Tilde";
+  if (marker == "`") {
+    suffix = "GraveAccent";
+  }
+  if (formatCodeAsIndented(node, state)) {
+    JsValue exit = JS.call(JS.get(state, "enter"), state, "codeIndented");
+    string indented = jsString(JS.call(JS.get(state, "indentLines"), state, raw, JS.method3(mapIndented)));
+    JS.call(exit, undef());
+    return indented;
+  }
+  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  int streak = longestStreak(raw, marker);
+  float seqLen = mathMax((streak + 1) * 1.0, 3.0);
+  string sequence = marker.repeat(seqLen.toInt());
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "codeFenced");
+  string value = jsString(JS.call(JS.get(tracker, "move"), tracker, sequence));
+  if (JS.get(node, "lang").truthy()) {
+    JsValue subexit = JS.call(JS.get(state, "enter"), state, "codeFencedLang" + suffix);
+    JsValue langInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+    JS.set(langInfo, "before", value);
+    JS.set(langInfo, "after", " ");
+    JsValue encode = JS.array();
+    JS.push(encode, "`");
+    JS.set(langInfo, "encode", encode);
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, JS.get(node, "lang"), langInfo)));
+    JS.call(subexit, undef());
+  }
+  if (JS.get(node, "lang").truthy() && JS.get(node, "meta").truthy()) {
+    JsValue subexit = JS.call(JS.get(state, "enter"), state, "codeFencedMeta" + suffix);
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, " "));
+    JsValue metaInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+    JS.set(metaInfo, "before", value);
+    JS.set(metaInfo, "after", "\n");
+    JsValue encode = JS.array();
+    JS.push(encode, "`");
+    JS.set(metaInfo, "encode", encode);
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, JS.get(node, "meta"), metaInfo)));
+    JS.call(subexit, undef());
+  }
+  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, "\n"));
+  if (raw.length > 0) {
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, raw + "\n"));
+  }
+  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, sequence));
+  JS.call(exit, undef());
+  return value;
+}
+
+export JsValue code = JS.methodRest(codeHandle);

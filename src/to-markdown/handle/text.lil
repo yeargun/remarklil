@@ -1,0 +1,8 @@
+JsValue textHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  return JS.call(JS.get(state, "safe"), state, JS.get(node, "value"), info);
+}
+
+export JsValue text = JS.methodRest(textHandle);

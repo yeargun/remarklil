@@ -1,0 +1,25 @@
+import { arrLen } from "../../parse/micromark/host.lil";
+import { phrasing } from "../../deps/phrasing.lil";
+
+JsValue rootHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  JsValue children = JS.get(node, "children");
+  bool hasPhrasing = false;
+  int i = 0;
+  int n = arrLen(children);
+  while (i < n) {
+    if (phrasing(children[i])) {
+      hasPhrasing = true;
+      break;
+    }
+    i = i + 1;
+  }
+  if (hasPhrasing) {
+    return JS.call(JS.get(state, "containerPhrasing"), state, node, info);
+  }
+  return JS.call(JS.get(state, "containerFlow"), state, node, info);
+}
+
+export JsValue root = JS.methodRest(rootHandle);

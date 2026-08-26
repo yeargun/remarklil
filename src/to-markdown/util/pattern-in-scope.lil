@@ -1,0 +1,28 @@
+import { arrLen, includesVal, isNullish } from "../../parse/micromark/host.lil";
+
+bool listInScope(JsValue stack, JsValue list, bool none) {
+  JsValue items = list;
+  if (items is string) {
+    items = JS.array();
+    JS.push(items, list);
+  }
+  if (isNullish(items) || arrLen(items) == 0) {
+    return none;
+  }
+  int index = -1;
+  int n = arrLen(items);
+  while (true) {
+    index = index + 1;
+    if (index >= n) {
+      break;
+    }
+    if (includesVal(stack, items[index])) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export bool patternInScope(JsValue stack, JsValue pattern) {
+  return listInScope(stack, JS.get(pattern, "inConstruct"), true) && !listInScope(stack, JS.get(pattern, "notInConstruct"), false);
+}

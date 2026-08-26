@@ -1,0 +1,32 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { makeRegex } from "../js.lil";
+
+Regex specialChar = new Regex("[|\\\\{}()[\\]^$+*?.-]", "");
+
+export JsValue compilePattern(JsValue pattern) {
+  if (!JS.get(pattern, "_compiled").truthy()) {
+    string before = "";
+    if (JS.get(pattern, "atBreak").truthy()) {
+      before = "[\\r\\n][\\t ]*";
+    }
+    JsValue beforePat = JS.get(pattern, "before");
+    if (beforePat.truthy()) {
+      before = before + "(?:" + jsString(beforePat) + ")";
+    }
+    string source = "";
+    if (before.length > 0) {
+      source = "(" + before + ")";
+    }
+    string character = jsString(JS.get(pattern, "character"));
+    if (specialChar.test(character)) {
+      source = source + "\\";
+    }
+    source = source + character;
+    JsValue afterPat = JS.get(pattern, "after");
+    if (afterPat.truthy()) {
+      source = source + "(?:" + jsString(afterPat) + ")";
+    }
+    JS.set(pattern, "_compiled", makeRegex(source, "g"));
+  }
+  return JS.get(pattern, "_compiled");
+}

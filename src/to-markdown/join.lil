@@ -1,0 +1,32 @@
+import { jsString, undef } from "../parse/micromark/host.lil";
+import { formatCodeAsIndented } from "./util/format-code-as-indented.lil";
+import { formatHeadingAsSetext } from "./util/format-heading-as-setext.lil";
+
+JsValue joinDefaults(JsValue _self, JsValue args) {
+  JsValue left = args[0];
+  JsValue right = args[1];
+  JsValue parent = args[2];
+  JsValue state = args[3];
+  string rightType = jsString(JS.get(right, "type"));
+  string leftType = jsString(JS.get(left, "type"));
+  if (rightType == "code" && formatCodeAsIndented(right, state)) {
+    if (leftType == "list" || leftType == rightType && formatCodeAsIndented(left, state)) {
+      return false;
+    }
+  }
+  if (JS.in("spread", parent) && JS.typeOf(JS.get(parent, "spread")) == "boolean") {
+    if (leftType == "paragraph") {
+      if (leftType == rightType || rightType == "definition" || rightType == "heading" && formatHeadingAsSetext(right, state)) {
+        return undef();
+      }
+    }
+    if (JS.get(parent, "spread").truthy()) {
+      return 1;
+    }
+    return 0;
+  }
+  return undef();
+}
+
+export JsValue defaultJoin = JS.array();
+JS.push(defaultJoin, JS.methodRest(joinDefaults));

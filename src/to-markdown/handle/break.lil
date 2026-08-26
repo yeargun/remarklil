@@ -1,0 +1,27 @@
+import { arrLen, jsString } from "../../parse/micromark/host.lil";
+import { patternInScope } from "../util/pattern-in-scope.lil";
+
+Regex spaceOrTab = new Regex("[ \\t]", "");
+
+JsValue hardBreakHandle(JsValue _self, JsValue args) {
+  JsValue state = args[2];
+  JsValue info = args[3];
+  int index = -1;
+  JsValue unsafe = JS.get(state, "unsafe");
+  int n = arrLen(unsafe);
+  while (true) {
+    index = index + 1;
+    if (index >= n) {
+      break;
+    }
+    if (jsString(JS.get(unsafe[index], "character")) == "\n" && patternInScope(JS.get(state, "stack"), unsafe[index])) {
+      if (spaceOrTab.test(jsString(JS.get(info, "before")))) {
+        return "";
+      }
+      return " ";
+    }
+  }
+  return "\\\n";
+}
+
+export JsValue hardBreak = JS.methodRest(hardBreakHandle);

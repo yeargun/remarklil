@@ -1,0 +1,66 @@
+import { jsString, objectAssign } from "../../parse/micromark/host.lil";
+
+Regex splitEol = new Regex("\\r?\\n|\\r", "g");
+
+export JsValue track(JsValue config) {
+  JsValue options = config;
+  if (!options.truthy()) {
+    options = JS.object();
+  }
+  JsValue now = JS.get(options, "now");
+  if (!now.truthy()) {
+    now = JS.object();
+  }
+  JsValue box = JS.object();
+  JS.set(box, "lineShift", JS.get(options, "lineShift"));
+  if (!JS.get(box, "lineShift").truthy()) {
+    JS.set(box, "lineShift", 0);
+  }
+  JsValue lineV = JS.get(now, "line");
+  if (!lineV.truthy()) {
+    lineV = 1;
+  }
+  JsValue columnV = JS.get(now, "column");
+  if (!columnV.truthy()) {
+    columnV = 1;
+  }
+  JS.set(box, "line", lineV);
+  JS.set(box, "column", columnV);
+
+  JsValue current = JS.method0((JsValue _s) => {
+    return JS.object(
+      "now",
+      JS.object("line", JS.get(box, "line"), "column", JS.get(box, "column")),
+      "lineShift",
+      JS.get(box, "lineShift")
+    );
+  });
+
+  JsValue shift = JS.method1((JsValue _s, JsValue value) => {
+    JS.set(box, "lineShift", JS.number(JS.get(box, "lineShift")) + JS.number(value));
+    return JS.undefined();
+  });
+
+  JsValue move = JS.method1((JsValue _s, JsValue input) => {
+    string value = "";
+    if (input.truthy()) {
+      value = jsString(input);
+    }
+    JsValue chunks = JS.call(JS.get(value, "split"), value, splitEol);
+    int n = chunks.length.toInt();
+    string tail = jsString(chunks[n - 1]);
+    JS.set(box, "line", JS.number(JS.get(box, "line")) + (n - 1) * 1.0);
+    if (n == 1) {
+      JS.set(box, "column", JS.number(JS.get(box, "column")) + tail.length * 1.0);
+    } else {
+      JS.set(box, "column", 1.0 + tail.length * 1.0 + JS.number(JS.get(box, "lineShift")));
+    }
+    return value;
+  });
+
+  return JS.object("move", move, "current", current, "shift", shift);
+}
+
+export JsValue unusedTrackAssign(JsValue value) {
+  return objectAssign(JS.object(), value);
+}

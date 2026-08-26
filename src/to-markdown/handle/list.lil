@@ -1,0 +1,119 @@
+import { arrGet, arrLen, jsString, undef } from "../../parse/micromark/host.lil";
+import { checkBullet } from "../util/check-bullet.lil";
+import { checkBulletOther } from "../util/check-bullet-other.lil";
+import { checkBulletOrdered } from "../util/check-bullet-ordered.lil";
+import { checkRule } from "../util/check-rule.lil";
+
+bool indexIsZero(JsValue value) {
+  return jsString(value) == "0";
+}
+
+bool emptyItemNeedsOtherBullet(JsValue stack, JsValue indexStack) {
+  int sl = arrLen(stack);
+  int il = arrLen(indexStack);
+  if (sl < 4) {
+    return false;
+  }
+  if (il < 3) {
+    return false;
+  }
+  int stackList = sl - 1;
+  int stackItem = sl - 2;
+  int stackParentList = sl - 3;
+  int stackParentItem = sl - 4;
+  if (jsString(arrGet(stack, stackList)) != "list") {
+    return false;
+  }
+  if (jsString(arrGet(stack, stackItem)) != "listItem") {
+    return false;
+  }
+  if (jsString(arrGet(stack, stackParentList)) != "list") {
+    return false;
+  }
+  if (jsString(arrGet(stack, stackParentItem)) != "listItem") {
+    return false;
+  }
+  int indexChild = il - 1;
+  int indexMid = il - 2;
+  int indexOuter = il - 3;
+  if (!indexIsZero(arrGet(indexStack, indexChild))) {
+    return false;
+  }
+  if (!indexIsZero(arrGet(indexStack, indexMid))) {
+    return false;
+  }
+  if (!indexIsZero(arrGet(indexStack, indexOuter))) {
+    return false;
+  }
+  return true;
+}
+
+JsValue listHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue parent = args[1];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "list");
+  JsValue bulletCurrent = JS.get(state, "bulletCurrent");
+  string bullet = checkBullet(state);
+  if (JS.get(node, "ordered").truthy()) {
+    bullet = checkBulletOrdered(state);
+  }
+  string bulletOther = "";
+  if (JS.get(node, "ordered").truthy()) {
+    if (bullet == ".") {
+      bulletOther = ")";
+    } else {
+      bulletOther = ".";
+    }
+  } else {
+    bulletOther = checkBulletOther(state);
+  }
+  bool useDifferentMarker = false;
+  if (parent.truthy() && JS.get(state, "bulletLastUsed").truthy()) {
+    useDifferentMarker = bullet == jsString(JS.get(state, "bulletLastUsed"));
+  }
+  if (!JS.get(node, "ordered").truthy()) {
+    JsValue firstListItem = undef();
+    JsValue children = JS.get(node, "children");
+    if (children.truthy() && arrLen(children) > 0) {
+      firstListItem = children[0];
+    }
+    if ((bullet == "*" || bullet == "-") && firstListItem.truthy()) {
+      JsValue itemKids = JS.get(firstListItem, "children");
+      bool emptyFirst = !itemKids.truthy() || arrLen(itemKids) == 0 || !itemKids[0].truthy();
+      if (emptyFirst && emptyItemNeedsOtherBullet(JS.get(state, "stack"), JS.get(state, "indexStack"))) {
+        useDifferentMarker = true;
+      }
+    }
+    if (checkRule(state) == bullet && firstListItem.truthy()) {
+      int index = -1;
+      int n = arrLen(JS.get(node, "children"));
+      while (true) {
+        index = index + 1;
+        if (index >= n) {
+          break;
+        }
+        JsValue item = JS.get(node, "children")[index];
+        if (item.truthy() && jsString(JS.get(item, "type")) == "listItem") {
+          JsValue kids = JS.get(item, "children");
+          if (kids.truthy() && arrLen(kids) > 0 && kids[0].truthy() && jsString(JS.get(kids[0], "type")) == "thematicBreak") {
+            useDifferentMarker = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+  if (useDifferentMarker) {
+    bullet = bulletOther;
+  }
+  JS.set(state, "bulletCurrent", bullet);
+  string value = jsString(JS.call(JS.get(state, "containerFlow"), state, node, info));
+  JS.set(state, "bulletLastUsed", bullet);
+  JS.set(state, "bulletCurrent", bulletCurrent);
+  JS.call(exit, undef());
+  return value;
+}
+
+export JsValue list = JS.methodRest(listHandle);

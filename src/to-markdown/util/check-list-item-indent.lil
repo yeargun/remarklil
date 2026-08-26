@@ -1,0 +1,18 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+
+export string checkListItemIndent(JsValue state) {
+  JsValue styleV = JS.get(opt(state), "listItemIndent");
+  string style = "one";
+  if (styleV.truthy()) {
+    style = jsString(styleV);
+  }
+  if (style != "tab" && style != "one" && style != "mixed") {
+    fail(
+      "Cannot serialize items with `" +
+        style +
+        "` for `options.listItemIndent`, expected `tab`, `one`, or `mixed`"
+    );
+  }
+  return style;
+}

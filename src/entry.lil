@@ -1,32 +1,15 @@
-import { Flags, ParseHost, docText, mergeFlags, readSettings } from "./host.lil";
-import { fromMarkdown } from "./parse.lil";
-import { toMarkdown } from "./stringify.lil";
-import { Processor, createProcessor } from "./unified.lil";
+import { unified } from "./unified/entry.lil";
+import { remarkParse } from "./parse/remark-parse.lil";
+import { remarkStringify as remarkStringifyPlugin } from "./stringify.lil";
+import { defaultHandlersExport, toMarkdown as toMarkdownFn } from "./to-markdown/index.lil";
 
-JsValue installParse(JsValue self, JsValue options) {
-  ParseHost host = JS.assume(self);
-  JsValue parser = JS.method2((JsValue _s, JsValue doc, JsValue file) => {
-    Flags flags = mergeFlags(options, readSettings(self));
-    return fromMarkdown(docText(doc, file), flags);
-  });
-  host.parser = parser;
-  return JS.undefined();
-}
+JsValue remarkValue = JS.call(unified, JS.undefined());
+remarkValue = JS.call(JS.get(remarkValue, "use"), remarkValue, remarkParse);
+remarkValue = JS.call(JS.get(remarkValue, "use"), remarkValue, remarkStringifyPlugin);
+remarkValue = JS.call(JS.get(remarkValue, "freeze"), remarkValue);
 
-JsValue installStringify(JsValue self, JsValue _options) {
-  Processor proc = JS.assume(self);
-  proc.compiler = JS.method2((JsValue _s, JsValue tree, JsValue _file) => {
-    return toMarkdown(tree);
-  });
-  return JS.undefined();
-}
-
-JsValue remarkImpl() {
-  JsValue proc = createProcessor();
-  JS.call(JS.method1(installParse), proc, JS.undefined());
-  JS.call(JS.method1(installStringify), proc, JS.undefined());
-  return proc;
-}
-
-export JsValue remark = remarkImpl;
-export JsValue default = remarkImpl;
+export JsValue default = remarkValue;
+export JsValue defaultHandlers = defaultHandlersExport;
+export JsValue remark = remarkValue;
+export JsValue remarkStringify = remarkStringifyPlugin;
+export JsValue toMarkdown = toMarkdownFn;

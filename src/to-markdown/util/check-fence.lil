@@ -1,0 +1,14 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+
+export string checkFence(JsValue state) {
+  JsValue markerV = JS.get(opt(state), "fence");
+  string marker = "`";
+  if (markerV.truthy()) {
+    marker = jsString(markerV);
+  }
+  if (marker != "`" && marker != "~") {
+    fail("Cannot serialize code with `" + marker + "` for `options.fence`, expected `` ` `` or `~`");
+  }
+  return marker;
+}

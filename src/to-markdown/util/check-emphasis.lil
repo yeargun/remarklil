@@ -1,0 +1,14 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+
+export string checkEmphasis(JsValue state) {
+  JsValue markerV = JS.get(opt(state), "emphasis");
+  string marker = "*";
+  if (markerV.truthy()) {
+    marker = jsString(markerV);
+  }
+  if (marker != "*" && marker != "_") {
+    fail("Cannot serialize emphasis with `" + marker + "` for `options.emphasis`, expected `*`, or `_`");
+  }
+  return marker;
+}

@@ -1,0 +1,35 @@
+import { classifyCharacter } from "../../parse/micromark/util-classify-character.lil";
+import { isUndef } from "../../parse/micromark/host.lil";
+
+export JsValue encodeInfo(JsValue outside, JsValue inside, string marker) {
+  JsValue outsideKind = classifyCharacter(outside);
+  JsValue insideKind = classifyCharacter(inside);
+  if (isUndef(outsideKind)) {
+    if (isUndef(insideKind)) {
+      if (marker == "_") {
+        return JS.object("inside", true, "outside", true);
+      }
+      return JS.object("inside", false, "outside", false);
+    }
+    if (JS.strictEqual(insideKind, 1)) {
+      return JS.object("inside", true, "outside", true);
+    }
+    return JS.object("inside", false, "outside", true);
+  }
+  if (JS.strictEqual(outsideKind, 1)) {
+    if (isUndef(insideKind)) {
+      return JS.object("inside", false, "outside", false);
+    }
+    if (JS.strictEqual(insideKind, 1)) {
+      return JS.object("inside", true, "outside", true);
+    }
+    return JS.object("inside", false, "outside", false);
+  }
+  if (isUndef(insideKind)) {
+    return JS.object("inside", false, "outside", false);
+  }
+  if (JS.strictEqual(insideKind, 1)) {
+    return JS.object("inside", true, "outside", false);
+  }
+  return JS.object("inside", false, "outside", false);
+}

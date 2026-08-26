@@ -1,0 +1,57 @@
+import { isNullish, jsString } from "../parse/micromark/host.lil";
+
+export bool phrasing(JsValue node) {
+  if (isNullish(node) || JS.typeOf(node) != "object") {
+    return false;
+  }
+  string t = jsString(JS.get(node, "type"));
+  if (t == "break") {
+    return true;
+  }
+  if (t == "delete") {
+    return true;
+  }
+  if (t == "emphasis") {
+    return true;
+  }
+  if (t == "footnote") {
+    return true;
+  }
+  if (t == "footnoteReference") {
+    return true;
+  }
+  if (t == "image") {
+    return true;
+  }
+  if (t == "imageReference") {
+    return true;
+  }
+  if (t == "inlineCode") {
+    return true;
+  }
+  if (t == "inlineMath") {
+    return true;
+  }
+  if (t == "link") {
+    return true;
+  }
+  if (t == "linkReference") {
+    return true;
+  }
+  if (t == "mdxJsxTextElement") {
+    return true;
+  }
+  if (t == "mdxTextExpression") {
+    return true;
+  }
+  if (t == "strong") {
+    return true;
+  }
+  if (t == "text") {
+    return true;
+  }
+  if (t == "textDirective") {
+    return true;
+  }
+  return false;
+}

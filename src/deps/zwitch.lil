@@ -1,0 +1,37 @@
+import { apply, hasOwn, isNullish, jsString, undef } from "../parse/micromark/host.lil";
+
+export JsValue zwitch(string key, JsValue options) {
+  JsValue settings = options;
+  if (isNullish(settings)) {
+    settings = JS.object();
+  }
+  JsValue one = JS.undefined();
+  one = JS.methodRest((JsValue self, JsValue args) => {
+    JsValue value = undef();
+    if (args.length.toInt() > 0) {
+      value = args[0];
+    }
+    JsValue fn = JS.get(one, "invalid");
+    JsValue handlers = JS.get(one, "handlers");
+    if (value.truthy() && hasOwn(value, key)) {
+      string id = jsString(JS.get(value, key));
+      if (hasOwn(handlers, id)) {
+        fn = JS.get(handlers, id);
+      } else {
+        fn = JS.get(one, "unknown");
+      }
+    }
+    if (fn.truthy()) {
+      return apply(fn, self, args);
+    }
+    return undef();
+  });
+  JsValue handlers = JS.get(settings, "handlers");
+  if (isNullish(handlers)) {
+    handlers = JS.object();
+  }
+  JS.set(one, "handlers", handlers);
+  JS.set(one, "invalid", JS.get(settings, "invalid"));
+  JS.set(one, "unknown", JS.get(settings, "unknown"));
+  return one;
+}

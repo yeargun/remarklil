@@ -1,0 +1,14 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+
+export string checkRule(JsValue state) {
+  JsValue markerV = JS.get(opt(state), "rule");
+  string marker = "*";
+  if (markerV.truthy()) {
+    marker = jsString(markerV);
+  }
+  if (marker != "*" && marker != "-" && marker != "_") {
+    fail("Cannot serialize rules with `" + marker + "` for `options.rule`, expected `*`, `-`, or `_`");
+  }
+  return marker;
+}

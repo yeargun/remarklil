@@ -1,0 +1,35 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { visit } from "../../deps/visit.lil";
+import { mdastToString } from "../../parse/to-string.lil";
+import { opt } from "../js.lil";
+
+Regex hasBreak = new Regex("\\r?\\n|\\r", "");
+
+export bool formatHeadingAsSetext(JsValue node, JsValue state) {
+  JsValue box = JS.object("literalWithBreak", false);
+  JsValue visitor = JS.method1((JsValue _s, JsValue current) => {
+    bool hasValue = JS.in("value", current);
+    if (hasValue && hasBreak.test(jsString(JS.get(current, "value")))) {
+      JS.set(box, "literalWithBreak", true);
+      return false;
+    }
+    if (jsString(JS.get(current, "type")) == "break") {
+      JS.set(box, "literalWithBreak", true);
+      return false;
+    }
+    return JS.undefined();
+  });
+  visit(node, visitor);
+  JsValue depth = JS.get(node, "depth");
+  bool shallow = !depth.truthy() || JS.number(depth) < 3.0;
+  if (!shallow) {
+    return false;
+  }
+  if (mdastToString(node, JS.undefined()).length == 0) {
+    return false;
+  }
+  if (JS.get(opt(state), "setext").truthy() || JS.get(box, "literalWithBreak").truthy()) {
+    return true;
+  }
+  return false;
+}

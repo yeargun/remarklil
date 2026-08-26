@@ -1,0 +1,51 @@
+import { arrLen, isNullish, jsString, undef } from "../parse/micromark/host.lil";
+
+export JsValue CONTINUE = true;
+export JsValue EXIT = false;
+export JsValue SKIP = "skip";
+
+JsValue walkOne = JS.undefined();
+
+JsValue initWalk() {
+  walkOne = JS.methodRest((JsValue _self, JsValue args) => {
+    JsValue node = args[0];
+    JsValue visitor = args[1];
+    JsValue box = args[2];
+    if (JS.get(box, "stop").truthy()) {
+      return undef();
+    }
+    JsValue result = JS.call(visitor, undef(), node);
+    if (JS.strictEqual(result, false)) {
+      JS.set(box, "stop", true);
+      return undef();
+    }
+    if (JS.strictEqual(result, "skip")) {
+      return undef();
+    }
+    if (!isNullish(node) && JS.typeOf(node) == "object" && JS.in("children", node)) {
+      JsValue children = JS.get(node, "children");
+      int i = 0;
+      int n = arrLen(children);
+      while (i < n) {
+        JS.call(walkOne, undef(), children[i], visitor, box);
+        if (JS.get(box, "stop").truthy()) {
+          break;
+        }
+        i = i + 1;
+      }
+    }
+    return undef();
+  });
+  return walkOne;
+}
+
+JsValue walker = initWalk();
+
+export void visit(JsValue tree, JsValue visitor) {
+  JsValue box = JS.object("stop", false);
+  JS.call(walker, undef(), tree, visitor, box);
+}
+
+export string unusedVisitName() {
+  return jsString(CONTINUE);
+}

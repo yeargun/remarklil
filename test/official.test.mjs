@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, it } from "node:test"
-import remark from "../dist/remark.esm.js"
+import { remark } from "../dist/remark.esm.js"
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 
@@ -16,7 +16,6 @@ function loadSpecCases() {
         file,
         example: test.example,
         markdown: test.markdown,
-        gfm: file.startsWith("gfm"),
       })
     }
   }
@@ -29,9 +28,7 @@ describe("official CommonMark + GFM corpus", () => {
     const fail = []
     for (const test of cases) {
       try {
-        const proc = remark()
-        proc.data("settings", { gfm: test.gfm, allowDangerousHtml: true })
-        const tree = proc.parse(test.markdown)
+        const tree = remark().parse(test.markdown)
         if (tree?.type !== "root" || !Array.isArray(tree.children)) {
           fail.push(`${test.file}#${test.example}`)
         }

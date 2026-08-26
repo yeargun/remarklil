@@ -1,0 +1,65 @@
+import { arrLen, jsString, regexTest } from "../../parse/micromark/host.lil";
+import { makeRegex } from "../js.lil";
+
+Regex hasContent = new Regex("[^ \\r\\n]", "");
+Regex leadingPad = new Regex("^[ \\r\\n]", "");
+Regex trailingPad = new Regex("[ \\r\\n]$", "");
+Regex tickEdge = new Regex("^`|`$", "");
+
+JsValue inlineCodePeek(JsValue _self) {
+  return "`";
+}
+
+JsValue inlineCodeHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  string value = "";
+  if (JS.get(node, "value").truthy()) {
+    value = jsString(JS.get(node, "value"));
+  }
+  string sequence = "`";
+  while (true) {
+    JsValue re = makeRegex("(^|[^`])" + sequence + "([^`]|$)", "");
+    if (!JS.call(JS.get(re, "test"), re, value).truthy()) {
+      break;
+    }
+    sequence = sequence + "`";
+  }
+  if (regexTest(hasContent, value)) {
+    bool pad = regexTest(leadingPad, value) && regexTest(trailingPad, value) || regexTest(tickEdge, value);
+    if (pad) {
+      value = " " + value + " ";
+    }
+  }
+  int index = -1;
+  JsValue unsafe = JS.get(state, "unsafe");
+  int n = arrLen(unsafe);
+  while (true) {
+    index = index + 1;
+    if (index >= n) {
+      break;
+    }
+    JsValue pattern = unsafe[index];
+    if (!JS.get(pattern, "atBreak").truthy()) {
+      continue;
+    }
+    JsValue expression = JS.call(JS.get(state, "compilePattern"), state, pattern);
+    JsValue found = JS.undefined();
+    while (true) {
+      found = JS.call(JS.get(expression, "exec"), expression, value);
+      if (JS.isNullish(found)) {
+        break;
+      }
+      int position = JS.number(JS.get(found, "index")).toInt();
+      if (position > 0 && value.charCodeAt(position) == 10 && value.charCodeAt(position - 1) == 13) {
+        position = position - 1;
+      }
+      int foundIndex = JS.number(JS.get(found, "index")).toInt();
+      value = value.slice(0, position) + " " + value.slice(foundIndex + 1);
+    }
+  }
+  return sequence + value + sequence;
+}
+
+export JsValue inlineCode = JS.methodRest(inlineCodeHandle);
+JS.set(inlineCode, "peek", JS.method0(inlineCodePeek));

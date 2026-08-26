@@ -1,0 +1,18 @@
+import { checkRuleRepetition } from "../util/check-rule-repetition.lil";
+import { checkRule } from "../util/check-rule.lil";
+
+JsValue thematicBreakHandle(JsValue _self, JsValue args) {
+  JsValue state = args[2];
+  string marker = checkRule(state);
+  string unit = marker;
+  if (JS.get(JS.get(state, "options"), "ruleSpaces").truthy()) {
+    unit = marker + " ";
+  }
+  string value = unit.repeat(checkRuleRepetition(state));
+  if (JS.get(JS.get(state, "options"), "ruleSpaces").truthy()) {
+    return value.slice(0, value.length - 1);
+  }
+  return value;
+}
+
+export JsValue thematicBreak = JS.methodRest(thematicBreakHandle);

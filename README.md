@@ -1,6 +1,6 @@
 # @itslil/remark
 
-remark reimplemented in LilScript. This is **not** the official [`remark`](https://github.com/remarkjs/remark) package.
+Official [`remark@15.0.1`](https://github.com/remarkjs/remark) algorithms rewritten in LilScript. Official test suite 494/494. Not affiliated with upstream.
 
 **Site:** [yeargun.github.io/remarklil/](https://yeargun.github.io/remarklil/)
 

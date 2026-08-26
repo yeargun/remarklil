@@ -1,0 +1,71 @@
+import {
+  ErrorRef,
+  arrLen,
+  hasOwn,
+  isNullish,
+  jsString,
+  objectAssign,
+  undef
+} from "../parse/micromark/host.lil";
+
+export extern JsValue RegExp;
+
+export JsValue makeRegex(string source, string flags) {
+  return JS.construct(RegExp, source, flags);
+}
+
+export string asStr(JsValue value) {
+  if (value is string) {
+    return value;
+  }
+  return "";
+}
+
+export bool hasKey(JsValue obj, string key) {
+  if (isNullish(obj)) {
+    return false;
+  }
+  return JS.in(key, obj);
+}
+
+export JsValue opt(JsValue state) {
+  JsValue options = JS.get(state, "options");
+  if (isNullish(options)) {
+    return JS.object();
+  }
+  return options;
+}
+
+export void fail(string message) {
+  throw JS.construct(ErrorRef, message);
+}
+
+export JsValue jsCharCodeAt(JsValue value, int index) {
+  return JS.call(JS.get(value, "charCodeAt"), value, index);
+}
+
+export string repeatStr(string value, int count) {
+  if (count <= 0) {
+    return "";
+  }
+  return value.repeat(count);
+}
+
+export JsValue copyArray(JsValue list) {
+  JsValue out = JS.array();
+  int n = arrLen(list);
+  int i = 0;
+  while (i < n) {
+    JS.push(out, list[i]);
+    i = i + 1;
+  }
+  return out;
+}
+
+export JsValue copyHandlers(JsValue handlers) {
+  return objectAssign(JS.object(), handlers);
+}
+
+export string unusedJsHelper() {
+  return jsString(hasOwn(JS.object(), "x"));
+}

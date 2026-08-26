@@ -1,0 +1,71 @@
+import { push } from "../parse/micromark/host.lil";
+
+JsValue fullPhrasingSpans = JS.array();
+push(fullPhrasingSpans, "autolink");
+push(fullPhrasingSpans, "destinationLiteral");
+push(fullPhrasingSpans, "destinationRaw");
+push(fullPhrasingSpans, "reference");
+push(fullPhrasingSpans, "titleQuote");
+push(fullPhrasingSpans, "titleApostrophe");
+
+JsValue atxLang = JS.array();
+push(atxLang, "codeFencedLangGraveAccent");
+push(atxLang, "codeFencedLangTilde");
+
+JsValue crIn = JS.array();
+push(crIn, "codeFencedLangGraveAccent");
+push(crIn, "codeFencedLangTilde");
+push(crIn, "codeFencedMetaGraveAccent");
+push(crIn, "codeFencedMetaTilde");
+push(crIn, "destinationLiteral");
+push(crIn, "headingAtx");
+
+JsValue labelRef = JS.array();
+push(labelRef, "label");
+push(labelRef, "reference");
+
+JsValue graveMeta = JS.array();
+push(graveMeta, "codeFencedLangGraveAccent");
+push(graveMeta, "codeFencedMetaGraveAccent");
+
+export JsValue defaultUnsafe = JS.array();
+push(defaultUnsafe, JS.object("character", "\t", "after", "[\\r\\n]", "inConstruct", "phrasing"));
+push(defaultUnsafe, JS.object("character", "\t", "before", "[\\r\\n]", "inConstruct", "phrasing"));
+push(defaultUnsafe, JS.object("character", "\t", "inConstruct", atxLang));
+push(defaultUnsafe, JS.object("character", "\r", "inConstruct", crIn));
+push(defaultUnsafe, JS.object("character", "\n", "inConstruct", crIn));
+push(defaultUnsafe, JS.object("character", " ", "after", "[\\r\\n]", "inConstruct", "phrasing"));
+push(defaultUnsafe, JS.object("character", " ", "before", "[\\r\\n]", "inConstruct", "phrasing"));
+push(defaultUnsafe, JS.object("character", " ", "inConstruct", atxLang));
+push(defaultUnsafe, JS.object("character", "!", "after", "\\[", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
+push(defaultUnsafe, JS.object("character", "\"", "inConstruct", "titleQuote"));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "#"));
+push(defaultUnsafe, JS.object("character", "#", "inConstruct", "headingAtx", "after", "(?:[\r\n]|$)"));
+push(defaultUnsafe, JS.object("character", "&", "after", "[#A-Za-z]", "inConstruct", "phrasing"));
+push(defaultUnsafe, JS.object("character", "'", "inConstruct", "titleApostrophe"));
+push(defaultUnsafe, JS.object("character", "(", "inConstruct", "destinationRaw"));
+push(defaultUnsafe, JS.object("before", "\\]", "character", "(", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
+push(defaultUnsafe, JS.object("atBreak", true, "before", "\\d+", "character", ")"));
+push(defaultUnsafe, JS.object("character", ")", "inConstruct", "destinationRaw"));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "*", "after", "(?:[ \t\r\n*])"));
+push(defaultUnsafe, JS.object("character", "*", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "+", "after", "(?:[ \t\r\n])"));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "-", "after", "(?:[ \t\r\n-])"));
+push(defaultUnsafe, JS.object("atBreak", true, "before", "\\d+", "character", ".", "after", "(?:[ \t\r\n]|$)"));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "<", "after", "[!/?A-Za-z]"));
+push(defaultUnsafe, JS.object("character", "<", "after", "[!/?A-Za-z]", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
+push(defaultUnsafe, JS.object("character", "<", "inConstruct", "destinationLiteral"));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "="));
+push(defaultUnsafe, JS.object("atBreak", true, "character", ">"));
+push(defaultUnsafe, JS.object("character", ">", "inConstruct", "destinationLiteral"));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "["));
+push(defaultUnsafe, JS.object("character", "[", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
+push(defaultUnsafe, JS.object("character", "[", "inConstruct", labelRef));
+push(defaultUnsafe, JS.object("character", "\\", "after", "[\\r\\n]", "inConstruct", "phrasing"));
+push(defaultUnsafe, JS.object("character", "]", "inConstruct", labelRef));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "_"));
+push(defaultUnsafe, JS.object("character", "_", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "`"));
+push(defaultUnsafe, JS.object("character", "`", "inConstruct", graveMeta));
+push(defaultUnsafe, JS.object("character", "`", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
+push(defaultUnsafe, JS.object("atBreak", true, "character", "~"));

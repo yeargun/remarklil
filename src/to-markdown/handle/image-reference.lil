@@ -1,0 +1,43 @@
+import { jsString, objectAssign, undef } from "../../parse/micromark/host.lil";
+
+JsValue imageReferencePeek(JsValue _self) {
+  return "!";
+}
+
+JsValue imageReferenceHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  string typ = jsString(JS.get(node, "referenceType"));
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "imageReference");
+  JsValue subexit = JS.call(JS.get(state, "enter"), state, "label");
+  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  string value = jsString(JS.call(JS.get(tracker, "move"), tracker, "!["));
+  JsValue altInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+  JS.set(altInfo, "before", value);
+  JS.set(altInfo, "after", "]");
+  string alt = jsString(JS.call(JS.get(state, "safe"), state, JS.get(node, "alt"), altInfo));
+  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, alt + "]["));
+  JS.call(subexit, undef());
+  JsValue stack = JS.get(state, "stack");
+  JS.set(state, "stack", JS.array());
+  subexit = JS.call(JS.get(state, "enter"), state, "reference");
+  JsValue refInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+  JS.set(refInfo, "before", value);
+  JS.set(refInfo, "after", "]");
+  string reference = jsString(JS.call(JS.get(state, "safe"), state, JS.call(JS.get(state, "associationId"), state, node), refInfo));
+  JS.call(subexit, undef());
+  JS.set(state, "stack", stack);
+  JS.call(exit, undef());
+  if (typ == "full" || alt.length == 0 || alt != reference) {
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, reference + "]"));
+  } else if (typ == "shortcut") {
+    value = value.slice(0, value.length - 1);
+  } else {
+    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, "]"));
+  }
+  return value;
+}
+
+export JsValue imageReference = JS.methodRest(imageReferenceHandle);
+JS.set(imageReference, "peek", JS.method0(imageReferencePeek));

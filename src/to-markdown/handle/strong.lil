@@ -1,0 +1,46 @@
+import { jsString, objectAssign, undef } from "../../parse/micromark/host.lil";
+import { checkStrong } from "../util/check-strong.lil";
+import { encodeCharacterReference } from "../util/encode-character-reference.lil";
+import { encodeInfo } from "../util/encode-info.lil";
+import { jsCharCodeAt } from "../js.lil";
+
+JsValue strongPeek(JsValue _self, JsValue _node, JsValue _parent, JsValue state) {
+  JsValue marker = JS.get(JS.get(state, "options"), "strong");
+  if (marker.truthy()) {
+    return marker;
+  }
+  return "*";
+}
+
+JsValue strongHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  JsValue state = args[2];
+  JsValue info = args[3];
+  string marker = checkStrong(state);
+  JsValue exit = JS.call(JS.get(state, "enter"), state, "strong");
+  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  string before = jsString(JS.call(JS.get(tracker, "move"), tracker, marker + marker));
+  JsValue phrasingInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
+  JS.set(phrasingInfo, "after", marker);
+  JS.set(phrasingInfo, "before", before);
+  string between = jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "containerPhrasing"), state, node, phrasingInfo)));
+  JsValue betweenHead = jsCharCodeAt(between, 0);
+  string beforeStr = jsString(JS.get(info, "before"));
+  JsValue open = encodeInfo(jsCharCodeAt(beforeStr, beforeStr.length - 1), betweenHead, marker);
+  if (JS.get(open, "inside").truthy()) {
+    between = encodeCharacterReference(betweenHead) + between.slice(1);
+  }
+  JsValue betweenTail = jsCharCodeAt(between, between.length - 1);
+  string afterStr = jsString(JS.get(info, "after"));
+  JsValue close = encodeInfo(jsCharCodeAt(afterStr, 0), betweenTail, marker);
+  if (JS.get(close, "inside").truthy()) {
+    between = between.slice(0, between.length - 1) + encodeCharacterReference(betweenTail);
+  }
+  string after = jsString(JS.call(JS.get(tracker, "move"), tracker, marker + marker));
+  JS.call(exit, undef());
+  JS.set(state, "attentionEncodeSurroundingInfo", JS.object("after", JS.get(close, "outside"), "before", JS.get(open, "outside")));
+  return before + between + after;
+}
+
+export JsValue strong = JS.methodRest(strongHandle);
+JS.set(strong, "peek", JS.method3(strongPeek));

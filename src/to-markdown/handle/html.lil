@@ -1,0 +1,16 @@
+import { jsString } from "../../parse/micromark/host.lil";
+
+JsValue htmlPeek(JsValue _self) {
+  return "<";
+}
+
+JsValue htmlHandle(JsValue _self, JsValue args) {
+  JsValue node = args[0];
+  if (JS.get(node, "value").truthy()) {
+    return jsString(JS.get(node, "value"));
+  }
+  return "";
+}
+
+export JsValue html = JS.methodRest(htmlHandle);
+JS.set(html, "peek", JS.method0(htmlPeek));

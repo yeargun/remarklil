@@ -1,0 +1,14 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { fail, opt } from "../js.lil";
+
+export string checkBullet(JsValue state) {
+  JsValue markerV = JS.get(opt(state), "bullet");
+  string marker = "*";
+  if (markerV.truthy()) {
+    marker = jsString(markerV);
+  }
+  if (marker != "*" && marker != "+" && marker != "-") {
+    fail("Cannot serialize items with `" + marker + "` for `options.bullet`, expected `*`, `+`, or `-`");
+  }
+  return marker;
+}
