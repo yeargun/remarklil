@@ -1,4 +1,4 @@
-import { unified } from "./unified/entry.lil";
+import { ProcessorRuntime, VFileRuntime, unified } from "./unified/entry.lil";
 import { remarkParse } from "./parse/remark-parse.lil";
 import { remarkStringify as remarkStringifyPlugin } from "./stringify.lil";
 import { defaultHandlersExport, toMarkdown as toMarkdownFn } from "./to-markdown/index.lil";
@@ -13,3 +13,5 @@ export JsValue defaultHandlers = defaultHandlersExport;
 export JsValue remark = remarkValue;
 export JsValue remarkStringify = remarkStringifyPlugin;
 export JsValue toMarkdown = toMarkdownFn;
+export JsValue VFileRuntimeExport = VFileRuntime;
+export JsValue ProcessorRuntimeExport = ProcessorRuntime;

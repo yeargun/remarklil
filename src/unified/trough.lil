@@ -8,20 +8,19 @@ import {
 } from "./host.lil";
 
 JsValue wrapMiddleware(JsValue middleware, JsValue callback) {
-  JsValue state = JS.object();
-  JS.set(state, "called", false);
+  bool called = false;
 
   JsValue doneFn = JS.methodRest((JsValue _s, JsValue outArgs) => {
-    if (JS.get(state, "called").truthy()) {
+    if (called) {
       return JS.undefined();
     }
-    JS.set(state, "called", true);
+    called = true;
     JS.apply(callback, JS.undefined(), outArgs);
     return JS.undefined();
   });
 
   JsValue thenFn = JS.method1((JsValue _s, JsValue value) => {
-    JsValue packed = JS.array();
+    JsValue[] packed = [];
     JS.push(packed, NULL);
     JS.push(packed, value);
     JS.apply(doneFn, JS.undefined(), packed);
@@ -29,8 +28,8 @@ JsValue wrapMiddleware(JsValue middleware, JsValue callback) {
   });
 
   return JS.methodRest((JsValue self, JsValue parameters) => {
-    JsValue params = copyArray(parameters);
-    bool fnExpectsCallback = JS.number(middleware["length"]) > JS.number(params["length"]);
+    JsValue[] params = copyArray(parameters);
+    bool fnExpectsCallback = JS.number(middleware["length"]) > params.length;
     if (fnExpectsCallback) {
       JS.push(params, doneFn);
     }
@@ -38,10 +37,10 @@ JsValue wrapMiddleware(JsValue middleware, JsValue callback) {
     try {
       result = JS.apply(middleware, self, params);
     } catch (JsValue exception) {
-      if (fnExpectsCallback && JS.get(state, "called").truthy()) {
+      if (fnExpectsCallback && called) {
         throw exception;
       }
-      JsValue errPack = JS.array();
+      JsValue[] errPack = [];
       JS.push(errPack, exception);
       JS.apply(doneFn, JS.undefined(), errPack);
       return JS.undefined();
@@ -50,7 +49,7 @@ JsValue wrapMiddleware(JsValue middleware, JsValue callback) {
       if (result.truthy() && JS.get(result, "then").truthy() && isFn(JS.get(result, "then"))) {
         JS.invoke(result, "then", thenFn, doneFn);
       } else if (isErrorInstance(result)) {
-        JsValue errPack = JS.array();
+        JsValue[] errPack = [];
         JS.push(errPack, result);
         JS.apply(doneFn, JS.undefined(), errPack);
       } else {
@@ -62,29 +61,23 @@ JsValue wrapMiddleware(JsValue middleware, JsValue callback) {
 }
 
 JsValue troughRun(JsValue self, JsValue args) {
-  JsValue values = copyArray(args);
+  JsValue[] values = copyArray(args);
   JsValue callback = JS.pop(values);
   if (!isFn(callback)) {
     throwType("Expected function as last argument, not " + JS.string(callback));
   }
-  JsValue ctx = JS.object();
-  JS.set(ctx, "middlewareIndex", -1.0);
-  JS.set(ctx, "values", values);
-  JS.set(ctx, "fns", JS.get(self, "fns"));
-  JS.set(ctx, "callback", callback);
+  int middlewareIndex = -1;
+  JsValue[] middleware = JS.assume(JS.get(self, "fns"));
 
   JsValue nextFn = JS.undefined();
   nextFn = JS.methodRest((JsValue _s, JsValue nextArgs) => {
-    JsValue fns = JS.get(ctx, "fns");
-    float mid = JS.number(JS.get(ctx, "middlewareIndex")) + 1.0;
-    JS.set(ctx, "middlewareIndex", mid);
+    middlewareIndex = middlewareIndex + 1;
     JsValue fn = JS.undefined();
-    int midInt = mid.toInt();
-    if (midInt < fns.length.toInt()) {
-      fn = fns[midInt];
+    if (middlewareIndex < middleware.length) {
+      fn = middleware[middlewareIndex];
     }
     JsValue error = JS.undefined();
-    JsValue output = JS.array();
+    JsValue[] output = [];
     int na = nextArgs.length.toInt();
     if (na > 0) {
       error = nextArgs[0];
@@ -95,47 +88,47 @@ JsValue troughRun(JsValue self, JsValue args) {
       }
     }
     if (error.truthy()) {
-      JS.call(JS.get(ctx, "callback"), JS.undefined(), error);
+      JS.call(callback, JS.undefined(), error);
       return JS.undefined();
     }
-    JsValue currentValues = JS.get(ctx, "values");
+    JsValue[] currentValues = values;
     int index = -1;
-    int vlen = currentValues.length.toInt();
+    int vlen = currentValues.length;
     while (true) {
       index = index + 1;
       if (index >= vlen) {
         break;
       }
       JsValue slot = JS.undefined();
-      if (index < output.length.toInt()) {
+      if (index < output.length) {
         slot = output[index];
       }
       if (JS.isNullish(slot)) {
         setIndex(output, index, currentValues[index]);
       }
     }
-    JS.set(ctx, "values", output);
+    values = output;
     if (isFn(fn)) {
       JsValue wrapped = wrapMiddleware(fn, nextFn);
       JS.apply(wrapped, JS.undefined(), output);
     } else {
-      JsValue packed = JS.array();
+      JsValue[] packed = [];
       JS.push(packed, NULL);
       int k = 0;
-      int olen = output.length.toInt();
+      int olen = output.length;
       while (k < olen) {
         JS.push(packed, output[k]);
         k = k + 1;
       }
-      JS.apply(JS.get(ctx, "callback"), JS.undefined(), packed);
+      JS.apply(callback, JS.undefined(), packed);
     }
     return JS.undefined();
   });
 
-  JsValue start = JS.array();
+  JsValue[] start = [];
   JS.push(start, NULL);
   int si = 0;
-  int sl = values.length.toInt();
+  int sl = values.length;
   while (si < sl) {
     JS.push(start, values[si]);
     si = si + 1;
@@ -157,7 +150,8 @@ JsValue troughUseMethod = JS.method1(troughUse);
 
 export JsValue trough() {
   JsValue pipeline = JS.object();
-  JS.set(pipeline, "fns", JS.array());
+  JsValue[] middleware = [];
+  JS.set(pipeline, "fns", middleware);
   JS.set(pipeline, "run", troughRunMethod);
   JS.set(pipeline, "use", troughUseMethod);
   return pipeline;

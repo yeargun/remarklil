@@ -40,21 +40,18 @@ JsValue listItemHandle(JsValue _self, JsValue args) {
   JS.call(JS.get(tracker, "move"), tracker, bullet + " ".repeat(size - bullet.length));
   JS.call(JS.get(tracker, "shift"), tracker, size);
   JsValue exit = JS.call(JS.get(state, "enter"), state, "listItem");
-  JsValue box = JS.object("size", size, "bullet", bullet);
   JsValue mapper = JS.method3((JsValue _s, JsValue line, JsValue index, JsValue blank) => {
-    int sz = JS.number(JS.get(box, "size")).toInt();
-    string mark = jsString(JS.get(box, "bullet"));
     string text = jsString(line);
     if (JS.number(index) != 0.0) {
       if (blank.truthy()) {
         return text;
       }
-      return " ".repeat(sz) + text;
+      return " ".repeat(size) + text;
     }
     if (blank.truthy()) {
-      return mark + text;
+      return bullet + text;
     }
-    return mark + " ".repeat(sz - mark.length) + text;
+    return bullet + " ".repeat(size - bullet.length) + text;
   });
   string value = jsString(
     JS.call(

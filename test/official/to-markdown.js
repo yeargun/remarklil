@@ -7,13 +7,13 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {removePosition} from 'unist-util-remove-position'
 import {fromMarkdown as from} from 'mdast-util-from-markdown'
-import {toMarkdown as to} from '../../dist/remark.esm.js'
+import {toMarkdown as to} from '../../dist/remark.test.js'
 
 test('core', async function (t) {
   await t.test('should expose the public api', async function () {
     assert.deepEqual(
-      Object.keys(await import('../../dist/remark.esm.js')).sort(),
-      ['default', 'defaultHandlers', 'remark', 'remarkStringify', 'toMarkdown']
+      Object.keys(await import('../../dist/remark.esm.js')),
+      ['remark']
     )
   })
 

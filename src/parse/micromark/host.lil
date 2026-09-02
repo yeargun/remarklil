@@ -1,9 +1,5 @@
-import { Error, Number, Object } from "../../unified/host.lil";
-
-extern JsValue String;
-extern JsValue Array;
+import { Array, Error, Number, Object, String, TextDecoder } from "../../unified/host.lil";
 extern JsValue Math;
-extern JsValue TextDecoder;
 extern JsValue encodeURIComponent;
 
 export JsValue ObjectRef = Object;
@@ -267,19 +263,11 @@ export JsValue copyPoint(JsValue point) {
 }
 
 export JsValue eventEnter(JsValue token, JsValue context) {
-  JsValue ev = JS.array();
-  push(ev, "enter");
-  push(ev, token);
-  push(ev, context);
-  return ev;
+  return JS.array("enter", token, context);
 }
 
 export JsValue eventExit(JsValue token, JsValue context) {
-  JsValue ev = JS.array();
-  push(ev, "exit");
-  push(ev, token);
-  push(ev, context);
-  return ev;
+  return JS.array("exit", token, context);
 }
 
 export string eventKind(JsValue ev) {

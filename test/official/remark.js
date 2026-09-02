@@ -3,19 +3,13 @@ import test from 'node:test'
 import {gfmToMarkdown} from 'mdast-util-gfm'
 import {unified} from 'unified'
 import {
-  remark,
   remarkStringify
-} from '../../dist/remark.esm.js'
+} from '../../dist/remark.test.js'
+import {remark} from '../../dist/remark.esm.js'
 
 test('remark', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('../../dist/remark.esm.js')).sort(), [
-      'default',
-      'defaultHandlers',
-      'remark',
-      'remarkStringify',
-      'toMarkdown'
-    ])
+    assert.deepEqual(Object.keys(await import('../../dist/remark.esm.js')), ['remark'])
   })
 
   await t.test('should process a file', async function () {
@@ -35,13 +29,7 @@ test('remark', async function (t) {
 
 test('remark-stringify', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('../../dist/remark.esm.js')).sort(), [
-      'default',
-      'defaultHandlers',
-      'remark',
-      'remarkStringify',
-      'toMarkdown'
-    ])
+    assert.deepEqual(Object.keys(await import('../../dist/remark.esm.js')), ['remark'])
   })
 
   await t.test('should serialize', async function () {

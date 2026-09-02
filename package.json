@@ -52,20 +52,37 @@
   "engines": {
     "node": ">=18"
   },
+  "peerDependencies": {
+    "@types/mdast": "^4.0.0",
+    "mdast-util-from-markdown": "^2.0.0",
+    "mdast-util-to-markdown": "^2.0.0",
+    "micromark-util-types": "^2.0.0",
+    "unified": "^11.0.0"
+  },
   "scripts": {
     "build": "node scripts/build.mjs --compile",
     "build:site": "node scripts/build-site.mjs",
-    "test": "node --test test/*.test.mjs test/official/*.js",
+    "test": "npm run check:sources && npm run test:types && node --test test/*.test.mjs test/official/*.js",
+    "check:sources": "node scripts/shared-sources.mjs",
+    "test:types": "tsc --noEmit --strict --module NodeNext --moduleResolution NodeNext --target ES2022 test/types.test.ts",
     "check:site": "npm run build:site && node --test test/site.test.mjs",
     "check:pack": "node scripts/check-pack.mjs",
+    "measure:graph": "node scripts/measure-graph.mjs",
     "prepublishOnly": "npm test && npm run check:pack && npm run check:site"
   },
   "devDependencies": {
+    "@types/mdast": "^4.0.4",
     "esbuild": "0.28.1",
     "mdast-util-from-markdown": "^2.0.0",
     "mdast-util-gfm": "^3.0.0",
+    "mdast-util-to-markdown": "^2.1.2",
     "micromark-extension-gfm": "^3.0.0",
+    "micromark-util-types": "^2.0.2",
+    "remark": "15.0.1",
+    "terser": "5.51.2",
+    "typescript": "^5.9.3",
     "unified": "^11.0.0",
-    "unist-util-remove-position": "^5.0.0"
+    "unist-util-remove-position": "^5.0.0",
+    "vfile": "^6.0.3"
   }
 }

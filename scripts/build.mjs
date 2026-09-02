@@ -60,7 +60,7 @@ function compileIfRequested() {
   }
   mkdirSync(dist, { recursive: true })
   compileLil(compiler, "lilscript.toml", `${file}.raw.js`)
-  compileLil(compiler, "lilscript.closed.toml", `${file}.closed.js`)
+  compileLil(compiler, "lilscript.closed.toml", `${file}.closed.raw.js`)
 }
 
 compileIfRequested()
@@ -71,7 +71,26 @@ if (!existsSync(rawPath)) {
   throw new Error(`dist/${file}.raw.js is missing. Run with --compile after building LilScript.`)
 }
 
-writeFileSync(resolve(dist, `${file}.esm.js`), `${banner}${readFileSync(rawPath, "utf8").trimEnd()}\n`)
+const testPath = resolve(dist, `${file}.test.js`)
+const testSource = `${banner}${readFileSync(rawPath, "utf8").trimEnd()}\n`
+writeFileSync(testPath, testSource)
+function filterExports(source) {
+  return source.replace(/export\s*\{([^}]*)\}/g, (_, body) => {
+    const entries = body.split(",").filter((entry) => {
+      const parts = entry.trim().split(/\s+as\s+/)
+      return parts[parts.length - 1] === "remark"
+    })
+    return entries.length ? `export{${entries.join(",")}}` : ""
+  })
+}
+writeFileSync(resolve(dist, `${file}.esm.js`), filterExports(testSource))
+
+const closedRaw = resolve(dist, `${file}.closed.raw.js`)
+if (!existsSync(closedRaw)) throw new Error(`dist/${file}.closed.raw.js is missing`)
+writeFileSync(
+  resolve(dist, `${file}.closed.js`),
+  filterExports(`${banner}${readFileSync(closedRaw, "utf8").trimEnd()}\n`),
+)
 
 await esbuild({
   absWorkingDir: dist,
@@ -79,9 +98,9 @@ await esbuild({
   outfile: resolve(dist, `${file}.cjs`),
   bundle: true,
   format: "cjs",
-  platform: "neutral",
+  platform: "node",
+  target: "node18",
   legalComments: "none",
-  minifyWhitespace: true,
   minifyIdentifiers: false,
   minifySyntax: false,
   banner: { js: banner },
@@ -96,10 +115,9 @@ await esbuild({
   format: "iife",
   globalName: "remark",
   footer: {
-    js: `globalThis.remark=remark.default||remark.remark||remark;`,
+    js: `globalThis.remark=remark.remark||remark;`,
   },
   legalComments: "none",
-  minifyWhitespace: true,
   minifyIdentifiers: false,
   minifySyntax: false,
   banner: { js: banner },

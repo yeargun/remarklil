@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, it } from "node:test"
+import { fromMarkdown } from "mdast-util-from-markdown"
+import { gfmFromMarkdown } from "mdast-util-gfm"
+import { gfm } from "micromark-extension-gfm"
 import { remark } from "../dist/remark.esm.js"
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
@@ -23,20 +26,24 @@ function loadSpecCases() {
 }
 
 describe("official CommonMark + GFM corpus", () => {
-  it("parses all 660 cases to an mdast root", () => {
+  it("matches mdast-util-from-markdown for all 660 cases", () => {
     const cases = loadSpecCases()
-    const fail = []
     for (const test of cases) {
+      const gfmCase = test.file.startsWith("gfm.")
+      const extensions = gfmCase ? [gfm()] : []
+      const mdastExtensions = gfmCase ? [gfmFromMarkdown()] : []
+      const processor = remark()
+        .data("micromarkExtensions", extensions)
+        .data("fromMarkdownExtensions", mdastExtensions)
+      const expected = fromMarkdown(test.markdown, { extensions, mdastExtensions })
+
       try {
-        const tree = remark().parse(test.markdown)
-        if (tree?.type !== "root" || !Array.isArray(tree.children)) {
-          fail.push(`${test.file}#${test.example}`)
-        }
-      } catch {
-        fail.push(`${test.file}#${test.example}`)
+        assert.deepEqual(processor.parse(test.markdown), expected)
+      } catch (error) {
+        error.message = `${test.file}#${test.example}: ${error.message}`
+        throw error
       }
     }
-    assert.equal(fail.length, 0, fail.slice(0, 12).join(", "))
     assert.equal(cases.length, 660)
   })
 })

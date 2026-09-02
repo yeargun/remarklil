@@ -17,4 +17,15 @@ Two compiles ship from the same `.lil` source:
 
 You publish the library lane. The closed artifact is `dist/remark.closed.js`.
 
+ESM, CommonJS, UMD, and closed artifacts directly contain the pure LilScript
+VFile runtime. VFile-compatible inputs retain their identity in every format;
+no external JavaScript VFile is present in the behavior graph.
+
+Remark parsing, stringifying, unified, trough, and VFile are linked as Lil
+modules before code generation. `scripts/shared-sources.mjs` pins the six
+runtime modules shared with `@itslil/unified` by SHA-256 and can synchronize a
+checkout with `--sync`; normal tests only verify the vendored copies. The
+canonical `npm run measure:graph` comparison uses the same browser ESM graph
+bundle for both implementations and Terser 5.51.2 only for the official lane.
+
 The LilScript compiler lives next door at `../lilscript`.

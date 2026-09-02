@@ -11,10 +11,9 @@ export JsValue track(JsValue config) {
   if (!now.truthy()) {
     now = JS.object();
   }
-  JsValue box = JS.object();
-  JS.set(box, "lineShift", JS.get(options, "lineShift"));
-  if (!JS.get(box, "lineShift").truthy()) {
-    JS.set(box, "lineShift", 0);
+  float lineShift = 0.0;
+  if (JS.get(options, "lineShift").truthy()) {
+    lineShift = JS.number(JS.get(options, "lineShift"));
   }
   JsValue lineV = JS.get(now, "line");
   if (!lineV.truthy()) {
@@ -24,20 +23,20 @@ export JsValue track(JsValue config) {
   if (!columnV.truthy()) {
     columnV = 1;
   }
-  JS.set(box, "line", lineV);
-  JS.set(box, "column", columnV);
+  float line = JS.number(lineV);
+  float column = JS.number(columnV);
 
   JsValue current = JS.method0((JsValue _s) => {
     return JS.object(
       "now",
-      JS.object("line", JS.get(box, "line"), "column", JS.get(box, "column")),
+      JS.object("line", line, "column", column),
       "lineShift",
-      JS.get(box, "lineShift")
+      lineShift
     );
   });
 
   JsValue shift = JS.method1((JsValue _s, JsValue value) => {
-    JS.set(box, "lineShift", JS.number(JS.get(box, "lineShift")) + JS.number(value));
+    lineShift = lineShift + JS.number(value);
     return JS.undefined();
   });
 
@@ -46,14 +45,14 @@ export JsValue track(JsValue config) {
     if (input.truthy()) {
       value = jsString(input);
     }
-    JsValue chunks = JS.call(JS.get(value, "split"), value, splitEol);
-    int n = chunks.length.toInt();
-    string tail = jsString(chunks[n - 1]);
-    JS.set(box, "line", JS.number(JS.get(box, "line")) + (n - 1) * 1.0);
+    string[] chunks = JS.assume(JS.call(JS.get(value, "split"), value, splitEol));
+    int n = chunks.length;
+    string tail = chunks[n - 1];
+    line = line + (n - 1) * 1.0;
     if (n == 1) {
-      JS.set(box, "column", JS.number(JS.get(box, "column")) + tail.length * 1.0);
+      column = column + tail.length * 1.0;
     } else {
-      JS.set(box, "column", 1.0 + tail.length * 1.0 + JS.number(JS.get(box, "lineShift")));
+      column = 1.0 + tail.length * 1.0 + lineShift;
     }
     return value;
   });
