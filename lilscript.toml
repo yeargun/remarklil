@@ -32,6 +32,10 @@ public_aggregate_abi = "named"
 # than once; the emitter's conservative collapse refuses both. Widening it is a
 # win on three ports and a loss on three, so each says so for itself.
 wide_single_use_collapse = true
+# 8.20 (measured, fleet sweep of four budgets): the candidate byte budget is a
+# basin dial, not a depth dial -- 1 MiB (default) +0, 2 MiB +0, 8 MiB -292, 16 MiB +619.
+# Re-measure it after any emitter change.
+candidate_byte_budget = 8388608
 
 [mangle]
 identifiers = true
