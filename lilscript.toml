@@ -15,12 +15,17 @@ terminal_cleanup_chain = true
 # declared here rather than defaulted on.
 idiom_directed_naming = true
 priority = "size-first"
-optimization_level = 13
+# 8.17 (measured on the compiled module): this port was the only one still on
+# the capped search. Level 15 alone is -109, `always` alone -38, together -126
+# (36775 -> 36649), for 446s against 142s. The trade is declared here rather
+# than defaulted: micromarklil at 15 is +12 and mobxlil +100, so more search is
+# not better in general -- it lands in a different basin, and only here a better one.
+optimization_level = 15
 cost_model = "brotli"
 assume_pristine_builtins = true
 strip_console = true
 local_name_reserve = 24
-candidate_search = "production"
+candidate_search = "always"
 public_aggregate_abi = "named"
 # 8.15 (measured, ten pool ports): Terser's `collapse_vars` accepts a definition
 # whose value reads the name it defines, and a name the function assigns more
