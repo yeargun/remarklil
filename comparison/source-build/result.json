@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 1,
+  "name": "remarklil",
+  "startedAt": "2026-09-10T20:23:44Z",
+  "machine": {
+    "provider": "Azure",
+    "instanceClass": "Standard_D16als_v7",
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "logicalCpus": 16,
+    "memoryBytes": 33648427008,
+    "os": "Ubuntu 24.04.4 LTS",
+    "kernel": "6.17.0-1022-azure",
+    "node": "v24.11.1",
+    "rayonThreads": 8,
+    "loadAtStart": [
+      2.59814453125,
+      2.36474609375,
+      2.0888671875
+    ],
+    "loadAtEnd": [
+      1.48681640625,
+      1.787109375,
+      1.921875
+    ]
+  },
+  "compiler": {
+    "commit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
+    "sha256": "0616048498eb9eb2e4bd75b39e8e6a083733ada647e16108edfee30ad183beeb"
+  },
+  "source": {
+    "repository": "https://github.com/remarkjs/remark.git",
+    "commit": "5017a27db024db6feec85a3e1e19f8d78a485680",
+    "package": "remark",
+    "version": "15.0.1",
+    "directory": "packages/remark"
+  },
+  "portSource": {
+    "commit": "eba54a85e201d3955dc2a833a1b3646f270c845d",
+    "snapshot": "/tmp/lilscript-page-refresh-20260910/current/remarklil"
+  },
+  "steps": {
+    "original-install": {
+      "command": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 21.997569250000197,
+      "cpuSeconds": 10.533294,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-install.log",
+      "logSha256": "99560679c0c9c5f642323b05667fbff97da62941519e86feba81e3a9b38b0c5e",
+      "tail": "npm warn deprecated figgy-pudding@3.5.2: This module is no longer supported.\nnpm warn deprecated libnpmconfig@1.2.1: This module is not used anymore. npm config is parsed by npm itself and by @npmcli/config\nnpm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n\nadded 1552 packages in 22s\n"
+    },
+    "lilscript-install": {
+      "command": [
+        "npm",
+        "ci",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "port",
+      "wallSeconds": 0.6148004149999906,
+      "cpuSeconds": 0.6513950000000013,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-install.log",
+      "logSha256": "215e04dc7710f840e95049b5bb6fcb18842307f97b785f62099e3241cacfb825",
+      "tail": "\nadded 83 packages in 535ms\n"
+    },
+    "original-build-1": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.766818917999899,
+      "cpuSeconds": 2.8993189999999993,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-1.log",
+      "logSha256": "7cbe785c31d5658d765e0b53532842293d0e90d4a4d82aa9fd4de8e86428dd34",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(510 / 510) 100.00%\ntype-coverage success.\n"
+    },
+    "lilscript-build-1": {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 322.01960357400003,
+      "cpuSeconds": 615.249599,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-1.log",
+      "logSha256": "d2f7d1b05f85311a188c56765eb5eb019fbcf98a515a98ece9df911fb900baca",
+      "tail": "wrote dist/remark.esm.js, dist/remark.cjs, dist/remark.umd.js, dist/remark.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js"
+          ],
+          "startedAt": 1789071849.108021,
+          "wallSeconds": 244.89068174362183,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js",
+          "sha256": "88daa38a0598ad424780d3df75503da8e3bf7011d0c67e8fd2444c5a6ec1dcd5"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js"
+          ],
+          "startedAt": 1789072094.0226598,
+          "wallSeconds": 76.97439503669739,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js",
+          "sha256": "c6245c0755ec5af77be1283514ecae5f213759b6473122e3332e4ae87a3d0e2e"
+        }
+      ]
+    },
+    "lilscript-build-2": {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 321.0822232439996,
+      "cpuSeconds": 613.4378499999999,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-2.log",
+      "logSha256": "d2f7d1b05f85311a188c56765eb5eb019fbcf98a515a98ece9df911fb900baca",
+      "tail": "wrote dist/remark.esm.js, dist/remark.cjs, dist/remark.umd.js, dist/remark.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js"
+          ],
+          "startedAt": 1789072171.1283085,
+          "wallSeconds": 243.8587121963501,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js",
+          "sha256": "88daa38a0598ad424780d3df75503da8e3bf7011d0c67e8fd2444c5a6ec1dcd5"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js"
+          ],
+          "startedAt": 1789072415.0117812,
+          "wallSeconds": 77.05814051628113,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js",
+          "sha256": "c6245c0755ec5af77be1283514ecae5f213759b6473122e3332e4ae87a3d0e2e"
+        }
+      ]
+    },
+    "original-build-2": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.5666990839999926,
+      "cpuSeconds": 2.9744279999999828,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-2.log",
+      "logSha256": "7cbe785c31d5658d765e0b53532842293d0e90d4a4d82aa9fd4de8e86428dd34",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(510 / 510) 100.00%\ntype-coverage success.\n"
+    },
+    "original-build-3": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.5169792100004997,
+      "cpuSeconds": 2.870376000000075,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-3.log",
+      "logSha256": "7cbe785c31d5658d765e0b53532842293d0e90d4a4d82aa9fd4de8e86428dd34",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(510 / 510) 100.00%\ntype-coverage success.\n"
+    },
+    "lilscript-build-3": {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 321.29258257499987,
+      "cpuSeconds": 614.6355819999999,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-3.log",
+      "logSha256": "d2f7d1b05f85311a188c56765eb5eb019fbcf98a515a98ece9df911fb900baca",
+      "tail": "wrote dist/remark.esm.js, dist/remark.cjs, dist/remark.umd.js, dist/remark.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js"
+          ],
+          "startedAt": 1789072495.29644,
+          "wallSeconds": 244.21597051620483,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js",
+          "sha256": "88daa38a0598ad424780d3df75503da8e3bf7011d0c67e8fd2444c5a6ec1dcd5"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js"
+          ],
+          "startedAt": 1789072739.5375047,
+          "wallSeconds": 76.9520742893219,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js",
+          "sha256": "c6245c0755ec5af77be1283514ecae5f213759b6473122e3332e4ae87a3d0e2e"
+        }
+      ]
+    },
+    "original-esm": {
+      "command": [
+        "node",
+        "/home/lilfarm/source-perf-20260910/tools/source-esm.mjs",
+        "/home/lilfarm/source-perf-20260910",
+        "remarklil"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 2.4184415660001832,
+      "cpuSeconds": 4.05001400000007,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-esm.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tail": ""
+    },
+    "lilscript-tests": {
+      "command": [
+        "bash",
+        "-c",
+        "npm run check:sources && npm run test:types && node --test test/*.test.mjs test/official/*.js"
+      ],
+      "cwd": "port",
+      "wallSeconds": 2.317959828000312,
+      "cpuSeconds": 5.020561000000262,
+      "exitCode": 1,
+      "timedOut": false,
+      "log": "lilscript-tests.log",
+      "logSha256": "6f02e21a8d10d43ee01ed6003170bbe09899d60e121c4b142afb1e251cfb256a",
+      "tail": "p `strong` using `*` in an open run: letter outside and letter inside (0.141613ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: punctuation outside and punctuation inside (0.125258ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: whitespace outside and punctuation inside (0.120902ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: letter outside and punctuation inside (0.160932ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: punctuation outside and whitespace inside (0.144137ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: whitespace outside and whitespace inside (0.169805ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: letter outside and whitespace inside (0.185038ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: punctuation outside and letter inside (0.133621ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: whitespace outside and letter inside (0.128874ms)\n  \u2714 should roundtrip `strong` using `*` in an close run: letter outside and letter inside (0.145919ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: punctuation outside and punctuation inside (0.105438ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: whitespace outside and punctuation inside (0.11934ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: letter outside and punctuation inside (0.215094ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: punctuation outside and whitespace inside (0.248824ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: whitespace outside and whitespace inside (0.248504ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: letter outside and whitespace inside (0.140542ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: punctuation outside and letter inside (0.107321ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: whitespace outside and letter inside (0.096014ms)\n  \u2714 should roundtrip `strong` using `_` in an open run: letter outside and letter inside (0.133281ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: punctuation outside and punctuation inside (0.150206ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: whitespace outside and punctuation inside (0.206961ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: letter outside and punctuation inside (0.138298ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: punctuation outside and whitespace inside (0.115815ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: whitespace outside and whitespace inside (0.165529ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: letter outside and whitespace inside (0.248684ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: punctuation outside and letter inside (0.138048ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: whitespace outside and letter inside (0.109945ms)\n  \u2714 should roundtrip `strong` using `_` in an close run: letter outside and letter inside (0.132459ms)\n\u2714 roundtrip attention (15.308524ms)\n\u25b6 position (output)\n  \u2714 should track output positions (1) (0.210206ms)\n  \u2714 should track output positions (2) (0.209505ms)\n\u2714 position (output) (0.586862ms)\n\u25b6 site\n  \u2714 has a markedlil-style lab with receipts (0.819302ms)\n\u2714 site (1.459033ms)\n\u2139 tests 503\n\u2139 suites 3\n\u2139 pass 502\n\u2139 fail 1\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1537.668596\n\n\u2716 failing tests:\n\ntest at test/closed.test.mjs:1:1\n\u2716 test/closed.test.mjs (47.170254ms)\n  'test failed'\n"
+    }
+  },
+  "nativeBuilds": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.766818917999899,
+      "cpuSeconds": 2.8993189999999993,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-1.log",
+      "logSha256": "7cbe785c31d5658d765e0b53532842293d0e90d4a4d82aa9fd4de8e86428dd34",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(510 / 510) 100.00%\ntype-coverage success.\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.5666990839999926,
+      "cpuSeconds": 2.9744279999999828,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-2.log",
+      "logSha256": "7cbe785c31d5658d765e0b53532842293d0e90d4a4d82aa9fd4de8e86428dd34",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(510 / 510) 100.00%\ntype-coverage success.\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.5169792100004997,
+      "cpuSeconds": 2.870376000000075,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-3.log",
+      "logSha256": "7cbe785c31d5658d765e0b53532842293d0e90d4a4d82aa9fd4de8e86428dd34",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(510 / 510) 100.00%\ntype-coverage success.\n"
+    }
+  ],
+  "lilscriptBuilds": [
+    {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 322.01960357400003,
+      "cpuSeconds": 615.249599,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-1.log",
+      "logSha256": "d2f7d1b05f85311a188c56765eb5eb019fbcf98a515a98ece9df911fb900baca",
+      "tail": "wrote dist/remark.esm.js, dist/remark.cjs, dist/remark.umd.js, dist/remark.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js"
+          ],
+          "startedAt": 1789071849.108021,
+          "wallSeconds": 244.89068174362183,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js",
+          "sha256": "88daa38a0598ad424780d3df75503da8e3bf7011d0c67e8fd2444c5a6ec1dcd5"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js"
+          ],
+          "startedAt": 1789072094.0226598,
+          "wallSeconds": 76.97439503669739,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js",
+          "sha256": "c6245c0755ec5af77be1283514ecae5f213759b6473122e3332e4ae87a3d0e2e"
+        }
+      ]
+    },
+    {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 321.0822232439996,
+      "cpuSeconds": 613.4378499999999,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-2.log",
+      "logSha256": "d2f7d1b05f85311a188c56765eb5eb019fbcf98a515a98ece9df911fb900baca",
+      "tail": "wrote dist/remark.esm.js, dist/remark.cjs, dist/remark.umd.js, dist/remark.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js"
+          ],
+          "startedAt": 1789072171.1283085,
+          "wallSeconds": 243.8587121963501,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js",
+          "sha256": "88daa38a0598ad424780d3df75503da8e3bf7011d0c67e8fd2444c5a6ec1dcd5"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js"
+          ],
+          "startedAt": 1789072415.0117812,
+          "wallSeconds": 77.05814051628113,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js",
+          "sha256": "c6245c0755ec5af77be1283514ecae5f213759b6473122e3332e4ae87a3d0e2e"
+        }
+      ]
+    },
+    {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 321.29258257499987,
+      "cpuSeconds": 614.6355819999999,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-3.log",
+      "logSha256": "d2f7d1b05f85311a188c56765eb5eb019fbcf98a515a98ece9df911fb900baca",
+      "tail": "wrote dist/remark.esm.js, dist/remark.cjs, dist/remark.umd.js, dist/remark.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js"
+          ],
+          "startedAt": 1789072495.29644,
+          "wallSeconds": 244.21597051620483,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.raw.js",
+          "sha256": "88daa38a0598ad424780d3df75503da8e3bf7011d0c67e8fd2444c5a6ec1dcd5"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js"
+          ],
+          "startedAt": 1789072739.5375047,
+          "wallSeconds": 76.9520742893219,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remarklil/dist/remark.closed.raw.js",
+          "sha256": "c6245c0755ec5af77be1283514ecae5f213759b6473122e3332e4ae87a3d0e2e"
+        }
+      ]
+    }
+  ],
+  "protocol": {
+    "repetitions": 3,
+    "cleanOutputs": true,
+    "dependencyInstallationTimedSeparately": true,
+    "sourceArchives": "Pinned Git checkouts; original repository package build commands, followed by production ESM assembly.",
+    "workerUse": "Both implementations use the same machine and Node version. This shared build pool also runs unrelated jobs; timings are contextual wall times, with CPU time recorded separately."
+  },
+  "esm": {
+    "source": {
+      "repository": "https://github.com/remarkjs/remark.git",
+      "commit": "5017a27db024db6feec85a3e1e19f8d78a485680",
+      "package": "remark",
+      "version": "15.0.1",
+      "directory": "packages/remark"
+    },
+    "entry": "packages/remark/index.js",
+    "scope": "remark@15.0.1 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+    "external": [],
+    "samples": [
+      {
+        "bundleSeconds": 0.023105936,
+        "wallSeconds": 0.571425731
+      },
+      {
+        "bundleSeconds": 0.01772362499999997,
+        "wallSeconds": 0.45017472899999994
+      },
+      {
+        "bundleSeconds": 0.016895019000000046,
+        "wallSeconds": 0.466711219
+      }
+    ],
+    "medianSeconds": 0.466711219,
+    "toolchain": {
+      "esbuild": "0.28.1",
+      "terser": "5.51.2"
+    },
+    "artifacts": [
+      {
+        "path": "original.esm.js",
+        "raw": 90300,
+        "gzip9": 25129,
+        "brotli11": 22486,
+        "sha256": "365b2f42e285fa8ea40c0fd1fa4422862d6ec2d26314c13379a83acdabf46a0c"
+      },
+      {
+        "path": "original.unminified.js",
+        "raw": 246819,
+        "gzip9": 46732,
+        "brotli11": 39850,
+        "sha256": "522a4c222fd7b77241c33ee9f0fd028b6e8a9453a5f44273796024c97afef884"
+      },
+      {
+        "path": "original.terser-nomangle.js",
+        "raw": 142929,
+        "gzip9": 30965,
+        "brotli11": 27601,
+        "sha256": "11152f43d6ce94abaa671f94ec3d6a69f88eea53fb6f1e71157721eb2ba47b57"
+      },
+      {
+        "path": "original.esbuild.js",
+        "raw": 92460,
+        "gzip9": 26960,
+        "brotli11": 24127,
+        "sha256": "71daf1493e26c65e81aae8cd732b11bb643ed73ecb1c2662e14e3fb4222f42a3"
+      }
+    ],
+    "inputs": [
+      "node_modules/mdast-util-to-string/lib/index.js",
+      "node_modules/mdast-util-to-string/index.js",
+      "node_modules/decode-named-character-reference/index.dom.js",
+      "node_modules/micromark-util-chunked/index.js",
+      "node_modules/micromark-util-combine-extensions/index.js",
+      "node_modules/micromark-util-decode-numeric-character-reference/index.js",
+      "node_modules/micromark-util-encode/index.js",
+      "node_modules/micromark-util-normalize-identifier/index.js",
+      "node_modules/micromark-util-character/index.js",
+      "node_modules/micromark-util-sanitize-uri/index.js",
+      "node_modules/micromark/lib/compile.js",
+      "node_modules/micromark-factory-space/index.js",
+      "node_modules/micromark/lib/initialize/content.js",
+      "node_modules/micromark/lib/initialize/document.js",
+      "node_modules/micromark-util-classify-character/index.js",
+      "node_modules/micromark-util-resolve-all/index.js",
+      "node_modules/micromark-core-commonmark/lib/attention.js",
+      "node_modules/micromark-core-commonmark/lib/autolink.js",
+      "node_modules/micromark-core-commonmark/lib/blank-line.js",
+      "node_modules/micromark-core-commonmark/lib/block-quote.js",
+      "node_modules/micromark-core-commonmark/lib/character-escape.js",
+      "node_modules/micromark-core-commonmark/lib/character-reference.js",
+      "node_modules/micromark-core-commonmark/lib/code-fenced.js",
+      "node_modules/micromark-core-commonmark/lib/code-indented.js",
+      "node_modules/micromark-core-commonmark/lib/code-text.js",
+      "node_modules/micromark-util-subtokenize/lib/splice-buffer.js",
+      "node_modules/micromark-util-subtokenize/index.js",
+      "node_modules/micromark-core-commonmark/lib/content.js",
+      "node_modules/micromark-factory-destination/index.js",
+      "node_modules/micromark-factory-label/index.js",
+      "node_modules/micromark-factory-title/index.js",
+      "node_modules/micromark-factory-whitespace/index.js",
+      "node_modules/micromark-core-commonmark/lib/definition.js",
+      "node_modules/micromark-core-commonmark/lib/hard-break-escape.js",
+      "node_modules/micromark-core-commonmark/lib/heading-atx.js",
+      "node_modules/micromark-util-html-tag-name/index.js",
+      "node_modules/micromark-core-commonmark/lib/html-flow.js",
+      "node_modules/micromark-core-commonmark/lib/html-text.js",
+      "node_modules/micromark-core-commonmark/lib/label-end.js",
+      "node_modules/micromark-core-commonmark/lib/label-start-image.js",
+      "node_modules/micromark-core-commonmark/lib/label-start-link.js",
+      "node_modules/micromark-core-commonmark/lib/line-ending.js",
+      "node_modules/micromark-core-commonmark/lib/thematic-break.js",
+      "node_modules/micromark-core-commonmark/lib/list.js",
+      "node_modules/micromark-core-commonmark/lib/setext-underline.js",
+      "node_modules/micromark-core-commonmark/index.js",
+      "node_modules/micromark/lib/initialize/flow.js",
+      "node_modules/micromark/lib/initialize/text.js",
+      "node_modules/micromark/lib/constructs.js",
+      "node_modules/micromark/lib/create-tokenizer.js",
+      "node_modules/micromark/lib/parse.js",
+      "node_modules/micromark/lib/postprocess.js",
+      "node_modules/micromark/lib/preprocess.js",
+      "node_modules/micromark/index.js",
+      "node_modules/micromark-util-decode-string/index.js",
+      "node_modules/unist-util-stringify-position/lib/index.js",
+      "node_modules/unist-util-stringify-position/index.js",
+      "node_modules/mdast-util-from-markdown/lib/index.js",
+      "node_modules/mdast-util-from-markdown/index.js",
+      "packages/remark-parse/lib/index.js",
+      "packages/remark-parse/index.js",
+      "node_modules/zwitch/index.js",
+      "node_modules/mdast-util-to-markdown/lib/configure.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/blockquote.js",
+      "node_modules/mdast-util-to-markdown/lib/util/pattern-in-scope.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/break.js",
+      "node_modules/longest-streak/index.js",
+      "node_modules/mdast-util-to-markdown/lib/util/format-code-as-indented.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-fence.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/code.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-quote.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/definition.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-emphasis.js",
+      "node_modules/mdast-util-to-markdown/lib/util/encode-character-reference.js",
+      "node_modules/mdast-util-to-markdown/lib/util/encode-info.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/emphasis.js",
+      "node_modules/unist-util-is/lib/index.js",
+      "node_modules/unist-util-is/index.js",
+      "node_modules/unist-util-visit-parents/lib/color.js",
+      "node_modules/unist-util-visit-parents/lib/index.js",
+      "node_modules/unist-util-visit-parents/index.js",
+      "node_modules/unist-util-visit/lib/index.js",
+      "node_modules/unist-util-visit/index.js",
+      "node_modules/mdast-util-to-markdown/lib/util/format-heading-as-setext.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/heading.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/html.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/image.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/image-reference.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/inline-code.js",
+      "node_modules/mdast-util-to-markdown/lib/util/format-link-as-autolink.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/link.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/link-reference.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-bullet.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-bullet-other.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-bullet-ordered.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-rule.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/list.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-list-item-indent.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/list-item.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/paragraph.js",
+      "node_modules/mdast-util-phrasing/lib/index.js",
+      "node_modules/mdast-util-phrasing/index.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/root.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-strong.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/strong.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/text.js",
+      "node_modules/mdast-util-to-markdown/lib/util/check-rule-repetition.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/thematic-break.js",
+      "node_modules/mdast-util-to-markdown/lib/handle/index.js",
+      "node_modules/mdast-util-to-markdown/lib/join.js",
+      "node_modules/mdast-util-to-markdown/lib/unsafe.js",
+      "node_modules/mdast-util-to-markdown/lib/util/association.js",
+      "node_modules/mdast-util-to-markdown/lib/util/compile-pattern.js",
+      "node_modules/mdast-util-to-markdown/lib/util/container-phrasing.js",
+      "node_modules/mdast-util-to-markdown/lib/util/container-flow.js",
+      "node_modules/mdast-util-to-markdown/lib/util/indent-lines.js",
+      "node_modules/mdast-util-to-markdown/lib/util/safe.js",
+      "node_modules/mdast-util-to-markdown/lib/util/track.js",
+      "node_modules/mdast-util-to-markdown/lib/index.js",
+      "node_modules/mdast-util-to-markdown/index.js",
+      "packages/remark-stringify/lib/index.js",
+      "packages/remark-stringify/index.js",
+      "node_modules/bail/index.js",
+      "node_modules/extend/index.js",
+      "node_modules/devlop/lib/default.js",
+      "node_modules/is-plain-obj/index.js",
+      "node_modules/trough/lib/index.js",
+      "node_modules/trough/index.js",
+      "node_modules/vfile/node_modules/vfile-message/lib/index.js",
+      "node_modules/vfile/node_modules/vfile-message/index.js",
+      "node_modules/vfile/lib/minpath.browser.js",
+      "node_modules/vfile/lib/minproc.browser.js",
+      "node_modules/vfile/lib/minurl.shared.js",
+      "node_modules/vfile/lib/minurl.browser.js",
+      "node_modules/vfile/lib/index.js",
+      "node_modules/vfile/index.js",
+      "node_modules/unified/lib/callable-instance.js",
+      "node_modules/unified/lib/index.js",
+      "node_modules/unified/index.js",
+      "packages/remark/index.js",
+      "public-esm-entry.mjs"
+    ]
+  },
+  "lilscriptArtifacts": [
+    {
+      "path": "dist/remark.cjs",
+      "raw": 184380,
+      "gzip9": 48552,
+      "brotli11": 40783,
+      "sha256": "406812e00dea1ee8d86c4a6f37276ca16e366f6b631c54a7388ce4f70c8a2339"
+    },
+    {
+      "path": "dist/remark.closed.js",
+      "raw": 127877,
+      "gzip9": 43580,
+      "brotli11": 36963,
+      "sha256": "01988db4c9ee39c265bae9e29736fafb22af051baa2406c461908ac88df5fbaf"
+    },
+    {
+      "path": "dist/remark.closed.raw.js",
+      "raw": 127929,
+      "gzip9": 43579,
+      "brotli11": 36941,
+      "sha256": "c6245c0755ec5af77be1283514ecae5f213759b6473122e3332e4ae87a3d0e2e"
+    },
+    {
+      "path": "dist/remark.test.js",
+      "raw": 125485,
+      "gzip9": 42526,
+      "brotli11": 36225,
+      "sha256": "54200faaf9e8388de90ec0b755b2fe144cc1a5af437ac1dc00b01e70857117ec"
+    },
+    {
+      "path": "dist/remark.raw.js",
+      "raw": 125410,
+      "gzip9": 42460,
+      "brotli11": 36063,
+      "sha256": "88daa38a0598ad424780d3df75503da8e3bf7011d0c67e8fd2444c5a6ec1dcd5"
+    },
+    {
+      "path": "dist/remark.umd.js",
+      "raw": 190961,
+      "gzip9": 48844,
+      "brotli11": 40928,
+      "sha256": "2be02d35df16bbdb1ff37931d323748b8d3cb12d0de579a69a20447ffb588a7d"
+    },
+    {
+      "path": "dist/remark.esm.js",
+      "raw": 125358,
+      "gzip9": 42465,
+      "brotli11": 36150,
+      "sha256": "2e9574ae8eda1b3f1ee8339dbbd033d17e50e090d3ca0eaafe06c89d2ba6a5c8"
+    }
+  ],
+  "nativeBuildsSummary": {
+    "samples": 3,
+    "successful": 3,
+    "medianSeconds": 1.5666990839999926,
+    "minimumSeconds": 1.5169792100004997,
+    "maximumSeconds": 1.766818917999899
+  },
+  "lilscriptBuildsSummary": {
+    "samples": 3,
+    "successful": 3,
+    "medianSeconds": 321.29258257499987,
+    "minimumSeconds": 321.0822232439996,
+    "maximumSeconds": 322.01960357400003
+  },
+  "status": "complete",
+  "finishedAt": "2026-09-10T20:40:22Z",
+  "workerIp": "10.1.0.21"
+}
