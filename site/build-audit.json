@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "name": "remarklil",
+  "measuredAt": "2026-09-10T13:50:45Z",
+  "status": "blocked",
+  "buildPassed": true,
+  "summary": "The newly measured artifact remains diagnostic until its behavior gate is satisfied; the previously published runtime is retained.",
+  "sourceCommit": "eba54a85e201d3955dc2a833a1b3646f270c845d",
+  "previousPublicCommit": "d6ca47e41269c96177b148d11ebb26eb3f7b8e13",
+  "compiler": {
+    "commit": "63c2896a71e60cbcca7870fe979f9d6ecaff3452",
+    "sha256": "2319462ef7d858c8e2a5a767260aa4f80d325e0045afa0cc86cc122d1299b059",
+    "profile": "release",
+    "dirty": false
+  },
+  "machine": {
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "logicalCpus": 16,
+    "affinityCpus": 16,
+    "memoryBytes": 33648435200,
+    "os": "Ubuntu 24.04.4 LTS",
+    "kernel": "6.17.0-1022-azure",
+    "architecture": "x86_64",
+    "node": "v22.23.2",
+    "rayonThreads": 16,
+    "provider": "Azure",
+    "instanceClass": "Standard_D16als_v7",
+    "parallelPortBuildsOnMachine": 1,
+    "loadAtStart": [
+      1.45654296875,
+      0.93798828125,
+      0.40283203125
+    ],
+    "loadAtEnd": [
+      7.33349609375,
+      3.27197265625,
+      1.53564453125
+    ],
+    "concurrencyNote": "The audit scheduled one port per worker, but this is a shared pool. Outside compiler jobs were observed during the run; timings are contextual wall times, not controlled speedup benchmarks."
+  },
+  "upstream": {
+    "name": "remarklil",
+    "package": "remark",
+    "pinned": "15.0.1",
+    "latest": "15.0.1",
+    "source": "https://www.npmjs.com/package/remark"
+  },
+  "comparisonScope": "remark@15.0.1 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline Sizes use canonical zlib 1.3.1 gzip-9 and Google Brotli 1.1.0 quality 11.",
+  "sizes": {
+    "previous": {
+      "id": "itslil",
+      "name": "@itslil/remark \u00b7 library",
+      "raw": 128983,
+      "gzip9": 44120,
+      "brotli11": 37239,
+      "note": "Single-file browser graph with the directly composed pure-Lil VFile, without post-minification.",
+      "primary": true
+    },
+    "current": {
+      "path": "dist/remark.esm.js",
+      "raw": 125268,
+      "gzip9": 42419,
+      "brotli11": 36132,
+      "sha256": "4feff9c3d106ace971cf88d8e0da02686c1de5228ab7e3e836656cc532747315"
+    },
+    "upstream": {
+      "path": ".page-audit/upstream/official.esm.js",
+      "raw": 90300,
+      "gzip9": 25129,
+      "brotli11": 22486,
+      "sha256": "365b2f42e285fa8ea40c0fd1fa4422862d6ec2d26314c13379a83acdabf46a0c"
+    }
+  },
+  "officialArtifacts": [
+    {
+      "path": ".page-audit/upstream/official.esm.js",
+      "raw": 90300,
+      "gzip9": 25129,
+      "brotli11": 22486,
+      "sha256": "365b2f42e285fa8ea40c0fd1fa4422862d6ec2d26314c13379a83acdabf46a0c"
+    },
+    {
+      "path": ".page-audit/upstream/official.unminified.js",
+      "raw": 246812,
+      "gzip9": 46713,
+      "brotli11": 39826,
+      "sha256": "1348bcd68d533e906d476acd38b057b8179e912c7ea3d91addb79206e60f3e00"
+    }
+  ],
+  "candidateArtifacts": [
+    {
+      "path": "dist/remark.cjs",
+      "raw": 184191,
+      "gzip9": 48498,
+      "brotli11": 40677,
+      "sha256": "173399312c1577717506369f3e726b702db4eba370c38e34035d104fda20991f"
+    },
+    {
+      "path": "dist/remark.closed.js",
+      "raw": 127871,
+      "gzip9": 43558,
+      "brotli11": 36934,
+      "sha256": "f9f20a7730ad9a98305229cab077515d18f329fd94dfea8ad2b7fd38018553d9"
+    },
+    {
+      "path": "dist/remark.closed.raw.js",
+      "raw": 127923,
+      "gzip9": 43554,
+      "brotli11": 36964,
+      "sha256": "d75cf268c237fcb43f062a34b3e623eafe5047c39f5e7ec3b831b923ed7e3fe5"
+    },
+    {
+      "path": "dist/remark.test.js",
+      "raw": 125395,
+      "gzip9": 42481,
+      "brotli11": 36106,
+      "sha256": "cf10ddc011d1654bf63525d6911a77667bba1456da2ce6b41f88bde1c4a8fdb2"
+    },
+    {
+      "path": "dist/remark.raw.js",
+      "raw": 125320,
+      "gzip9": 42412,
+      "brotli11": 36051,
+      "sha256": "19f9d85c0328f7c5b755898831ba19e77d1e4792a58518122fc8ce84ee0fdabb"
+    },
+    {
+      "path": "dist/remark.umd.js",
+      "raw": 190732,
+      "gzip9": 48786,
+      "brotli11": 40913,
+      "sha256": "86e7d89fea91e2457b0b28ed655e7c3eb5ea4f3e1ee35330f5776708ecf263ac"
+    },
+    {
+      "path": "dist/remark.esm.js",
+      "raw": 125268,
+      "gzip9": 42419,
+      "brotli11": 36132,
+      "sha256": "4feff9c3d106ace971cf88d8e0da02686c1de5228ab7e3e836656cc532747315"
+    },
+    {
+      "path": ".page-audit/upstream/official.esm.js",
+      "raw": 90300,
+      "gzip9": 25129,
+      "brotli11": 22486,
+      "sha256": "365b2f42e285fa8ea40c0fd1fa4422862d6ec2d26314c13379a83acdabf46a0c"
+    }
+  ],
+  "timing": {
+    "primaryCompilerSeconds": 250.13712573051453,
+    "primaryScope": "One real compiler process, including code generation and codec-guided search; excludes subsequent package wrapping.",
+    "packageSeconds": 342.58228257299993,
+    "packageScope": "node scripts/build.mjs --compile --force; 2 successful compiler invocations plus package generation.",
+    "upstreamSeconds": 0.533332015,
+    "upstreamScope": "remark@15.0.1 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+    "protocol": "Same shared worker for both lanes; one fresh LilScript package build; median of three sequential upstream ESM builds (PlayCanvas records one native reference build). Outside compiler jobs were observed in the pool, so contention is not excluded. Dependencies, tests and compression measurement are outside these build times.",
+    "upstreamSamples": [
+      {
+        "bundleSeconds": 0.014857346000000007,
+        "wallSeconds": 0.684542144
+      },
+      {
+        "bundleSeconds": 0.019176414000000024,
+        "wallSeconds": 0.533332015
+      },
+      {
+        "bundleSeconds": 0.018672973000000183,
+        "wallSeconds": 0.43628279300000006
+      }
+    ]
+  },
+  "behavior": {
+    "command": "npm run check:sources && npm run test:types && node --test test/*.test.mjs test/official/*.js",
+    "summary": "Repository test command failed (exit 1). # tests 8 \u00b7 # pass 2 \u00b7 # fail 6",
+    "before": {
+      "exitCode": 0,
+      "failures": [],
+      "logSha256": "fa319fc3bf57bddcc7a10a634e15080fae836a2684f08903b93546b945502690"
+    },
+    "after": {
+      "exitCode": 1,
+      "failures": [
+        "test/api.test.mjs",
+        "test/closed.test.mjs",
+        "test/differential.test.mjs",
+        "test/official.test.mjs",
+        "test/official/remark.js",
+        "test/official/to-markdown.js"
+      ],
+      "tail": "angGraveAccent\",\"codeFencedMetaGraveAccent\"];var z=[{character:\"\\\\t\",after:\"[\\\\\\\\r\\\\\\\\n]\",inConstruct:\"phrasing\"}];o=z,z.push({character:\"\\\\t\",before:\"[\\\\\\\\r\\\\\\\\n]\",inConstruct:\"phrasing\"}),u=z,z.push({character:\"\\\\t\",inConstruct:n}),s=z,z.push({character:\"\\\\r\",inConstruct:r}),b=z,z.push({character:\"\\\\n\",inConstruct:r}),d=z,z.push({character:\" \",after:\"[\\\\\\\\r\\\\\\\\n]\",inConstruct:\"phrasing\"}),f=z,z.push({character:\" \",before:\"[\\\\\\\\r\\\\\\\\n]\",inConstruct:\"phrasing\"}),v=z,z.push({character:\" \",inConstruct:n}),p=z,z.push({character:\"!\",after:\"\\\\\\\\[\",inConstruct:\"phrasing\",notInConstruct:e}),h=z,z.push({character:\"\\\\\"\",inConstruct:\"titleQuote\"}),g=z,z.push({atBreak:t,character:\"\\#\"}),m=z,z.push({character:\"\\#\",inConstruct:\"headingAtx\",after:\"(?:[\\\\r\\\\n]|$)\"}),y=z,z.push({character:\"&\",after:\"[\\#A-Za-z]\",inConstruct:\"phrasing\"}),w=z,z.push({character:\"'\",inConstruct:\"titleApostrophe\"}),k=z,z.push({character:\"(\",inConstruct:\"destinationRaw\"}),j=z,z.push({before:\"\\\\\\\\]\",character:\"(\",inConstruct:\"phrasing\",notInConstruct:e}),x=z,z.push({atBreak:t,before:\"\\\\\\\\d+\",character:\")\"}),z.push({character:\")\",inConstruct:\"destinationRaw\"}),z.push({atBreak:t,character:\"*\",after:\"(?:[ \\\\t\\\\r\\\\n*])\"}),z.push({character:\"*\",inConstruct:\"phrasing\",notInConstruct:e}),z.push({atBreak:t,character:\"+\",after:\"(?:[ \\\\t\\\\r\\\\n])\"}),z.push({atBreak:t,character:\"-\",after:\"(?:[ \\\\t\\\\r\\\\n-])\"}),z.push({atBreak:t,before:\"\\\\\\\\d+\",character:\".\",after:\"(?:[ \\\\t\\\\r\\\\n]|$)\"}),z.push({atBreak:t,character:\"<\",after:\"[!/?A-Za-z]\"}),z.push({character:\"<\",after:\"[!/?A-Za-z]\",inConstruct:\"phrasing\",notInConstruct:e}),z.push({character:\"<\",inConstruct:\"destinationLiteral\"}),z.push({atBreak:t,character:\"=\"}),z.push({atBreak:t,character:\">\"}),z.push({character:\">\",inConstruct:\"destinationLiteral\"}),z.push({atBreak:t,character:\"[\"}),z.push({character:\"[\",inConstruct:\"phrasing\",notInConstruct:e}),z.push({character:\"[\",inConstruct:a}),z.push({character:\"\\\\\\\\\",after:\"[\\\\\\\\r\\\\\\\\n]\",inConstruct:\"phrasing\"}),z.push({character:\"]\",inConstruct:a}),z.push({atBreak:t,character:\"_\"}),z.push({character:\"_\",inConstruct:\"phrasing\",notInConstruct:e}),z.push({atBreak:t,character:\"`\"}),z.push({character:\"`\",inConstruct:i}),z.push({character:\"`\",inConstruct:\"phrasing\",notInConstruct:e}),z.push({atBreak:t,character:\"~\"});var jn=new RegExp(\"[|\\\\\\\\\\\\\\\\{}()[\\\\\\\\]^$+*?.-]\",\"\"),xn=/(\\\\r?\\\\n|\\\\r)$/,qn=/\\\\r?\\\\n|\\\\r/g,An=new RegExp(\"[!-/:-@[-`{-~]\",\"\"),En=function(r,w){return+r-+w},Sn=/\\\\r?\\\\n|\\\\r/g,ci=function(r,w){return St(r,w)};t=(0,function(r){var w=this;w.compiler=function(e,t){let n={},a=D(n,zt(w,\"settings\"));D(a,r),a.extensions=(r=>r||[])(zt(w,\"toMarkdownExtensions\"));return St(e,a)}}),l=l(),ei=l.use(ei);var ti=ei.use(t).freeze();export{ti as default,R as defaultHandlers,ti as remark,t as remarkStringify,ci as toMarkdown,he as VFileRuntimeExport,be as ProcessorRuntimeExport}\n#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \n# TypeError: l.freeze is not a function\n#     at file://<snapshot>/dist/remark.test.js:2:34758\n#     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n#     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)\n# Node.js v22.23.2\n# Subtest: test/official/to-markdown.js\nnot ok 7 - test/official/to-markdown.js\n  ---\n  duration_ms: 86.975065\n  type: 'test'\n  location: '<snapshot>/test/official/to-markdown.js:1:1'\n  failureType: 'testCodeFailure'\n  exitCode: 1\n  signal: ~\n  error: 'test failed'\n  code: 'ERR_TEST_FAILURE'\n  ...\n# Subtest: site\n    # Subtest: has a markedlil-style lab with receipts\n    ok 1 - has a markedlil-style lab with receipts\n      ---\n      duration_ms: 0.819684\n      type: 'test'\n      ...\n    1..1\nok 8 - site\n  ---\n  duration_ms: 1.534471\n  type: 'suite'\n  ...\n1..8\n# tests 8\n# suites 1\n# pass 2\n# fail 6\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 2336.526803\n",
+      "logSha256": "8c53de0eb4c56d790e91a218d3bafc63aaabf72974b0317ee5758ac5a31acb79"
+    }
+  },
+  "findings": [
+    "7 committed port changes were absent from GitHub at the start of the audit.",
+    "Published-to-fresh Brotli drift: -1,107 bytes (-2.97%). This includes port source/config changes and compiler changes.",
+    "The root checkout compiler (54e1948) rejects config field terminal_cleanup_chain; today's migration/target-tree compiler is required.",
+    "Repository test command failed (exit 1). # tests 8 \u00b7 # pass 2 \u00b7 # fail 6"
+  ],
+  "primaryArtifact": "dist/remark.esm.js",
+  "beforePage": {
+    "url": "https://yeargun.github.io/remarklil/",
+    "status": 200,
+    "sha256": "0f10c1719af39713ec4f20912a1de2f4a8ab6f7cba53f172cd433717023d2da1",
+    "lastModified": "Wed, 02 Sep 2026 15:25:35 GMT"
+  },
+  "codecSha256": "9257fd055728895c11b9c4b0d882895d7d11bb3dd3495f560123879ca2bc3cd6",
+  "publicationArtifacts": [
+    {
+      "path": "dist/remark.cjs",
+      "sha256": "8729da7e963ebd36e60d946225beb4ecfeae2edf39e2ea8e30c1643278235599"
+    },
+    {
+      "path": "dist/remark.closed.js",
+      "sha256": "cad6137ba13197051e58d4227ab4210a1641d38349511615fbd7c642564c42cd"
+    },
+    {
+      "path": "dist/remark.esm.js",
+      "sha256": "cad6137ba13197051e58d4227ab4210a1641d38349511615fbd7c642564c42cd"
+    },
+    {
+      "path": "dist/remark.test.js",
+      "sha256": "55ef30c489fc8bcfdcbb5a9c2eb6a7f1fc3731164a63e18e2bf881373ccfbd3b"
+    },
+    {
+      "path": "dist/remark.umd.js",
+      "sha256": "39700512777cc68a8d7443f0a99cc76d8827982dd1d4f3daf08f7405c95d9665"
+    }
+  ],
+  "publicationPolicy": "Retain previous public distribution; publish the diagnostic audit",
+  "publicationBase": "d6ca47e41269c96177b148d11ebb26eb3f7b8e13",
+  "publicationSourceFingerprint": "2da0d8a3bef15f4d72b93867cca18eda0dd1eebe26553463d45a9c81b4bbbf04"
+}

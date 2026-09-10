@@ -1,5 +1,9 @@
 # @itslil/remark
 
+<!-- current-build-audit -->
+**Build audit, 2026-09-10:** [blocked; compiler, machine, build times, version gaps and behavior checks](https://yeargun.github.io/remarklil/#build-audit). The [JSON receipt](site/build-audit.json) records the current comparison; older benchmark prose retains its original scope.
+
+
 Official [`remark@15.0.1`](https://github.com/remarkjs/remark) algorithms rewritten in LilScript. Official test suite 494/494. Not affiliated with upstream.
 
 **Site:** [yeargun.github.io/remarklil/](https://yeargun.github.io/remarklil/)
