@@ -198,7 +198,7 @@ JsValue initializeDocument = JS.method1((JsValue self, JsValue effects) => {
   });
 
   JsValue thereIsNoNewContainer = JS.method1((JsValue _s, JsValue code) => {
-    objSetVal(objGet(objGet(self, "parser"), "lazy"), objGet(call0(objGet(self, "now"), self), "line"), st.continued != arrLen(st.stack));
+    objSetVal(objGet(objGet(self, "parser"), "lazy"), objGet(call0(objGet(self, "now"), self), "line"), st.continued != st.stack.length);
     st.lineStartOffset = JS.number(objGet(call0(objGet(self, "now"), self), "offset"));
     return call1(flowStart, JS.undefined(), code);
   });
