@@ -1,0 +1,2 @@
+import {remark} from "./index.lil";
+export {remark as default};

@@ -48,7 +48,15 @@
     "NOTICE.md",
     "README.md"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/remark.cjs",
+    "./dist/remark.closed.js",
+    "./dist/remark.closed.raw.js",
+    "./dist/remark.esm.js",
+    "./dist/remark.raw.js",
+    "./dist/remark.test.js",
+    "./dist/remark.umd.js"
+  ],
   "engines": {
     "node": ">=18"
   },
