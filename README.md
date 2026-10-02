@@ -31,3 +31,8 @@ canonical `npm run measure:graph` comparison uses the same browser ESM graph
 bundle for both implementations and Terser 5.51.2 only for the official lane.
 
 The LilScript compiler lives next door at `../lilscript`.
+
+
+## Comparison with the original
+
+See [COMPARISON.md](COMPARISON.md) for current size and build-time comparisons against minified upstream.
