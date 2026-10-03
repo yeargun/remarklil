@@ -1,0 +1,576 @@
+{
+  "schemaVersion": 1,
+  "package": "@itslil/remark",
+  "version": "15.0.2",
+  "checkedAt": "2026-10-03T13:57:33.060381+00:00",
+  "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+  "buildReport": "./comparison/package-build-report.json",
+  "packageBuildSeconds": 97.482,
+  "validation": {
+    "ok": true,
+    "checks": [
+      {
+        "suite": "test",
+        "command": [
+          "bash",
+          "-c",
+          "npm run check:sources && npm run test:types && node --test-concurrency=1 --test test/*.test.mjs test/official/*.js"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/test.log",
+        "logSha256": "77cb78432aee7cff429cca2f6da0486eb06ac01cbac39ab0840e66e7e8beca74"
+      },
+      {
+        "suite": "pack",
+        "command": [
+          "npm",
+          "run",
+          "check:pack"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/pack.log",
+        "logSha256": "5f289b6e28fc578b71cb81c9cf336cb1980b068fc427df358aae40f3d19f6f6b"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/browser.lil",
+      "sha256": "d57fa0e9ec5cb6c4d30c4c82bd3a0adf9699c4aa16944b4c32a8a5d07c5c2858"
+    },
+    {
+      "path": "src/deps/longest-streak.lil",
+      "sha256": "5594f615dc6829d174669aec154c6a0e1606e1de4ef3eb229a5265e7a23b64b9"
+    },
+    {
+      "path": "src/deps/phrasing.lil",
+      "sha256": "7628bc0c146f9de2f4b2bd2e510904f6a0581009d3426575fb873ce0429f7eb6"
+    },
+    {
+      "path": "src/deps/visit.lil",
+      "sha256": "50586bbb5201ea269e2e59241e63f8fd50a8ce75e691866e48075d1c75f36b40"
+    },
+    {
+      "path": "src/deps/zwitch.lil",
+      "sha256": "670db54e7d56a12b2e37992a021ec5dfe4e93a0a5c1e5ac45bba9f5ce3e1d8a7"
+    },
+    {
+      "path": "src/entry.lil",
+      "sha256": "59700bd49e09fc78a4b4f5199fe6cd70c50af4c9acdde0a4b7833e6e49c136ac"
+    },
+    {
+      "path": "src/index.lil",
+      "sha256": "f5c10f62c1e0cd5f20f843d3d1e09b887dd10cae291a1fb3e9c394d7c5d79e90"
+    },
+    {
+      "path": "src/parse/from-markdown.lil",
+      "sha256": "58a18f48f8a6af7d93141e3ab239c23dc8850d4ec6f2c4baf5edb546cd7f89d5"
+    },
+    {
+      "path": "src/parse/micromark/character-entities.lil",
+      "sha256": "9cc1b93ab188a1fc88dac103a9a94ae38a796c65b0ee90e4cf2415592f854002"
+    },
+    {
+      "path": "src/parse/micromark/constructs.lil",
+      "sha256": "87d6280f596f1fd5e966377361a65a9c1d30e23dcb377a00964d9b9c08169c18"
+    },
+    {
+      "path": "src/parse/micromark/core/attention.lil",
+      "sha256": "d5b333923afa4f3f9c2299a2db5fea6e50a0ae7da8f764e389c3a7a71138ff76"
+    },
+    {
+      "path": "src/parse/micromark/core/autolink.lil",
+      "sha256": "ad643553d680123a113d17fe746d8e542b0287370b377321327311d511733754"
+    },
+    {
+      "path": "src/parse/micromark/core/blank-line.lil",
+      "sha256": "343b83ddc9fc78780601af8a4f47d5031ef13384f8f803360e33d415feba9dd2"
+    },
+    {
+      "path": "src/parse/micromark/core/block-quote.lil",
+      "sha256": "2470532d1426c6bcf3bf22b4e990c273c148a86b0e212930fef755db3243f1b9"
+    },
+    {
+      "path": "src/parse/micromark/core/character-escape.lil",
+      "sha256": "6062220ebd95f9e35017a399066849d31fcb878dd0063da70b511425c165cbc2"
+    },
+    {
+      "path": "src/parse/micromark/core/character-reference.lil",
+      "sha256": "5df6b5ba18999fc55a54b6bdff332b21013a4a26816ac57dc12ef19650dd66d5"
+    },
+    {
+      "path": "src/parse/micromark/core/code-fenced.lil",
+      "sha256": "3ce57df5cee12be95b896bb03c3315471585cebe549ab099fa40eb843db118d5"
+    },
+    {
+      "path": "src/parse/micromark/core/code-indented.lil",
+      "sha256": "7449b99550b4ca4e462dcca9239302753e4c877f20a82b06479756d4201c4957"
+    },
+    {
+      "path": "src/parse/micromark/core/code-text.lil",
+      "sha256": "950ea75ab25aff10060869fb37f5272318dd855b0682b86e3f743e7092b92ac9"
+    },
+    {
+      "path": "src/parse/micromark/core/content.lil",
+      "sha256": "a1e54b21fea0fcb4291a075f6298aa5500945a4f32f9002f92d3810dc6dd0170"
+    },
+    {
+      "path": "src/parse/micromark/core/definition.lil",
+      "sha256": "19c16287f2a80ba4e7832440121214a1f6daee2f489cc1004445a852bda4c8c7"
+    },
+    {
+      "path": "src/parse/micromark/core/hard-break-escape.lil",
+      "sha256": "8b80f9aece609713d3dcd490b73037315d81ab0cc58adb5ff80ca75cb4c1f688"
+    },
+    {
+      "path": "src/parse/micromark/core/heading-atx.lil",
+      "sha256": "64264c21f87ed1888524f7c21d32bc240bcb42c95b715bd6f15b3b9f685958ba"
+    },
+    {
+      "path": "src/parse/micromark/core/html-flow.lil",
+      "sha256": "bd6708d6086a450a20a5e36549b715a0ed6881bd983927bd4d135790a3e050f7"
+    },
+    {
+      "path": "src/parse/micromark/core/html-text.lil",
+      "sha256": "73935c0d5fb15ca89a6f41be87055d4206f3b31c05bc6a85d89c1bf31ee61e24"
+    },
+    {
+      "path": "src/parse/micromark/core/label-end.lil",
+      "sha256": "2edd430ed5d783a41eb8aaf748c792b35bcedb0da92c3526273ed3311366619d"
+    },
+    {
+      "path": "src/parse/micromark/core/label-start-image.lil",
+      "sha256": "a476c096e652c8a016f519ef530a6ea14f3e6ac7b1252927baa1f0d66868dc12"
+    },
+    {
+      "path": "src/parse/micromark/core/label-start-link.lil",
+      "sha256": "ae64132563044b1ef0879e01f80578b65b099d3e80a524d1ae806dff41fb1c81"
+    },
+    {
+      "path": "src/parse/micromark/core/line-ending.lil",
+      "sha256": "ed00711f15d2d16b1bcbcc119e31926b589ab18e440bebf50fdc3d827a3b422e"
+    },
+    {
+      "path": "src/parse/micromark/core/list.lil",
+      "sha256": "c853e1f7ea7539f359fd31575b28b234c149aed64b14995b6af15de7212d518f"
+    },
+    {
+      "path": "src/parse/micromark/core/setext-underline.lil",
+      "sha256": "5555df873ca4993f71ae6a6ce6b8feea65a8bb88e672cb28f298197d80da1f36"
+    },
+    {
+      "path": "src/parse/micromark/core/thematic-break.lil",
+      "sha256": "755953b5988f0e4dde1459d243ce12e5d964a456dd32a8c8b62e21ed24c151e1"
+    },
+    {
+      "path": "src/parse/micromark/create-tokenizer.lil",
+      "sha256": "bcf4ce93df4e32d89585011992b760fa910c6b88a69f206dd2e09e751052d6f9"
+    },
+    {
+      "path": "src/parse/micromark/decode-named.lil",
+      "sha256": "b749446edcdd8a4d051fee685ae72d07714d04d0b14d02e4e7955b3540cd493b"
+    },
+    {
+      "path": "src/parse/micromark/factory-destination.lil",
+      "sha256": "af165fc6522b16cdd41126055fe79446e4b6cc76058742f5a80fab72605d60de"
+    },
+    {
+      "path": "src/parse/micromark/factory-label.lil",
+      "sha256": "96f7ba45f26175d12451e5b5e669c7a262d879c52d041428351dedf6704b2ecf"
+    },
+    {
+      "path": "src/parse/micromark/factory-space.lil",
+      "sha256": "9012b380fb616777a4819fb51434fe7722a234593d155c25b69d5d0db14b19c6"
+    },
+    {
+      "path": "src/parse/micromark/factory-title.lil",
+      "sha256": "d874bd7921cc041c46c9414f1b4808b7c79fd3f42813502f06993b0bfb0f1b13"
+    },
+    {
+      "path": "src/parse/micromark/factory-whitespace.lil",
+      "sha256": "62d5c0b47eea9941788dd42bad2d616701ad48049190f681deca09ed6d3479bd"
+    },
+    {
+      "path": "src/parse/micromark/host.lil",
+      "sha256": "9860c2600e4ee339fbbea070eda2928868a5859b0e6a984a8d8ed3cb1d869220"
+    },
+    {
+      "path": "src/parse/micromark/initialize/content.lil",
+      "sha256": "478689d51eb6fd278d85162871cfea3cd1fbe22eea41d0470844d3afd4377452"
+    },
+    {
+      "path": "src/parse/micromark/initialize/document.lil",
+      "sha256": "d4d2ff7abca48599d19fc03e28c54b3de248aeb71ef085f1239f1488bc2c446e"
+    },
+    {
+      "path": "src/parse/micromark/initialize/flow.lil",
+      "sha256": "085ee22e91469e9c261eed670445a74383682af8b0a1103ca14d2c1d4c5ccbbf"
+    },
+    {
+      "path": "src/parse/micromark/initialize/text.lil",
+      "sha256": "9d0a38e95dc29c2d060362b6fc5ccbde281edbe18b45749f5c2fb116c5145eee"
+    },
+    {
+      "path": "src/parse/micromark/parse.lil",
+      "sha256": "f481b1897ea699b8917be891cfc0ae05a88855716a4fb502db89b107ff0949ea"
+    },
+    {
+      "path": "src/parse/micromark/postprocess.lil",
+      "sha256": "0ea578b00bed09960e8f9c2d06f962b9e626fec4a528beaba4be30f2c5c50b31"
+    },
+    {
+      "path": "src/parse/micromark/preprocess.lil",
+      "sha256": "986ccaeff2d1f35af7854be840023164da7c964a203542efc3176602aa092adb"
+    },
+    {
+      "path": "src/parse/micromark/splice-buffer.lil",
+      "sha256": "cf538daab2d4ec303964969784fd9b47ff756495e1e55da7b3af06bb16394a7a"
+    },
+    {
+      "path": "src/parse/micromark/symbol/codes.lil",
+      "sha256": "762a3e62e1500ba78d71f8218fcb2e7e357ea3795d21bb5e81b8d4287f513c19"
+    },
+    {
+      "path": "src/parse/micromark/symbol/constants.lil",
+      "sha256": "c89476d798ffe1eb1f9843219c41cd1d19849707ceb9fc18d5583b5ae2470188"
+    },
+    {
+      "path": "src/parse/micromark/symbol/types.lil",
+      "sha256": "6ae172165319ad71396ca532ec544326d82d9625f8ee46090d02a587e40c1aa8"
+    },
+    {
+      "path": "src/parse/micromark/symbol/values.lil",
+      "sha256": "1aabedd9c760c573fd1ea24d07ae9d35d207bbe61a0ecc62985f0953fc73c3e9"
+    },
+    {
+      "path": "src/parse/micromark/util-character.lil",
+      "sha256": "7a1c236776c0d3dfb12d9b6f2ddbe181cb06a0d040d0ce71a43782a9c8a96397"
+    },
+    {
+      "path": "src/parse/micromark/util-chunked.lil",
+      "sha256": "dc63c7d2096496959c0c5317e7375ce7c61d23dd69b129b61b0d9bf79e4045cd"
+    },
+    {
+      "path": "src/parse/micromark/util-classify-character.lil",
+      "sha256": "8f193927ef6c0a6ec30125dcfe5f24e70e0d1acb178a0f701a6be61050a9b841"
+    },
+    {
+      "path": "src/parse/micromark/util-combine-extensions.lil",
+      "sha256": "d15e6db103822db1cfeb54f40512af44ef04b3daf5794fce9b679dc99c8753b4"
+    },
+    {
+      "path": "src/parse/micromark/util-decode-numeric.lil",
+      "sha256": "78b1050ac7751b5b09436c728a616bd87d98be53e64ac8200a624b37faa63b71"
+    },
+    {
+      "path": "src/parse/micromark/util-decode-string.lil",
+      "sha256": "a1df9eee87107f4a39ef8c607fae7fad68113b0023f1a7f2f6a8abfc28284233"
+    },
+    {
+      "path": "src/parse/micromark/util-html-tag-name.lil",
+      "sha256": "db2a6d54b5cbdbc8273a776f7b609fb2ed9b90f87242c1d26801ef11771b0380"
+    },
+    {
+      "path": "src/parse/micromark/util-normalize-identifier.lil",
+      "sha256": "9c605bcd8454ea59378864ba8abfb67315008fbdea73f96e9fb09e76594fe20e"
+    },
+    {
+      "path": "src/parse/micromark/util-resolve-all.lil",
+      "sha256": "4857aeec8d7eb15053668e81899371cd3bb6d9a23a68740204e9ff818120dfd2"
+    },
+    {
+      "path": "src/parse/micromark/util-subtokenize.lil",
+      "sha256": "926fd04ec5e2c276cecb468d29b02a7f6645683a959f6af97792c00c23c22fb4"
+    },
+    {
+      "path": "src/parse/remark-parse.lil",
+      "sha256": "5264b79e90193d4e5f40616d61c39e4d23aed231a45f0aede942cb0a3abd497d"
+    },
+    {
+      "path": "src/parse/stringify-position.lil",
+      "sha256": "ec72ceeee1f9f93f1e58d367dd6d6b3ef291cf24518d871e50ad2db09d2deaf7"
+    },
+    {
+      "path": "src/parse/to-string.lil",
+      "sha256": "c35561280f64eab656cee076848359526bc9fd364b429ad31fecd82ececc9fb3"
+    },
+    {
+      "path": "src/stringify.lil",
+      "sha256": "8d34163aa72a299f5450347365f15839d52d6277dd31898305bcfe97b58852d7"
+    },
+    {
+      "path": "src/to-markdown/configure.lil",
+      "sha256": "5926f2da22e3d18a6b86bb65e4b886607555f44551b31882e7fc0a70f438c1cc"
+    },
+    {
+      "path": "src/to-markdown/handle/blockquote.lil",
+      "sha256": "98a0d340088997ec317ad7b69dd1e1b60a75e1a644d2c9edccd0c000f0e46b0e"
+    },
+    {
+      "path": "src/to-markdown/handle/break.lil",
+      "sha256": "f58ff1ebcfc87c8e975a6569c22bf14c981852e6e46ca0f5ad71f69ecb81e631"
+    },
+    {
+      "path": "src/to-markdown/handle/code.lil",
+      "sha256": "674501720519e2d595cd35bc63fa7d7afe04fa041d0ecab49d80f00e2a4dcc50"
+    },
+    {
+      "path": "src/to-markdown/handle/definition.lil",
+      "sha256": "5f8a6f038a797c30a49a226c389b8971b40944cb87d4a13e077dcce56696a2d4"
+    },
+    {
+      "path": "src/to-markdown/handle/emphasis.lil",
+      "sha256": "7a7c3904580cf6bae0bb053db8bbe27db210e529d273d521b5cf1ca106e50f1d"
+    },
+    {
+      "path": "src/to-markdown/handle/heading.lil",
+      "sha256": "24c2219d5aefd4aa69ed370fe644191e1a9586953b2c592fda16ee63a759ab87"
+    },
+    {
+      "path": "src/to-markdown/handle/html.lil",
+      "sha256": "07ebfcb358304038723382733d9dcf37e3683ec882cdc07b641693254a4d0326"
+    },
+    {
+      "path": "src/to-markdown/handle/image-reference.lil",
+      "sha256": "a2bc3f858d973ed01e150ae58ea1d60d3adf67896f97fccc4e780c26d899d91a"
+    },
+    {
+      "path": "src/to-markdown/handle/image.lil",
+      "sha256": "d972ffe44ab808c0f626d643ca6b4955f5b523f0a55b6cff1b01a57589a0caff"
+    },
+    {
+      "path": "src/to-markdown/handle/index.lil",
+      "sha256": "5b038c72625fa4f66419cbf0d452cae3a3f65efcf43e5a4b77a9c06cb991a263"
+    },
+    {
+      "path": "src/to-markdown/handle/inline-code.lil",
+      "sha256": "b55f7846c9390f1a4ea0bc9d688acae33c5c42a656a6702a40f047cb1c782375"
+    },
+    {
+      "path": "src/to-markdown/handle/link-reference.lil",
+      "sha256": "3e69b1d1660bfd91169689f665982c630e5fc33881f6a798f9828e1acc620b71"
+    },
+    {
+      "path": "src/to-markdown/handle/link.lil",
+      "sha256": "c6a4207ebbe62cc87d03b181fe8bb0ff412820c74cf49a1450425148a42ebe9c"
+    },
+    {
+      "path": "src/to-markdown/handle/list-item.lil",
+      "sha256": "fa56066dc361a9fa3dffb77eaf50339e334d5f0057b1b96b1fcf94912bf7b0a7"
+    },
+    {
+      "path": "src/to-markdown/handle/list.lil",
+      "sha256": "8d472f536f6398c0479ebcdf77c454092eca033c35ace3204ba13486a302954b"
+    },
+    {
+      "path": "src/to-markdown/handle/paragraph.lil",
+      "sha256": "e296644f985bdec00cbacd5a8b1bbf5c8e63ac487b6e7c28e74401caac7743de"
+    },
+    {
+      "path": "src/to-markdown/handle/root.lil",
+      "sha256": "4cf3d5f257b51ccf47c1152ceafab4eb70e8411791f967f3ec44ec76ae3c2ba6"
+    },
+    {
+      "path": "src/to-markdown/handle/strong.lil",
+      "sha256": "4bf5b5cb800cb2a66f66a46c835a4a46746c78560791a36b3a6f4688f185a505"
+    },
+    {
+      "path": "src/to-markdown/handle/text.lil",
+      "sha256": "73dcca33098702a40d40b3c69265e039ec1f3ade088d9ad19a0c659072d61aad"
+    },
+    {
+      "path": "src/to-markdown/handle/thematic-break.lil",
+      "sha256": "90ed49fb9dc3c9f6a23ea50ba737055e40d84c39f98e439eb139ab0ec1a7997c"
+    },
+    {
+      "path": "src/to-markdown/index.lil",
+      "sha256": "0aaee329c4c3903c9b196cecfa26ad7b5b7e15dc7ad69f4723627e3c646ec882"
+    },
+    {
+      "path": "src/to-markdown/join.lil",
+      "sha256": "ed4f35aa22bd8eb242b7e1661992d6d0c1893f83dc45beed2ab182c46cd055fd"
+    },
+    {
+      "path": "src/to-markdown/js.lil",
+      "sha256": "ec29f72c939b0584f9ed8a5dbccf241aaf262421e3e66328dee7bc22907f9d8c"
+    },
+    {
+      "path": "src/to-markdown/unsafe.lil",
+      "sha256": "69d673bb4a9c56e79c531d3a9db98531e7ec6734e6a3f3e2e28eb35329e2d833"
+    },
+    {
+      "path": "src/to-markdown/util/association.lil",
+      "sha256": "54a5dfb370cd31c736e2b12782be0fa0b62f71cb5f43f5f7836710c9c7dc3e26"
+    },
+    {
+      "path": "src/to-markdown/util/check-bullet-ordered.lil",
+      "sha256": "631a715647c143993ccdd306ed98debc0b689e6df94bb6f0fca5b2e5abdad32c"
+    },
+    {
+      "path": "src/to-markdown/util/check-bullet-other.lil",
+      "sha256": "ffa153694a825e305416993b5bd5560cefce819975b5bf19923eef49894f9951"
+    },
+    {
+      "path": "src/to-markdown/util/check-bullet.lil",
+      "sha256": "60a98992857ff9447bc914a119811ab51fd1fbe60c8b8c01cdc49157fc9d0e79"
+    },
+    {
+      "path": "src/to-markdown/util/check-emphasis.lil",
+      "sha256": "fd10a3fe2b50a3a91806320b79e1c4869b7980beb2cbb4652adaa2c6c12c7f35"
+    },
+    {
+      "path": "src/to-markdown/util/check-fence.lil",
+      "sha256": "01bc9661ed413197e031bfa4567372ce06438636e081b57a378daf2f1d1bc48a"
+    },
+    {
+      "path": "src/to-markdown/util/check-list-item-indent.lil",
+      "sha256": "c24b3a97a5dcde9f68409eb8315c171dd848830231d7b63cd555f0ea0f17be20"
+    },
+    {
+      "path": "src/to-markdown/util/check-quote.lil",
+      "sha256": "0198f05d814c73f66c7471e8a55d19d846b733e7f890f3c06ddbdc4255001fd2"
+    },
+    {
+      "path": "src/to-markdown/util/check-rule-repetition.lil",
+      "sha256": "13cbabe1fd1b44293e3c3764f0670dbfc1ae0a0a5872431507984e435d8ac547"
+    },
+    {
+      "path": "src/to-markdown/util/check-rule.lil",
+      "sha256": "da34238fe5c0aadae755a7c77da375407f08e2f54fb4fdea2fbfdac51f507dc2"
+    },
+    {
+      "path": "src/to-markdown/util/check-strong.lil",
+      "sha256": "02a5a8139e979b9285e8a13ed1b55e93630d3c9fb34e1b5b504852383511734f"
+    },
+    {
+      "path": "src/to-markdown/util/compile-pattern.lil",
+      "sha256": "b87febfac6139201371470e86f63e5db0de92932065cf52e3f3cdc2b3312133d"
+    },
+    {
+      "path": "src/to-markdown/util/container-flow.lil",
+      "sha256": "4afd45f0bb665e42c9a8bed1b482686ea3b53ed8c68900f076468e4111d68efe"
+    },
+    {
+      "path": "src/to-markdown/util/container-phrasing.lil",
+      "sha256": "1cc20f7e6328400bda20191a07caf1ea69eafb4b003ea397b13ab5e023249fbf"
+    },
+    {
+      "path": "src/to-markdown/util/encode-character-reference.lil",
+      "sha256": "19782b6f4cb1a74236e0a12e93dbefe14c7f7b3ac3295b7b4d3390ad7ab26efc"
+    },
+    {
+      "path": "src/to-markdown/util/encode-info.lil",
+      "sha256": "cf5b76d0a39e00489f8c437a5cd26dccb5e8134cb85a2f3539635e1eee47404b"
+    },
+    {
+      "path": "src/to-markdown/util/format-code-as-indented.lil",
+      "sha256": "b9552e97378869c7e7c9371ebc5e59945a6e7068eb4d8fb835cf1de667d0c998"
+    },
+    {
+      "path": "src/to-markdown/util/format-heading-as-setext.lil",
+      "sha256": "f83dd4848f0b6a505b6ff9d3a94ed690fc4701d58bea5d74eff94329714d3266"
+    },
+    {
+      "path": "src/to-markdown/util/format-link-as-autolink.lil",
+      "sha256": "e263446437a9ade5d1791a86e716c9035d246dbc403123a10ec87c210e730177"
+    },
+    {
+      "path": "src/to-markdown/util/indent-lines.lil",
+      "sha256": "a5cce668cfd8d8bdab414aa58b41dcf7b7f701e2c45d6eceb70fda4ef7265f3b"
+    },
+    {
+      "path": "src/to-markdown/util/pattern-in-scope.lil",
+      "sha256": "904a799648282688df705d098f890b5386b589fa4673e82c55062b52253013ff"
+    },
+    {
+      "path": "src/to-markdown/util/safe.lil",
+      "sha256": "6c4792e24081035c57d97a5ee2eeab6185424cfb90d76bb84139ffe6e0c015d7"
+    },
+    {
+      "path": "src/to-markdown/util/track.lil",
+      "sha256": "66bcb4b35ee7c46d5624e90edeee713c819da68f4827817fce5dd34eb79c305c"
+    },
+    {
+      "path": "src/unified/entry.lil",
+      "sha256": "369a0579775b9d0fa56b2de97885e526c139e010b18ba4d9d210a0159ece7176"
+    },
+    {
+      "path": "src/unified/extend.lil",
+      "sha256": "5612b854f838998e9a0a78f43ae6bbcbe9e047558611e4f9787075debd4afc64"
+    },
+    {
+      "path": "src/unified/host.lil",
+      "sha256": "ccbc7701c94e92ef1cbf4b453be931a75d7d860717ba73ead107cc599c48a7df"
+    },
+    {
+      "path": "src/unified/plain.lil",
+      "sha256": "903533b020487768987eff2dfb90a0593b9c9008b998da6833baae7faa309c58"
+    },
+    {
+      "path": "src/unified/trough.lil",
+      "sha256": "05cc761c387ce006c4c7f1787c201e8298103c1428fc29cb11b50276fe66f091"
+    },
+    {
+      "path": "src/unified/vfile.lil",
+      "sha256": "37bcc3df5fb96c496f685cae6057edec453932fad428f3e7382412bc6ab8cf34"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/.lilscript/closed.json",
+      "bytes": 53200,
+      "sha256": "0927fab21aae5ab03f35648a286f2456a37cc0443244a35057b9392caa6b89f1"
+    },
+    {
+      "path": "dist/.lilscript/public.json",
+      "bytes": 75297,
+      "sha256": "5946b6ec70bd5736c0d83f3d7d02db856aa617ecc019967de422e5c6a77f9a8c"
+    },
+    {
+      "path": "dist/lilscript.manifest.json",
+      "bytes": 36565,
+      "sha256": "2bafee18b45412c9f48f408ae1d4cb009135d7abe24b9fd72d8e401b5b773b01"
+    },
+    {
+      "path": "dist/remark.cjs",
+      "bytes": 138767,
+      "sha256": "74c22ead6a07ec7fe6291ced1cec87c6b4e54ecca76c4e28c72db659f5bcc15c"
+    },
+    {
+      "path": "dist/remark.closed.js",
+      "bytes": 138062,
+      "sha256": "c3ae68ec98e932f57a16b4d59cc5fdd36f6df9fe8d4074d89a0dc6f3a3613117"
+    },
+    {
+      "path": "dist/remark.closed.raw.js",
+      "bytes": 138062,
+      "sha256": "c3ae68ec98e932f57a16b4d59cc5fdd36f6df9fe8d4074d89a0dc6f3a3613117"
+    },
+    {
+      "path": "dist/remark.d.ts",
+      "bytes": 867,
+      "sha256": "d4b59f6cf6f393aa9e6edf6ae27997904e82bc478f37ab8ddb092b402c7441ce"
+    },
+    {
+      "path": "dist/remark.esm.js",
+      "bytes": 138659,
+      "sha256": "d76a81ad113ec6a1efca4f4256b33a8b401564f52c4b6cf72d876d0740f348d7"
+    },
+    {
+      "path": "dist/remark.raw.js",
+      "bytes": 138659,
+      "sha256": "d76a81ad113ec6a1efca4f4256b33a8b401564f52c4b6cf72d876d0740f348d7"
+    },
+    {
+      "path": "dist/remark.test.js",
+      "bytes": 138856,
+      "sha256": "cbe2b7adcbbdf8c8ba7de1eceed0c0ed324f9ca6e704b17096d2215eeba0eabb"
+    },
+    {
+      "path": "dist/remark.umd.js",
+      "bytes": 138868,
+      "sha256": "983083da646af258757d5930c2b5cf2bf5f9d5257e89e94906b340ff4f9795cc"
+    }
+  ],
+  "scope": "Checked repository package; independent of npm publication. Main-entry objective comparisons have separate artifacts and timings."
+}

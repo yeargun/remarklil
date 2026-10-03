@@ -6,7 +6,7 @@ import { cAsterisk, codeEq } from "../symbol/codes.lil";
 import { kCharacterGroupPunctuation } from "../symbol/constants.lil";
 import { tAttentionSequence, tEmphasis, tEmphasisSequence, tEmphasisText, tStrong, tStrongSequence, tStrongText } from "../symbol/types.lil";
 
-struct PointView {
+extern class PointView {
   float _bufferIndex;
   float _index;
   float line;
@@ -14,13 +14,13 @@ struct PointView {
   float offset;
 }
 
-struct TokenView {
+extern class TokenView {
   string type;
   PointView start;
   PointView end;
 }
 
-struct AttentionTokenView {
+extern class AttentionTokenView {
   string type;
   PointView start;
   PointView end;

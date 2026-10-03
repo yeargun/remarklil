@@ -1,0 +1,2 @@
+import {remark} from "./entry.lil";
+export {remark};

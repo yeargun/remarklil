@@ -1,20 +1,62 @@
-# reusable ESM — host-visible names stay
-[optimization]
-identical_function_folding = false
-
+# Compiler-owned delivery; no JavaScript post-minifier or export rewriting.
+[policy]
+version = 3
 [javascript]
 priority = "size-first"
-optimization_level = 13
-cost_model = "brotli"
+# Assumes unpatched platform builtins; disable when consumers replace them.
 assume_pristine_builtins = true
-strip_console = true
-local_name_reserve = 24
-candidate_search = "production"
-public_aggregate_abi = "named"
+# Remove debugLog instrumentation; ordinary print and host console effects remain.
+strip_debug = true
+# Plain-data reads must not run getters; disable for effectful accessor integrations.
+assume_pure_property_reads = true
 
+# Preserved effort setting. 13 favors size; 14/15 allow more expensive marginal searches.
+[effort]
+level = 15
+
+# Optimize the delivered files for this codec, independently of raw/gzip objectives.
+[objective]
+codecs = "brotli"
 [mangle]
 identifiers = true
 properties = true
-exports = false
-extern_fields = true
 pool_strings = true
+
+# All runtime files and format bindings are written by the compiler.
+[delivery]
+mode = "single"
+directory = "."
+host_modules = "embed"
+select = ["index"]
+entry_names = "remark.esm.js"
+[delivery.entries]
+index = "src/index.lil"
+browser = "src/browser.lil"
+test = "src/entry.lil"
+
+[[delivery.also]]
+name = "cjs"
+format = "cjs"
+entries = ["index"]
+entry_names = "remark.cjs"
+
+[[delivery.also]]
+name = "browser"
+format = "iife"
+entries = ["browser"]
+exports = "default"
+global = "remark"
+global_binding = "property"
+entry_names = "remark.umd.js"
+
+[[delivery.also]]
+name = "test"
+format = "esm"
+entries = ["test"]
+entry_names = "remark.test.js"
+
+[policy.resources]
+logical_work = 8000000000
+
+[execution]
+jobs = 1
