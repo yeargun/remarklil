@@ -5,14 +5,14 @@ Regex hasContent = new Regex("[^ \\r\\n]", "");
 Regex blankEdges = new Regex("^[\\t ]*(?:[\\r\\n]|$)|(?:^|[\\r\\n])[\\t ]*$", "");
 
 export bool formatCodeAsIndented(JsValue node, JsValue state) {
-  if (!JS.strictEqual(JS.get(opt(state), "fences"), false)) {
+  if (!JS.strictEqual(opt(state)["fences"], false)) {
     return false;
   }
-  JsValue raw = JS.get(node, "value");
+  JsValue raw = node["value"];
   if (!raw.truthy()) {
     return false;
   }
-  if (JS.get(node, "lang").truthy()) {
+  if (node["lang"].truthy()) {
     return false;
   }
   string value = jsString(raw);

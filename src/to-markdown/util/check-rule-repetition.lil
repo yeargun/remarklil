@@ -1,7 +1,7 @@
 import { fail, opt } from "../js.lil";
 
 export int checkRuleRepetition(JsValue state) {
-  JsValue raw = JS.get(opt(state), "ruleRepetition");
+  JsValue raw = opt(state)["ruleRepetition"];
   int repetition = 3;
   if (raw.truthy()) {
     repetition = JS.number(raw).toInt();

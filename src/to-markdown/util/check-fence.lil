@@ -2,7 +2,7 @@ import { jsString } from "../../parse/micromark/host.lil";
 import { fail, opt } from "../js.lil";
 
 export string checkFence(JsValue state) {
-  JsValue markerV = JS.get(opt(state), "fence");
+  JsValue markerV = opt(state)["fence"];
   string marker = "`";
   if (markerV.truthy()) {
     marker = jsString(markerV);

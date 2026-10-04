@@ -13,8 +13,8 @@
           "closure": [
             "remark.closed.js"
           ],
-          "row": 36878,
-          "raw_row": 138062
+          "row": 32032,
+          "raw_row": 102273
         }
       ],
       "files": [
@@ -40,25 +40,24 @@
             "parse/micromark/parse.lil",
             "parse/micromark/util-combine-extensions.lil",
             "parse/micromark/util-chunked.lil",
-            "parse/micromark/symbol/constants.lil",
             "parse/micromark/create-tokenizer.lil",
             "parse/micromark/util-character.lil",
             "parse/micromark/util-resolve-all.lil",
-            "parse/micromark/symbol/codes.lil",
-            "parse/micromark/symbol/values.lil",
             "parse/micromark/initialize/content.lil",
             "parse/micromark/factory-space.lil",
-            "parse/micromark/symbol/types.lil",
             "parse/micromark/initialize/document.lil",
             "parse/micromark/initialize/flow.lil",
             "parse/micromark/core/blank-line.lil",
+            "parse/micromark/symbol/types.lil",
             "parse/micromark/core/content.lil",
             "parse/micromark/util-subtokenize.lil",
             "parse/micromark/splice-buffer.lil",
+            "parse/micromark/symbol/constants.lil",
             "parse/micromark/initialize/text.lil",
             "parse/micromark/constructs.lil",
             "parse/micromark/core/attention.lil",
             "parse/micromark/util-classify-character.lil",
+            "parse/micromark/symbol/codes.lil",
             "parse/micromark/core/autolink.lil",
             "parse/micromark/core/block-quote.lil",
             "parse/micromark/core/character-escape.lil",
@@ -74,6 +73,7 @@
             "parse/micromark/factory-title.lil",
             "parse/micromark/factory-whitespace.lil",
             "parse/micromark/util-normalize-identifier.lil",
+            "parse/micromark/symbol/values.lil",
             "parse/micromark/core/hard-break-escape.lil",
             "parse/micromark/core/heading-atx.lil",
             "parse/micromark/core/html-flow.lil",
@@ -114,6 +114,7 @@
             "to-markdown/handle/heading.lil",
             "to-markdown/util/format-heading-as-setext.lil",
             "deps/visit.lil",
+            "to-markdown/util/mdast-to-string.lil",
             "to-markdown/handle/html.lil",
             "to-markdown/handle/image.lil",
             "to-markdown/handle/image-reference.lil",
@@ -149,16 +150,16 @@
           "anchored": true,
           "imports": [],
           "dynamic_imports": [],
-          "bytes": 138062,
-          "codec_bytes": 36878,
-          "sha256": "c3ae68ec98e932f57a16b4d59cc5fdd36f6df9fe8d4074d89a0dc6f3a3613117"
+          "bytes": 102273,
+          "codec_bytes": 32032,
+          "sha256": "ddf240b2d624f86ecf7f551f0d9d9654011fa537e5e07c6e0feac618fda00144"
         }
       ],
       "side_effects": [
         "remark.closed.js"
       ],
-      "codec_total": 36878,
-      "rows_total": 36878,
+      "codec_total": 32032,
+      "rows_total": 32032,
       "setters": 0,
       "output": "primary",
       "codec": "brotli",
@@ -174,42 +175,42 @@
         }
       },
       "policy_fingerprint": [
-        74,
-        199,
-        122,
-        76,
-        79,
-        193,
-        6,
-        47,
-        41,
-        119,
-        138,
-        201,
-        227,
+        155,
+        243,
+        113,
+        35,
+        210,
+        147,
+        228,
+        213,
+        211,
+        229,
+        235,
+        11,
+        115,
+        181,
+        243,
+        128,
+        159,
+        175,
         62,
-        179,
-        146,
-        153,
-        1,
-        134,
-        148,
-        246,
-        41,
-        108,
-        93,
-        101,
-        108,
         249,
-        209,
-        119,
-        131,
-        225,
-        188
+        118,
+        208,
+        213,
+        39,
+        23,
+        55,
+        40,
+        22,
+        208,
+        46,
+        206,
+        210
       ]
     }
   ],
-  "source_sha256": "f7f67353bdff7a3fe69de81d54b9169be98665c886cd479fa17852289374d493",
+  "source_sha256": "008b2a7b46041ce4c4376c2eab92828a1bac2ea3ce4ad7ff3fb52489200236f7",
   "inputs": {
     "root": 0,
     "entries": [
@@ -220,7 +221,7 @@
     ],
     "modules": [
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/index.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/index.lil",
         "bytes": 53,
         "sha256": "f5c10f62c1e0cd5f20f843d3d1e09b887dd10cae291a1fb3e9c394d7c5d79e90",
         "dependencies": [
@@ -229,7 +230,7 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/entry.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/entry.lil",
         "bytes": 930,
         "sha256": "59700bd49e09fc78a4b4f5199fe6cd70c50af4c9acdde0a4b7833e6e49c136ac",
         "dependencies": [
@@ -241,9 +242,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/unified/entry.lil",
-        "bytes": 15506,
-        "sha256": "369a0579775b9d0fa56b2de97885e526c139e010b18ba4d9d210a0159ece7176",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/unified/entry.lil",
+        "bytes": 12498,
+        "sha256": "baa802c68e7c54ef57c3023187f6a52ef16c186a234314010f4b18f71b263782",
         "dependencies": [
           3,
           4,
@@ -254,25 +255,25 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/unified/host.lil",
-        "bytes": 2729,
-        "sha256": "ccbc7701c94e92ef1cbf4b453be931a75d7d860717ba73ead107cc599c48a7df",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/unified/host.lil",
+        "bytes": 2379,
+        "sha256": "745c7baa0a9b13001eae15b75a8be9ea063a88a51945e56728522d44a331ee89",
         "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/unified/plain.lil",
-        "bytes": 1471,
-        "sha256": "903533b020487768987eff2dfb90a0593b9c9008b998da6833baae7faa309c58",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/unified/plain.lil",
+        "bytes": 1307,
+        "sha256": "8a52a7e342eebf815c188da089eba5acaad37b604d13111a471f7437ed1d4249",
         "dependencies": [
           3
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/unified/extend.lil",
-        "bytes": 1883,
-        "sha256": "5612b854f838998e9a0a78f43ae6bbcbe9e047558611e4f9787075debd4afc64",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/unified/extend.lil",
+        "bytes": 1592,
+        "sha256": "4055d2d1d1a84eb61b897c2f6d706c2c17d283df4d520a0620d18b753f340b12",
         "dependencies": [
           3,
           4
@@ -280,27 +281,27 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/unified/trough.lil",
-        "bytes": 4293,
-        "sha256": "05cc761c387ce006c4c7f1787c201e8298103c1428fc29cb11b50276fe66f091",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/unified/trough.lil",
+        "bytes": 3312,
+        "sha256": "9759f1e87e4d67fcd65b85963c2cbb6b5b206ac0212d4045bfb2c04125067eff",
         "dependencies": [
           3
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/unified/vfile.lil",
-        "bytes": 22242,
-        "sha256": "37bcc3df5fb96c496f685cae6057edec453932fad428f3e7382412bc6ab8cf34",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/unified/vfile.lil",
+        "bytes": 19095,
+        "sha256": "044d55ffc6d6d3506521dfb940667253cd6393add8f77ed689aac98e42271195",
         "dependencies": [
           3
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/remark-parse.lil",
-        "bytes": 949,
-        "sha256": "5264b79e90193d4e5f40616d61c39e4d23aed231a45f0aede942cb0a3abd497d",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/remark-parse.lil",
+        "bytes": 929,
+        "sha256": "e03e9c7573d09cf0d5ca3aec1f0d1869991db6846f4f47d4a0261d187485ae56",
         "dependencies": [
           9,
           10
@@ -308,9 +309,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/from-markdown.lil",
-        "bytes": 33502,
-        "sha256": "58a18f48f8a6af7d93141e3ab239c23dc8850d4ec6f2c4baf5edb546cd7f89d5",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/from-markdown.lil",
+        "bytes": 23031,
+        "sha256": "78894f1bafbd7b1717b28b6f4ffa140cca0fcec02c92e7b6951a5c33ca551bae",
         "dependencies": [
           10,
           11,
@@ -318,11 +319,8 @@
           61,
           62,
           63,
-          47,
-          37,
-          13,
-          18,
-          14,
+          46,
+          36,
           22,
           64,
           65
@@ -330,34 +328,31 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/host.lil",
-        "bytes": 9178,
-        "sha256": "9860c2600e4ee339fbbea070eda2928868a5859b0e6a984a8d8ed3cb1d869220",
-        "dependencies": [
-          3
-        ],
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/host.lil",
+        "bytes": 9584,
+        "sha256": "6badb1a179beafd2e5fc92d05c784290b3407412ab9a58769a85dbfe33e2f357",
+        "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/parse.lil",
-        "bytes": 1572,
-        "sha256": "f481b1897ea699b8917be891cfc0ae05a88855716a4fb502db89b107ff0949ea",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/parse.lil",
+        "bytes": 1180,
+        "sha256": "b036c2932912ef350c629c126601292bda49caab2a0152d77988dcb979481d83",
         "dependencies": [
-          10,
           12,
-          15,
+          14,
+          17,
+          19,
           20,
-          23,
-          24,
-          29,
-          30
+          27,
+          28
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-combine-extensions.lil",
-        "bytes": 2629,
-        "sha256": "d15e6db103822db1cfeb54f40512af44ef04b3daf5794fce9b679dc99c8753b4",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-combine-extensions.lil",
+        "bytes": 1615,
+        "sha256": "45dda94d1f191795642dac1e553985170a046717ad685685a9c61453a1768cfd",
         "dependencies": [
           10,
           13
@@ -365,206 +360,161 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-chunked.lil",
-        "bytes": 1512,
-        "sha256": "dc63c7d2096496959c0c5317e7375ce7c61d23dd69b129b61b0d9bf79e4045cd",
-        "dependencies": [
-          10,
-          14
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/symbol/constants.lil",
-        "bytes": 2986,
-        "sha256": "c89476d798ffe1eb1f9843219c41cd1d19849707ceb9fc18d5583b5ae2470188",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-chunked.lil",
+        "bytes": 1226,
+        "sha256": "da747a8e78fa84b0a467616f68d83384737e53ad1b016e83f9fb803d2edf8e54",
         "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/create-tokenizer.lil",
-        "bytes": 13595,
-        "sha256": "bcf4ce93df4e32d89585011992b760fa910c6b88a69f206dd2e09e751052d6f9",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/create-tokenizer.lil",
+        "bytes": 11638,
+        "sha256": "d587bd8a701c469fb05407a1b988231862430bc2d1cbaa0198218a705d41e690",
         "dependencies": [
           10,
-          16,
+          15,
           13,
-          17,
-          18,
-          19
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-character.lil",
-        "bytes": 1895,
-        "sha256": "7a1c236776c0d3dfb12d9b6f2ddbe181cb06a0d040d0ce71a43782a9c8a96397",
-        "dependencies": [
-          10
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-resolve-all.lil",
-        "bytes": 576,
-        "sha256": "4857aeec8d7eb15053668e81899371cd3bb6d9a23a68740204e9ff818120dfd2",
-        "dependencies": [
-          10
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/symbol/codes.lil",
-        "bytes": 6185,
-        "sha256": "762a3e62e1500ba78d71f8218fcb2e7e357ea3795d21bb5e81b8d4287f513c19",
-        "dependencies": [
-          10
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/symbol/values.lil",
-        "bytes": 3599,
-        "sha256": "1aabedd9c760c573fd1ea24d07ae9d35d207bbe61a0ecc62985f0953fc73c3e9",
-        "dependencies": [],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/initialize/content.lil",
-        "bytes": 2427,
-        "sha256": "478689d51eb6fd278d85162871cfea3cd1fbe22eea41d0470844d3afd4377452",
-        "dependencies": [
-          10,
-          21,
-          16,
-          10,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/factory-space.lil",
-        "bytes": 897,
-        "sha256": "9012b380fb616777a4819fb51434fe7722a234593d155c25b69d5d0db14b19c6",
-        "dependencies": [
-          10,
           16
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/symbol/types.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-character.lil",
+        "bytes": 1611,
+        "sha256": "634af98913dfb47ab2fcdf6fd17e2b4733bc26608f78609e110ce0d33bdf4a15",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-resolve-all.lil",
+        "bytes": 432,
+        "sha256": "d7df6ed1af3b6b922a3f3150f0fc8f94cf4f38852f32819513c56a5a0c546a74",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/initialize/content.lil",
+        "bytes": 1869,
+        "sha256": "3f4959b21c63be2570bbc74960af330e4b6a9646fbb348cef55300baabff2d45",
+        "dependencies": [
+          10,
+          18,
+          15
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/factory-space.lil",
+        "bytes": 903,
+        "sha256": "a5932f5e1b06d6517cdc43a5b0a12cfc9a6b875e94d9c937213f5192fb3b50ba",
+        "dependencies": [
+          15
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/initialize/document.lil",
+        "bytes": 8336,
+        "sha256": "d74de0315b97b124e43f302f64eb4cfd2cc1466dafd00639d20b818a84958856",
+        "dependencies": [
+          10,
+          18,
+          15,
+          13
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/initialize/flow.lil",
+        "bytes": 1333,
+        "sha256": "4ed3a38963b8557e3d1cf818ad7ba0f9bcd3f90c2268f91962891ec3fb14f1e7",
+        "dependencies": [
+          10,
+          18,
+          21,
+          23
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/blank-line.lil",
+        "bytes": 855,
+        "sha256": "115d2dcacdf715b02efce52caac3960d5b855939a68dc0a20817491e8b1194b0",
+        "dependencies": [
+          18,
+          15,
+          22
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/symbol/types.lil",
         "bytes": 10985,
         "sha256": "6ae172165319ad71396ca532ec544326d82d9625f8ee46090d02a587e40c1aa8",
         "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/initialize/document.lil",
-        "bytes": 9681,
-        "sha256": "d4d2ff7abca48599d19fc03e28c54b3de248aeb71ef085f1239f1488bc2c446e",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/content.lil",
+        "bytes": 3353,
+        "sha256": "05cc704bd51c0eaf8b9740bd243bbd92842e77a0c6d0372834c76d42ca6a7620",
         "dependencies": [
-          10,
-          21,
-          16,
-          13,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/initialize/flow.lil",
-        "bytes": 2029,
-        "sha256": "085ee22e91469e9c261eed670445a74383682af8b0a1103ca14d2c1d4c5ccbbf",
-        "dependencies": [
-          10,
-          21,
-          16,
-          10,
-          22,
-          25,
-          26
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/blank-line.lil",
-        "bytes": 902,
-        "sha256": "343b83ddc9fc78780601af8a4f47d5031ef13384f8f803360e33d415feba9dd2",
-        "dependencies": [
-          10,
-          21,
-          16,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/content.lil",
-        "bytes": 3713,
-        "sha256": "a1e54b21fea0fcb4291a075f6298aa5500945a4f32f9002f92d3810dc6dd0170",
-        "dependencies": [
-          10,
-          21,
-          16,
-          27,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-subtokenize.lil",
-        "bytes": 7473,
-        "sha256": "926fd04ec5e2c276cecb468d29b02a7f6645683a959f6af97792c00c23c22fb4",
-        "dependencies": [
-          10,
-          13,
-          28,
-          10,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/splice-buffer.lil",
-        "bytes": 5463,
-        "sha256": "cf538daab2d4ec303964969784fd9b47ff756495e1e55da7b3af06bb16394a7a",
-        "dependencies": [
-          10,
-          14
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/initialize/text.lil",
-        "bytes": 6963,
-        "sha256": "9d0a38e95dc29c2d060362b6fc5ccbde281edbe18b45749f5c2fb116c5145eee",
-        "dependencies": [
-          10,
           18,
-          14,
-          22,
-          18
+          15,
+          24,
+          26,
+          22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/constructs.lil",
-        "bytes": 4371,
-        "sha256": "87d6280f596f1fd5e966377361a65a9c1d30e23dcb377a00964d9b9c08169c18",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-subtokenize.lil",
+        "bytes": 6388,
+        "sha256": "2b22576838b22844e1b6d793a4ee542deb73a396ae594b53ce1d9550ff0fe69a",
         "dependencies": [
-          31,
+          10,
+          13,
+          25
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/splice-buffer.lil",
+        "bytes": 4341,
+        "sha256": "9fcce40f739a2119a7bb0b44ad7ec6c69344173854feedef3e528d168102f512",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/symbol/constants.lil",
+        "bytes": 2986,
+        "sha256": "c89476d798ffe1eb1f9843219c41cd1d19849707ceb9fc18d5583b5ae2470188",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/initialize/text.lil",
+        "bytes": 5354,
+        "sha256": "85651ec8148ff18619ca4e46f5e5e4ea5c810c537b6e69d807fc824e4a1f1905",
+        "dependencies": [
+          10
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/constructs.lil",
+        "bytes": 2829,
+        "sha256": "74cb525c1651cc300f78f4770c648d3593c4e2dc3f4a45351e459b29be14d84a",
+        "dependencies": [
+          29,
+          32,
           33,
           34,
           35,
-          36,
+          38,
           39,
           40,
           41,
-          42,
           48,
           49,
           50,
@@ -576,454 +526,427 @@
           57,
           59,
           58,
-          29,
-          18
+          27
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/attention.lil",
-        "bytes": 7430,
-        "sha256": "d5b333923afa4f3f9c2299a2db5fea6e50a0ae7da8f764e389c3a7a71138ff76",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/attention.lil",
+        "bytes": 6546,
+        "sha256": "35d47c10695c713c471cc468088ac8cf975ce0d48e7dff237d951112a09f5632",
         "dependencies": [
-          10,
           13,
-          32,
-          17,
-          18,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-classify-character.lil",
-        "bytes": 516,
-        "sha256": "8f193927ef6c0a6ec30125dcfe5f24e70e0d1acb178a0f701a6be61050a9b841",
-        "dependencies": [
-          10,
+          30,
           16,
-          14
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/autolink.lil",
-        "bytes": 4604,
-        "sha256": "ad643553d680123a113d17fe746d8e542b0287370b377321327311d511733754",
-        "dependencies": [
-          10,
-          16,
-          18,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/block-quote.lil",
-        "bytes": 2956,
-        "sha256": "2470532d1426c6bcf3bf22b4e990c273c148a86b0e212930fef755db3243f1b9",
-        "dependencies": [
-          10,
-          21,
-          16,
-          18,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/character-escape.lil",
-        "bytes": 1203,
-        "sha256": "6062220ebd95f9e35017a399066849d31fcb878dd0063da70b511425c165cbc2",
-        "dependencies": [
-          10,
-          16,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/character-reference.lil",
-        "bytes": 3765,
-        "sha256": "5df6b5ba18999fc55a54b6bdff332b21013a4a26816ac57dc12ef19650dd66d5",
-        "dependencies": [
-          10,
-          37,
-          16,
-          18,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/decode-named.lil",
-        "bytes": 278,
-        "sha256": "b749446edcdd8a4d051fee685ae72d07714d04d0b14d02e4e7955b3540cd493b",
-        "dependencies": [
-          38,
+          31,
+          26,
+          22,
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/character-entities.lil",
-        "bytes": 41535,
-        "sha256": "9cc1b93ab188a1fc88dac103a9a94ae38a796c65b0ee90e4cf2415592f854002",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-classify-character.lil",
+        "bytes": 574,
+        "sha256": "80373b35201103ddfd5b5a942d97e1ab492fee40858c395d9e9113d2255d4477",
+        "dependencies": [
+          15,
+          26
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/symbol/codes.lil",
+        "bytes": 6185,
+        "sha256": "762a3e62e1500ba78d71f8218fcb2e7e357ea3795d21bb5e81b8d4287f513c19",
+        "dependencies": [
+          10
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/autolink.lil",
+        "bytes": 4541,
+        "sha256": "97e7eb8b4b33f23df8600b7d811b5cfbbb8df23bfc01dfa25fb528a085d55703",
+        "dependencies": [
+          15,
+          31,
+          26,
+          22
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/block-quote.lil",
+        "bytes": 2637,
+        "sha256": "eae45318d2972f4be0fd616cb243d59dd366cb61209b13796d651cfc8297ab49",
+        "dependencies": [
+          18,
+          15,
+          31,
+          26,
+          22
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/character-escape.lil",
+        "bytes": 1021,
+        "sha256": "20193c0809adfe18e77d04a7a782ad437d912f3de997a402930af8e46031c6ab",
+        "dependencies": [
+          15,
+          22
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/character-reference.lil",
+        "bytes": 3258,
+        "sha256": "b355201b60833cf854ca7328b4cd1a9d405ae491b4d1b5a70178313c8c16c71a",
+        "dependencies": [
+          36,
+          15,
+          31,
+          26,
+          22
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/decode-named.lil",
+        "bytes": 262,
+        "sha256": "e4150b19e19a214e7ccfb5d6762bdce62fde30b8cc907642d911f9ea87b9e6e8",
+        "dependencies": [
+          37,
+          10
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/character-entities.lil",
+        "bytes": 37271,
+        "sha256": "c8b6618cbfd0fdf86d5c36b8a4ed1e4ee141a25088251142a20fe599fca210b3",
         "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/code-fenced.lil",
-        "bytes": 9437,
-        "sha256": "3ce57df5cee12be95b896bb03c3315471585cebe549ab099fa40eb843db118d5",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/code-fenced.lil",
+        "bytes": 9309,
+        "sha256": "3f4bb3f8b531e3729291c8dcdeab6d6a8e6fc2449eafac161d818f2ddbb27a1e",
         "dependencies": [
-          10,
-          21,
-          16,
           18,
-          14,
+          15,
+          31,
+          26,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/code-indented.lil",
-        "bytes": 3515,
-        "sha256": "7449b99550b4ca4e462dcca9239302753e4c877f20a82b06479756d4201c4957",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/code-indented.lil",
+        "bytes": 3348,
+        "sha256": "fb8705076d7529695e7da77e235cd90de1af56c92b7ec746de3af9499a2f8be8",
         "dependencies": [
-          10,
-          21,
-          16,
-          14,
-          22
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/code-text.lil",
-        "bytes": 4879,
-        "sha256": "950ea75ab25aff10060869fb37f5272318dd855b0682b86e3f743e7092b92ac9",
-        "dependencies": [
-          10,
-          16,
           18,
+          15,
+          26,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/definition.lil",
-        "bytes": 4967,
-        "sha256": "19c16287f2a80ba4e7832440121214a1f6daee2f489cc1004445a852bda4c8c7",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/code-text.lil",
+        "bytes": 4856,
+        "sha256": "d35e0cdd7e33ae98579152b3114a826ff43fe69b3802b9e9db7c58fae8ee4388",
         "dependencies": [
-          10,
+          15,
+          31,
+          22
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/definition.lil",
+        "bytes": 4776,
+        "sha256": "38becb049d8509a9239480090acf683d90d24ad4ef4e8b35f14e92c326788011",
+        "dependencies": [
+          42,
           43,
+          18,
           44,
-          21,
           45,
+          15,
           46,
-          16,
-          47,
-          18,
+          31,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/factory-destination.lil",
-        "bytes": 4451,
-        "sha256": "af165fc6522b16cdd41126055fe79446e4b6cc76058742f5a80fab72605d60de",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/factory-destination.lil",
+        "bytes": 4413,
+        "sha256": "5be6c3c02bacd604c1501b85b6785602ed8b447a85679f85e6ee7351964bb161",
         "dependencies": [
-          10,
-          16,
-          18,
-          10,
-          14,
+          15,
+          31,
+          26,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/factory-label.lil",
-        "bytes": 3553,
-        "sha256": "96f7ba45f26175d12451e5b5e669c7a262d879c52d041428351dedf6704b2ecf",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/factory-label.lil",
+        "bytes": 2994,
+        "sha256": "6376115906bbfbce66d13f0a50ff3b921922135b18b6e66d290eb0b54221f21d",
         "dependencies": [
-          10,
-          16,
-          18,
-          10,
-          14,
+          15,
+          31,
+          26,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/factory-title.lil",
-        "bytes": 3171,
-        "sha256": "d874bd7921cc041c46c9414f1b4808b7c79fd3f42813502f06993b0bfb0f1b13",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/factory-title.lil",
+        "bytes": 2913,
+        "sha256": "f22c5e3e9919b86b7f2e0cc8b38f6cc1182e88917c9f3fcb61cbdba56404a07c",
         "dependencies": [
-          10,
-          21,
-          16,
           18,
-          10,
-          14,
+          15,
+          31,
+          26,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/factory-whitespace.lil",
-        "bytes": 952,
-        "sha256": "62d5c0b47eea9941788dd42bad2d616701ad48049190f681deca09ed6d3479bd",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/factory-whitespace.lil",
+        "bytes": 841,
+        "sha256": "e63b322526936f7e746978a4a3e6d56b315dcd01bde6732cf9d94bfb93845d36",
         "dependencies": [
-          10,
-          21,
-          16,
+          18,
+          15,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-normalize-identifier.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-normalize-identifier.lil",
         "bytes": 348,
         "sha256": "9c605bcd8454ea59378864ba8abfb67315008fbdea73f96e9fb09e76594fe20e",
         "dependencies": [
-          19
+          47
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/hard-break-escape.lil",
-        "bytes": 871,
-        "sha256": "8b80f9aece609713d3dcd490b73037315d81ab0cc58adb5ff80ca75cb4c1f688",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/symbol/values.lil",
+        "bytes": 3599,
+        "sha256": "1aabedd9c760c573fd1ea24d07ae9d35d207bbe61a0ecc62985f0953fc73c3e9",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/hard-break-escape.lil",
+        "bytes": 763,
+        "sha256": "92b8a9e28270f61184e6572a8e0640c33f7fbd163c24dde1255d7211e7ca0b2a",
         "dependencies": [
-          10,
-          16,
+          15,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/heading-atx.lil",
-        "bytes": 4506,
-        "sha256": "64264c21f87ed1888524f7c21d32bc240bcb42c95b715bd6f15b3b9f685958ba",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/heading-atx.lil",
+        "bytes": 4166,
+        "sha256": "9d2fd673aab15d904d2b876aa66e7c92ac30c14f8b838ea34b58d4af0f9d269c",
         "dependencies": [
-          10,
-          21,
-          16,
+          18,
+          15,
           13,
-          18,
-          14,
-          22,
-          10
+          31,
+          26,
+          22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/html-flow.lil",
-        "bytes": 16525,
-        "sha256": "bd6708d6086a450a20a5e36549b715a0ed6881bd983927bd4d135790a3e050f7",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/html-flow.lil",
+        "bytes": 16559,
+        "sha256": "ba2daf14d7cd5c29ab123ce10374c26fb784770eebf8348ce73bb5a58c3a67ef",
         "dependencies": [
-          10,
-          16,
+          15,
           51,
-          18,
-          18,
-          14,
+          31,
+          31,
+          26,
           22,
-          25
+          21
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-html-tag-name.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-html-tag-name.lil",
         "bytes": 475,
         "sha256": "db2a6d54b5cbdbc8273a776f7b609fb2ed9b90f87242c1d26801ef11771b0380",
         "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/html-text.lil",
-        "bytes": 12041,
-        "sha256": "73935c0d5fb15ca89a6f41be87055d4206f3b31c05bc6a85d89c1bf31ee61e24",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/html-text.lil",
+        "bytes": 12529,
+        "sha256": "1e386a681a07b86327fc72dd7735683e86367f0a183a817976a302c0b3da26fa",
         "dependencies": [
-          10,
-          21,
-          16,
           18,
-          14,
+          15,
+          31,
+          26,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/label-end.lil",
-        "bytes": 12850,
-        "sha256": "2edd430ed5d783a41eb8aaf748c792b35bcedb0da92c3526273ed3311366619d",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/label-end.lil",
+        "bytes": 11956,
+        "sha256": "4192d0a356f2953a56f695f038c3920ab20305956b310d7061b4cd8bc5274f1d",
         "dependencies": [
-          10,
+          42,
           43,
           44,
           45,
+          15,
+          13,
           46,
           16,
-          13,
-          47,
-          17,
-          18,
-          14,
-          22
+          31,
+          26,
+          22,
+          10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/label-start-image.lil",
-        "bytes": 1585,
-        "sha256": "a476c096e652c8a016f519ef530a6ea14f3e6ac7b1252927baa1f0d66868dc12",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/label-start-image.lil",
+        "bytes": 1387,
+        "sha256": "e4a9ba23857880369a5b7912a5316c41173094574b6b5b6721447a399a7e7673",
         "dependencies": [
-          10,
-          18,
+          31,
           22,
           53
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/label-start-link.lil",
-        "bytes": 1173,
-        "sha256": "ae64132563044b1ef0879e01f80578b65b099d3e80a524d1ae806dff41fb1c81",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/label-start-link.lil",
+        "bytes": 1006,
+        "sha256": "e350229f5af2055c3a065af25bacaa22765e13f1fb9c137df624cfac1b89d002",
         "dependencies": [
-          10,
-          18,
+          31,
           22,
           53
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/line-ending.lil",
-        "bytes": 690,
-        "sha256": "ed00711f15d2d16b1bcbcc119e31926b589ab18e440bebf50fdc3d827a3b422e",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/line-ending.lil",
+        "bytes": 577,
+        "sha256": "a448ed6a6485a776f3e67941bebef001cdbe486f23bdfd4664842178973d39be",
         "dependencies": [
-          10,
-          21,
+          18,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/list.lil",
-        "bytes": 8887,
-        "sha256": "c853e1f7ea7539f359fd31575b28b234c149aed64b14995b6af15de7212d518f",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/list.lil",
+        "bytes": 8247,
+        "sha256": "3a8e976a8a6ccdc8330f26561caa457040ecf0c2d86773551abc505180ef4119",
         "dependencies": [
-          10,
-          21,
-          16,
           18,
-          14,
+          15,
+          31,
+          26,
           22,
-          25,
+          21,
           58
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/thematic-break.lil",
-        "bytes": 1859,
-        "sha256": "755953b5988f0e4dde1459d243ce12e5d964a456dd32a8c8b62e21ed24c151e1",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/thematic-break.lil",
+        "bytes": 1755,
+        "sha256": "5776bda5a2850218bd3c4c9fdc796d46c8979b2deac17c7e19376c6816a54313",
         "dependencies": [
-          10,
-          21,
-          16,
-          14,
+          18,
+          15,
+          26,
           22
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/core/setext-underline.lil",
-        "bytes": 4014,
-        "sha256": "5555df873ca4993f71ae6a6ce6b8feea65a8bb88e672cb28f298197d80da1f36",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/core/setext-underline.lil",
+        "bytes": 3858,
+        "sha256": "4e4ca3c5448dd4955789148a6f77ee089c20d55702db91657a92f0641bc6752b",
         "dependencies": [
-          10,
-          21,
-          16,
-          22
+          18,
+          15,
+          22,
+          10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/postprocess.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/postprocess.lil",
         "bytes": 156,
         "sha256": "0ea578b00bed09960e8f9c2d06f962b9e626fec4a528beaba4be30f2c5c50b31",
         "dependencies": [
-          27
+          24
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/preprocess.lil",
-        "bytes": 2665,
-        "sha256": "986ccaeff2d1f35af7854be840023164da7c964a203542efc3176602aa092adb",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/preprocess.lil",
+        "bytes": 2259,
+        "sha256": "ce28b92f70b3bd54428324b0f6695ca162aa5df1d2e0f431fde1f8ef4638e9b8",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-decode-numeric.lil",
+        "bytes": 563,
+        "sha256": "03d27ae0446af7f4aa870de13c4c41b65bf53f7a12731c8ee96694f34f95f4fc",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/micromark/util-decode-string.lil",
+        "bytes": 946,
+        "sha256": "df8465926f8b05577467dfc4fb4ed42f28b71574e541002cfc2395275c5fc907",
         "dependencies": [
-          10,
-          18,
-          14
+          36,
+          62
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-decode-numeric.lil",
-        "bytes": 981,
-        "sha256": "78b1050ac7751b5b09436c728a616bd87d98be53e64ac8200a624b37faa63b71",
-        "dependencies": [
-          10,
-          10,
-          18,
-          19
-        ],
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/stringify-position.lil",
+        "bytes": 556,
+        "sha256": "4a625ab59ab7059b489f26d9089f6f69530cb5a56044eaf1ad71f4de8d1b0663",
+        "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/micromark/util-decode-string.lil",
-        "bytes": 1444,
-        "sha256": "a1df9eee87107f4a39ef8c607fae7fad68113b0023f1a7f2f6a8abfc28284233",
-        "dependencies": [
-          37,
-          62,
-          18,
-          14,
-          10
-        ],
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/parse/to-string.lil",
+        "bytes": 719,
+        "sha256": "d1d84463da85bc5a419f8755e502fcfa8a26c60e2dddd6c737e7b2c9d9884a93",
+        "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/stringify-position.lil",
-        "bytes": 1086,
-        "sha256": "ec72ceeee1f9f93f1e58d367dd6d6b3ef291cf24518d871e50ad2db09d2deaf7",
-        "dependencies": [
-          10
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/parse/to-string.lil",
-        "bytes": 1803,
-        "sha256": "c35561280f64eab656cee076848359526bc9fd364b429ad31fecd82ececc9fb3",
-        "dependencies": [
-          10
-        ],
-        "dynamic_dependencies": []
-      },
-      {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/stringify.lil",
-        "bytes": 913,
-        "sha256": "8d34163aa72a299f5450347365f15839d52d6277dd31898305bcfe97b58852d7",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/stringify.lil",
+        "bytes": 891,
+        "sha256": "2540ec8219b37d840b6574aab36131209d10d2bc782e1f65d85785f26afc9b09",
         "dependencies": [
           10,
           67
@@ -1031,15 +954,14 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/index.lil",
-        "bytes": 4142,
-        "sha256": "0aaee329c4c3903c9b196cecfa26ad7b5b7e15dc7ad69f4723627e3c646ec882",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/index.lil",
+        "bytes": 3801,
+        "sha256": "c1cf75d6930fa1aad9785e620a933c2c8b19cb9ee3cb1edd466e1a0feaa525df",
         "dependencies": [
           10,
           68,
           69,
           70,
-          110,
           111,
           112,
           113,
@@ -1048,32 +970,33 @@
           116,
           117,
           118,
+          119,
           77
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/deps/zwitch.lil",
-        "bytes": 1101,
-        "sha256": "670db54e7d56a12b2e37992a021ec5dfe4e93a0a5c1e5ac45bba9f5ce3e1d8a7",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/deps/zwitch.lil",
+        "bytes": 1032,
+        "sha256": "22f4ee6d0fe6ebf715c386e6d457bedca846def94f3c8bcef2f136132943ab4d",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/configure.lil",
-        "bytes": 1298,
-        "sha256": "5926f2da22e3d18a6b86bb65e4b886607555f44551b31882e7fc0a70f438c1cc",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/configure.lil",
+        "bytes": 1271,
+        "sha256": "8688e23dc8fa2fffef8fa8580c11abb42e96316da8150215438c24f4d3cd4ed3",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/index.lil",
-        "bytes": 1779,
-        "sha256": "5b038c72625fa4f66419cbf0d452cae3a3f65efcf43e5a4b77a9c06cb991a263",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/index.lil",
+        "bytes": 1639,
+        "sha256": "33bd00aa83a33910ac943c0a82543d9f566f94b9fee2c4d95ea3b28b50918fe0",
         "dependencies": [
           71,
           72,
@@ -1081,35 +1004,35 @@
           79,
           81,
           85,
-          88,
           89,
           90,
           91,
           92,
-          94,
+          93,
           95,
-          100,
-          102,
+          96,
+          101,
           103,
-          105,
-          107,
-          108
+          104,
+          106,
+          108,
+          109
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/blockquote.lil",
-        "bytes": 971,
-        "sha256": "98a0d340088997ec317ad7b69dd1e1b60a75e1a644d2c9edccd0c000f0e46b0e",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/blockquote.lil",
+        "bytes": 844,
+        "sha256": "944786616ec0e21af3b44b6b29143d6aed63f6281e0b107dd91d7665fbab7fd1",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/break.lil",
-        "bytes": 771,
-        "sha256": "f58ff1ebcfc87c8e975a6569c22bf14c981852e6e46ca0f5ad71f69ecb81e631",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/break.lil",
+        "bytes": 739,
+        "sha256": "7b1eed97f2519d993b5552fe4490909f2f85b9d1e3ad19ecf525b0c4fe6bb63c",
         "dependencies": [
           10,
           73
@@ -1117,18 +1040,18 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/pattern-in-scope.lil",
-        "bytes": 724,
-        "sha256": "904a799648282688df705d098f890b5386b589fa4673e82c55062b52253013ff",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/pattern-in-scope.lil",
+        "bytes": 708,
+        "sha256": "207d0a2e4fd20a45e0685f468b158f17402544fe3cfe3b1e94b6123707c0bd52",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/code.lil",
-        "bytes": 3091,
-        "sha256": "674501720519e2d595cd35bc63fa7d7afe04fa041d0ecab49d80f00e2a4dcc50",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/code.lil",
+        "bytes": 2754,
+        "sha256": "8e89f4f44ea05e72737590c9661e595b2cfd6f8e03f02cb1a25a8d79219b2dd2",
         "dependencies": [
           10,
           75,
@@ -1138,7 +1061,7 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/deps/longest-streak.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/deps/longest-streak.lil",
         "bytes": 729,
         "sha256": "5594f615dc6829d174669aec154c6a0e1606e1de4ef3eb229a5265e7a23b64b9",
         "dependencies": [
@@ -1148,9 +1071,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/format-code-as-indented.lil",
-        "bytes": 676,
-        "sha256": "b9552e97378869c7e7c9371ebc5e59945a6e7068eb4d8fb835cf1de667d0c998",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/format-code-as-indented.lil",
+        "bytes": 652,
+        "sha256": "632a8f4153dd3c211bdddc452e197aecddb4c14254aaf5da93f7f7481ced29ed",
         "dependencies": [
           10,
           77
@@ -1158,18 +1081,18 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/js.lil",
-        "bytes": 1331,
-        "sha256": "ec29f72c939b0584f9ed8a5dbccf241aaf262421e3e66328dee7bc22907f9d8c",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/js.lil",
+        "bytes": 1310,
+        "sha256": "1758937932496c5f2c5296e06ecd31d8b9287fc16397ce436f37718c0a663497",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-fence.lil",
-        "bytes": 440,
-        "sha256": "01bc9661ed413197e031bfa4567372ce06438636e081b57a378daf2f1d1bc48a",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-fence.lil",
+        "bytes": 432,
+        "sha256": "905e01e43fcaedb3040dbd98b6d4676cccf6318882b45be767e11ea5f570b232",
         "dependencies": [
           10,
           77
@@ -1177,9 +1100,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/definition.lil",
-        "bytes": 3154,
-        "sha256": "5f8a6f038a797c30a49a226c389b8971b40944cb87d4a13e077dcce56696a2d4",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/definition.lil",
+        "bytes": 2706,
+        "sha256": "e8df2caa102ef1d77b50ec92e463b0955cb9d17bece444a81a06d235dbbf3c82",
         "dependencies": [
           10,
           80
@@ -1187,9 +1110,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-quote.lil",
-        "bytes": 441,
-        "sha256": "0198f05d814c73f66c7471e8a55d19d846b733e7f890f3c06ddbdc4255001fd2",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-quote.lil",
+        "bytes": 433,
+        "sha256": "99f2692edc604fd33c3898cf2f7d72c6660a675288e687e4cc57454801c76f2b",
         "dependencies": [
           10,
           77
@@ -1197,9 +1120,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/emphasis.lil",
-        "bytes": 2293,
-        "sha256": "7a7c3904580cf6bae0bb053db8bbe27db210e529d273d521b5cf1ca106e50f1d",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/emphasis.lil",
+        "bytes": 2104,
+        "sha256": "981f7f608a46794620465ab2362e1378d28a29aedee6639ea9ec7e9eef6d7a02",
         "dependencies": [
           10,
           82,
@@ -1210,9 +1133,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-emphasis.lil",
-        "bytes": 450,
-        "sha256": "fd10a3fe2b50a3a91806320b79e1c4869b7980beb2cbb4652adaa2c6c12c7f35",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-emphasis.lil",
+        "bytes": 442,
+        "sha256": "380cb08b95e7132210eda04ce38e13de1b06a24cb974b4d13f13f4395f7c0fd1",
         "dependencies": [
           10,
           77
@@ -1220,28 +1143,28 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/encode-character-reference.lil",
-        "bytes": 230,
-        "sha256": "19782b6f4cb1a74236e0a12e93dbefe14c7f7b3ac3295b7b4d3390ad7ab26efc",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/encode-character-reference.lil",
+        "bytes": 218,
+        "sha256": "610cccde6ae1a46b04c481cd248cf5fd35cffd14a5dd1ecc0684028e2a4b722a",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/encode-info.lil",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/encode-info.lil",
         "bytes": 1255,
         "sha256": "cf5b76d0a39e00489f8c437a5cd26dccb5e8134cb85a2f3539635e1eee47404b",
         "dependencies": [
-          32,
+          30,
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/heading.lil",
-        "bytes": 2461,
-        "sha256": "24c2219d5aefd4aa69ed370fe644191e1a9586953b2c592fda16ee63a759ab87",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/heading.lil",
+        "bytes": 2275,
+        "sha256": "2610ecb321950b2026767e7305ee5a867575d67e0ec353926647056e148ea946",
         "dependencies": [
           10,
           83,
@@ -1250,39 +1173,49 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/format-heading-as-setext.lil",
-        "bytes": 1081,
-        "sha256": "f83dd4848f0b6a505b6ff9d3a94ed690fc4701d58bea5d74eff94329714d3266",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/format-heading-as-setext.lil",
+        "bytes": 1045,
+        "sha256": "a6cc11bc74b4edd56e8738fa52e2fa1ee646e6ab57ded9af451501f59ce7c86d",
         "dependencies": [
           10,
           87,
-          65,
+          88,
           77
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/deps/visit.lil",
-        "bytes": 849,
-        "sha256": "50586bbb5201ea269e2e59241e63f8fd50a8ce75e691866e48075d1c75f36b40",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/deps/visit.lil",
+        "bytes": 841,
+        "sha256": "b513b597754859fe42fc69bbf3114d752e9e65b8e63e551fa41dde6d5279714a",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/html.lil",
-        "bytes": 384,
-        "sha256": "07ebfcb358304038723382733d9dcf37e3683ec882cdc07b641693254a4d0326",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/mdast-to-string.lil",
+        "bytes": 327,
+        "sha256": "8cd0e20ca1a3323d1041b1a2a98c7371cd6e21799850e6075f89e93bb1059f90",
+        "dependencies": [
+          10,
+          65
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/html.lil",
+        "bytes": 361,
+        "sha256": "9131ad17218387406b07a46321afce37afde9d1be4b1ff18b65c030ea5d63e55",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/image.lil",
-        "bytes": 3300,
-        "sha256": "d972ffe44ab808c0f626d643ca6b4955f5b523f0a55b6cff1b01a57589a0caff",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/image.lil",
+        "bytes": 2827,
+        "sha256": "d08e7f55b14c990ba8d75d13b1300f9f7912582bfd5b1fef8b0daff03eea1f14",
         "dependencies": [
           10,
           80
@@ -1290,18 +1223,18 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/image-reference.lil",
-        "bytes": 2004,
-        "sha256": "a2bc3f858d973ed01e150ae58ea1d60d3adf67896f97fccc4e780c26d899d91a",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/image-reference.lil",
+        "bytes": 1750,
+        "sha256": "62d754e72495ebe4d87c48fb6a051020d23ca77be9c57a77290571d33a122658",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/inline-code.lil",
-        "bytes": 2066,
-        "sha256": "b55f7846c9390f1a4ea0bc9d688acae33c5c42a656a6702a40f047cb1c782375",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/inline-code.lil",
+        "bytes": 1970,
+        "sha256": "766bbba8ec3882cf80a845479c56da65427b3527d07b1484e0a196d1fe14c36a",
         "dependencies": [
           10,
           77
@@ -1309,53 +1242,53 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/link.lil",
-        "bytes": 4279,
-        "sha256": "c6a4207ebbe62cc87d03b181fe8bb0ff412820c74cf49a1450425148a42ebe9c",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/link.lil",
+        "bytes": 3692,
+        "sha256": "3ae86ef453f79672eb20fde3c1a72e2a90b9a00488c923218a9e4619e16caf0c",
         "dependencies": [
           10,
           80,
-          93
+          94
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/format-link-as-autolink.lil",
-        "bytes": 1035,
-        "sha256": "e263446437a9ade5d1791a86e716c9035d246dbc403123a10ec87c210e730177",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/format-link-as-autolink.lil",
+        "bytes": 991,
+        "sha256": "a77b06ce7cbd4b066a957f7932c5b7cd9bca00f0e814096dc2f8afeab6a8ae9a",
         "dependencies": [
           10,
-          65,
+          88,
           77
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/link-reference.lil",
-        "bytes": 2002,
-        "sha256": "3e69b1d1660bfd91169689f665982c630e5fc33881f6a798f9828e1acc620b71",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/link-reference.lil",
+        "bytes": 1756,
+        "sha256": "a7955a82e574ae6b3408ae48a00e8d53d1fde8aa1453949feddf077763e813b9",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/list.lil",
-        "bytes": 3793,
-        "sha256": "8d472f536f6398c0479ebcdf77c454092eca033c35ace3204ba13486a302954b",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/list.lil",
+        "bytes": 3626,
+        "sha256": "69f2a599dab2bb3d75d77a000b50471ce21af8c803634f4de15f61f91b778e9a",
         "dependencies": [
           10,
-          96,
           97,
           98,
-          99
+          99,
+          100
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-bullet.lil",
-        "bytes": 463,
-        "sha256": "60a98992857ff9447bc914a119811ab51fd1fbe60c8b8c01cdc49157fc9d0e79",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-bullet.lil",
+        "bytes": 455,
+        "sha256": "6beb0bfcaffe099ace73679470276ac39e5deec3883219d9f8c742c4717b40c5",
         "dependencies": [
           10,
           77
@@ -1363,20 +1296,20 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-bullet-other.lil",
-        "bytes": 874,
-        "sha256": "ffa153694a825e305416993b5bd5560cefce819975b5bf19923eef49894f9951",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-bullet-other.lil",
+        "bytes": 866,
+        "sha256": "ca7f98ddf1cbe09b24b3fc3406c1fa80c2f45512ba80fa9dbac7f0d7203b08af",
         "dependencies": [
           10,
           77,
-          96
+          97
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-bullet-ordered.lil",
-        "bytes": 461,
-        "sha256": "631a715647c143993ccdd306ed98debc0b689e6df94bb6f0fca5b2e5abdad32c",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-bullet-ordered.lil",
+        "bytes": 453,
+        "sha256": "89a6ac75db4ae7ba924e1f3be5e6a2e998848932ea5a68034f2fd7e4e4678acc",
         "dependencies": [
           10,
           77
@@ -1384,9 +1317,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-rule.lil",
-        "bytes": 457,
-        "sha256": "da34238fe5c0aadae755a7c77da375407f08e2f54fb4fdea2fbfdac51f507dc2",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-rule.lil",
+        "bytes": 449,
+        "sha256": "0e4743c9c48e82417f88391b5a7d90340cd3c0e54ff3d8d1bb5aee86230d5151",
         "dependencies": [
           10,
           77
@@ -1394,20 +1327,20 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/list-item.lil",
-        "bytes": 2549,
-        "sha256": "fa56066dc361a9fa3dffb77eaf50339e334d5f0057b1b96b1fcf94912bf7b0a7",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/list-item.lil",
+        "bytes": 2310,
+        "sha256": "caec074c0e569ce66b644a9e78e457f303930d006631822a1d798ae8fd8504b7",
         "dependencies": [
           10,
-          96,
-          101
+          97,
+          102
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-list-item-indent.lil",
-        "bytes": 523,
-        "sha256": "c24b3a97a5dcde9f68409eb8315c171dd848830231d7b63cd555f0ea0f17be20",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-list-item-indent.lil",
+        "bytes": 515,
+        "sha256": "4a9f6f2ed11be85a26283e73df0c82c739d1eb2b23d356415513fcabb3bf00a0",
         "dependencies": [
           10,
           77
@@ -1415,40 +1348,40 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/paragraph.lil",
-        "bytes": 567,
-        "sha256": "e296644f985bdec00cbacd5a8b1bbf5c8e63ac487b6e7c28e74401caac7743de",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/paragraph.lil",
+        "bytes": 528,
+        "sha256": "91247cc7698ff5f19fb9b488171204f898e9cc4a19717eb9ea4ca074e2eddf41",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/root.lil",
-        "bytes": 691,
-        "sha256": "4cf3d5f257b51ccf47c1152ceafab4eb70e8411791f967f3ec44ec76ae3c2ba6",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/root.lil",
+        "bytes": 657,
+        "sha256": "4aa2a5f99e0f4eafecdfbb31636b5b818aac21f770e3b079981029e53ca1878d",
         "dependencies": [
           10,
-          104
+          105
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/deps/phrasing.lil",
-        "bytes": 1011,
-        "sha256": "7628bc0c146f9de2f4b2bd2e510904f6a0581009d3426575fb873ce0429f7eb6",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/deps/phrasing.lil",
+        "bytes": 1003,
+        "sha256": "113aa0e61dc102c1b13cbf3fe16b1d28ef4305889cbb758b0fa9094c31fd7016",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/strong.lil",
-        "bytes": 2289,
-        "sha256": "4bf5b5cb800cb2a66f66a46c835a4a46746c78560791a36b3a6f4688f185a505",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/strong.lil",
+        "bytes": 2100,
+        "sha256": "78fa60fe2b2a656865b6a84d49bf1ad80b769d2156c02fd50215fb5fa059bcb5",
         "dependencies": [
           10,
-          106,
+          107,
           83,
           84,
           77
@@ -1456,9 +1389,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-strong.lil",
-        "bytes": 442,
-        "sha256": "02a5a8139e979b9285e8a13ed1b55e93630d3c9fb34e1b5b504852383511734f",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-strong.lil",
+        "bytes": 434,
+        "sha256": "a5464cc782f46f9b88cf1283703ea81d330a5c73443fa692937987943818b9dd",
         "dependencies": [
           10,
           77
@@ -1466,35 +1399,35 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/text.lil",
-        "bytes": 258,
-        "sha256": "73dcca33098702a40d40b3c69265e039ec1f3ade088d9ad19a0c659072d61aad",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/text.lil",
+        "bytes": 237,
+        "sha256": "27fcd2572ac63100809f994b92725958c665a15c71eb32255ac9cb922a313c11",
         "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/handle/thematic-break.lil",
-        "bytes": 624,
-        "sha256": "90ed49fb9dc3c9f6a23ea50ba737055e40d84c39f98e439eb139ab0ec1a7997c",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/handle/thematic-break.lil",
+        "bytes": 596,
+        "sha256": "15c7a3859ded0dec92a22b6bd6d578d30e46160c54ef5b63848c3f49a0269477",
         "dependencies": [
-          109,
-          99
+          110,
+          100
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/check-rule-repetition.lil",
-        "bytes": 445,
-        "sha256": "13cbabe1fd1b44293e3c3764f0670dbfc1ae0a0a5872431507984e435d8ac547",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/check-rule-repetition.lil",
+        "bytes": 437,
+        "sha256": "a48056ace41e838a1032897d2499dc36056c07c9afaf53cd94efcb66d6e2f19c",
         "dependencies": [
           77
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/join.lil",
-        "bytes": 1156,
-        "sha256": "ed4f35aa22bd8eb242b7e1661992d6d0c1893f83dc45beed2ab182c46cd055fd",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/join.lil",
+        "bytes": 1124,
+        "sha256": "2357d0ba1c76240dcf51d4983b05267011d5163fc820d5fc9cbe79b168ff85ab",
         "dependencies": [
           10,
           76,
@@ -1503,18 +1436,16 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/unsafe.lil",
-        "bytes": 4564,
-        "sha256": "69d673bb4a9c56e79c531d3a9db98531e7ec6734e6a3f3e2e28eb35329e2d833",
-        "dependencies": [
-          10
-        ],
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/unsafe.lil",
+        "bytes": 3626,
+        "sha256": "49a95b272695a6848f2028758732be6befb0f096c73e3295edaf86c0b0cbe729",
+        "dependencies": [],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/association.lil",
-        "bytes": 438,
-        "sha256": "54a5dfb370cd31c736e2b12782be0fa0b62f71cb5f43f5f7836710c9c7dc3e26",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/association.lil",
+        "bytes": 422,
+        "sha256": "57f16827230c02176fde7c41560ad4f6e9df25407902dcdf3d4975c8eac7ea68",
         "dependencies": [
           10,
           63
@@ -1522,9 +1453,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/compile-pattern.lil",
-        "bytes": 1025,
-        "sha256": "b87febfac6139201371470e86f63e5db0de92932065cf52e3f3cdc2b3312133d",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/compile-pattern.lil",
+        "bytes": 970,
+        "sha256": "bea506a31c9a404f65d93a97df1764d80fbee4a2e460dfa2f1c19a7b4e628c73",
         "dependencies": [
           10,
           77
@@ -1532,9 +1463,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/container-phrasing.lil",
-        "bytes": 3880,
-        "sha256": "1cc20f7e6328400bda20191a07caf1ea69eafb4b003ea397b13ab5e023249fbf",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/container-phrasing.lil",
+        "bytes": 3369,
+        "sha256": "382b60e90c0980320283cf8d976c8afd5aa54ddd468a490091cb4fb5aff49729",
         "dependencies": [
           10,
           83
@@ -1542,27 +1473,27 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/container-flow.lil",
-        "bytes": 2231,
-        "sha256": "4afd45f0bb665e42c9a8bed1b482686ea3b53ed8c68900f076468e4111d68efe",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/container-flow.lil",
+        "bytes": 1871,
+        "sha256": "5b62258a30d4942c36b689956c54ffd8e696df45eab287f93cedb49b56411725",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/indent-lines.lil",
-        "bytes": 907,
-        "sha256": "a5cce668cfd8d8bdab414aa58b41dcf7b7f701e2c45d6eceb70fda4ef7265f3b",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/indent-lines.lil",
+        "bytes": 924,
+        "sha256": "790e3fad816a8b1ec98c763da4b6bf79f11c97f05cffd5d1a48311f18ac00483",
         "dependencies": [
           10
         ],
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/safe.lil",
-        "bytes": 5240,
-        "sha256": "6c4792e24081035c57d97a5ee2eeab6185424cfb90d76bb84139ffe6e0c015d7",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/safe.lil",
+        "bytes": 4511,
+        "sha256": "008fa92c23840dfe84003efcd0ac81129a9a1eab0388af72e18f7f6425eb4759",
         "dependencies": [
           10,
           83,
@@ -1571,9 +1502,9 @@
         "dynamic_dependencies": []
       },
       {
-        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/src/to-markdown/util/track.lil",
-        "bytes": 1688,
-        "sha256": "66bcb4b35ee7c46d5624e90edeee713c819da68f4827817fce5dd34eb79c305c",
+        "path": "/home/azureuser/lilscript-work/wt/remarklil-fix/src/to-markdown/util/track.lil",
+        "bytes": 1635,
+        "sha256": "af9c2eb740125629461d6e00a989d8cbf9bb7a274d398e69eb4a09a9b1b0a349",
         "dependencies": [
           10
         ],

@@ -2,7 +2,7 @@ import { call1, isFn, objectAssign, undef } from "./parse/micromark/host.lil";
 import { toMarkdownImpl } from "./to-markdown/index.lil";
 
 JsValue readData(JsValue self, string key) {
-  JsValue dataFn = JS.get(self, "data");
+  JsValue dataFn = self["data"];
   if (isFn(dataFn)) {
     return call1(dataFn, self, key);
   }
@@ -17,12 +17,12 @@ JsValue orEmptyList(JsValue value) {
 }
 
 JsValue remarkStringifyCall(JsValue self, JsValue options) {
-  JS.set(self, "compiler", JS.method2((JsValue _compilerThis, JsValue tree, JsValue _file) => {
+  self["compiler"] = JS.method2((JsValue _compilerThis, JsValue tree, JsValue _file) => {
     JsValue settings = objectAssign(JS.object(), readData(self, "settings"));
     objectAssign(settings, options);
-    JS.set(settings, "extensions", orEmptyList(readData(self, "toMarkdownExtensions")));
+    settings["extensions"] = orEmptyList(readData(self, "toMarkdownExtensions"));
     return toMarkdownImpl(tree, settings);
-  }));
+  });
   return undef();
 }
 

@@ -1,2595 +1,554 @@
 
-> @itslil/remark@15.0.2 check:sources
+> @itslil/remark@15.0.3 check:sources
 > node scripts/shared-sources.mjs
 
-checked 6 pinned shared Lil sources
+checked 67 pinned shared Lil sources
 
-> @itslil/remark@15.0.2 test:types
+> @itslil/remark@15.0.3 test:types
 > tsc --noEmit --strict --module NodeNext --moduleResolution NodeNext --target ES2022 test/types.test.ts
 
-TAP version 13
-# Subtest: remark
-    # Subtest: exports only the upstream frozen factory
-    ok 1 - exports only the upstream frozen factory
-      ---
-      duration_ms: 2.363839
-      ...
-    # Subtest: processSync turns emphasis into markdown
-    ok 2 - processSync turns emphasis into markdown
-      ---
-      duration_ms: 14.663345
-      ...
-    # Subtest: preserves caller-provided VFile identity in CommonJS
-    ok 3 - preserves caller-provided VFile identity in CommonJS
-      ---
-      duration_ms: 1.121291
-      ...
-    # Subtest: preserves caller-provided VFile identity in ESM
-    ok 4 - preserves caller-provided VFile identity in ESM
-      ---
-      duration_ms: 0.982651
-      ...
-    # Subtest: processSync honors settings.closeAtx
-    ok 5 - processSync honors settings.closeAtx
-      ---
-      duration_ms: 1.795685
-      ...
-    # Subtest: round-trips lists and emphasis
-    ok 6 - round-trips lists and emphasis
-      ---
-      duration_ms: 2.970486
-      ...
-    # Subtest: decodes byte input as UTF-8
-    ok 7 - decodes byte input as UTF-8
-      ---
-      duration_ms: 2.008634
-      ...
-    # Subtest: passes upstream-compatible file metadata to parsers
-    ok 8 - passes upstream-compatible file metadata to parsers
-      ---
-      duration_ms: 0.388668
-      ...
-    # Subtest: does not fall back from truthy invalid parser/compiler fields
-    ok 9 - does not fall back from truthy invalid parser/compiler fields
-      ---
-      duration_ms: 0.717484
-      ...
-    # Subtest: exposes unified's inherited copy API
-    ok 10 - exposes unified's inherited copy API
-      ---
-      duration_ms: 0.442479
-      ...
-    # Subtest: keeps pinned processor keys in the library artifact
-    ok 11 - keeps pinned processor keys in the library artifact
-      ---
-      duration_ms: 0.676488
-      ...
-    1..11
-ok 1 - remark
-  ---
-  duration_ms: 29.799386
-  type: 'suite'
-  ...
-# Subtest: remark closed
-    # Subtest: ships a closed artifact with the upstream export
-    ok 1 - ships a closed artifact with the upstream export
-      ---
-      duration_ms: 1.530077
-      ...
-    # Subtest: keeps the embedded processor operational
-    ok 2 - keeps the embedded processor operational
-      ---
-      duration_ms: 8.63546
-      ...
-    1..2
-ok 2 - remark closed
-  ---
-  duration_ms: 11.270598
-  type: 'suite'
-  ...
-# Subtest: parse and stringify match remark@15.0.1
-ok 3 - parse and stringify match remark@15.0.1
-  ---
-  duration_ms: 48.994683
-  ...
-# Subtest: external plugins observe the same file, order, and output
-ok 4 - external plugins observe the same file, order, and output
-  ---
-  duration_ms: 2.528508
-  ...
-# Subtest: canonical graph measurement uses pinned official Terser
-ok 5 - canonical graph measurement uses pinned official Terser
-  ---
-  duration_ms: 2938.811289
-  ...
-# Subtest: official CommonMark + GFM corpus
-    # Subtest: matches mdast-util-from-markdown for all 660 cases
-    ok 1 - matches mdast-util-from-markdown for all 660 cases
-      ---
-      duration_ms: 469.442138
-      ...
-    1..1
-ok 6 - official CommonMark + GFM corpus
-  ---
-  duration_ms: 470.726103
-  type: 'suite'
-  ...
-# Subtest: remark
-    # Subtest: should expose the public api
-    ok 1 - should expose the public api
-      ---
-      duration_ms: 1.468381
-      ...
-    # Subtest: should process a file
-    ok 2 - should process a file
-      ---
-      duration_ms: 7.941801
-      ...
-    # Subtest: should accept settings
-    ok 3 - should accept settings
-      ---
-      duration_ms: 1.682192
-      ...
-    1..3
-ok 7 - remark
-  ---
-  duration_ms: 12.368806
-  ...
-# Subtest: remark-stringify
-    # Subtest: should expose the public api
-    ok 1 - should expose the public api
-      ---
-      duration_ms: 0.295273
-      ...
-    # Subtest: should serialize
-    ok 2 - should serialize
-      ---
-      duration_ms: 1.855787
-      ...
-    # Subtest: should support extensions
-    ok 3 - should support extensions
-      ---
-      duration_ms: 4.68022
-      ...
-    1..3
-ok 8 - remark-stringify
-  ---
-  duration_ms: 7.522826
-  ...
-# Subtest: core
-    # Subtest: should expose the public api
-    ok 1 - should expose the public api
-      ---
-      duration_ms: 12.842594
-      ...
-    # Subtest: should support a `root`
-    ok 2 - should support a `root`
-      ---
-      duration_ms: 2.626552
-      ...
-    # Subtest: should not use blank lines between nodes when given phrasing
-    ok 3 - should not use blank lines between nodes when given phrasing
-      ---
-      duration_ms: 0.497151
-      ...
-    # Subtest: should support adjacent definitions
-    ok 4 - should support adjacent definitions
-      ---
-      duration_ms: 0.805339
-      ...
-    # Subtest: should support tight adjacent definitions when `tightDefinitions: true`
-    ok 5 - should support tight adjacent definitions when `tightDefinitions: true`
-      ---
-      duration_ms: 0.569036
-      ...
-    # Subtest: should use a different marker for adjacent lists
-    ok 6 - should use a different marker for adjacent lists
-      ---
-      duration_ms: 0.720279
-      ...
-    # Subtest: should inject HTML comments between lists and an indented code
-    ok 7 - should inject HTML comments between lists and an indented code
-      ---
-      duration_ms: 0.522108
-      ...
-    # Subtest: should inject HTML comments between adjacent indented code
-    ok 8 - should inject HTML comments between adjacent indented code
-      ---
-      duration_ms: 0.207349
-      ...
-    # Subtest: should not honour `spread: false` for two paragraphs
-    ok 9 - should not honour `spread: false` for two paragraphs
-      ---
-      duration_ms: 0.414577
-      ...
-    # Subtest: should not honour `spread: false` for a paragraph and a definition
-    ok 10 - should not honour `spread: false` for a paragraph and a definition
-      ---
-      duration_ms: 0.410469
-      ...
-    # Subtest: should honour `spread: false` for a paragraph and a heading
-    ok 11 - should honour `spread: false` for a paragraph and a heading
-      ---
-      duration_ms: 0.720119
-      ...
-    # Subtest: should not honour `spread: false` for a paragraph and a setext heading
-    ok 12 - should not honour `spread: false` for a paragraph and a setext heading
-      ---
-      duration_ms: 1.07783
-      ...
-    # Subtest: should throw on a non-node
-    ok 13 - should throw on a non-node
-      ---
-      duration_ms: 0.530735
-      ...
-    # Subtest: should throw on an unknown node
-    ok 14 - should throw on an unknown node
-      ---
-      duration_ms: 0.217868
-      ...
-    # Subtest: should throw on an unknown node in a tree
-    ok 15 - should throw on an unknown node in a tree
-      ---
-      duration_ms: 0.312625
-      ...
-    1..15
-ok 9 - core
-  ---
-  duration_ms: 24.854461
-  ...
-# Subtest: blockquote
-    # Subtest: should support a block quote
-    ok 1 - should support a block quote
-      ---
-      duration_ms: 0.24563
-      ...
-    # Subtest: should support a block quote w/ a child
-    ok 2 - should support a block quote w/ a child
-      ---
-      duration_ms: 0.231664
-      ...
-    # Subtest: should support a block quote w/ children
-    ok 3 - should support a block quote w/ children
-      ---
-      duration_ms: 0.391393
-      ...
-    # Subtest: should support text w/ a line ending in a block quote
-    ok 4 - should support text w/ a line ending in a block quote
-      ---
-      duration_ms: 0.209983
-      ...
-    # Subtest: should support adjacent texts in a block quote
-    ok 5 - should support adjacent texts in a block quote
-      ---
-      duration_ms: 0.317255
-      ...
-    # Subtest: should support a block quote in a block quote
-    ok 6 - should support a block quote in a block quote
-      ---
-      duration_ms: 0.59756
-      ...
-    # Subtest: should support a break in a block quote
-    ok 7 - should support a break in a block quote
-      ---
-      duration_ms: 0.246983
-      ...
-    # Subtest: should support code (flow, indented) in a block quote
-    ok 8 - should support code (flow, indented) in a block quote
-      ---
-      duration_ms: 0.252733
-      ...
-    # Subtest: should support code (flow, fenced) in a block quote
-    ok 9 - should support code (flow, fenced) in a block quote
-      ---
-      duration_ms: 0.30378
-      ...
-    # Subtest: should support code (text) in a block quote
-    ok 10 - should support code (text) in a block quote
-      ---
-      duration_ms: 0.323016
-      ...
-    # Subtest: should support padded code (text) in a block quote
-    ok 11 - should support padded code (text) in a block quote
-      ---
-      duration_ms: 0.266439
-      ...
-    # Subtest: should support a definition in a block quote
-    ok 12 - should support a definition in a block quote
-      ---
-      duration_ms: 0.307847
-      ...
-    # Subtest: should support an emphasis in a block quote
-    ok 13 - should support an emphasis in a block quote
-      ---
-      duration_ms: 0.734246
-      ...
-    # Subtest: should support a heading (atx) in a block quote
-    ok 14 - should support a heading (atx) in a block quote
-      ---
-      duration_ms: 0.200145
-      ...
-    # Subtest: should support a heading (setext) in a block quote
-    ok 15 - should support a heading (setext) in a block quote
-      ---
-      duration_ms: 0.215454
-      ...
-    # Subtest: should support html (flow) in a block quote
-    ok 16 - should support html (flow) in a block quote
-      ---
-      duration_ms: 0.179977
-      ...
-    # Subtest: should support html (text) in a block quote
-    ok 17 - should support html (text) in a block quote
-      ---
-      duration_ms: 0.231173
-      ...
-    # Subtest: should support an image (resource) in a block quote
-    ok 18 - should support an image (resource) in a block quote
-      ---
-      duration_ms: 0.492843
-      ...
-    # Subtest: should support an image (reference) in a block quote
-    ok 19 - should support an image (reference) in a block quote
-      ---
-      duration_ms: 0.32561
-      ...
-    # Subtest: should support a link (resource) in a block quote
-    ok 20 - should support a link (resource) in a block quote
-      ---
-      duration_ms: 0.513352
-      ...
-    # Subtest: should support a link (reference) in a block quote
-    ok 21 - should support a link (reference) in a block quote
-      ---
-      duration_ms: 0.346219
-      ...
-    # Subtest: should support a list in a block quote
-    ok 22 - should support a list in a block quote
-      ---
-      duration_ms: 0.35227
-      ...
-    # Subtest: should support a strong in a block quote
-    ok 23 - should support a strong in a block quote
-      ---
-      duration_ms: 0.354484
-      ...
-    # Subtest: should support a thematic break in a block quote
-    ok 24 - should support a thematic break in a block quote
-      ---
-      duration_ms: 0.139531
-      ...
-    1..24
-ok 10 - blockquote
-  ---
-  duration_ms: 9.954251
-  ...
-# Subtest: break
-    # Subtest: should support a break
-    ok 1 - should support a break
-      ---
-      duration_ms: 0.162705
-      ...
-    # Subtest: should serialize breaks in heading (atx) as a space
-    ok 2 - should serialize breaks in heading (atx) as a space
-      ---
-      duration_ms: 0.253115
-      ...
-    # Subtest: should serialize breaks in heading (atx) as a space
-    ok 3 - should serialize breaks in heading (atx) as a space
-      ---
-      duration_ms: 0.260709
-      ...
-    # Subtest: should serialize breaks in heading (setext)
-    ok 4 - should serialize breaks in heading (setext)
-      ---
-      duration_ms: 5.403194
-      ...
-    1..4
-ok 11 - break
-  ---
-  duration_ms: 6.437342
-  ...
-# Subtest: code (flow)
-    # Subtest: should support empty code
-    ok 1 - should support empty code
-      ---
-      duration_ms: 0.138469
-      ...
-    # Subtest: should throw on when given an incorrect `fence`
-    ok 2 - should throw on when given an incorrect `fence`
-      ---
-      duration_ms: 0.18655
-      ...
-    # Subtest: should support code w/ a value (indent)
-    ok 3 - should support code w/ a value (indent)
-      ---
-      duration_ms: 0.164147
-      ...
-    # Subtest: should support code w/ a value (fences)
-    ok 4 - should support code w/ a value (fences)
-      ---
-      duration_ms: 0.141835
-      ...
-    # Subtest: should support code w/ a lang
-    ok 5 - should support code w/ a lang
-      ---
-      duration_ms: 0.148858
-      ...
-    # Subtest: should support (ignore) code w/ only a meta
-    ok 6 - should support (ignore) code w/ only a meta
-      ---
-      duration_ms: 0.125064
-      ...
-    # Subtest: should support code w/ lang and meta
-    ok 7 - should support code w/ lang and meta
-      ---
-      duration_ms: 0.170159
-      ...
-    # Subtest: should encode a space in `lang`
-    ok 8 - should encode a space in `lang`
-      ---
-      duration_ms: 0.185938
-      ...
-    # Subtest: should encode a line ending in `lang`
-    ok 9 - should encode a line ending in `lang`
-      ---
-      duration_ms: 0.173626
-      ...
-    # Subtest: should encode a grave accent in `lang`
-    ok 10 - should encode a grave accent in `lang`
-      ---
-      duration_ms: 0.147717
-      ...
-    # Subtest: should escape a backslash in `lang`
-    ok 11 - should escape a backslash in `lang`
-      ---
-      duration_ms: 0.198242
-      ...
-    # Subtest: should not encode a space in `meta`
-    ok 12 - should not encode a space in `meta`
-      ---
-      duration_ms: 0.183363
-      ...
-    # Subtest: should encode a line ending in `meta`
-    ok 13 - should encode a line ending in `meta`
-      ---
-      duration_ms: 0.237154
-      ...
-    # Subtest: should encode a grave accent in `meta`
-    ok 14 - should encode a grave accent in `meta`
-      ---
-      duration_ms: 0.18646
-      ...
-    # Subtest: should escape a backslash in `meta`
-    ok 15 - should escape a backslash in `meta`
-      ---
-      duration_ms: 0.194043
-      ...
-    # Subtest: should support fenced code w/ tildes when `fence: "~"`
-    ok 16 - should support fenced code w/ tildes when `fence: "~"`
-      ---
-      duration_ms: 0.128772
-      ...
-    # Subtest: should not encode a grave accent when using tildes for fences
-    ok 17 - should not encode a grave accent when using tildes for fences
-      ---
-      duration_ms: 0.150112
-      ...
-    # Subtest: should use more grave accents for fences if there are streaks of grave accents in the value (fences)
-    ok 18 - should use more grave accents for fences if there are streaks of grave accents in the value (fences)
-      ---
-      duration_ms: 0.133029
-      ...
-    # Subtest: should use more tildes for fences if there are streaks of tildes in the value (fences)
-    ok 19 - should use more tildes for fences if there are streaks of tildes in the value (fences)
-      ---
-      duration_ms: 0.125295
-      ...
-    # Subtest: should use a fence if there is an info
-    ok 20 - should use a fence if there is an info
-      ---
-      duration_ms: 0.166722
-      ...
-    # Subtest: should use a fence if there is only whitespace
-    ok 21 - should use a fence if there is only whitespace
-      ---
-      duration_ms: 0.142798
-      ...
-    # Subtest: should use a fence if there first line is blank (void)
-    ok 22 - should use a fence if there first line is blank (void)
-      ---
-      duration_ms: 0.118442
-      ...
-    # Subtest: should use a fence if there first line is blank (filled)
-    ok 23 - should use a fence if there first line is blank (filled)
-      ---
-      duration_ms: 0.11252
-      ...
-    # Subtest: should use a fence if there last line is blank (void)
-    ok 24 - should use a fence if there last line is blank (void)
-      ---
-      duration_ms: 0.127629
-      ...
-    # Subtest: should use a fence if there last line is blank (filled)
-    ok 25 - should use a fence if there last line is blank (filled)
-      ---
-      duration_ms: 0.137347
-      ...
-    # Subtest: should use an indent if the value is indented
-    ok 26 - should use an indent if the value is indented
-      ---
-      duration_ms: 0.126998
-      ...
-    1..26
-ok 12 - code (flow)
-  ---
-  duration_ms: 5.957613
-  ...
-# Subtest: definition
-    # Subtest: should support a definition w/o label
-    ok 1 - should support a definition w/o label
-      ---
-      duration_ms: 0.163666
-      ...
-    # Subtest: should support a definition w/ label
-    ok 2 - should support a definition w/ label
-      ---
-      duration_ms: 0.146885
-      ...
-    # Subtest: should escape a backslash in `label`
-    ok 3 - should escape a backslash in `label`
-      ---
-      duration_ms: 0.168305
-      ...
-    # Subtest: should escape an opening bracket in `label`
-    ok 4 - should escape an opening bracket in `label`
-      ---
-      duration_ms: 0.158718
-      ...
-    # Subtest: should escape a closing bracket in `label`
-    ok 5 - should escape a closing bracket in `label`
-      ---
-      duration_ms: 0.236794
-      ...
-    # Subtest: should support a definition w/ identifier
-    ok 6 - should support a definition w/ identifier
-      ---
-      duration_ms: 0.251251
-      ...
-    # Subtest: should escape a backslash in `identifier`
-    ok 7 - should escape a backslash in `identifier`
-      ---
-      duration_ms: 0.184916
-      ...
-    # Subtest: should escape an opening bracket in `identifier`
-    ok 8 - should escape an opening bracket in `identifier`
-      ---
-      duration_ms: 0.210785
-      ...
-    # Subtest: should escape a closing bracket in `identifier`
-    ok 9 - should escape a closing bracket in `identifier`
-      ---
-      duration_ms: 0.160921
-      ...
-    # Subtest: should support a definition w/ url
-    ok 10 - should support a definition w/ url
-      ---
-      duration_ms: 0.144972
-      ...
-    # Subtest: should support a definition w/ enclosed url w/ whitespace in url
-    ok 11 - should support a definition w/ enclosed url w/ whitespace in url
-      ---
-      duration_ms: 0.143729
-      ...
-    # Subtest: should escape an opening angle bracket in `url` in an enclosed url
-    ok 12 - should escape an opening angle bracket in `url` in an enclosed url
-      ---
-      duration_ms: 0.149429
-      ...
-    # Subtest: should escape a closing angle bracket in `url` in an enclosed url
-    ok 13 - should escape a closing angle bracket in `url` in an enclosed url
-      ---
-      duration_ms: 0.157175
-      ...
-    # Subtest: should escape a backslash in `url` in an enclosed url
-    ok 14 - should escape a backslash in `url` in an enclosed url
-      ---
-      duration_ms: 0.166011
-      ...
-    # Subtest: should encode a line ending in `url` in an enclosed url
-    ok 15 - should encode a line ending in `url` in an enclosed url
-      ---
-      duration_ms: 0.17102
-      ...
-    # Subtest: should encode a line ending in `url` in an enclosed url
-    ok 16 - should encode a line ending in `url` in an enclosed url
-      ---
-      duration_ms: 0.191208
-      ...
-    # Subtest: should escape an opening paren in `url` in a raw url
-    ok 17 - should escape an opening paren in `url` in a raw url
-      ---
-      duration_ms: 0.163146
-      ...
-    # Subtest: should escape a closing paren in `url` in a raw url
-    ok 18 - should escape a closing paren in `url` in a raw url
-      ---
-      duration_ms: 0.15978
-      ...
-    # Subtest: should escape a backslash in `url` in a raw url
-    ok 19 - should escape a backslash in `url` in a raw url
-      ---
-      duration_ms: 0.172252
-      ...
-    # Subtest: should support a definition w/ title
-    ok 20 - should support a definition w/ title
-      ---
-      duration_ms: 0.289693
-      ...
-    # Subtest: should support a definition w/ url & title
-    ok 21 - should support a definition w/ url & title
-      ---
-      duration_ms: 0.180879
-      ...
-    # Subtest: should escape a quote in `title` in a title
-    ok 22 - should escape a quote in `title` in a title
-      ---
-      duration_ms: 0.176391
-      ...
-    # Subtest: should escape a backslash in `title` in a title
-    ok 23 - should escape a backslash in `title` in a title
-      ---
-      duration_ms: 0.173185
-      ...
-    # Subtest: should support a definition w/ title when `quote: "'"`
-    ok 24 - should support a definition w/ title when `quote: "'"`
-      ---
-      duration_ms: 0.236022
-      ...
-    # Subtest: should escape a quote in `title` in a title when `quote: "'"`
-    ok 25 - should escape a quote in `title` in a title when `quote: "'"`
-      ---
-      duration_ms: 0.180929
-      ...
-    # Subtest: should throw on when given an incorrect `quote`
-    ok 26 - should throw on when given an incorrect `quote`
-      ---
-      duration_ms: 0.175028
-      ...
-    1..26
-ok 13 - definition
-  ---
-  duration_ms: 6.469312
-  ...
-# Subtest: emphasis
-    # Subtest: should support an empty emphasis
-    ok 1 - should support an empty emphasis
-      ---
-      duration_ms: 0.198412
-      ...
-    # Subtest: should throw on when given an incorrect `emphasis`
-    ok 2 - should throw on when given an incorrect `emphasis`
-      ---
-      duration_ms: 0.166762
-      ...
-    # Subtest: should support an emphasis w/ children
-    ok 3 - should support an emphasis w/ children
-      ---
-      duration_ms: 0.236333
-      ...
-    # Subtest: should support an emphasis w/ underscores when `emphasis: "_"`
-    ok 4 - should support an emphasis w/ underscores when `emphasis: "_"`
-      ---
-      duration_ms: 0.17604
-      ...
-    1..4
-ok 14 - emphasis
-  ---
-  duration_ms: 1.154192
-  ...
-# Subtest: heading
-    # Subtest: should serialize a heading w/o rank as a heading of rank 1
-    ok 1 - should serialize a heading w/o rank as a heading of rank 1
-      ---
-      duration_ms: 0.162295
-      ...
-    # Subtest: should serialize a heading w/ rank 1
-    ok 2 - should serialize a heading w/ rank 1
-      ---
-      duration_ms: 0.14946
-      ...
-    # Subtest: should serialize a heading w/ rank 6
-    ok 3 - should serialize a heading w/ rank 6
-      ---
-      duration_ms: 0.136856
-      ...
-    # Subtest: should serialize a heading w/ rank 7 as 6
-    ok 4 - should serialize a heading w/ rank 7 as 6
-      ---
-      duration_ms: 0.137408
-      ...
-    # Subtest: should serialize a heading w/ rank 0 as 1
-    ok 5 - should serialize a heading w/ rank 0 as 1
-      ---
-      duration_ms: 0.140714
-      ...
-    # Subtest: should serialize a heading w/ content
-    ok 6 - should serialize a heading w/ content
-      ---
-      duration_ms: 0.228589
-      ...
-    # Subtest: should serialize a heading w/ rank 1 as setext when `setext: true`
-    ok 7 - should serialize a heading w/ rank 1 as setext when `setext: true`
-      ---
-      duration_ms: 0.194053
-      ...
-    # Subtest: should serialize a heading w/ rank 2 as setext when `setext: true`
-    ok 8 - should serialize a heading w/ rank 2 as setext when `setext: true`
-      ---
-      duration_ms: 0.22457
-      ...
-    # Subtest: should serialize a heading w/ rank 3 as atx when `setext: true`
-    ok 9 - should serialize a heading w/ rank 3 as atx when `setext: true`
-      ---
-      duration_ms: 0.177903
-      ...
-    # Subtest: should serialize a setext underline as long as the last line (1)
-    ok 10 - should serialize a setext underline as long as the last line (1)
-      ---
-      duration_ms: 0.166132
-      ...
-    # Subtest: should serialize a setext underline as long as the last line (2)
-    ok 11 - should serialize a setext underline as long as the last line (2)
-      ---
-      duration_ms: 0.163637
-      ...
-    # Subtest: should serialize an empty heading w/ rank 1 as atx when `setext: true`
-    ok 12 - should serialize an empty heading w/ rank 1 as atx when `setext: true`
-      ---
-      duration_ms: 0.188343
-      ...
-    # Subtest: should serialize an empty heading w/ rank 2 as atx when `setext: true`
-    ok 13 - should serialize an empty heading w/ rank 2 as atx when `setext: true`
-      ---
-      duration_ms: 0.136206
-      ...
-    # Subtest: should serialize an heading w/ rank 1 and code w/ a line ending as setext
-    ok 14 - should serialize an heading w/ rank 1 and code w/ a line ending as setext
-      ---
-      duration_ms: 0.169819
-      ...
-    # Subtest: should serialize an heading w/ rank 1 and html w/ a line ending as setext
-    ok 15 - should serialize an heading w/ rank 1 and html w/ a line ending as setext
-      ---
-      duration_ms: 0.145062
-      ...
-    # Subtest: should serialize an heading w/ rank 1 and text w/ a line ending as setext
-    ok 16 - should serialize an heading w/ rank 1 and text w/ a line ending as setext
-      ---
-      duration_ms: 0.149621
-      ...
-    # Subtest: should serialize an heading w/ rank 1 and a break as setext
-    ok 17 - should serialize an heading w/ rank 1 and a break as setext
-      ---
-      duration_ms: 0.228478
-      ...
-    # Subtest: should serialize a heading with a closing sequence when `closeAtx` (empty)
-    ok 18 - should serialize a heading with a closing sequence when `closeAtx` (empty)
-      ---
-      duration_ms: 0.148017
-      ...
-    # Subtest: should serialize a with a closing sequence when `closeAtx` (content)
-    ok 19 - should serialize a with a closing sequence when `closeAtx` (content)
-      ---
-      duration_ms: 0.15477
-      ...
-    # Subtest: should not escape a `\#` at the start of phrasing in a heading
-    ok 20 - should not escape a `\#` at the start of phrasing in a heading
-      ---
-      duration_ms: 0.160932
-      ...
-    # Subtest: should not escape a `1)` at the start of phrasing in a heading
-    ok 21 - should not escape a `1)` at the start of phrasing in a heading
-      ---
-      duration_ms: 0.187221
-      ...
-    # Subtest: should not escape a `+` at the start of phrasing in a heading
-    ok 22 - should not escape a `+` at the start of phrasing in a heading
-      ---
-      duration_ms: 0.154509
-      ...
-    # Subtest: should not escape a `-` at the start of phrasing in a heading
-    ok 23 - should not escape a `-` at the start of phrasing in a heading
-      ---
-      duration_ms: 0.15522
-      ...
-    # Subtest: should not escape a `=` at the start of phrasing in a heading
-    ok 24 - should not escape a `=` at the start of phrasing in a heading
-      ---
-      duration_ms: 0.155171
-      ...
-    # Subtest: should not escape a `>` at the start of phrasing in a heading
-    ok 25 - should not escape a `>` at the start of phrasing in a heading
-      ---
-      duration_ms: 0.163637
-      ...
-    # Subtest: should escape a `\#` at the end of a heading (1)
-    ok 26 - should escape a `\#` at the end of a heading (1)
-      ---
-      duration_ms: 0.163867
-      ...
-    # Subtest: should escape a `\#` at the end of a heading (2)
-    ok 27 - should escape a `\#` at the end of a heading (2)
-      ---
-      duration_ms: 0.156884
-      ...
-    # Subtest: should not escape a `\#` in a heading (2)
-    ok 28 - should not escape a `\#` in a heading (2)
-      ---
-      duration_ms: 0.153638
-      ...
-    # Subtest: should encode a space at the start of an atx heading
-    ok 29 - should encode a space at the start of an atx heading
-      ---
-      duration_ms: 0.161192
-      ...
-    # Subtest: should encode a tab at the start of an atx heading
-    ok 30 - should encode a tab at the start of an atx heading
-      ---
-      duration_ms: 0.183745
-      ...
-    # Subtest: should encode a space at the end of an atx heading
-    ok 31 - should encode a space at the end of an atx heading
-      ---
-      duration_ms: 0.177222
-      ...
-    # Subtest: should encode a tab at the end of an atx heading
-    ok 32 - should encode a tab at the end of an atx heading
-      ---
-      duration_ms: 0.161943
-      ...
-    # Subtest: should encode spaces around a line ending in a setext heading
-    ok 33 - should encode spaces around a line ending in a setext heading
-      ---
-      duration_ms: 0.163316
-      ...
-    # Subtest: should not need to encode spaces around a line ending in an atx heading (because the line ending is encoded)
-    ok 34 - should not need to encode spaces around a line ending in an atx heading (because the line ending is encoded)
-      ---
-      duration_ms: 0.223779
-      ...
-    1..34
-ok 15 - heading
-  ---
-  duration_ms: 8.228528
-  ...
-# Subtest: html
-    # Subtest: should support a void html
-    ok 1 - should support a void html
-      ---
-      duration_ms: 0.136486
-      ...
-    # Subtest: should support an empty html
-    ok 2 - should support an empty html
-      ---
-      duration_ms: 0.115546
-      ...
-    # Subtest: should support html
-    ok 3 - should support html
-      ---
-      duration_ms: 0.115898
-      ...
-    # Subtest: should prevent html (text) from becoming html (flow) (1)
-    ok 4 - should prevent html (text) from becoming html (flow) (1)
-      ---
-      duration_ms: 0.254236
-      ...
-    # Subtest: should prevent html (text) from becoming html (flow) (2)
-    ok 5 - should prevent html (text) from becoming html (flow) (2)
-      ---
-      duration_ms: 0.20805
-      ...
-    # Subtest: should prevent html (text) from becoming html (flow) (3)
-    ok 6 - should prevent html (text) from becoming html (flow) (3)
-      ---
-      duration_ms: 0.180248
-      ...
-    # Subtest: should serialize html (text)
-    ok 7 - should serialize html (text)
-      ---
-      duration_ms: 0.177794
-      ...
-    1..7
-ok 16 - html
-  ---
-  duration_ms: 2.701672
-  ...
-# Subtest: image
-    # Subtest: should support an image
-    ok 1 - should support an image
-      ---
-      duration_ms: 0.179968
-      ...
-    # Subtest: should support `alt`
-    ok 2 - should support `alt`
-      ---
-      duration_ms: 0.146816
-      ...
-    # Subtest: should support a url
-    ok 3 - should support a url
-      ---
-      duration_ms: 0.139011
-      ...
-    # Subtest: should support a title
-    ok 4 - should support a title
-      ---
-      duration_ms: 0.153567
-      ...
-    # Subtest: should support a url and title
-    ok 5 - should support a url and title
-      ---
-      duration_ms: 0.182091
-      ...
-    # Subtest: should support an image w/ enclosed url w/ whitespace in url
-    ok 6 - should support an image w/ enclosed url w/ whitespace in url
-      ---
-      duration_ms: 0.145973
-      ...
-    # Subtest: should escape an opening angle bracket in `url` in an enclosed url
-    ok 7 - should escape an opening angle bracket in `url` in an enclosed url
-      ---
-      duration_ms: 0.141676
-      ...
-    # Subtest: should escape a closing angle bracket in `url` in an enclosed url
-    ok 8 - should escape a closing angle bracket in `url` in an enclosed url
-      ---
-      duration_ms: 0.141565
-      ...
-    # Subtest: should escape a backslash in `url` in an enclosed url
-    ok 9 - should escape a backslash in `url` in an enclosed url
-      ---
-      duration_ms: 0.151113
-      ...
-    # Subtest: should encode a line ending in `url` in an enclosed url
-    ok 10 - should encode a line ending in `url` in an enclosed url
-      ---
-      duration_ms: 0.197891
-      ...
-    # Subtest: should escape an opening paren in `url` in a raw url
-    ok 11 - should escape an opening paren in `url` in a raw url
-      ---
-      duration_ms: 0.140213
-      ...
-    # Subtest: should escape a closing paren in `url` in a raw url
-    ok 12 - should escape a closing paren in `url` in a raw url
-      ---
-      duration_ms: 0.187061
-      ...
-    # Subtest: should escape a backslash in `url` in a raw url
-    ok 13 - should escape a backslash in `url` in a raw url
-      ---
-      duration_ms: 0.147406
-      ...
-    # Subtest: should support control characters in images
-    ok 14 - should support control characters in images
-      ---
-      duration_ms: 0.171321
-      ...
-    # Subtest: should escape a double quote in `title`
-    ok 15 - should escape a double quote in `title`
-      ---
-      duration_ms: 0.156724
-      ...
-    # Subtest: should escape a backslash in `title`
-    ok 16 - should escape a backslash in `title`
-      ---
-      duration_ms: 0.156723
-      ...
-    # Subtest: should support an image w/ title when `quote: "'"`
-    ok 17 - should support an image w/ title when `quote: "'"`
-      ---
-      duration_ms: 0.145593
-      ...
-    # Subtest: should escape a quote in `title` in a title when `quote: "'"`
-    ok 18 - should escape a quote in `title` in a title when `quote: "'"`
-      ---
-      duration_ms: 0.147727
-      ...
-    # Subtest: should throw on when given an incorrect `quote`
-    ok 19 - should throw on when given an incorrect `quote`
-      ---
-      duration_ms: 0.176491
-      ...
-    1..19
-ok 17 - image
-  ---
-  duration_ms: 4.242349
-  ...
-# Subtest: imageReference
-    # Subtest: should support a link reference (nonsensical)
-    ok 1 - should support a link reference (nonsensical)
-      ---
-      duration_ms: 0.180728
-      ...
-    # Subtest: should support `alt`
-    ok 2 - should support `alt`
-      ---
-      duration_ms: 0.152986
-      ...
-    # Subtest: should support an `identifier` (nonsensical)
-    ok 3 - should support an `identifier` (nonsensical)
-      ---
-      duration_ms: 0.149871
-      ...
-    # Subtest: should support a `label` (nonsensical)
-    ok 4 - should support a `label` (nonsensical)
-      ---
-      duration_ms: 0.18667
-      ...
-    # Subtest: should support `referenceType: "shortcut"`
-    ok 5 - should support `referenceType: "shortcut"`
-      ---
-      duration_ms: 0.167304
-      ...
-    # Subtest: should support `referenceType: "collapsed"`
-    ok 6 - should support `referenceType: "collapsed"`
-      ---
-      duration_ms: 0.185919
-      ...
-    # Subtest: should support `referenceType: "full"` (default)
-    ok 7 - should support `referenceType: "full"` (default)
-      ---
-      duration_ms: 0.166562
-      ...
-    # Subtest: should prefer label over identifier
-    ok 8 - should prefer label over identifier
-      ---
-      duration_ms: 0.189655
-      ...
-    # Subtest: should decode `identifier` if w/o `label`
-    ok 9 - should decode `identifier` if w/o `label`
-      ---
-      duration_ms: 0.254707
-      ...
-    # Subtest: should support incorrect character references
-    ok 10 - should support incorrect character references
-      ---
-      duration_ms: 0.208391
-      ...
-    # Subtest: should unescape `identifier` if w/o `label`
-    ok 11 - should unescape `identifier` if w/o `label`
-      ---
-      duration_ms: 0.165179
-      ...
-    # Subtest: should use a collapsed reference if w/o `referenceType` and the label matches the reference
-    ok 12 - should use a collapsed reference if w/o `referenceType` and the label matches the reference
-      ---
-      duration_ms: 0.281527
-      ...
-    # Subtest: should use a full reference if w/o `referenceType` and the label does not match the reference
-    ok 13 - should use a full reference if w/o `referenceType` and the label does not match the reference
-      ---
-      duration_ms: 0.185597
-      ...
-    1..13
-ok 18 - imageReference
-  ---
-  duration_ms: 3.444895
-  ...
-# Subtest: code (text)
-    # Subtest: should support an empty code text
-    ok 1 - should support an empty code text
-      ---
-      duration_ms: 0.140533
-      ...
-    # Subtest: should support a code text
-    ok 2 - should support a code text
-      ---
-      duration_ms: 0.121107
-      ...
-    # Subtest: should support a space
-    ok 3 - should support a space
-      ---
-      duration_ms: 0.120135
-      ...
-    # Subtest: should support an eol
-    ok 4 - should support an eol
-      ---
-      duration_ms: 0.122579
-      ...
-    # Subtest: should support several spaces
-    ok 5 - should support several spaces
-      ---
-      duration_ms: 0.119734
-      ...
-    # Subtest: should use a fence of two grave accents if the value contains one
-    ok 6 - should use a fence of two grave accents if the value contains one
-      ---
-      duration_ms: 0.161081
-      ...
-    # Subtest: should use a fence of one grave accent if the value contains two
-    ok 7 - should use a fence of one grave accent if the value contains two
-      ---
-      duration_ms: 0.117239
-      ...
-    # Subtest: should use a fence of three grave accents if the value contains two and one
-    ok 8 - should use a fence of three grave accents if the value contains two and one
-      ---
-      duration_ms: 0.190286
-      ...
-    # Subtest: should pad w/ a space if the value starts w/ a grave accent
-    ok 9 - should pad w/ a space if the value starts w/ a grave accent
-      ---
-      duration_ms: 0.152877
-      ...
-    # Subtest: should pad w/ a space if the value ends w/ a grave accent
-    ok 10 - should pad w/ a space if the value ends w/ a grave accent
-      ---
-      duration_ms: 0.147296
-      ...
-    # Subtest: should pad w/ a space if the value starts and ends w/ a space
-    ok 11 - should pad w/ a space if the value starts and ends w/ a space
-      ---
-      duration_ms: 0.158898
-      ...
-    # Subtest: should not pad w/ spaces if the value ends w/ a non-space
-    ok 12 - should not pad w/ spaces if the value ends w/ a non-space
-      ---
-      duration_ms: 0.121828
-      ...
-    # Subtest: should not pad w/ spaces if the value starts w/ a non-space
-    ok 13 - should not pad w/ spaces if the value starts w/ a non-space
-      ---
-      duration_ms: 0.114875
-      ...
-    # Subtest: should prevent breaking out of code (-)
-    ok 14 - should prevent breaking out of code (-)
-      ---
-      duration_ms: 0.12275
-      ...
-    # Subtest: should prevent breaking out of code (\#)
-    ok 15 - should prevent breaking out of code (\#)
-      ---
-      duration_ms: 0.146204
-      ...
-    # Subtest: should prevent breaking out of code (\\d\\.)
-    ok 16 - should prevent breaking out of code (\\d\\.)
-      ---
-      duration_ms: 0.117931
-      ...
-    # Subtest: should prevent breaking out of code (cr)
-    ok 17 - should prevent breaking out of code (cr)
-      ---
-      duration_ms: 0.120245
-      ...
-    # Subtest: should prevent breaking out of code (crlf)
-    ok 18 - should prevent breaking out of code (crlf)
-      ---
-      duration_ms: 0.148819
-      ...
-    1..18
-ok 19 - code (text)
-  ---
-  duration_ms: 4.083932
-  ...
-# Subtest: link
-    # Subtest: should support a link
-    ok 1 - should support a link
-      ---
-      duration_ms: 0.181921
-      ...
-    # Subtest: should support children
-    ok 2 - should support children
-      ---
-      duration_ms: 0.179596
-      ...
-    # Subtest: should support a url
-    ok 3 - should support a url
-      ---
-      duration_ms: 0.152416
-      ...
-    # Subtest: should support a title
-    ok 4 - should support a title
-      ---
-      duration_ms: 0.161192
-      ...
-    # Subtest: should support a url and title
-    ok 5 - should support a url and title
-      ---
-      duration_ms: 0.186439
-      ...
-    # Subtest: should support a link w/ enclosed url w/ whitespace in url
-    ok 6 - should support a link w/ enclosed url w/ whitespace in url
-      ---
-      duration_ms: 0.147126
-      ...
-    # Subtest: should escape an opening angle bracket in `url` in an enclosed url
-    ok 7 - should escape an opening angle bracket in `url` in an enclosed url
-      ---
-      duration_ms: 0.150732
-      ...
-    # Subtest: should escape a closing angle bracket in `url` in an enclosed url
-    ok 8 - should escape a closing angle bracket in `url` in an enclosed url
-      ---
-      duration_ms: 0.273843
-      ...
-    # Subtest: should escape a backslash in `url` in an enclosed url
-    ok 9 - should escape a backslash in `url` in an enclosed url
-      ---
-      duration_ms: 0.178334
-      ...
-    # Subtest: should encode a line ending in `url` in an enclosed url
-    ok 10 - should encode a line ending in `url` in an enclosed url
-      ---
-      duration_ms: 0.213199
-      ...
-    # Subtest: should escape an opening paren in `url` in a raw url
-    ok 11 - should escape an opening paren in `url` in a raw url
-      ---
-      duration_ms: 0.153718
-      ...
-    # Subtest: should escape a closing paren in `url` in a raw url
-    ok 12 - should escape a closing paren in `url` in a raw url
-      ---
-      duration_ms: 0.141495
-      ...
-    # Subtest: should escape a backslash in `url` in a raw url
-    ok 13 - should escape a backslash in `url` in a raw url
-      ---
-      duration_ms: 0.168455
-      ...
-    # Subtest: should support control characters in links
-    ok 14 - should support control characters in links
-      ---
-      duration_ms: 0.141105
-      ...
-    # Subtest: should escape a double quote in `title`
-    ok 15 - should escape a double quote in `title`
-      ---
-      duration_ms: 0.22398
-      ...
-    # Subtest: should escape a backslash in `title`
-    ok 16 - should escape a backslash in `title`
-      ---
-      duration_ms: 0.169738
-      ...
-    # Subtest: should use an autolink for nodes w/ a value similar to the url and a protocol
-    ok 17 - should use an autolink for nodes w/ a value similar to the url and a protocol
-      ---
-      duration_ms: 0.269375
-      ...
-    # Subtest: should use a resource link (`resourceLink: true`)
-    ok 18 - should use a resource link (`resourceLink: true`)
-      ---
-      duration_ms: 0.18663
-      ...
-    # Subtest: should use a normal link for nodes w/ a value similar to the url w/o a protocol
-    ok 19 - should use a normal link for nodes w/ a value similar to the url w/o a protocol
-      ---
-      duration_ms: 0.189796
-      ...
-    # Subtest: should use an autolink for nodes w/ a value similar to the url and a protocol
-    ok 20 - should use an autolink for nodes w/ a value similar to the url and a protocol
-      ---
-      duration_ms: 0.163586
-      ...
-    # Subtest: should use a normal link for nodes w/ a value similar to the url w/ a title
-    ok 21 - should use a normal link for nodes w/ a value similar to the url w/ a title
-      ---
-      duration_ms: 0.242635
-      ...
-    # Subtest: should use an autolink for nodes w/ a value similar to the url and a protocol (email)
-    ok 22 - should use an autolink for nodes w/ a value similar to the url and a protocol (email)
-      ---
-      duration_ms: 0.141816
-      ...
-    # Subtest: should not escape in autolinks
-    ok 23 - should not escape in autolinks
-      ---
-      duration_ms: 0.163847
-      ...
-    # Subtest: should support a link w/ title when `quote: "'"`
-    ok 24 - should support a link w/ title when `quote: "'"`
-      ---
-      duration_ms: 0.16037
-      ...
-    # Subtest: should escape a quote in `title` in a title when `quote: "'"`
-    ok 25 - should escape a quote in `title` in a title when `quote: "'"`
-      ---
-      duration_ms: 0.218018
-      ...
-    # Subtest: should not escape unneeded characters in a `destinationLiteral`
-    ok 26 - should not escape unneeded characters in a `destinationLiteral`
-      ---
-      duration_ms: 0.189846
-      ...
-    # Subtest: should not escape unneeded characters in a `destinationRaw`
-    ok 27 - should not escape unneeded characters in a `destinationRaw`
-      ---
-      duration_ms: 0.153558
-      ...
-    # Subtest: should not escape unneeded characters in a `title` (double quotes)
-    ok 28 - should not escape unneeded characters in a `title` (double quotes)
-      ---
-      duration_ms: 0.159158
-      ...
-    # Subtest: should not escape unneeded characters in a `title` (single quotes)
-    ok 29 - should not escape unneeded characters in a `title` (single quotes)
-      ---
-      duration_ms: 0.198342
-      ...
-    # Subtest: should throw on when given an incorrect `quote`
-    ok 30 - should throw on when given an incorrect `quote`
-      ---
-      duration_ms: 0.146284
-      ...
-    1..30
-ok 20 - link
-  ---
-  duration_ms: 7.575133
-  ...
-# Subtest: linkReference
-    # Subtest: should support a link reference (nonsensical)
-    ok 1 - should support a link reference (nonsensical)
-      ---
-      duration_ms: 0.179196
-      ...
-    # Subtest: should support `children`
-    ok 2 - should support `children`
-      ---
-      duration_ms: 0.15977
-      ...
-    # Subtest: should support an `identifier` (nonsensical)
-    ok 3 - should support an `identifier` (nonsensical)
-      ---
-      duration_ms: 0.148859
-      ...
-    # Subtest: should support a `label` (nonsensical)
-    ok 4 - should support a `label` (nonsensical)
-      ---
-      duration_ms: 1.113516
-      ...
-    # Subtest: should support `referenceType: "shortcut"`
-    ok 5 - should support `referenceType: "shortcut"`
-      ---
-      duration_ms: 0.171291
-      ...
-    # Subtest: should support `referenceType: "collapsed"`
-    ok 6 - should support `referenceType: "collapsed"`
-      ---
-      duration_ms: 0.144852
-      ...
-    # Subtest: should support `referenceType: "full"` (default)
-    ok 7 - should support `referenceType: "full"` (default)
-      ---
-      duration_ms: 0.138349
-      ...
-    # Subtest: should prefer label over identifier
-    ok 8 - should prefer label over identifier
-      ---
-      duration_ms: 0.148999
-      ...
-    # Subtest: should decode `identifier` if w/o `label`
-    ok 9 - should decode `identifier` if w/o `label`
-      ---
-      duration_ms: 0.189084
-      ...
-    # Subtest: should support incorrect character references
-    ok 10 - should support incorrect character references
-      ---
-      duration_ms: 0.180778
-      ...
-    # Subtest: should not escape unneeded characters in a `reference`
-    ok 11 - should not escape unneeded characters in a `reference`
-      ---
-      duration_ms: 0.14436
-      ...
-    # Subtest: should unescape `identifier` if w/o `label`
-    ok 12 - should unescape `identifier` if w/o `label`
-      ---
-      duration_ms: 0.174578
-      ...
-    # Subtest: should use a collapsed reference if w/o `referenceType` and the label matches the reference
-    ok 13 - should use a collapsed reference if w/o `referenceType` and the label matches the reference
-      ---
-      duration_ms: 0.144251
-      ...
-    # Subtest: should use a full reference if w/o `referenceType` and the label does not match the reference
-    ok 14 - should use a full reference if w/o `referenceType` and the label does not match the reference
-      ---
-      duration_ms: 0.136946
-      ...
-    # Subtest: should use a full reference if w/o `referenceType` and the label does not match the reference
-    ok 15 - should use a full reference if w/o `referenceType` and the label does not match the reference
-      ---
-      duration_ms: 0.177212
-      ...
-    1..15
-ok 21 - linkReference
-  ---
-  duration_ms: 4.39746
-  ...
-# Subtest: list
-    # Subtest: should support an empty list
-    ok 1 - should support an empty list
-      ---
-      duration_ms: 0.157345
-      ...
-    # Subtest: should support a list w/ an item
-    ok 2 - should support a list w/ an item
-      ---
-      duration_ms: 0.126987
-      ...
-    # Subtest: should support a list w/ items
-    ok 3 - should support a list w/ items
-      ---
-      duration_ms: 0.217698
-      ...
-    # Subtest: should not use blank lines between items for lists w/ `spread: false`
-    ok 4 - should not use blank lines between items for lists w/ `spread: false`
-      ---
-      duration_ms: 0.214492
-      ...
-    # Subtest: should support a list w/ `spread: false`, w/ a spread item
-    ok 5 - should support a list w/ `spread: false`, w/ a spread item
-      ---
-      duration_ms: 0.199384
-      ...
-    # Subtest: should support a list w/ `ordered` and an empty item
-    ok 6 - should support a list w/ `ordered` and an empty item
-      ---
-      duration_ms: 0.126787
-      ...
-    # Subtest: should support a list w/ `ordered`
-    ok 7 - should support a list w/ `ordered`
-      ---
-      duration_ms: 0.180929
-      ...
-    # Subtest: should support a list w/ `ordered` and `spread: false`
-    ok 8 - should support a list w/ `ordered` and `spread: false`
-      ---
-      duration_ms: 0.192951
-      ...
-    # Subtest: should support a list w/ `ordered` when `incrementListMarker: false`
-    ok 9 - should support a list w/ `ordered` when `incrementListMarker: false`
-      ---
-      duration_ms: 0.204523
-      ...
-    # Subtest: should support a list w/ `ordered` and `start`
-    ok 10 - should support a list w/ `ordered` and `start`
-      ---
-      duration_ms: 0.221035
-      ...
-    # Subtest: should support a correct prefix and indent `listItemIndent: "mixed"` and a tight list
-    ok 11 - should support a correct prefix and indent `listItemIndent: "mixed"` and a tight list
-      ---
-      duration_ms: 0.183354
-      ...
-    # Subtest: should support a correct prefix and indent `listItemIndent: "mixed"` and a tight list
-    ok 12 - should support a correct prefix and indent `listItemIndent: "mixed"` and a tight list
-      ---
-      duration_ms: 0.167664
-      ...
-    # Subtest: should support a correct prefix and indent for items 9 and 10 when `listItemIndent: "one"`
-    ok 13 - should support a correct prefix and indent for items 9 and 10 when `listItemIndent: "one"`
-      ---
-      duration_ms: 0.220433
-      ...
-    # Subtest: should support a correct prefix and indent for items 99 and 100 when `listItemIndent: "one"`
-    ok 14 - should support a correct prefix and indent for items 99 and 100 when `listItemIndent: "one"`
-      ---
-      duration_ms: 0.165079
-      ...
-    # Subtest: should support a correct prefix and indent for items 999 and 1000 when `listItemIndent: "one"`
-    ok 15 - should support a correct prefix and indent for items 999 and 1000 when `listItemIndent: "one"`
-      ---
-      duration_ms: 0.191409
-      ...
-    # Subtest: should support a correct prefix and indent for items 9 and 10 when `listItemIndent: "tab"`
-    ok 16 - should support a correct prefix and indent for items 9 and 10 when `listItemIndent: "tab"`
-      ---
-      duration_ms: 0.172113
-      ...
-    # Subtest: should support a correct prefix and indent for items 99 and 100 when `listItemIndent: "tab"`
-    ok 17 - should support a correct prefix and indent for items 99 and 100 when `listItemIndent: "tab"`
-      ---
-      duration_ms: 0.182873
-      ...
-    # Subtest: should support a correct prefix and indent for items 999 and 1000 when `listItemIndent: "tab"`
-    ok 18 - should support a correct prefix and indent for items 999 and 1000 when `listItemIndent: "tab"`
-      ---
-      duration_ms: 0.172373
-      ...
-    1..18
-ok 22 - list
-  ---
-  duration_ms: 4.479253
-  ...
-# Subtest: listItem
-    # Subtest: should support a list item
-    ok 1 - should support a list item
-      ---
-      duration_ms: 0.131446
-      ...
-    # Subtest: should serialize an item w/ a plus as bullet when `bullet: "+"`
-    ok 2 - should serialize an item w/ a plus as bullet when `bullet: "+"`
-      ---
-      duration_ms: 0.124283
-      ...
-    # Subtest: should throw on an incorrect bullet
-    ok 3 - should throw on an incorrect bullet
-      ---
-      duration_ms: 0.141536
-      ...
-    # Subtest: should support a list item w/ a child
-    ok 4 - should support a list item w/ a child
-      ---
-      duration_ms: 0.132468
-      ...
-    # Subtest: should support a list item w/ children
-    ok 5 - should support a list item w/ children
-      ---
-      duration_ms: 0.161162
-      ...
-    # Subtest: should use one space after the bullet for `listItemIndent: "one"`
-    ok 6 - should use one space after the bullet for `listItemIndent: "one"`
-      ---
-      duration_ms: 0.168636
-      ...
-    # Subtest: should use one space after the bullet for `listItemIndent: "mixed"`, when the item is not spread
-    ok 7 - should use one space after the bullet for `listItemIndent: "mixed"`, when the item is not spread
-      ---
-      duration_ms: 0.136636
-      ...
-    # Subtest: should use a tab stop of spaces after the bullet for `listItemIndent: "mixed"`, when the item is spread
-    ok 8 - should use a tab stop of spaces after the bullet for `listItemIndent: "mixed"`, when the item is spread
-      ---
-      duration_ms: 0.167523
-      ...
-    # Subtest: should throw on an incorrect `listItemIndent`
-    ok 9 - should throw on an incorrect `listItemIndent`
-      ---
-      duration_ms: 0.153027
-      ...
-    # Subtest: should not use blank lines between child blocks for items w/ `spread: false`
-    ok 10 - should not use blank lines between child blocks for items w/ `spread: false`
-      ---
-      duration_ms: 0.136516
-      ...
-    # Subtest: should support `bulletOther`
-    ok 11 - should support `bulletOther`
-      ---
-      duration_ms: 0.204434
-      ...
-    # Subtest: should default to an `bulletOther` different from `bullet` (1)
-    ok 12 - should default to an `bulletOther` different from `bullet` (1)
-      ---
-      duration_ms: 0.134723
-      ...
-    # Subtest: should default to an `bulletOther` different from `bullet` (2)
-    ok 13 - should default to an `bulletOther` different from `bullet` (2)
-      ---
-      duration_ms: 0.168406
-      ...
-    # Subtest: should throw when given an incorrect `bulletOther`
-    ok 14 - should throw when given an incorrect `bulletOther`
-      ---
-      duration_ms: 0.175619
-      ...
-    # Subtest: should throw when an `bulletOther` is given equal to `bullet`
-    ok 15 - should throw when an `bulletOther` is given equal to `bullet`
-      ---
-      duration_ms: 0.155902
-      ...
-    # Subtest: should use a different bullet than a thematic rule marker, if the first child of a list item is a thematic break (1)
-    ok 16 - should use a different bullet than a thematic rule marker, if the first child of a list item is a thematic break (1)
-      ---
-      duration_ms: 0.121628
-      ...
-    # Subtest: should use a different bullet than a thematic rule marker, if the first child of a list item is a thematic break (2)
-    ok 17 - should use a different bullet than a thematic rule marker, if the first child of a list item is a thematic break (2)
-      ---
-      duration_ms: 0.164348
-      ...
-    # Subtest: should *not* use a different bullet for an empty list item in two lists
-    ok 18 - should *not* use a different bullet for an empty list item in two lists
-      ---
-      duration_ms: 0.124003
-      ...
-    # Subtest: should use a different bullet for an empty list item in three lists (1)
-    ok 19 - should use a different bullet for an empty list item in three lists (1)
-      ---
-      duration_ms: 0.121087
-      ...
-    # Subtest: should use a different bullet for an empty list item in three lists (2)
-    ok 20 - should use a different bullet for an empty list item in three lists (2)
-      ---
-      duration_ms: 0.214682
-      ...
-    # Subtest: should not use a different bullet for an empty list item in three lists if `bullet` isn’t a thematic rule marker
-    ok 21 - should not use a different bullet for an empty list item in three lists if `bullet` isn’t a thematic rule marker
-      ---
-      duration_ms: 0.13322
-      ...
-    # Subtest: should use a different bullet for an empty list item in four lists
-    ok 22 - should use a different bullet for an empty list item in four lists
-      ---
-      duration_ms: 0.128692
-      ...
-    # Subtest: should use a different bullet for an empty list item in five lists
-    ok 23 - should use a different bullet for an empty list item in five lists
-      ---
-      duration_ms: 0.140684
-      ...
-    # Subtest: should not use a different bullet for an empty list item at non-head in two lists
-    ok 24 - should not use a different bullet for an empty list item at non-head in two lists
-      ---
-      duration_ms: 0.242755
-      ...
-    # Subtest: should support `bulletOrdered`
-    ok 25 - should support `bulletOrdered`
-      ---
-      duration_ms: 0.194645
-      ...
-    # Subtest: should throw on a `bulletOrdered` that is invalid
-    ok 26 - should throw on a `bulletOrdered` that is invalid
-      ---
-      duration_ms: 0.283821
-      ...
-    # Subtest: should use a different bullet for adjacent ordered lists
-    ok 27 - should use a different bullet for adjacent ordered lists
-      ---
-      duration_ms: 0.162143
-      ...
-    1..27
-ok 23 - listItem
-  ---
-  duration_ms: 6.210336
-  ...
-# Subtest: paragraph
-    # Subtest: should support an empty paragraph
-    ok 1 - should support an empty paragraph
-      ---
-      duration_ms: 0.109796
-      ...
-    # Subtest: should support a paragraph
-    ok 2 - should support a paragraph
-      ---
-      duration_ms: 0.121227
-      ...
-    # Subtest: should encode spaces at the start of paragraphs
-    ok 3 - should encode spaces at the start of paragraphs
-      ---
-      duration_ms: 0.17633
-      ...
-    # Subtest: should encode spaces at the end of paragraphs
-    ok 4 - should encode spaces at the end of paragraphs
-      ---
-      duration_ms: 0.128211
-      ...
-    # Subtest: should encode tabs at the start of paragraphs
-    ok 5 - should encode tabs at the start of paragraphs
-      ---
-      duration_ms: 0.135524
-      ...
-    # Subtest: should encode tabs at the end of paragraphs
-    ok 6 - should encode tabs at the end of paragraphs
-      ---
-      duration_ms: 0.129603
-      ...
-    # Subtest: should encode spaces around line endings in paragraphs
-    ok 7 - should encode spaces around line endings in paragraphs
-      ---
-      duration_ms: 0.13317
-      ...
-    # Subtest: should encode spaces around line endings in paragraphs
-    ok 8 - should encode spaces around line endings in paragraphs
-      ---
-      duration_ms: 0.171872
-      ...
-    1..8
-ok 24 - paragraph
-  ---
-  duration_ms: 1.643088
-  ...
-# Subtest: strong
-    # Subtest: should support an empty strong
-    ok 1 - should support an empty strong
-      ---
-      duration_ms: 0.13875
-      ...
-    # Subtest: should throw on when given an incorrect `strong`
-    ok 2 - should throw on when given an incorrect `strong`
-      ---
-      duration_ms: 0.146725
-      ...
-    # Subtest: should support a strong w/ children
-    ok 3 - should support a strong w/ children
-      ---
-      duration_ms: 0.198672
-      ...
-    # Subtest: should support a strong w/ underscores when `emphasis: "_"`
-    ok 4 - should support a strong w/ underscores when `emphasis: "_"`
-      ---
-      duration_ms: 0.200585
-      ...
-    1..4
-ok 25 - strong
-  ---
-  duration_ms: 1.092117
-  ...
-# Subtest: text
-    # Subtest: should support a void text
-    ok 1 - should support a void text
-      ---
-      duration_ms: 0.123611
-      ...
-    # Subtest: should support an empty text
-    ok 2 - should support an empty text
-      ---
-      duration_ms: 0.109826
-      ...
-    # Subtest: should support text
-    ok 3 - should support text
-      ---
-      duration_ms: 0.105838
-      ...
-    1..3
-ok 26 - text
-  ---
-  duration_ms: 0.585487
-  ...
-# Subtest: thematic break
-    # Subtest: should support a thematic break
-    ok 1 - should support a thematic break
-      ---
-      duration_ms: 0.118722
-      ...
-    # Subtest: should support a thematic break w/ dashes when `rule: "-"`
-    ok 2 - should support a thematic break w/ dashes when `rule: "-"`
-      ---
-      duration_ms: 0.119914
-      ...
-    # Subtest: should support a thematic break w/ underscores when `rule: "_"`
-    ok 3 - should support a thematic break w/ underscores when `rule: "_"`
-      ---
-      duration_ms: 0.099717
-      ...
-    # Subtest: should throw on when given an incorrect `rule`
-    ok 4 - should throw on when given an incorrect `rule`
-      ---
-      duration_ms: 0.166752
-      ...
-    # Subtest: should support a thematic break w/ more repetitions w/ `ruleRepetition`
-    ok 5 - should support a thematic break w/ more repetitions w/ `ruleRepetition`
-      ---
-      duration_ms: 0.112711
-      ...
-    # Subtest: should throw on when given an incorrect `ruleRepetition`
-    ok 6 - should throw on when given an incorrect `ruleRepetition`
-      ---
-      duration_ms: 0.164639
-      ...
-    # Subtest: should support a thematic break w/ spaces w/ `ruleSpaces`
-    ok 7 - should support a thematic break w/ spaces w/ `ruleSpaces`
-      ---
-      duration_ms: 0.121929
-      ...
-    1..7
-ok 27 - thematic break
-  ---
-  duration_ms: 1.403349
-  ...
-# Subtest: escape
-    # Subtest: should escape what would otherwise be a block quote in a paragraph
-    ok 1 - should escape what would otherwise be a block quote in a paragraph
-      ---
-      duration_ms: 0.153658
-      ...
-    # Subtest: should escape what would otherwise be a block quote in a list item
-    ok 2 - should escape what would otherwise be a block quote in a list item
-      ---
-      duration_ms: 0.163786
-      ...
-    # Subtest: should escape what would otherwise be a block quote in a block quote
-    ok 3 - should escape what would otherwise be a block quote in a block quote
-      ---
-      duration_ms: 0.172754
-      ...
-    # Subtest: should escape what would otherwise be a break
-    ok 4 - should escape what would otherwise be a break
-      ---
-      duration_ms: 0.12815
-      ...
-    # Subtest: should escape what would otherwise be a named character reference
-    ok 5 - should escape what would otherwise be a named character reference
-      ---
-      duration_ms: 0.131015
-      ...
-    # Subtest: should escape what would otherwise be a numeric character reference
-    ok 6 - should escape what would otherwise be a numeric character reference
-      ---
-      duration_ms: 0.142216
-      ...
-    # Subtest: should escape what would otherwise be a character escape
-    ok 7 - should escape what would otherwise be a character escape
-      ---
-      duration_ms: 0.122169
-      ...
-    # Subtest: should escape what would otherwise be a character escape of an autolink
-    ok 8 - should escape what would otherwise be a character escape of an autolink
-      ---
-      duration_ms: 0.200797
-      ...
-    # Subtest: should escape what would otherwise be code (flow)
-    ok 9 - should escape what would otherwise be code (flow)
-      ---
-      duration_ms: 0.137287
-      ...
-    # Subtest: should escape what would otherwise be a definition
-    ok 10 - should escape what would otherwise be a definition
-      ---
-      duration_ms: 0.130494
-      ...
-    # Subtest: should escape what would otherwise be emphasis (asterisk)
-    ok 11 - should escape what would otherwise be emphasis (asterisk)
-      ---
-      duration_ms: 0.126387
-      ...
-    # Subtest: should escape what would otherwise be emphasis (underscore)
-    ok 12 - should escape what would otherwise be emphasis (underscore)
-      ---
-      duration_ms: 0.125806
-      ...
-    # Subtest: should escape what would otherwise be a heading (atx)
-    ok 13 - should escape what would otherwise be a heading (atx)
-      ---
-      duration_ms: 0.129382
-      ...
-    # Subtest: should escape what would otherwise be a heading (setext, equals)
-    ok 14 - should escape what would otherwise be a heading (setext, equals)
-      ---
-      duration_ms: 0.132158
-      ...
-    # Subtest: should escape what would otherwise be a heading (setext, dash)
-    ok 15 - should escape what would otherwise be a heading (setext, dash)
-      ---
-      duration_ms: 1.214285
-      ...
-    # Subtest: should escape what would otherwise be html
-    ok 16 - should escape what would otherwise be html
-      ---
-      duration_ms: 0.143128
-      ...
-    # Subtest: should escape what would otherwise be code (text)
-    ok 17 - should escape what would otherwise be code (text)
-      ---
-      duration_ms: 0.158668
-      ...
-    # Subtest: should escape what would otherwise turn a link into an image
-    ok 18 - should escape what would otherwise turn a link into an image
-      ---
-      duration_ms: 0.222307
-      ...
-    # Subtest: should escape what would otherwise turn a link reference into an image reference
-    ok 19 - should escape what would otherwise turn a link reference into an image reference
-      ---
-      duration_ms: 0.176601
-      ...
-    # Subtest: should escape what would otherwise be an image (reference)
-    ok 20 - should escape what would otherwise be an image (reference)
-      ---
-      duration_ms: 0.13877
-      ...
-    # Subtest: should escape what would otherwise be an image (resource)
-    ok 21 - should escape what would otherwise be an image (resource)
-      ---
-      duration_ms: 0.185818
-      ...
-    # Subtest: should escape what would otherwise be a link (reference)
-    ok 22 - should escape what would otherwise be a link (reference)
-      ---
-      duration_ms: 0.406562
-      ...
-    # Subtest: should escape what would otherwise be a link (resource)
-    ok 23 - should escape what would otherwise be a link (resource)
-      ---
-      duration_ms: 0.145562
-      ...
-    # Subtest: should escape what would otherwise be a list item (plus)
-    ok 24 - should escape what would otherwise be a list item (plus)
-      ---
-      duration_ms: 0.129582
-      ...
-    # Subtest: should not escape `+` when not followed by whitespace
-    ok 25 - should not escape `+` when not followed by whitespace
-      ---
-      duration_ms: 0.118703
-      ...
-    # Subtest: should escape what would otherwise be a list item (dash)
-    ok 26 - should escape what would otherwise be a list item (dash)
-      ---
-      duration_ms: 0.128421
-      ...
-    # Subtest: should not escape `-` when not followed by whitespace
-    ok 27 - should not escape `-` when not followed by whitespace
-      ---
-      duration_ms: 0.129913
-      ...
-    # Subtest: should escape `-` when followed by another `-` (as it looks like a thematic break, setext underline)
-    ok 28 - should escape `-` when followed by another `-` (as it looks like a thematic break, setext underline)
-      ---
-      duration_ms: 0.124303
-      ...
-    # Subtest: should escape what would otherwise be a list item (asterisk)
-    ok 29 - should escape what would otherwise be a list item (asterisk)
-      ---
-      duration_ms: 0.15496
-      ...
-    # Subtest: should not escape `*` when not followed by whitespace
-    ok 30 - should not escape `*` when not followed by whitespace
-      ---
-      duration_ms: 0.146915
-      ...
-    # Subtest: should escape `*` when followed by another `*` (as it looks like a thematic break)
-    ok 31 - should escape `*` when followed by another `*` (as it looks like a thematic break)
-      ---
-      duration_ms: 0.14408
-      ...
-    # Subtest: should escape what would otherwise be a list item (dot)
-    ok 32 - should escape what would otherwise be a list item (dot)
-      ---
-      duration_ms: 0.136867
-      ...
-    # Subtest: should escape what would otherwise be a list item (paren)
-    ok 33 - should escape what would otherwise be a list item (paren)
-      ---
-      duration_ms: 0.127108
-      ...
-    # Subtest: should not escape what can’t be a list (dot)
-    ok 34 - should not escape what can’t be a list (dot)
-      ---
-      duration_ms: 0.119784
-      ...
-    # Subtest: should support options in extensions
-    ok 35 - should support options in extensions
-      ---
-      duration_ms: 0.196397
-      ...
-    # Subtest: should support empty `join`, `handlers`, `extensions` in an extension (coverage)
-    ok 36 - should support empty `join`, `handlers`, `extensions` in an extension (coverage)
-      ---
-      duration_ms: 0.214542
-      ...
-    # Subtest: should make `join` from options highest priority
-    ok 37 - should make `join` from options highest priority
-      ---
-      duration_ms: 0.280796
-      ...
-    # Subtest: should prefer main options over extension options
-    ok 38 - should prefer main options over extension options
-      ---
-      duration_ms: 0.15462
-      ...
-    # Subtest: should prefer extension options over subextension options
-    ok 39 - should prefer extension options over subextension options
-      ---
-      duration_ms: 0.138309
-      ...
-    # Subtest: should handle literal backslashes properly when before constructs (1)
-    ok 40 - should handle literal backslashes properly when before constructs (1)
-      ---
-      duration_ms: 0.169057
-      ...
-    # Subtest: should handle literal backslashes properly when before constructs (2)
-    ok 41 - should handle literal backslashes properly when before constructs (2)
-      ---
-      duration_ms: 0.168536
-      ...
-    1..41
-ok 28 - escape
-  ---
-  duration_ms: 10.00131
-  ...
-# Subtest: roundtrip
-    # Subtest: should roundtrip spread items in block quotes
-    ok 1 - should roundtrip spread items in block quotes
-      ---
-      duration_ms: 2.567641
-      ...
-    # Subtest: should roundtrip spread items in sublists (1)
-    ok 2 - should roundtrip spread items in sublists (1)
-      ---
-      duration_ms: 1.449967
-      ...
-    # Subtest: should roundtrip spread items in sublists (2)
-    ok 3 - should roundtrip spread items in sublists (2)
-      ---
-      duration_ms: 0.990195
-      ...
-    # Subtest: should roundtrip spread items in sublists (3)
-    ok 4 - should roundtrip spread items in sublists (3)
-      ---
-      duration_ms: 1.603124
-      ...
-    # Subtest: should roundtrip autolinks w/ potentially escapable characters
-    ok 5 - should roundtrip autolinks w/ potentially escapable characters
-      ---
-      duration_ms: 0.770343
-      ...
-    # Subtest: should roundtrip potential prototype injections
-    ok 6 - should roundtrip potential prototype injections
-      ---
-      duration_ms: 3.25535
-      ...
-    # Subtest: should roundtrip empty lists
-    ok 7 - should roundtrip empty lists
-      ---
-      duration_ms: 2.33253
-      ...
-    # Subtest: should roundtrip empty lists
-    ok 8 - should roundtrip empty lists
-      ---
-      duration_ms: 0.998892
-      ...
-    # Subtest: should roundtrip indented blank lines in code
-    ok 9 - should roundtrip indented blank lines in code
-      ---
-      duration_ms: 0.922929
-      ...
-    # Subtest: should roundtrip adjacent block quotes
-    ok 10 - should roundtrip adjacent block quotes
-      ---
-      duration_ms: 0.524533
-      ...
-    # Subtest: should roundtrip formatted URLs
-    ok 11 - should roundtrip formatted URLs
-      ---
-      duration_ms: 1.046371
-      ...
-    # Subtest: should roundtrip backslashes (1)
-    ok 12 - should roundtrip backslashes (1)
-      ---
-      duration_ms: 0.708097
-      ...
-    # Subtest: should not collapse escapes (1)
-    ok 13 - should not collapse escapes (1)
-      ---
-      duration_ms: 0.310122
-      ...
-    # Subtest: should not collapse escapes (2)
-    ok 14 - should not collapse escapes (2)
-      ---
-      duration_ms: 1.029259
-      ...
-    # Subtest: should roundtrip a sole blank line in fenced code
-    ok 15 - should roundtrip a sole blank line in fenced code
-      ---
-      duration_ms: 0.80601
-      ...
-    # Subtest: should roundtrip an empty list item in two more lists
-    ok 16 - should roundtrip an empty list item in two more lists
-      ---
-      duration_ms: 0.389069
-      ...
-    # Subtest: should roundtrip a thematic break at the start of a list item
-    ok 17 - should roundtrip a thematic break at the start of a list item
-      ---
-      duration_ms: 0.326873
-      ...
-    # Subtest: should roundtrip different lists w/ `bulletOther`
-    ok 18 - should roundtrip different lists w/ `bulletOther`
-      ---
-      duration_ms: 1.007327
-      ...
-    # Subtest: should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (1)
-    ok 19 - should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (1)
-      ---
-      duration_ms: 1.063863
-      ...
-    # Subtest: should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (2)
-    ok 20 - should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (2)
-      ---
-      duration_ms: 1.172848
-      ...
-    # Subtest: should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (3)
-    ok 21 - should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (3)
-      ---
-      duration_ms: 0.904635
-      ...
-    # Subtest: should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (4)
-    ok 22 - should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (4)
-      ---
-      duration_ms: 1.363996
-      ...
-    # Subtest: should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (5)
-    ok 23 - should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (5)
-      ---
-      duration_ms: 1.252717
-      ...
-    # Subtest: should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (6)
-    ok 24 - should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (6)
-      ---
-      duration_ms: 1.483399
-      ...
-    # Subtest: should roundtrip adjacent ordered lists
-    ok 25 - should roundtrip adjacent ordered lists
-      ---
-      duration_ms: 1.17424
-      ...
-    # Subtest: should roundtrip different ordered lists and lists that could turn into thematic breaks (1)
-    ok 26 - should roundtrip different ordered lists and lists that could turn into thematic breaks (1)
-      ---
-      duration_ms: 1.256495
-      ...
-    # Subtest: should roundtrip different ordered lists and lists that could turn into thematic breaks (2)
-    ok 27 - should roundtrip different ordered lists and lists that could turn into thematic breaks (2)
-      ---
-      duration_ms: 1.383673
-      ...
-    # Subtest: should roundtrip different ordered lists and lists that could turn into thematic breaks (3)
-    ok 28 - should roundtrip different ordered lists and lists that could turn into thematic breaks (3)
-      ---
-      duration_ms: 1.443364
-      ...
-    # Subtest: should roundtrip different ordered lists and lists that could turn into thematic breaks (4)
-    ok 29 - should roundtrip different ordered lists and lists that could turn into thematic breaks (4)
-      ---
-      duration_ms: 0.898314
-      ...
-    # Subtest: should roundtrip different ordered lists and lists that could turn into thematic breaks (5)
-    ok 30 - should roundtrip different ordered lists and lists that could turn into thematic breaks (5)
-      ---
-      duration_ms: 0.899475
-      ...
-    # Subtest: should roundtrip different ordered lists and lists that could turn into thematic breaks (6)
-    ok 31 - should roundtrip different ordered lists and lists that could turn into thematic breaks (6)
-      ---
-      duration_ms: 0.91823
-      ...
-    # Subtest: should roundtrip a single encoded space
-    ok 32 - should roundtrip a single encoded space
-      ---
-      duration_ms: 0.619711
-      ...
-    # Subtest: should roundtrip a single encoded tab
-    ok 33 - should roundtrip a single encoded tab
-      ---
-      duration_ms: 0.295905
-      ...
-    # Subtest: should roundtrip encoded spaces and tabs where needed
-    ok 34 - should roundtrip encoded spaces and tabs where needed
-      ---
-      duration_ms: 0.515115
-      ...
-    # Subtest: should roundtrip asterisks (tree)
-    ok 35 - should roundtrip asterisks (tree)
-      ---
-      duration_ms: 3.584597
-      ...
-    # Subtest: should roundtrip underscores (tree)
-    ok 36 - should roundtrip underscores (tree)
-      ---
-      duration_ms: 4.264601
-      ...
-    # Subtest: should roundtrip attention-like plain text
-    ok 37 - should roundtrip attention-like plain text
-      ---
-      duration_ms: 0.685575
-      ...
-    # Subtest: should roundtrip faux “fill in the blank” spans
-    ok 38 - should roundtrip faux “fill in the blank” spans
-      ---
-      duration_ms: 0.996416
-      ...
-    1..38
-ok 29 - roundtrip
-  ---
-  duration_ms: 49.832092
-  ...
-# Subtest: roundtrip attention
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: punctuation outside and punctuation inside
-    ok 1 - should roundtrip `emphasis` using `*` in an open run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.599713
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: whitespace outside and punctuation inside
-    ok 2 - should roundtrip `emphasis` using `*` in an open run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 0.437379
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: letter outside and punctuation inside
-    ok 3 - should roundtrip `emphasis` using `*` in an open run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.690093
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: punctuation outside and whitespace inside
-    ok 4 - should roundtrip `emphasis` using `*` in an open run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.602008
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: whitespace outside and whitespace inside
-    ok 5 - should roundtrip `emphasis` using `*` in an open run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.453119
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: letter outside and whitespace inside
-    ok 6 - should roundtrip `emphasis` using `*` in an open run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.520445
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: punctuation outside and letter inside
-    ok 7 - should roundtrip `emphasis` using `*` in an open run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.381695
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: whitespace outside and letter inside
-    ok 8 - should roundtrip `emphasis` using `*` in an open run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.551283
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an open run: letter outside and letter inside
-    ok 9 - should roundtrip `emphasis` using `*` in an open run: letter outside and letter inside
-      ---
-      duration_ms: 0.382366
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: punctuation outside and punctuation inside
-    ok 10 - should roundtrip `emphasis` using `*` in an close run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.49599
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: whitespace outside and punctuation inside
-    ok 11 - should roundtrip `emphasis` using `*` in an close run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 1.012107
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: letter outside and punctuation inside
-    ok 12 - should roundtrip `emphasis` using `*` in an close run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.343754
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: punctuation outside and whitespace inside
-    ok 13 - should roundtrip `emphasis` using `*` in an close run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.38973
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: whitespace outside and whitespace inside
-    ok 14 - should roundtrip `emphasis` using `*` in an close run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.333746
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: letter outside and whitespace inside
-    ok 15 - should roundtrip `emphasis` using `*` in an close run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.364583
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: punctuation outside and letter inside
-    ok 16 - should roundtrip `emphasis` using `*` in an close run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.298279
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: whitespace outside and letter inside
-    ok 17 - should roundtrip `emphasis` using `*` in an close run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.319688
-      ...
-    # Subtest: should roundtrip `emphasis` using `*` in an close run: letter outside and letter inside
-    ok 18 - should roundtrip `emphasis` using `*` in an close run: letter outside and letter inside
-      ---
-      duration_ms: 0.337473
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: punctuation outside and punctuation inside
-    ok 19 - should roundtrip `emphasis` using `_` in an open run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.279854
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: whitespace outside and punctuation inside
-    ok 20 - should roundtrip `emphasis` using `_` in an open run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 0.279043
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: letter outside and punctuation inside
-    ok 21 - should roundtrip `emphasis` using `_` in an open run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.306143
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: punctuation outside and whitespace inside
-    ok 22 - should roundtrip `emphasis` using `_` in an open run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.29366
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: whitespace outside and whitespace inside
-    ok 23 - should roundtrip `emphasis` using `_` in an open run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.333765
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: letter outside and whitespace inside
-    ok 24 - should roundtrip `emphasis` using `_` in an open run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.305292
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: punctuation outside and letter inside
-    ok 25 - should roundtrip `emphasis` using `_` in an open run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.270387
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: whitespace outside and letter inside
-    ok 26 - should roundtrip `emphasis` using `_` in an open run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.302286
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an open run: letter outside and letter inside
-    ok 27 - should roundtrip `emphasis` using `_` in an open run: letter outside and letter inside
-      ---
-      duration_ms: 0.299992
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: punctuation outside and punctuation inside
-    ok 28 - should roundtrip `emphasis` using `_` in an close run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.284413
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: whitespace outside and punctuation inside
-    ok 29 - should roundtrip `emphasis` using `_` in an close run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 0.310942
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: letter outside and punctuation inside
-    ok 30 - should roundtrip `emphasis` using `_` in an close run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.302166
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: punctuation outside and whitespace inside
-    ok 31 - should roundtrip `emphasis` using `_` in an close run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.298329
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: whitespace outside and whitespace inside
-    ok 32 - should roundtrip `emphasis` using `_` in an close run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.34723
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: letter outside and whitespace inside
-    ok 33 - should roundtrip `emphasis` using `_` in an close run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.322654
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: punctuation outside and letter inside
-    ok 34 - should roundtrip `emphasis` using `_` in an close run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.303568
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: whitespace outside and letter inside
-    ok 35 - should roundtrip `emphasis` using `_` in an close run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.288119
-      ...
-    # Subtest: should roundtrip `emphasis` using `_` in an close run: letter outside and letter inside
-    ok 36 - should roundtrip `emphasis` using `_` in an close run: letter outside and letter inside
-      ---
-      duration_ms: 0.316884
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: punctuation outside and punctuation inside
-    ok 37 - should roundtrip `strong` using `*` in an open run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.32581
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: whitespace outside and punctuation inside
-    ok 38 - should roundtrip `strong` using `*` in an open run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 0.361337
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: letter outside and punctuation inside
-    ok 39 - should roundtrip `strong` using `*` in an open run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.311233
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: punctuation outside and whitespace inside
-    ok 40 - should roundtrip `strong` using `*` in an open run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.328545
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: whitespace outside and whitespace inside
-    ok 41 - should roundtrip `strong` using `*` in an open run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.305532
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: letter outside and whitespace inside
-    ok 42 - should roundtrip `strong` using `*` in an open run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.328325
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: punctuation outside and letter inside
-    ok 43 - should roundtrip `strong` using `*` in an open run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.281106
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: whitespace outside and letter inside
-    ok 44 - should roundtrip `strong` using `*` in an open run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.274465
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an open run: letter outside and letter inside
-    ok 45 - should roundtrip `strong` using `*` in an open run: letter outside and letter inside
-      ---
-      duration_ms: 0.305602
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: punctuation outside and punctuation inside
-    ok 46 - should roundtrip `strong` using `*` in an close run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.299892
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: whitespace outside and punctuation inside
-    ok 47 - should roundtrip `strong` using `*` in an close run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 0.291386
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: letter outside and punctuation inside
-    ok 48 - should roundtrip `strong` using `*` in an close run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.370504
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: punctuation outside and whitespace inside
-    ok 49 - should roundtrip `strong` using `*` in an close run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.334316
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: whitespace outside and whitespace inside
-    ok 50 - should roundtrip `strong` using `*` in an close run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.325661
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: letter outside and whitespace inside
-    ok 51 - should roundtrip `strong` using `*` in an close run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.32557
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: punctuation outside and letter inside
-    ok 52 - should roundtrip `strong` using `*` in an close run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.290023
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: whitespace outside and letter inside
-    ok 53 - should roundtrip `strong` using `*` in an close run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.31509
-      ...
-    # Subtest: should roundtrip `strong` using `*` in an close run: letter outside and letter inside
-    ok 54 - should roundtrip `strong` using `*` in an close run: letter outside and letter inside
-      ---
-      duration_ms: 0.328435
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: punctuation outside and punctuation inside
-    ok 55 - should roundtrip `strong` using `_` in an open run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.285345
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: whitespace outside and punctuation inside
-    ok 56 - should roundtrip `strong` using `_` in an open run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 0.344114
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: letter outside and punctuation inside
-    ok 57 - should roundtrip `strong` using `_` in an open run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.293119
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: punctuation outside and whitespace inside
-    ok 58 - should roundtrip `strong` using `_` in an open run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.975278
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: whitespace outside and whitespace inside
-    ok 59 - should roundtrip `strong` using `_` in an open run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.325901
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: letter outside and whitespace inside
-    ok 60 - should roundtrip `strong` using `_` in an open run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.322414
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: punctuation outside and letter inside
-    ok 61 - should roundtrip `strong` using `_` in an open run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.2774
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: whitespace outside and letter inside
-    ok 62 - should roundtrip `strong` using `_` in an open run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.338314
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an open run: letter outside and letter inside
-    ok 63 - should roundtrip `strong` using `_` in an open run: letter outside and letter inside
-      ---
-      duration_ms: 0.30408
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: punctuation outside and punctuation inside
-    ok 64 - should roundtrip `strong` using `_` in an close run: punctuation outside and punctuation inside
-      ---
-      duration_ms: 0.287519
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: whitespace outside and punctuation inside
-    ok 65 - should roundtrip `strong` using `_` in an close run: whitespace outside and punctuation inside
-      ---
-      duration_ms: 0.30956
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: letter outside and punctuation inside
-    ok 66 - should roundtrip `strong` using `_` in an close run: letter outside and punctuation inside
-      ---
-      duration_ms: 0.299001
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: punctuation outside and whitespace inside
-    ok 67 - should roundtrip `strong` using `_` in an close run: punctuation outside and whitespace inside
-      ---
-      duration_ms: 0.322153
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: whitespace outside and whitespace inside
-    ok 68 - should roundtrip `strong` using `_` in an close run: whitespace outside and whitespace inside
-      ---
-      duration_ms: 0.349505
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: letter outside and whitespace inside
-    ok 69 - should roundtrip `strong` using `_` in an close run: letter outside and whitespace inside
-      ---
-      duration_ms: 0.341209
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: punctuation outside and letter inside
-    ok 70 - should roundtrip `strong` using `_` in an close run: punctuation outside and letter inside
-      ---
-      duration_ms: 0.310702
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: whitespace outside and letter inside
-    ok 71 - should roundtrip `strong` using `_` in an close run: whitespace outside and letter inside
-      ---
-      duration_ms: 0.285105
-      ...
-    # Subtest: should roundtrip `strong` using `_` in an close run: letter outside and letter inside
-    ok 72 - should roundtrip `strong` using `_` in an close run: letter outside and letter inside
-      ---
-      duration_ms: 0.309239
-      ...
-    1..72
-ok 30 - roundtrip attention
-  ---
-  duration_ms: 30.619773
-  ...
-# Subtest: position (output)
-    # Subtest: should track output positions (1)
-    ok 1 - should track output positions (1)
-      ---
-      duration_ms: 0.314088
-      ...
-    # Subtest: should track output positions (2)
-    ok 2 - should track output positions (2)
-      ---
-      duration_ms: 0.222277
-      ...
-    1..2
-ok 31 - position (output)
-  ---
-  duration_ms: 0.742701
-  ...
-# Subtest: three independently targeted builds have current artifact and config hashes
-ok 32 - three independently targeted builds have current artifact and config hashes
-  ---
-  duration_ms: 5.140632
-  ...
-# Subtest: public comparison describes current versus original and distinguishes build stages
-ok 33 - public comparison describes current versus original and distinguishes build stages
-  ---
-  duration_ms: 0.561301
-  ...
-# Subtest: built Pages artifact contains the current data and measured downloads
-ok 34 - built Pages artifact contains the current data and measured downloads
-  ---
-  duration_ms: 0.561542
-  ...
-1..34
-# tests 506
-# suites 3
-# pass 506
-# fail 0
-# cancelled 0
-# skipped 0
-# todo 0
-# duration_ms 4936.391742
+▶ remark
+  ✔ exports only the upstream frozen factory (3.398839ms)
+  ✔ processSync turns emphasis into markdown (25.366082ms)
+  ✔ preserves caller-provided VFile identity in CommonJS (3.548409ms)
+  ✔ preserves caller-provided VFile identity in ESM (1.991512ms)
+  ✔ processSync honors settings.closeAtx (2.216444ms)
+  ✔ round-trips lists and emphasis (3.846889ms)
+  ✔ decodes byte input as UTF-8 (2.094064ms)
+  ✔ passes upstream-compatible file metadata to parsers (0.537397ms)
+  ✔ does not fall back from truthy invalid parser/compiler fields (0.91746ms)
+  ✔ exposes unified's inherited copy API (0.52254ms)
+  ✔ keeps pinned processor keys in the library artifact (0.862686ms)
+✔ remark (47.76244ms)
+▶ remark closed
+  ✔ ships a closed artifact with the upstream export (2.252781ms)
+  ✔ keeps the embedded processor operational (11.409647ms)
+✔ remark closed (15.446992ms)
+✔ parse and stringify match remark@15.0.1 (77.259784ms)
+✔ external plugins observe the same file, order, and output (3.786372ms)
+✔ canonical graph measurement uses pinned official Terser (2653.125262ms)
+▶ official CommonMark + GFM corpus
+  ✔ matches mdast-util-from-markdown for all 660 cases (456.308092ms)
+✔ official CommonMark + GFM corpus (457.506397ms)
+▶ remark
+  ✔ should expose the public api (1.746894ms)
+  ✔ should process a file (11.791395ms)
+  ✔ should accept settings (2.819062ms)
+✔ remark (18.023603ms)
+▶ remark-stringify
+  ✔ should expose the public api (0.404959ms)
+  ✔ should serialize (3.08974ms)
+  ✔ should support extensions (10.318566ms)
+✔ remark-stringify (14.741784ms)
+▶ core
+  ✔ should expose the public api (17.542192ms)
+  ✔ should support a `root` (5.237284ms)
+  ✔ should not use blank lines between nodes when given phrasing (0.827781ms)
+  ✔ should support adjacent definitions (2.424944ms)
+  ✔ should support tight adjacent definitions when `tightDefinitions: true` (0.893103ms)
+  ✔ should use a different marker for adjacent lists (1.215207ms)
+  ✔ should inject HTML comments between lists and an indented code (0.818253ms)
+  ✔ should inject HTML comments between adjacent indented code (0.346529ms)
+  ✔ should not honour `spread: false` for two paragraphs (0.463097ms)
+  ✔ should not honour `spread: false` for a paragraph and a definition (0.698789ms)
+  ✔ should honour `spread: false` for a paragraph and a heading (2.240118ms)
+  ✔ should not honour `spread: false` for a paragraph and a setext heading (0.310832ms)
+  ✔ should throw on a non-node (0.647894ms)
+  ✔ should throw on an unknown node (0.250269ms)
+  ✔ should throw on an unknown node in a tree (0.257743ms)
+✔ core (37.597693ms)
+▶ blockquote
+  ✔ should support a block quote (0.237555ms)
+  ✔ should support a block quote w/ a child (0.187622ms)
+  ✔ should support a block quote w/ children (0.256511ms)
+  ✔ should support text w/ a line ending in a block quote (0.194966ms)
+  ✔ should support adjacent texts in a block quote (0.242634ms)
+  ✔ should support a block quote in a block quote (0.777517ms)
+  ✔ should support a break in a block quote (0.332323ms)
+  ✔ should support code (flow, indented) in a block quote (0.187191ms)
+  ✔ should support code (flow, fenced) in a block quote (0.348813ms)
+  ✔ should support code (text) in a block quote (0.364633ms)
+  ✔ should support padded code (text) in a block quote (0.291275ms)
+  ✔ should support a definition in a block quote (0.429405ms)
+  ✔ should support an emphasis in a block quote (0.980878ms)
+  ✔ should support a heading (atx) in a block quote (0.232496ms)
+  ✔ should support a heading (setext) in a block quote (0.269505ms)
+  ✔ should support html (flow) in a block quote (0.239629ms)
+  ✔ should support html (text) in a block quote (0.282088ms)
+  ✔ should support an image (resource) in a block quote (0.599313ms)
+  ✔ should support an image (reference) in a block quote (0.492953ms)
+  ✔ should support a link (resource) in a block quote (0.601377ms)
+  ✔ should support a link (reference) in a block quote (0.485079ms)
+  ✔ should support a list in a block quote (0.37349ms)
+  ✔ should support a strong in a block quote (0.410008ms)
+  ✔ should support a thematic break in a block quote (0.172893ms)
+✔ blockquote (11.642637ms)
+▶ break
+  ✔ should support a break (0.174016ms)
+  ✔ should serialize breaks in heading (atx) as a space (0.310923ms)
+  ✔ should serialize breaks in heading (atx) as a space (0.2826ms)
+  ✔ should serialize breaks in heading (setext) (8.201088ms)
+✔ break (9.806776ms)
+▶ code (flow)
+  ✔ should support empty code (0.237695ms)
+  ✔ should throw on when given an incorrect `fence` (0.266379ms)
+  ✔ should support code w/ a value (indent) (0.189996ms)
+  ✔ should support code w/ a value (fences) (0.174547ms)
+  ✔ should support code w/ a lang (0.216155ms)
+  ✔ should support (ignore) code w/ only a meta (0.190708ms)
+  ✔ should support code w/ lang and meta (3.994735ms)
+  ✔ should encode a space in `lang` (1.016965ms)
+  ✔ should encode a line ending in `lang` (0.178855ms)
+  ✔ should encode a grave accent in `lang` (0.173736ms)
+  ✔ should escape a backslash in `lang` (0.163536ms)
+  ✔ should not encode a space in `meta` (0.39466ms)
+  ✔ should encode a line ending in `meta` (0.297557ms)
+  ✔ should encode a grave accent in `meta` (0.264004ms)
+  ✔ should escape a backslash in `meta` (0.214662ms)
+  ✔ should support fenced code w/ tildes when `fence: "~"` (0.189706ms)
+  ✔ should not encode a grave accent when using tildes for fences (0.26683ms)
+  ✔ should use more grave accents for fences if there are streaks of grave accents in the value (fences) (0.161973ms)
+  ✔ should use more tildes for fences if there are streaks of tildes in the value (fences) (0.3419ms)
+  ✔ should use a fence if there is an info (0.200145ms)
+  ✔ should use a fence if there is only whitespace (0.156874ms)
+  ✔ should use a fence if there first line is blank (void) (0.155241ms)
+  ✔ should use a fence if there first line is blank (filled) (0.203582ms)
+  ✔ should use a fence if there last line is blank (void) (0.185507ms)
+  ✔ should use a fence if there last line is blank (filled) (0.25587ms)
+  ✔ should use an indent if the value is indented (0.196418ms)
+✔ code (flow) (13.505037ms)
+▶ definition
+  ✔ should support a definition w/o label (0.226995ms)
+  ✔ should support a definition w/ label (0.232646ms)
+  ✔ should escape a backslash in `label` (0.219602ms)
+  ✔ should escape an opening bracket in `label` (0.260649ms)
+  ✔ should escape a closing bracket in `label` (0.206847ms)
+  ✔ should support a definition w/ identifier (0.212669ms)
+  ✔ should escape a backslash in `identifier` (0.214031ms)
+  ✔ should escape an opening bracket in `identifier` (0.240751ms)
+  ✔ should escape a closing bracket in `identifier` (0.210114ms)
+  ✔ should support a definition w/ url (0.202739ms)
+  ✔ should support a definition w/ enclosed url w/ whitespace in url (0.253956ms)
+  ✔ should escape an opening angle bracket in `url` in an enclosed url (0.219662ms)
+  ✔ should escape a closing angle bracket in `url` in an enclosed url (0.245169ms)
+  ✔ should escape a backslash in `url` in an enclosed url (0.223749ms)
+  ✔ should encode a line ending in `url` in an enclosed url (0.217597ms)
+  ✔ should encode a line ending in `url` in an enclosed url (0.312836ms)
+  ✔ should escape an opening paren in `url` in a raw url (0.202459ms)
+  ✔ should escape a closing paren in `url` in a raw url (0.199864ms)
+  ✔ should escape a backslash in `url` in a raw url (0.228748ms)
+  ✔ should support a definition w/ title (0.237786ms)
+  ✔ should support a definition w/ url & title (0.215784ms)
+  ✔ should escape a quote in `title` in a title (0.253736ms)
+  ✔ should escape a backslash in `title` in a title (0.239048ms)
+  ✔ should support a definition w/ title when `quote: "'"` (0.25059ms)
+  ✔ should escape a quote in `title` in a title when `quote: "'"` (2.410496ms)
+  ✔ should throw on when given an incorrect `quote` (0.291416ms)
+✔ definition (12.974723ms)
+▶ emphasis
+  ✔ should support an empty emphasis (0.216575ms)
+  ✔ should throw on when given an incorrect `emphasis` (0.22397ms)
+  ✔ should support an emphasis w/ children (0.30949ms)
+  ✔ should support an emphasis w/ underscores when `emphasis: "_"` (0.222928ms)
+✔ emphasis (2.940731ms)
+▶ heading
+  ✔ should serialize a heading w/o rank as a heading of rank 1 (0.170169ms)
+  ✔ should serialize a heading w/ rank 1 (0.174688ms)
+  ✔ should serialize a heading w/ rank 6 (0.172343ms)
+  ✔ should serialize a heading w/ rank 7 as 6 (0.187722ms)
+  ✔ should serialize a heading w/ rank 0 as 1 (0.158587ms)
+  ✔ should serialize a heading w/ content (0.230091ms)
+  ✔ should serialize a heading w/ rank 1 as setext when `setext: true` (2.192551ms)
+  ✔ should serialize a heading w/ rank 2 as setext when `setext: true` (0.21338ms)
+  ✔ should serialize a heading w/ rank 3 as atx when `setext: true` (1.037173ms)
+  ✔ should serialize a setext underline as long as the last line (1) (0.196698ms)
+  ✔ should serialize a setext underline as long as the last line (2) (0.207278ms)
+  ✔ should serialize an empty heading w/ rank 1 as atx when `setext: true` (0.161262ms)
+  ✔ should serialize an empty heading w/ rank 2 as atx when `setext: true` (0.164228ms)
+  ✔ should serialize an heading w/ rank 1 and code w/ a line ending as setext (0.215274ms)
+  ✔ should serialize an heading w/ rank 1 and html w/ a line ending as setext (0.177914ms)
+  ✔ should serialize an heading w/ rank 1 and text w/ a line ending as setext (0.176972ms)
+  ✔ should serialize an heading w/ rank 1 and a break as setext (0.244448ms)
+  ✔ should serialize a heading with a closing sequence when `closeAtx` (empty) (0.180779ms)
+  ✔ should serialize a with a closing sequence when `closeAtx` (content) (0.187421ms)
+  ✔ should not escape a `#` at the start of phrasing in a heading (0.216556ms)
+  ✔ should not escape a `1)` at the start of phrasing in a heading (0.207529ms)
+  ✔ should not escape a `+` at the start of phrasing in a heading (0.188262ms)
+  ✔ should not escape a `-` at the start of phrasing in a heading (0.180238ms)
+  ✔ should not escape a `=` at the start of phrasing in a heading (0.171332ms)
+  ✔ should not escape a `>` at the start of phrasing in a heading (0.180628ms)
+  ✔ should escape a `#` at the end of a heading (1) (0.182552ms)
+  ✔ should escape a `#` at the end of a heading (2) (0.173685ms)
+  ✔ should not escape a `#` in a heading (2) (0.157475ms)
+  ✔ should encode a space at the start of an atx heading (0.187883ms)
+  ✔ should encode a tab at the start of an atx heading (0.472245ms)
+  ✔ should encode a space at the end of an atx heading (0.24551ms)
+  ✔ should encode a tab at the end of an atx heading (0.232546ms)
+  ✔ should encode spaces around a line ending in a setext heading (0.199403ms)
+  ✔ should not need to encode spaces around a line ending in an atx heading (because the line ending is encoded) (0.233778ms)
+✔ heading (13.908495ms)
+▶ html
+  ✔ should support a void html (0.152275ms)
+  ✔ should support an empty html (0.135605ms)
+  ✔ should support html (0.182011ms)
+  ✔ should prevent html (text) from becoming html (flow) (1) (0.278472ms)
+  ✔ should prevent html (text) from becoming html (flow) (2) (0.301414ms)
+  ✔ should prevent html (text) from becoming html (flow) (3) (0.21389ms)
+  ✔ should serialize html (text) (0.215163ms)
+✔ html (2.602617ms)
+▶ image
+  ✔ should support an image (0.26629ms)
+  ✔ should support `alt` (0.254206ms)
+  ✔ should support a url (0.238797ms)
+  ✔ should support a title (0.223248ms)
+  ✔ should support a url and title (0.317304ms)
+  ✔ should support an image w/ enclosed url w/ whitespace in url (0.287499ms)
+  ✔ should escape an opening angle bracket in `url` in an enclosed url (0.225543ms)
+  ✔ should escape a closing angle bracket in `url` in an enclosed url (0.470652ms)
+  ✔ should escape a backslash in `url` in an enclosed url (0.225903ms)
+  ✔ should encode a line ending in `url` in an enclosed url (0.21912ms)
+  ✔ should escape an opening paren in `url` in a raw url (0.213089ms)
+  ✔ should escape a closing paren in `url` in a raw url (0.204473ms)
+  ✔ should escape a backslash in `url` in a raw url (0.166963ms)
+  ✔ should support control characters in images (0.2081ms)
+  ✔ should escape a double quote in `title` (0.275246ms)
+  ✔ should escape a backslash in `title` (1.071218ms)
+  ✔ should support an image w/ title when `quote: "'"` (0.236893ms)
+  ✔ should escape a quote in `title` in a title when `quote: "'"` (0.264606ms)
+  ✔ should throw on when given an incorrect `quote` (0.216646ms)
+✔ image (7.648883ms)
+▶ imageReference
+  ✔ should support a link reference (nonsensical) (0.24006ms)
+  ✔ should support `alt` (0.775172ms)
+  ✔ should support an `identifier` (nonsensical) (0.292378ms)
+  ✔ should support a `label` (nonsensical) (0.228278ms)
+  ✔ should support `referenceType: "shortcut"` (0.203792ms)
+  ✔ should support `referenceType: "collapsed"` (0.191118ms)
+  ✔ should support `referenceType: "full"` (default) (0.159719ms)
+  ✔ should prefer label over identifier (0.295143ms)
+  ✔ should decode `identifier` if w/o `label` (0.291967ms)
+  ✔ should support incorrect character references (0.201688ms)
+  ✔ should unescape `identifier` if w/o `label` (0.162053ms)
+  ✔ should use a collapsed reference if w/o `referenceType` and the label matches the reference (0.166042ms)
+  ✔ should use a full reference if w/o `referenceType` and the label does not match the reference (0.171572ms)
+✔ imageReference (4.751864ms)
+▶ code (text)
+  ✔ should support an empty code text (0.157025ms)
+  ✔ should support a code text (0.113252ms)
+  ✔ should support a space (0.099727ms)
+  ✔ should support an eol (0.113292ms)
+  ✔ should support several spaces (0.104986ms)
+  ✔ should use a fence of two grave accents if the value contains one (0.140133ms)
+  ✔ should use a fence of one grave accent if the value contains two (0.139983ms)
+  ✔ should use a fence of three grave accents if the value contains two and one (0.241733ms)
+  ✔ should pad w/ a space if the value starts w/ a grave accent (0.110226ms)
+  ✔ should pad w/ a space if the value ends w/ a grave accent (0.099136ms)
+  ✔ should pad w/ a space if the value starts and ends w/ a space (0.127359ms)
+  ✔ should not pad w/ spaces if the value ends w/ a non-space (0.10169ms)
+  ✔ should not pad w/ spaces if the value starts w/ a non-space (0.350406ms)
+  ✔ should prevent breaking out of code (-) (0.118954ms)
+  ✔ should prevent breaking out of code (#) (0.102032ms)
+  ✔ should prevent breaking out of code (\d\.) (0.102722ms)
+  ✔ should prevent breaking out of code (cr) (0.163236ms)
+  ✔ should prevent breaking out of code (crlf) (0.1712ms)
+✔ code (text) (3.912371ms)
+▶ link
+  ✔ should support a link (0.157986ms)
+  ✔ should support children (0.199704ms)
+  ✔ should support a url (0.239488ms)
+  ✔ should support a title (0.168235ms)
+  ✔ should support a url and title (0.148609ms)
+  ✔ should support a link w/ enclosed url w/ whitespace in url (0.144871ms)
+  ✔ should escape an opening angle bracket in `url` in an enclosed url (0.152366ms)
+  ✔ should escape a closing angle bracket in `url` in an enclosed url (0.150733ms)
+  ✔ should escape a backslash in `url` in an enclosed url (0.128792ms)
+  ✔ should encode a line ending in `url` in an enclosed url (0.114645ms)
+  ✔ should escape an opening paren in `url` in a raw url (0.152776ms)
+  ✔ should escape a closing paren in `url` in a raw url (0.110828ms)
+  ✔ should escape a backslash in `url` in a raw url (0.12793ms)
+  ✔ should support control characters in links (0.10152ms)
+  ✔ should escape a double quote in `title` (0.131987ms)
+  ✔ should escape a backslash in `title` (0.127729ms)
+  ✔ should use an autolink for nodes w/ a value similar to the url and a protocol (0.226154ms)
+  ✔ should use a resource link (`resourceLink: true`) (0.187652ms)
+  ✔ should use a normal link for nodes w/ a value similar to the url w/o a protocol (0.249147ms)
+  ✔ should use an autolink for nodes w/ a value similar to the url and a protocol (0.136466ms)
+  ✔ should use a normal link for nodes w/ a value similar to the url w/ a title (0.119323ms)
+  ✔ should use an autolink for nodes w/ a value similar to the url and a protocol (email) (0.105438ms)
+  ✔ should not escape in autolinks (0.170749ms)
+  ✔ should support a link w/ title when `quote: "'"` (0.140583ms)
+  ✔ should escape a quote in `title` in a title when `quote: "'"` (0.130034ms)
+  ✔ should not escape unneeded characters in a `destinationLiteral` (0.113984ms)
+  ✔ should not escape unneeded characters in a `destinationRaw` (0.107371ms)
+  ✔ should not escape unneeded characters in a `title` (double quotes) (0.115637ms)
+  ✔ should not escape unneeded characters in a `title` (single quotes) (0.17653ms)
+  ✔ should throw on when given an incorrect `quote` (0.130595ms)
+✔ link (8.061436ms)
+▶ linkReference
+  ✔ should support a link reference (nonsensical) (0.126266ms)
+  ✔ should support `children` (0.123181ms)
+  ✔ should support an `identifier` (nonsensical) (0.1119ms)
+  ✔ should support a `label` (nonsensical) (0.147106ms)
+  ✔ should support `referenceType: "shortcut"` (0.123261ms)
+  ✔ should support `referenceType: "collapsed"` (0.119704ms)
+  ✔ should support `referenceType: "full"` (default) (0.109054ms)
+  ✔ should prefer label over identifier (0.121288ms)
+  ✔ should decode `identifier` if w/o `label` (0.126988ms)
+  ✔ should support incorrect character references (0.133029ms)
+  ✔ should not escape unneeded characters in a `reference` (0.116458ms)
+  ✔ should unescape `identifier` if w/o `label` (0.107762ms)
+  ✔ should use a collapsed reference if w/o `referenceType` and the label matches the reference (0.112661ms)
+  ✔ should use a full reference if w/o `referenceType` and the label does not match the reference (0.111799ms)
+  ✔ should use a full reference if w/o `referenceType` and the label does not match the reference (0.131216ms)
+✔ linkReference (2.721159ms)
+▶ list
+  ✔ should support an empty list (0.119855ms)
+  ✔ should support a list w/ an item (0.159689ms)
+  ✔ should support a list w/ items (0.189925ms)
+  ✔ should not use blank lines between items for lists w/ `spread: false` (0.163717ms)
+  ✔ should support a list w/ `spread: false`, w/ a spread item (0.168666ms)
+  ✔ should support a list w/ `ordered` and an empty item (0.125244ms)
+  ✔ should support a list w/ `ordered` (0.2987ms)
+  ✔ should support a list w/ `ordered` and `spread: false` (0.345247ms)
+  ✔ should support a list w/ `ordered` when `incrementListMarker: false` (0.283322ms)
+  ✔ should support a list w/ `ordered` and `start` (0.222697ms)
+  ✔ should support a correct prefix and indent `listItemIndent: "mixed"` and a tight list (0.249267ms)
+  ✔ should support a correct prefix and indent `listItemIndent: "mixed"` and a tight list (0.212328ms)
+  ✔ should support a correct prefix and indent for items 9 and 10 when `listItemIndent: "one"` (0.210946ms)
+  ✔ should support a correct prefix and indent for items 99 and 100 when `listItemIndent: "one"` (0.234209ms)
+  ✔ should support a correct prefix and indent for items 999 and 1000 when `listItemIndent: "one"` (0.152596ms)
+  ✔ should support a correct prefix and indent for items 9 and 10 when `listItemIndent: "tab"` (0.16494ms)
+  ✔ should support a correct prefix and indent for items 99 and 100 when `listItemIndent: "tab"` (0.139392ms)
+  ✔ should support a correct prefix and indent for items 999 and 1000 when `listItemIndent: "tab"` (0.220373ms)
+✔ list (5.019706ms)
+▶ listItem
+  ✔ should support a list item (0.154088ms)
+  ✔ should serialize an item w/ a plus as bullet when `bullet: "+"` (0.112501ms)
+  ✔ should throw on an incorrect bullet (0.152757ms)
+  ✔ should support a list item w/ a child (0.155721ms)
+  ✔ should support a list item w/ children (0.162915ms)
+  ✔ should use one space after the bullet for `listItemIndent: "one"` (0.152195ms)
+  ✔ should use one space after the bullet for `listItemIndent: "mixed"`, when the item is not spread (0.137999ms)
+  ✔ should use a tab stop of spaces after the bullet for `listItemIndent: "mixed"`, when the item is spread (0.121748ms)
+  ✔ should throw on an incorrect `listItemIndent` (0.220794ms)
+  ✔ should not use blank lines between child blocks for items w/ `spread: false` (0.125705ms)
+  ✔ should support `bulletOther` (0.221515ms)
+  ✔ should default to an `bulletOther` different from `bullet` (1) (0.183063ms)
+  ✔ should default to an `bulletOther` different from `bullet` (2) (0.217407ms)
+  ✔ should throw when given an incorrect `bulletOther` (0.216506ms)
+  ✔ should throw when an `bulletOther` is given equal to `bullet` (0.20795ms)
+  ✔ should use a different bullet than a thematic rule marker, if the first child of a list item is a thematic break (1) (0.189404ms)
+  ✔ should use a different bullet than a thematic rule marker, if the first child of a list item is a thematic break (2) (0.179606ms)
+  ✔ should *not* use a different bullet for an empty list item in two lists (0.1438ms)
+  ✔ should use a different bullet for an empty list item in three lists (1) (0.214092ms)
+  ✔ should use a different bullet for an empty list item in three lists (2) (0.248476ms)
+  ✔ should not use a different bullet for an empty list item in three lists if `bullet` isn’t a thematic rule marker (0.121537ms)
+  ✔ should use a different bullet for an empty list item in four lists (0.104406ms)
+  ✔ should use a different bullet for an empty list item in five lists (0.108223ms)
+  ✔ should not use a different bullet for an empty list item at non-head in two lists (0.150993ms)
+  ✔ should support `bulletOrdered` (0.110096ms)
+  ✔ should throw on a `bulletOrdered` that is invalid (0.219001ms)
+  ✔ should use a different bullet for adjacent ordered lists (0.146174ms)
+✔ listItem (6.35028ms)
+▶ paragraph
+  ✔ should support an empty paragraph (0.140223ms)
+  ✔ should support a paragraph (0.188182ms)
+  ✔ should encode spaces at the start of paragraphs (0.193894ms)
+  ✔ should encode spaces at the end of paragraphs (0.146845ms)
+  ✔ should encode tabs at the start of paragraphs (0.18132ms)
+  ✔ should encode tabs at the end of paragraphs (0.152626ms)
+  ✔ should encode spaces around line endings in paragraphs (0.14452ms)
+  ✔ should encode spaces around line endings in paragraphs (0.138579ms)
+✔ paragraph (3.26063ms)
+▶ strong
+  ✔ should support an empty strong (0.172904ms)
+  ✔ should throw on when given an incorrect `strong` (0.18113ms)
+  ✔ should support a strong w/ children (0.124844ms)
+  ✔ should support a strong w/ underscores when `emphasis: "_"` (0.11223ms)
+✔ strong (0.892833ms)
+▶ text
+  ✔ should support a void text (0.178645ms)
+  ✔ should support an empty text (0.118682ms)
+  ✔ should support text (0.111198ms)
+✔ text (0.743924ms)
+▶ thematic break
+  ✔ should support a thematic break (0.14443ms)
+  ✔ should support a thematic break w/ dashes when `rule: "-"` (0.141435ms)
+  ✔ should support a thematic break w/ underscores when `rule: "_"` (0.13873ms)
+  ✔ should throw on when given an incorrect `rule` (0.249328ms)
+  ✔ should support a thematic break w/ more repetitions w/ `ruleRepetition` (0.147336ms)
+  ✔ should throw on when given an incorrect `ruleRepetition` (0.238376ms)
+  ✔ should support a thematic break w/ spaces w/ `ruleSpaces` (0.144901ms)
+✔ thematic break (1.892216ms)
+▶ escape
+  ✔ should escape what would otherwise be a block quote in a paragraph (0.215444ms)
+  ✔ should escape what would otherwise be a block quote in a list item (0.225933ms)
+  ✔ should escape what would otherwise be a block quote in a block quote (0.174787ms)
+  ✔ should escape what would otherwise be a break (0.158647ms)
+  ✔ should escape what would otherwise be a named character reference (0.160611ms)
+  ✔ should escape what would otherwise be a numeric character reference (0.163857ms)
+  ✔ should escape what would otherwise be a character escape (0.16004ms)
+  ✔ should escape what would otherwise be a character escape of an autolink (0.258144ms)
+  ✔ should escape what would otherwise be code (flow) (0.214191ms)
+  ✔ should escape what would otherwise be a definition (0.173244ms)
+  ✔ should escape what would otherwise be emphasis (asterisk) (0.160461ms)
+  ✔ should escape what would otherwise be emphasis (underscore) (0.169207ms)
+  ✔ should escape what would otherwise be a heading (atx) (0.199234ms)
+  ✔ should escape what would otherwise be a heading (setext, equals) (0.157726ms)
+  ✔ should escape what would otherwise be a heading (setext, dash) (0.188463ms)
+  ✔ should escape what would otherwise be html (0.167684ms)
+  ✔ should escape what would otherwise be code (text) (0.196969ms)
+  ✔ should escape what would otherwise turn a link into an image (0.295724ms)
+  ✔ should escape what would otherwise turn a link reference into an image reference (0.224651ms)
+  ✔ should escape what would otherwise be an image (reference) (0.211557ms)
+  ✔ should escape what would otherwise be an image (resource) (0.275727ms)
+  ✔ should escape what would otherwise be a link (reference) (0.163256ms)
+  ✔ should escape what would otherwise be a link (resource) (0.16523ms)
+  ✔ should escape what would otherwise be a list item (plus) (0.200075ms)
+  ✔ should not escape `+` when not followed by whitespace (0.158657ms)
+  ✔ should escape what would otherwise be a list item (dash) (0.161823ms)
+  ✔ should not escape `-` when not followed by whitespace (0.15491ms)
+  ✔ should escape `-` when followed by another `-` (as it looks like a thematic break, setext underline) (0.190266ms)
+  ✔ should escape what would otherwise be a list item (asterisk) (0.182442ms)
+  ✔ should not escape `*` when not followed by whitespace (0.183624ms)
+  ✔ should escape `*` when followed by another `*` (as it looks like a thematic break) (0.337903ms)
+  ✔ should escape what would otherwise be a list item (dot) (0.167965ms)
+  ✔ should escape what would otherwise be a list item (paren) (0.162153ms)
+  ✔ should not escape what can’t be a list (dot) (0.151784ms)
+  ✔ should support options in extensions (0.292889ms)
+  ✔ should support empty `join`, `handlers`, `extensions` in an extension (coverage) (0.264626ms)
+  ✔ should make `join` from options highest priority (0.329618ms)
+  ✔ should prefer main options over extension options (0.22359ms)
+  ✔ should prefer extension options over subextension options (0.178916ms)
+  ✔ should handle literal backslashes properly when before constructs (1) (0.213901ms)
+  ✔ should handle literal backslashes properly when before constructs (2) (0.211837ms)
+✔ escape (11.704783ms)
+▶ roundtrip
+  ✔ should roundtrip spread items in block quotes (4.199039ms)
+  ✔ should roundtrip spread items in sublists (1) (2.082482ms)
+  ✔ should roundtrip spread items in sublists (2) (1.591559ms)
+  ✔ should roundtrip spread items in sublists (3) (1.945636ms)
+  ✔ should roundtrip autolinks w/ potentially escapable characters (1.02454ms)
+  ✔ should roundtrip potential prototype injections (3.499387ms)
+  ✔ should roundtrip empty lists (1.518345ms)
+  ✔ should roundtrip empty lists (1.378864ms)
+  ✔ should roundtrip indented blank lines in code (1.25922ms)
+  ✔ should roundtrip adjacent block quotes (0.543479ms)
+  ✔ should roundtrip formatted URLs (1.042814ms)
+  ✔ should roundtrip backslashes (1) (0.732713ms)
+  ✔ should not collapse escapes (1) (0.358121ms)
+  ✔ should not collapse escapes (2) (1.575993ms)
+  ✔ should roundtrip a sole blank line in fenced code (1.122023ms)
+  ✔ should roundtrip an empty list item in two more lists (0.520085ms)
+  ✔ should roundtrip a thematic break at the start of a list item (0.368771ms)
+  ✔ should roundtrip different lists w/ `bulletOther` (0.974637ms)
+  ✔ should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (1) (1.551558ms)
+  ✔ should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (2) (1.794082ms)
+  ✔ should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (3) (1.119458ms)
+  ✔ should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (4) (1.492076ms)
+  ✔ should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (5) (1.463833ms)
+  ✔ should roundtrip different lists w/ `bulletOther` and lists that could turn into thematic breaks (6) (1.439959ms)
+  ✔ should roundtrip adjacent ordered lists (1.343658ms)
+  ✔ should roundtrip different ordered lists and lists that could turn into thematic breaks (1) (1.400004ms)
+  ✔ should roundtrip different ordered lists and lists that could turn into thematic breaks (2) (1.534575ms)
+  ✔ should roundtrip different ordered lists and lists that could turn into thematic breaks (3) (0.49137ms)
+  ✔ should roundtrip different ordered lists and lists that could turn into thematic breaks (4) (0.941935ms)
+  ✔ should roundtrip different ordered lists and lists that could turn into thematic breaks (5) (0.735838ms)
+  ✔ should roundtrip different ordered lists and lists that could turn into thematic breaks (6) (0.914614ms)
+  ✔ should roundtrip a single encoded space (0.524784ms)
+  ✔ should roundtrip a single encoded tab (0.259747ms)
+  ✔ should roundtrip encoded spaces and tabs where needed (0.477825ms)
+  ✔ should roundtrip asterisks (tree) (3.681328ms)
+  ✔ should roundtrip underscores (tree) (4.766635ms)
+  ✔ should roundtrip attention-like plain text (1.083851ms)
+  ✔ should roundtrip faux “fill in the blank” spans (1.37674ms)
+✔ roundtrip (59.072483ms)
+▶ roundtrip attention
+  ✔ should roundtrip `emphasis` using `*` in an open run: punctuation outside and punctuation inside (0.688039ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: whitespace outside and punctuation inside (0.504595ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: letter outside and punctuation inside (0.57125ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: punctuation outside and whitespace inside (0.687469ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: whitespace outside and whitespace inside (0.490189ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: letter outside and whitespace inside (0.75911ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: punctuation outside and letter inside (0.733845ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: whitespace outside and letter inside (0.430226ms)
+  ✔ should roundtrip `emphasis` using `*` in an open run: letter outside and letter inside (0.447218ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: punctuation outside and punctuation inside (0.762619ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: whitespace outside and punctuation inside (0.301014ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: letter outside and punctuation inside (0.264235ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: punctuation outside and whitespace inside (0.391643ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: whitespace outside and whitespace inside (0.440806ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: letter outside and whitespace inside (0.438552ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: punctuation outside and letter inside (0.343253ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: whitespace outside and letter inside (0.345026ms)
+  ✔ should roundtrip `emphasis` using `*` in an close run: letter outside and letter inside (0.414476ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: punctuation outside and punctuation inside (0.329156ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: whitespace outside and punctuation inside (0.359725ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: letter outside and punctuation inside (0.858939ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: punctuation outside and whitespace inside (0.374662ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: whitespace outside and whitespace inside (0.464851ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: letter outside and whitespace inside (0.358321ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: punctuation outside and letter inside (0.331431ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: whitespace outside and letter inside (0.316904ms)
+  ✔ should roundtrip `emphasis` using `_` in an open run: letter outside and letter inside (0.375003ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: punctuation outside and punctuation inside (0.385052ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: whitespace outside and punctuation inside (0.345979ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: letter outside and punctuation inside (0.444292ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: punctuation outside and whitespace inside (0.41095ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: whitespace outside and whitespace inside (0.431789ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: letter outside and whitespace inside (0.367348ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: punctuation outside and letter inside (0.417102ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: whitespace outside and letter inside (0.355977ms)
+  ✔ should roundtrip `emphasis` using `_` in an close run: letter outside and letter inside (0.554809ms)
+  ✔ should roundtrip `strong` using `*` in an open run: punctuation outside and punctuation inside (0.308117ms)
+  ✔ should roundtrip `strong` using `*` in an open run: whitespace outside and punctuation inside (0.236403ms)
+  ✔ should roundtrip `strong` using `*` in an open run: letter outside and punctuation inside (0.350847ms)
+  ✔ should roundtrip `strong` using `*` in an open run: punctuation outside and whitespace inside (0.339556ms)
+  ✔ should roundtrip `strong` using `*` in an open run: whitespace outside and whitespace inside (0.298369ms)
+  ✔ should roundtrip `strong` using `*` in an open run: letter outside and whitespace inside (0.237175ms)
+  ✔ should roundtrip `strong` using `*` in an open run: punctuation outside and letter inside (0.237997ms)
+  ✔ should roundtrip `strong` using `*` in an open run: whitespace outside and letter inside (0.37878ms)
+  ✔ should roundtrip `strong` using `*` in an open run: letter outside and letter inside (0.241652ms)
+  ✔ should roundtrip `strong` using `*` in an close run: punctuation outside and punctuation inside (0.304381ms)
+  ✔ should roundtrip `strong` using `*` in an close run: whitespace outside and punctuation inside (0.424005ms)
+  ✔ should roundtrip `strong` using `*` in an close run: letter outside and punctuation inside (0.377627ms)
+  ✔ should roundtrip `strong` using `*` in an close run: punctuation outside and whitespace inside (0.396062ms)
+  ✔ should roundtrip `strong` using `*` in an close run: whitespace outside and whitespace inside (0.347401ms)
+  ✔ should roundtrip `strong` using `*` in an close run: letter outside and whitespace inside (0.435576ms)
+  ✔ should roundtrip `strong` using `*` in an close run: punctuation outside and letter inside (0.316694ms)
+  ✔ should roundtrip `strong` using `*` in an close run: whitespace outside and letter inside (0.356288ms)
+  ✔ should roundtrip `strong` using `*` in an close run: letter outside and letter inside (0.326622ms)
+  ✔ should roundtrip `strong` using `_` in an open run: punctuation outside and punctuation inside (0.315921ms)
+  ✔ should roundtrip `strong` using `_` in an open run: whitespace outside and punctuation inside (0.367249ms)
+  ✔ should roundtrip `strong` using `_` in an open run: letter outside and punctuation inside (0.408085ms)
+  ✔ should roundtrip `strong` using `_` in an open run: punctuation outside and whitespace inside (0.445565ms)
+  ✔ should roundtrip `strong` using `_` in an open run: whitespace outside and whitespace inside (0.344726ms)
+  ✔ should roundtrip `strong` using `_` in an open run: letter outside and whitespace inside (0.361587ms)
+  ✔ should roundtrip `strong` using `_` in an open run: punctuation outside and letter inside (0.301535ms)
+  ✔ should roundtrip `strong` using `_` in an open run: whitespace outside and letter inside (0.295884ms)
+  ✔ should roundtrip `strong` using `_` in an open run: letter outside and letter inside (0.42163ms)
+  ✔ should roundtrip `strong` using `_` in an close run: punctuation outside and punctuation inside (0.278221ms)
+  ✔ should roundtrip `strong` using `_` in an close run: whitespace outside and punctuation inside (0.351348ms)
+  ✔ should roundtrip `strong` using `_` in an close run: letter outside and punctuation inside (0.262352ms)
+  ✔ should roundtrip `strong` using `_` in an close run: punctuation outside and whitespace inside (0.233127ms)
+  ✔ should roundtrip `strong` using `_` in an close run: whitespace outside and whitespace inside (0.248636ms)
+  ✔ should roundtrip `strong` using `_` in an close run: letter outside and whitespace inside (0.253044ms)
+  ✔ should roundtrip `strong` using `_` in an close run: punctuation outside and letter inside (0.207299ms)
+  ✔ should roundtrip `strong` using `_` in an close run: whitespace outside and letter inside (0.254848ms)
+  ✔ should roundtrip `strong` using `_` in an close run: letter outside and letter inside (0.377918ms)
+✔ roundtrip attention (36.161661ms)
+▶ position (output)
+  ✔ should track output positions (1) (0.263945ms)
+  ✔ should track output positions (2) (0.243036ms)
+✔ position (output) (0.738774ms)
+✔ three independently targeted builds have current artifact and config hashes (6.441892ms)
+✔ public comparison describes current versus original and distinguishes build stages (0.877464ms)
+✔ built Pages artifact contains the current data and measured downloads (0.953477ms)
+ℹ tests 506
+ℹ suites 3
+ℹ pass 506
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2737.384243

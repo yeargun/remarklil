@@ -1,6 +1,6 @@
 {
   "name": "@itslil/remark",
-  "version": "15.0.2",
+  "version": "15.0.3",
   "description": "remark reimplemented in LilScript",
   "keywords": [
     "remark",

@@ -1,18 +1,18 @@
 {
   "schema": 3,
-  "compiler": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/bin/lilscript",
+  "compiler": "/home/azureuser/lilscript-work/remark-fix/lilscript-8ff44f",
   "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
   "profiles": [
     {
       "name": "public",
       "config": "lilscript.toml",
-      "configSha256": "12aafe5871d30eda3f8892c4c60bd29718bcf7ef24c00b28168d2535d7ef7828",
+      "configSha256": "fd3530113c2e6ef98dbe5831202418ee37f17a91060dc555ff218908b1206d14",
       "mode": "production",
       "target": "js-module",
-      "sourceSha256": "4221a110508d55a475d4383c67116f70664797093d2b0ce9a22ce3581b66f891",
-      "manifestSha256": "5946b6ec70bd5736c0d83f3d7d02db856aa617ecc019967de422e5c6a77f9a8c",
+      "sourceSha256": "9039c39b69cf92ed9edbe36cc5e63d010ce204c0df26479102a73450a2b2e58f",
+      "manifestSha256": "52dcc780e11a44bf4a7e975f11f27cc63676353fea64119832c72d7340ad530f",
       "resolvedPolicy": {
-        "config": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/lilscript.toml",
+        "config": "/home/azureuser/lilscript-work/wt/remarklil-fix/lilscript.toml",
         "warnings": [],
         "request": {
           "logical_work": 40000000000,
@@ -33,7 +33,7 @@
           "mode": "Production",
           "target": "JsModule"
         },
-        "fingerprint": "686f36e162a1807dd179adbb0a60d14405d4eabfa07a04decad8c7543a4edcc9",
+        "fingerprint": "bbd5cf425a46352069d4ee516c31124502ede2a77aa23d44b03a5ef332192ce1",
         "policy": {
           "schema": 3,
           "algorithm": 94,
@@ -65,7 +65,7 @@
             "keep_published_function_names": true,
             "pristine_builtins": true,
             "pure_property_reads": true,
-            "unconstructed_callbacks": false,
+            "unconstructed_callbacks": true,
             "numeric_lengths": true,
             "strip_debug": true,
             "strip_console_calls": false,
@@ -620,7 +620,7 @@
             {
               "id": "string-array-packing",
               "state": {
-                "permission": "auto",
+                "permission": "off",
                 "enabled": false
               },
               "available": true,
@@ -653,8 +653,8 @@
             {
               "id": "startup-reconstruction",
               "state": {
-                "permission": "auto",
-                "enabled": false
+                "permission": "on",
+                "enabled": true
               },
               "available": true,
               "definition": {
@@ -685,7 +685,7 @@
             {
               "id": "recurring-reconstruction",
               "state": {
-                "permission": "auto",
+                "permission": "off",
                 "enabled": false
               },
               "available": true,
@@ -1204,8 +1204,8 @@
             },
             {
               "id": "string-array-packing",
-              "origin": "default",
-              "status": "automatic-off",
+              "origin": "policy",
+              "status": "disabled",
               "missing_prerequisites": [],
               "permitted_risks": [],
               "producers": [
@@ -1220,14 +1220,17 @@
             },
             {
               "id": "startup-reconstruction",
-              "origin": "default",
-              "status": "automatic-off",
+              "origin": "policy",
+              "status": "enabled",
               "missing_prerequisites": [],
-              "permitted_risks": [],
+              "permitted_risks": [
+                "neutral",
+                "startup"
+              ],
               "producers": [
                 {
                   "stage": "java-script-formation",
-                  "enabled": false,
+                  "enabled": true,
                   "prerequisites": [
                     "target-compaction"
                   ]
@@ -1236,11 +1239,9 @@
             },
             {
               "id": "recurring-reconstruction",
-              "origin": "default",
-              "status": "prerequisite-disabled",
-              "missing_prerequisites": [
-                "startup-reconstruction"
-              ],
+              "origin": "policy",
+              "status": "disabled",
+              "missing_prerequisites": [],
               "permitted_risks": [],
               "producers": [
                 {
@@ -1369,7 +1370,7 @@
                   "keep_published_function_names": true,
                   "pristine_builtins": true,
                   "pure_property_reads": true,
-                  "unconstructed_callbacks": false,
+                  "unconstructed_callbacks": true,
                   "numeric_lengths": true,
                   "strip_debug": true,
                   "strip_console_calls": false,
@@ -1924,7 +1925,7 @@
                   {
                     "id": "string-array-packing",
                     "state": {
-                      "permission": "auto",
+                      "permission": "off",
                       "enabled": false
                     },
                     "available": true,
@@ -1957,8 +1958,8 @@
                   {
                     "id": "startup-reconstruction",
                     "state": {
-                      "permission": "auto",
-                      "enabled": false
+                      "permission": "on",
+                      "enabled": true
                     },
                     "available": true,
                     "definition": {
@@ -1989,7 +1990,7 @@
                   {
                     "id": "recurring-reconstruction",
                     "state": {
-                      "permission": "auto",
+                      "permission": "off",
                       "enabled": false
                     },
                     "available": true,
@@ -2201,7 +2202,7 @@
                   "keep_published_function_names": true,
                   "pristine_builtins": true,
                   "pure_property_reads": true,
-                  "unconstructed_callbacks": false,
+                  "unconstructed_callbacks": true,
                   "numeric_lengths": true,
                   "strip_debug": true,
                   "strip_console_calls": false,
@@ -2756,7 +2757,7 @@
                   {
                     "id": "string-array-packing",
                     "state": {
-                      "permission": "auto",
+                      "permission": "off",
                       "enabled": false
                     },
                     "available": true,
@@ -2789,8 +2790,8 @@
                   {
                     "id": "startup-reconstruction",
                     "state": {
-                      "permission": "auto",
-                      "enabled": false
+                      "permission": "on",
+                      "enabled": true
                     },
                     "available": true,
                     "definition": {
@@ -2821,7 +2822,7 @@
                   {
                     "id": "recurring-reconstruction",
                     "state": {
-                      "permission": "auto",
+                      "permission": "off",
                       "enabled": false
                     },
                     "available": true,
@@ -3033,7 +3034,7 @@
                   "keep_published_function_names": true,
                   "pristine_builtins": true,
                   "pure_property_reads": true,
-                  "unconstructed_callbacks": false,
+                  "unconstructed_callbacks": true,
                   "numeric_lengths": true,
                   "strip_debug": true,
                   "strip_console_calls": false,
@@ -3588,7 +3589,7 @@
                   {
                     "id": "string-array-packing",
                     "state": {
-                      "permission": "auto",
+                      "permission": "off",
                       "enabled": false
                     },
                     "available": true,
@@ -3621,8 +3622,8 @@
                   {
                     "id": "startup-reconstruction",
                     "state": {
-                      "permission": "auto",
-                      "enabled": false
+                      "permission": "on",
+                      "enabled": true
                     },
                     "available": true,
                     "definition": {
@@ -3653,7 +3654,7 @@
                   {
                     "id": "recurring-reconstruction",
                     "state": {
-                      "permission": "auto",
+                      "permission": "off",
                       "enabled": false
                     },
                     "available": true,
@@ -3850,21 +3851,21 @@
             "."
           ]
         ],
-        "primary_fingerprint": "a056a93ad91228de8e0727b5444d47b81dbdd99b8d69adaacfd8682b487678c9",
+        "primary_fingerprint": "6ffeb320b71b12b825646390e59778740bc9083043e92f1e49090b572d9976b3",
         "fingerprint_scope": "requested delivery and objective policies"
       },
-      "compileWallMs": 28717
+      "compileWallMs": 97845
     },
     {
       "name": "closed",
       "config": "lilscript.closed.toml",
-      "configSha256": "eec54fdbecc555cebe1a84cbb76dd57d099d6a2b863856b75ceb3948a3f804a0",
+      "configSha256": "d5cca062ceb24b5515ffdedf5d0a935186d5fe0f3367b4c0fc176a0a26c2b9a1",
       "mode": "production",
       "target": "js-module",
-      "sourceSha256": "f7f67353bdff7a3fe69de81d54b9169be98665c886cd479fa17852289374d493",
-      "manifestSha256": "0927fab21aae5ab03f35648a286f2456a37cc0443244a35057b9392caa6b89f1",
+      "sourceSha256": "008b2a7b46041ce4c4376c2eab92828a1bac2ea3ce4ad7ff3fb52489200236f7",
+      "manifestSha256": "b85215eaeb0f204b29e4d24e88d00550b898d8a5beae470f1994ef65d849291c",
       "resolvedPolicy": {
-        "config": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remarklil/lilscript.closed.toml",
+        "config": "/home/azureuser/lilscript-work/wt/remarklil-fix/lilscript.closed.toml",
         "warnings": [],
         "request": {
           "logical_work": 40000000000,
@@ -3885,7 +3886,7 @@
           "mode": "Production",
           "target": "JsModule"
         },
-        "fingerprint": "4ac77a4c4fc1062f29778ac9e33eb39299018694f6296c5d656cf9d17783e1bc",
+        "fingerprint": "9bf37123d293e4d5d3e5eb0b73b5f3809faf3ef976d0d52717372816d02eced2",
         "policy": {
           "schema": 3,
           "algorithm": 94,
@@ -3917,7 +3918,7 @@
             "keep_published_function_names": true,
             "pristine_builtins": true,
             "pure_property_reads": false,
-            "unconstructed_callbacks": false,
+            "unconstructed_callbacks": true,
             "numeric_lengths": true,
             "strip_debug": true,
             "strip_console_calls": false,
@@ -4472,7 +4473,7 @@
             {
               "id": "string-array-packing",
               "state": {
-                "permission": "auto",
+                "permission": "off",
                 "enabled": false
               },
               "available": true,
@@ -4505,8 +4506,8 @@
             {
               "id": "startup-reconstruction",
               "state": {
-                "permission": "auto",
-                "enabled": false
+                "permission": "on",
+                "enabled": true
               },
               "available": true,
               "definition": {
@@ -4537,7 +4538,7 @@
             {
               "id": "recurring-reconstruction",
               "state": {
-                "permission": "auto",
+                "permission": "off",
                 "enabled": false
               },
               "available": true,
@@ -5054,8 +5055,8 @@
             },
             {
               "id": "string-array-packing",
-              "origin": "default",
-              "status": "automatic-off",
+              "origin": "policy",
+              "status": "disabled",
               "missing_prerequisites": [],
               "permitted_risks": [],
               "producers": [
@@ -5070,14 +5071,17 @@
             },
             {
               "id": "startup-reconstruction",
-              "origin": "default",
-              "status": "automatic-off",
+              "origin": "policy",
+              "status": "enabled",
               "missing_prerequisites": [],
-              "permitted_risks": [],
+              "permitted_risks": [
+                "neutral",
+                "startup"
+              ],
               "producers": [
                 {
                   "stage": "java-script-formation",
-                  "enabled": false,
+                  "enabled": true,
                   "prerequisites": [
                     "target-compaction"
                   ]
@@ -5086,11 +5090,9 @@
             },
             {
               "id": "recurring-reconstruction",
-              "origin": "default",
-              "status": "prerequisite-disabled",
-              "missing_prerequisites": [
-                "startup-reconstruction"
-              ],
+              "origin": "policy",
+              "status": "disabled",
+              "missing_prerequisites": [],
               "permitted_risks": [],
               "producers": [
                 {
@@ -5181,296 +5183,296 @@
           "resources": "service ceilings intersect TOML limits; the smaller value wins"
         }
       },
-      "compileWallMs": 68765
+      "compileWallMs": 105933
     }
   ],
   "artifacts": {
     "remark.esm.js": {
-      "sha256": "d76a81ad113ec6a1efca4f4256b33a8b401564f52c4b6cf72d876d0740f348d7",
-      "raw": 138659,
+      "sha256": "09d4fbfa119d4d42a1301c071447f91df2aaa44c812848ef8959e88c0084cb96",
+      "raw": 102216,
       "codec": "brotli",
-      "codecBytes": 37033,
+      "codecBytes": 31999,
       "output": "public/primary",
       "policyFingerprint": [
-        160,
-        86,
-        169,
-        58,
-        217,
+        111,
+        254,
+        179,
+        32,
+        183,
+        27,
         18,
-        40,
-        222,
-        142,
-        7,
-        39,
-        181,
-        68,
-        77,
-        71,
         184,
-        29,
-        189,
-        217,
-        155,
-        141,
-        105,
-        173,
-        170,
-        207,
-        216,
-        104,
-        43,
-        72,
-        118,
+        37,
+        100,
+        99,
+        144,
+        229,
+        151,
         120,
-        201
+        116,
+        11,
+        201,
+        8,
+        48,
+        67,
+        233,
+        47,
+        30,
+        73,
+        9,
+        11,
+        87,
+        45,
+        153,
+        118,
+        179
       ]
     },
     "remark.umd.js": {
-      "sha256": "983083da646af258757d5930c2b5cf2bf5f9d5257e89e94906b340ff4f9795cc",
-      "raw": 138868,
+      "sha256": "e6cb5cff1e2e7b8d27af250c006a0166e1550ae8881e3cd885a13749e5735da3",
+      "raw": 102378,
       "codec": "brotli",
-      "codecBytes": 37105,
+      "codecBytes": 32148,
       "output": "public/browser",
       "policyFingerprint": [
-        249,
-        128,
-        98,
-        34,
-        63,
-        170,
-        19,
-        106,
-        51,
-        223,
-        212,
-        221,
-        164,
-        170,
-        74,
-        38,
-        101,
-        58,
-        66,
-        178,
-        243,
-        227,
+        188,
+        214,
+        147,
+        65,
+        247,
         17,
-        126,
-        232,
-        111,
-        210,
-        7,
-        252,
-        191,
-        236,
-        54
+        227,
+        170,
+        229,
+        202,
+        178,
+        239,
+        40,
+        29,
+        60,
+        49,
+        130,
+        88,
+        151,
+        222,
+        160,
+        78,
+        24,
+        143,
+        3,
+        157,
+        223,
+        229,
+        23,
+        120,
+        214,
+        223
       ]
     },
     "remark.cjs": {
-      "sha256": "74c22ead6a07ec7fe6291ced1cec87c6b4e54ecca76c4e28c72db659f5bcc15c",
-      "raw": 138767,
+      "sha256": "f6c669219d1f43343b72b0a340d9fe8d82d3b959b7c02c3987d8b96da54779e2",
+      "raw": 101989,
       "codec": "brotli",
-      "codecBytes": 37061,
+      "codecBytes": 32089,
       "output": "public/cjs",
       "policyFingerprint": [
-        20,
-        114,
+        71,
+        145,
+        43,
+        210,
+        248,
+        230,
+        169,
+        186,
+        6,
+        28,
+        35,
+        129,
+        124,
+        160,
+        217,
+        65,
+        89,
+        167,
+        144,
+        131,
+        34,
+        208,
+        149,
+        144,
         101,
-        40,
-        53,
-        203,
-        143,
-        102,
-        44,
-        69,
-        15,
-        26,
-        173,
-        59,
-        32,
-        140,
-        5,
-        158,
-        93,
-        201,
-        38,
-        237,
-        202,
-        238,
-        105,
-        113,
-        244,
-        13,
-        46,
-        250,
-        136,
-        190
+        116,
+        95,
+        254,
+        112,
+        91,
+        52,
+        107
       ]
     },
     "remark.test.js": {
-      "sha256": "cbe2b7adcbbdf8c8ba7de1eceed0c0ed324f9ca6e704b17096d2215eeba0eabb",
-      "raw": 138856,
+      "sha256": "f93bf9b826ed8d40382f35c105f1d802c15fc5d99e691b9406e8c73b0387a92f",
+      "raw": 102447,
       "codec": "brotli",
-      "codecBytes": 37114,
+      "codecBytes": 32073,
       "output": "public/test",
       "policyFingerprint": [
-        135,
-        93,
-        148,
-        161,
-        65,
-        181,
+        158,
+        231,
+        102,
+        81,
+        196,
+        18,
+        212,
+        164,
+        43,
+        216,
+        212,
+        57,
+        157,
+        60,
+        222,
+        250,
+        77,
+        218,
         244,
-        175,
-        1,
-        249,
-        138,
-        36,
-        100,
-        144,
-        109,
-        236,
-        225,
-        202,
-        109,
-        136,
-        139,
-        188,
-        21,
-        71,
-        141,
-        42,
+        241,
+        247,
         66,
         152,
-        207,
-        156,
-        36,
-        148
+        242,
+        46,
+        22,
+        186,
+        187,
+        239,
+        97,
+        77,
+        83
       ]
     },
     "remark.closed.js": {
-      "sha256": "c3ae68ec98e932f57a16b4d59cc5fdd36f6df9fe8d4074d89a0dc6f3a3613117",
-      "raw": 138062,
+      "sha256": "ddf240b2d624f86ecf7f551f0d9d9654011fa537e5e07c6e0feac618fda00144",
+      "raw": 102273,
       "codec": "brotli",
-      "codecBytes": 36878,
+      "codecBytes": 32032,
       "output": "closed/primary",
       "policyFingerprint": [
-        74,
-        199,
-        122,
-        76,
-        79,
-        193,
-        6,
-        47,
-        41,
-        119,
-        138,
-        201,
-        227,
+        155,
+        243,
+        113,
+        35,
+        210,
+        147,
+        228,
+        213,
+        211,
+        229,
+        235,
+        11,
+        115,
+        181,
+        243,
+        128,
+        159,
+        175,
         62,
-        179,
-        146,
-        153,
-        1,
-        134,
-        148,
-        246,
-        41,
-        108,
-        93,
-        101,
-        108,
         249,
-        209,
-        119,
-        131,
-        225,
-        188
+        118,
+        208,
+        213,
+        39,
+        23,
+        55,
+        40,
+        22,
+        208,
+        46,
+        206,
+        210
       ]
     },
     "remark.raw.js": {
-      "sha256": "d76a81ad113ec6a1efca4f4256b33a8b401564f52c4b6cf72d876d0740f348d7",
-      "raw": 138659,
+      "sha256": "09d4fbfa119d4d42a1301c071447f91df2aaa44c812848ef8959e88c0084cb96",
+      "raw": 102216,
       "codec": "brotli",
-      "codecBytes": 37033,
+      "codecBytes": 31999,
       "output": "public/primary",
       "policyFingerprint": [
-        160,
-        86,
-        169,
-        58,
-        217,
+        111,
+        254,
+        179,
+        32,
+        183,
+        27,
         18,
-        40,
-        222,
-        142,
-        7,
-        39,
-        181,
-        68,
-        77,
-        71,
         184,
-        29,
-        189,
-        217,
-        155,
-        141,
-        105,
-        173,
-        170,
-        207,
-        216,
-        104,
-        43,
-        72,
-        118,
+        37,
+        100,
+        99,
+        144,
+        229,
+        151,
         120,
-        201
+        116,
+        11,
+        201,
+        8,
+        48,
+        67,
+        233,
+        47,
+        30,
+        73,
+        9,
+        11,
+        87,
+        45,
+        153,
+        118,
+        179
       ],
       "aliasOf": "remark.esm.js"
     },
     "remark.closed.raw.js": {
-      "sha256": "c3ae68ec98e932f57a16b4d59cc5fdd36f6df9fe8d4074d89a0dc6f3a3613117",
-      "raw": 138062,
+      "sha256": "ddf240b2d624f86ecf7f551f0d9d9654011fa537e5e07c6e0feac618fda00144",
+      "raw": 102273,
       "codec": "brotli",
-      "codecBytes": 36878,
+      "codecBytes": 32032,
       "output": "closed/primary",
       "policyFingerprint": [
-        74,
-        199,
-        122,
-        76,
-        79,
-        193,
-        6,
-        47,
-        41,
-        119,
-        138,
-        201,
-        227,
+        155,
+        243,
+        113,
+        35,
+        210,
+        147,
+        228,
+        213,
+        211,
+        229,
+        235,
+        11,
+        115,
+        181,
+        243,
+        128,
+        159,
+        175,
         62,
-        179,
-        146,
-        153,
-        1,
-        134,
-        148,
-        246,
-        41,
-        108,
-        93,
-        101,
-        108,
         249,
-        209,
-        119,
-        131,
-        225,
-        188
+        118,
+        208,
+        213,
+        39,
+        23,
+        55,
+        40,
+        22,
+        208,
+        46,
+        206,
+        210
       ],
       "aliasOf": "remark.closed.js"
     }
@@ -5485,6 +5487,6 @@
     "dist/remark.raw.js": "compiler",
     "dist/remark.closed.raw.js": "compiler"
   },
-  "dependencyLockSha256": "2f93f0da0e9b0cbee86fdccf288da646db0d9852da6e65c46fc3db69075fbae0",
-  "manifestSha256": "2bafee18b45412c9f48f408ae1d4cb009135d7abe24b9fd72d8e401b5b773b01"
+  "dependencyLockSha256": "399e301d6ea5c6ce284e29a47d2469cad6ef26e16ae45bbb1b6f75853b0aba1d",
+  "manifestSha256": "fadc619fab8805026967df637a4f18a37f3f82be5f0a71849e04ff3986c15036"
 }

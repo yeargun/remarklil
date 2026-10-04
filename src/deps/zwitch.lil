@@ -11,14 +11,14 @@ export JsValue zwitch(string key, JsValue options) {
     if (args.length.toInt() > 0) {
       value = args[0];
     }
-    JsValue fn = JS.get(one, "invalid");
-    JsValue handlers = JS.get(one, "handlers");
+    JsValue fn = one["invalid"];
+    JsValue handlers = one["handlers"];
     if (value.truthy() && hasOwn(value, key)) {
       string id = jsString(JS.get(value, key));
       if (hasOwn(handlers, id)) {
         fn = JS.get(handlers, id);
       } else {
-        fn = JS.get(one, "unknown");
+        fn = one["unknown"];
       }
     }
     if (fn.truthy()) {
@@ -26,12 +26,12 @@ export JsValue zwitch(string key, JsValue options) {
     }
     return undef();
   });
-  JsValue handlers = JS.get(settings, "handlers");
+  JsValue handlers = settings["handlers"];
   if (isNullish(handlers)) {
     handlers = JS.object();
   }
-  JS.set(one, "handlers", handlers);
-  JS.set(one, "invalid", JS.get(settings, "invalid"));
-  JS.set(one, "unknown", JS.get(settings, "unknown"));
+  one["handlers"] = handlers;
+  one["invalid"] = settings["invalid"];
+  one["unknown"] = settings["unknown"];
   return one;
 }

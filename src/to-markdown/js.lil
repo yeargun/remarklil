@@ -29,7 +29,7 @@ export bool hasKey(JsValue obj, string key) {
 }
 
 export JsValue opt(JsValue state) {
-  JsValue options = JS.get(state, "options");
+  JsValue options = state["options"];
   if (isNullish(options)) {
     return JS.object();
   }
@@ -41,7 +41,7 @@ export void fail(string message) {
 }
 
 export JsValue jsCharCodeAt(JsValue value, int index) {
-  return JS.call(JS.get(value, "charCodeAt"), value, index);
+  return JS.invoke(value, "charCodeAt", index);
 }
 
 export string repeatStr(string value, int count) {

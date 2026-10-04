@@ -4,159 +4,136 @@ import { patternInScope } from "./pattern-in-scope.lil";
 
 Regex punct = new Regex("[!-/:-@[-`{-~]", "");
 
-JsValue numerical = JS.method2((JsValue _s, JsValue a, JsValue b) => {
-  return JS.number(a) - JS.number(b);
-});
 
 string escapeBackslashes(string value, string after) {
   Regex expression = new Regex("\\\\(?=[!-/:-@[-`{-~])", "g");
-  JsValue positions = JS.array();
-  JsValue results = JS.array();
+  int[] positions = [];
+  string[] results = [];
   string whole = value + after;
   int start = 0;
-  JsValue found = JS.undefined();
   while (true) {
-    found = regexExec(expression, whole);
+    JsValue found = regexExec(expression, whole);
     if (JS.isNullish(found)) {
       break;
     }
-    push(positions, JS.get(found, "index"));
+    positions.push(JS.number(found["index"]).toInt());
   }
-  int index = -1;
-  int n = arrLen(positions);
-  while (true) {
-    index = index + 1;
-    if (index >= n) {
-      break;
+  for (int index = 0; index < positions.length; index++) {
+    if (start != positions[index]) {
+      results.push(value.slice(start, positions[index]));
     }
-    int pos = JS.number(positions[index]).toInt();
-    if (start != pos) {
-      push(results, value.slice(start, pos));
-    }
-    push(results, "\\");
-    start = pos;
+    results.push("\\");
+    start = positions[index];
   }
-  push(results, value.slice(start));
-  return jsString(JS.call(JS.get(results, "join"), results, ""));
+  results.push(value.slice(start));
+  return results.join("");
 }
 
 export string safe(JsValue state, JsValue input, JsValue config) {
   string before = "";
   string after = "";
-  if (JS.get(config, "before").truthy()) {
-    before = jsString(JS.get(config, "before"));
+  if (config["before"].truthy()) {
+    before = jsString(config["before"]);
   }
   string mid = "";
   if (input.truthy()) {
     mid = jsString(input);
   }
-  if (JS.get(config, "after").truthy()) {
-    after = jsString(JS.get(config, "after"));
+  if (config["after"].truthy()) {
+    after = jsString(config["after"]);
   }
   string value = before + mid + after;
-  JsValue positions = JS.array();
-  JsValue result = JS.array();
-  JsValue infos = JS.object();
-  int index = -1;
-  JsValue unsafe = JS.get(state, "unsafe");
+  // One entry per unsafe position: where an escape may go, and whether only a `before`/`after` context made it unsafe.
+  int[] positions = [];
+  bool[] befores = [];
+  bool[] afters = [];
+  string[] result = [];
+  JsValue unsafe = state["unsafe"];
   int un = arrLen(unsafe);
-  while (true) {
-    index = index + 1;
-    if (index >= un) {
-      break;
-    }
+  for (int index = 0; index < un; index++) {
     JsValue pattern = unsafe[index];
-    if (!patternInScope(JS.get(state, "stack"), pattern)) {
+    if (!patternInScope(state["stack"], pattern)) {
       continue;
     }
-    JsValue expression = JS.call(JS.get(state, "compilePattern"), state, pattern);
-    JsValue found = JS.undefined();
+    JsValue expression = JS.invoke(state, "compilePattern", pattern);
     while (true) {
-      found = JS.call(JS.get(expression, "exec"), expression, value);
+      JsValue found = JS.invoke(expression, "exec", value);
       if (JS.isNullish(found)) {
         break;
       }
-      bool beforeCond = hasOwn(pattern, "before") || JS.get(pattern, "atBreak").truthy();
-      bool afterCond = hasOwn(pattern, "after");
-      int position = JS.number(JS.get(found, "index")).toInt();
+      bool beforeCond = JS.in("before", pattern) || pattern["atBreak"].truthy();
+      bool afterCond = JS.in("after", pattern);
+      int position = JS.number(found["index"]).toInt();
       if (beforeCond) {
         position = position + jsString(found[1]).length;
       }
-      if (includesVal(positions, position)) {
-        JsValue info = JS.get(infos, JS.string(position));
-        if (JS.get(info, "before").truthy() && !beforeCond) {
-          JS.set(info, "before", false);
+      int slot = -1;
+      for (int m = 0; m < positions.length; m++) {
+        if (positions[m] == position) {
+          slot = m;
+          break;
         }
-        if (JS.get(info, "after").truthy() && !afterCond) {
-          JS.set(info, "after", false);
-        }
+      }
+      if (slot < 0) {
+        positions.push(position);
+        befores.push(beforeCond);
+        afters.push(afterCond);
       } else {
-        push(positions, position);
-        JS.set(infos, JS.string(position), JS.object("before", beforeCond, "after", afterCond));
+        if (!beforeCond) {
+          befores[slot] = false;
+        }
+        if (!afterCond) {
+          afters[slot] = false;
+        }
       }
     }
   }
-  JS.call(JS.get(positions, "sort"), positions, numerical);
-  int start = 0;
-  if (before.length > 0) {
-    start = before.length;
-  }
-  int end = value.length;
-  if (after.length > 0) {
-    end = value.length - after.length;
-  }
-  index = -1;
-  int pn = arrLen(positions);
-  while (true) {
-    index = index + 1;
-    if (index >= pn) {
-      break;
+  // Positions are distinct, so an insertion sort gives upstream's numeric sort.
+  for (int i = 1; i < positions.length; i++) {
+    int position = positions[i];
+    bool b = befores[i];
+    bool a = afters[i];
+    int j = i - 1;
+    while (j >= 0 && positions[j] > position) {
+      positions[j + 1] = positions[j];
+      befores[j + 1] = befores[j];
+      afters[j + 1] = afters[j];
+      j--;
     }
-    int position = JS.number(positions[index]).toInt();
+    positions[j + 1] = position;
+    befores[j + 1] = b;
+    afters[j + 1] = a;
+  }
+  int start = before.length;
+  int end = value.length - after.length;
+  int count = positions.length;
+  for (int index = 0; index < count; index++) {
+    int position = positions[index];
     if (position < start || position >= end) {
       continue;
     }
-    bool skip = false;
-    if (position + 1 < end && index + 1 < pn && JS.strictEqual(positions[index + 1], position + 1)) {
-      JsValue here = JS.get(infos, JS.string(position));
-      JsValue nxt = JS.get(infos, JS.string(position + 1));
-      if (JS.get(here, "after").truthy() && !JS.get(nxt, "before").truthy() && !JS.get(nxt, "after").truthy()) {
-        skip = true;
-      }
+    // Sorted and distinct: the info for `position ± 1`, when present, is the neighbouring mark.
+    if (position + 1 < end && index + 1 < count && positions[index + 1] == position + 1 && afters[index] && !befores[index + 1] && !afters[index + 1]) {
+      continue;
     }
-    if (!skip && index > 0 && JS.strictEqual(positions[index - 1], position - 1)) {
-      JsValue here = JS.get(infos, JS.string(position));
-      JsValue prev = JS.get(infos, JS.string(position - 1));
-      if (JS.get(here, "before").truthy() && !JS.get(prev, "before").truthy() && !JS.get(prev, "after").truthy()) {
-        skip = true;
-      }
-    }
-    if (skip) {
+    if (index > 0 && positions[index - 1] == position - 1 && befores[index] && !befores[index - 1] && !afters[index - 1]) {
       continue;
     }
     if (start != position) {
-      push(result, escapeBackslashes(value.slice(start, position), "\\"));
+      result.push(escapeBackslashes(value.slice(start, position), "\\"));
     }
     start = position;
     string ch = value.charAt(position);
-    JsValue encode = JS.get(config, "encode");
-    bool encoded = false;
-    if (encode.truthy() && includesVal(encode, ch)) {
-      encoded = true;
-    }
-    if (punct.test(ch) && !encoded) {
-      push(result, "\\");
+    JsValue encode = config["encode"];
+    if (punct.test(ch) && !(encode.truthy() && includesVal(encode, ch))) {
+      result.push("\\");
     } else {
-      push(result, encodeCharacterReference(value.charCodeAt(position)));
+      result.push(encodeCharacterReference(value.charCodeAt(position)));
       start = start + 1;
     }
   }
-  string afterForEscape = "";
-  if (JS.get(config, "after").truthy()) {
-    afterForEscape = jsString(JS.get(config, "after"));
-  }
-  push(result, escapeBackslashes(value.slice(start, end), afterForEscape));
-  return jsString(JS.call(JS.get(result, "join"), result, ""));
+  result.push(escapeBackslashes(value.slice(start, end), after));
+  return result.join("");
 }
 
 export JsValue unusedReplace(JsValue value) {

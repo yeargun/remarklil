@@ -1,18 +1,13 @@
 import { apply, arrLen, arrSet, jsString, objectAssign, pop, push, undef } from "../../parse/micromark/host.lil";
 
 string between(JsValue left, JsValue right, JsValue parent, JsValue state) {
-  int index = arrLen(JS.get(state, "join"));
+  int index = arrLen(state["join"]);
   while (true) {
     index = index - 1;
     if (index < 0) {
       break;
     }
-    JsValue joinArgs = JS.array();
-    push(joinArgs, left);
-    push(joinArgs, right);
-    push(joinArgs, parent);
-    push(joinArgs, state);
-    JsValue result = apply(JS.get(state, "join")[index], undef(), joinArgs);
+    JsValue result = JS.call(state["join"][index], state["join"], left, right, parent, state);
     if (JS.strictEqual(result, true) || JS.strictEqual(result, 1)) {
       break;
     }
@@ -28,16 +23,16 @@ string between(JsValue left, JsValue right, JsValue parent, JsValue state) {
 }
 
 export string containerFlow(JsValue parent, JsValue state, JsValue info) {
-  JsValue indexStack = JS.get(state, "indexStack");
-  JsValue children = JS.get(parent, "children");
+  JsValue indexStack = state["indexStack"];
+  JsValue children = parent["children"];
   if (!children.truthy()) {
     children = JS.array();
   }
-  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  JsValue tracker = JS.invoke(state, "createTracker", info);
   JsValue results = JS.array();
   int index = -1;
   int n = arrLen(children);
-  push(indexStack, -1);
+  JS.invoke(indexStack, "push", -1);
   while (true) {
     index = index + 1;
     if (index >= n) {
@@ -45,22 +40,17 @@ export string containerFlow(JsValue parent, JsValue state, JsValue info) {
     }
     JsValue child = children[index];
     arrSet(indexStack, arrLen(indexStack) - 1, index);
-    JsValue childInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
-    JS.set(childInfo, "before", "\n");
-    JS.set(childInfo, "after", "\n");
-    JsValue handleArgs = JS.array();
-    push(handleArgs, child);
-    push(handleArgs, parent);
-    push(handleArgs, state);
-    push(handleArgs, childInfo);
-    push(results, JS.call(JS.get(tracker, "move"), tracker, apply(JS.get(state, "handle"), state, handleArgs)));
-    if (jsString(JS.get(child, "type")) != "list") {
-      JS.set(state, "bulletLastUsed", undef());
+    JsValue childInfo = objectAssign(JS.object(), JS.invoke(tracker, "current"));
+    childInfo["before"] = "\n";
+    childInfo["after"] = "\n";
+    JS.invoke(results, "push", JS.invoke(tracker, "move", JS.invoke(state, "handle", child, parent, state, childInfo)));
+    if (jsString(child["type"]) != "list") {
+      state["bulletLastUsed"] = undef();
     }
     if (index < n - 1) {
-      push(results, JS.call(JS.get(tracker, "move"), tracker, between(child, children[index + 1], parent, state)));
+      JS.invoke(results, "push", JS.invoke(tracker, "move", between(child, children[index + 1], parent, state)));
     }
   }
   pop(indexStack);
-  return jsString(JS.call(JS.get(results, "join"), results, ""));
+  return jsString(JS.invoke(results, "join", ""));
 }
