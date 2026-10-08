@@ -2,7 +2,7 @@ import { jsString } from "../../parse/micromark/host.lil";
 import { fail, opt } from "../js.lil";
 
 export string checkStrong(JsValue state) {
-  JsValue markerV = JS.get(opt(state), "strong");
+  JsValue markerV = opt(state)["strong"];
   string marker = "*";
   if (markerV.truthy()) {
     marker = jsString(markerV);

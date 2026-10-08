@@ -18,13 +18,13 @@ JsValue invalidNode(JsValue _self, JsValue args) {
 }
 
 JsValue unknownNode(JsValue _self, JsValue args) {
-  throw JS.construct(ErrorRef, "Cannot handle unknown node `" + jsString(JS.get(args[0], "type")) + "`");
+  throw JS.construct(ErrorRef, "Cannot handle unknown node `" + jsString(args[0]["type"]) + "`");
 }
 
 JsValue joinDefinition(JsValue _self, JsValue args) {
   JsValue left = args[0];
   JsValue right = args[1];
-  if (jsString(JS.get(left, "type")) == "definition" && jsString(JS.get(left, "type")) == jsString(JS.get(right, "type"))) {
+  if (jsString(left["type"]) == "definition" && jsString(left["type"]) == jsString(right["type"])) {
     return 0;
   }
   return undef();
@@ -36,56 +36,52 @@ export JsValue toMarkdownImpl(JsValue tree, JsValue options) {
     settings = JS.object();
   }
   JsValue state = JS.object();
-  JS.set(state, "handlers", copyHandlers(defaultHandlers));
-  JS.set(state, "indexStack", JS.array());
-  JS.set(state, "join", copyArray(defaultJoin));
-  JS.set(state, "options", JS.object());
-  JS.set(state, "stack", JS.array());
-  JS.set(state, "unsafe", copyArray(defaultUnsafe));
-  JS.set(state, "associationId", JS.method1((JsValue _s, JsValue node) => {
+  state["handlers"] = copyHandlers(defaultHandlers);
+  state["indexStack"] = JS.array();
+  state["join"] = copyArray(defaultJoin);
+  state["options"] = JS.object();
+  state["stack"] = JS.array();
+  state["unsafe"] = copyArray(defaultUnsafe);
+  state["associationId"] = JS.method1((JsValue _s, JsValue node) => {
     return association(node);
-  }));
-  JS.set(state, "containerPhrasing", JS.method2((JsValue self, JsValue parent, JsValue info) => {
+  });
+  state["containerPhrasing"] = JS.method2((JsValue self, JsValue parent, JsValue info) => {
     return containerPhrasing(parent, self, info);
-  }));
-  JS.set(state, "containerFlow", JS.method2((JsValue self, JsValue parent, JsValue info) => {
+  });
+  state["containerFlow"] = JS.method2((JsValue self, JsValue parent, JsValue info) => {
     return containerFlow(parent, self, info);
-  }));
-  JS.set(state, "createTracker", JS.method1((JsValue _s, JsValue config) => {
+  });
+  state["createTracker"] = JS.method1((JsValue _s, JsValue config) => {
     return track(config);
-  }));
-  JS.set(state, "compilePattern", JS.method1((JsValue _s, JsValue pattern) => {
+  });
+  state["compilePattern"] = JS.method1((JsValue _s, JsValue pattern) => {
     return compilePattern(pattern);
-  }));
-  JS.set(state, "enter", JS.method1((JsValue _s, JsValue name) => {
-    push(JS.get(state, "stack"), name);
+  });
+  state["enter"] = JS.method1((JsValue _s, JsValue name) => {
+    JS.invoke(state["stack"], "push", name);
     return JS.method0((JsValue _e) => {
-      JS.call(JS.get(JS.get(state, "stack"), "pop"), JS.get(state, "stack"));
+      JS.invoke(state["stack"], "pop");
       return undef();
     });
-  }));
-  JS.set(state, "indentLines", JS.method2((JsValue _s, JsValue value, JsValue mapper) => {
+  });
+  state["indentLines"] = JS.method2((JsValue _s, JsValue value, JsValue mapper) => {
     return indentLines(value, mapper);
-  }));
-  JS.set(state, "safe", JS.method2((JsValue self, JsValue value, JsValue config) => {
+  });
+  state["safe"] = JS.method2((JsValue self, JsValue value, JsValue config) => {
     return safe(self, value, config);
-  }));
+  });
   configure(state, settings);
-  if (JS.get(JS.get(state, "options"), "tightDefinitions").truthy()) {
-    push(JS.get(state, "join"), JS.methodRest(joinDefinition));
+  if ((state["options"])["tightDefinitions"].truthy()) {
+    JS.invoke(state["join"], "push", JS.methodRest(joinDefinition));
   }
-  JS.set(
-    state,
-    "handle",
-    zwitch("type", JS.object(
+  state["handle"] = zwitch("type", JS.object(
       "invalid",
       JS.methodRest(invalidNode),
       "unknown",
       JS.methodRest(unknownNode),
       "handlers",
-      JS.get(state, "handlers")
-    ))
-  );
+      state["handlers"]
+    ));
   JsValue startInfo = JS.object(
     "before",
     "\n",
@@ -96,12 +92,7 @@ export JsValue toMarkdownImpl(JsValue tree, JsValue options) {
     "lineShift",
     0
   );
-  JsValue handleArgs = JS.array();
-  push(handleArgs, tree);
-  push(handleArgs, undef());
-  push(handleArgs, state);
-  push(handleArgs, startInfo);
-  string result = jsString(apply(JS.get(state, "handle"), state, handleArgs));
+  string result = jsString(JS.invoke(state, "handle", tree, undef(), state, startInfo));
   if (result.length > 0) {
     int last = result.charCodeAt(result.length - 1);
     if (last != 10 && last != 13) {

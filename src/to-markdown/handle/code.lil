@@ -16,53 +16,53 @@ JsValue codeHandle(JsValue _self, JsValue args) {
   JsValue info = args[3];
   string marker = checkFence(state);
   string raw = "";
-  if (JS.get(node, "value").truthy()) {
-    raw = jsString(JS.get(node, "value"));
+  if (node["value"].truthy()) {
+    raw = jsString(node["value"]);
   }
   string suffix = "Tilde";
   if (marker == "`") {
     suffix = "GraveAccent";
   }
   if (formatCodeAsIndented(node, state)) {
-    JsValue exit = JS.call(JS.get(state, "enter"), state, "codeIndented");
-    string indented = jsString(JS.call(JS.get(state, "indentLines"), state, raw, JS.method3(mapIndented)));
+    JsValue exit = JS.invoke(state, "enter", "codeIndented");
+    string indented = jsString(JS.invoke(state, "indentLines", raw, JS.method3(mapIndented)));
     JS.call(exit, undef());
     return indented;
   }
-  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  JsValue tracker = JS.invoke(state, "createTracker", info);
   int streak = longestStreak(raw, marker);
   float seqLen = mathMax((streak + 1) * 1.0, 3.0);
   string sequence = marker.repeat(seqLen.toInt());
-  JsValue exit = JS.call(JS.get(state, "enter"), state, "codeFenced");
-  string value = jsString(JS.call(JS.get(tracker, "move"), tracker, sequence));
-  if (JS.get(node, "lang").truthy()) {
-    JsValue subexit = JS.call(JS.get(state, "enter"), state, "codeFencedLang" + suffix);
-    JsValue langInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
-    JS.set(langInfo, "before", value);
-    JS.set(langInfo, "after", " ");
+  JsValue exit = JS.invoke(state, "enter", "codeFenced");
+  string value = jsString(JS.invoke(tracker, "move", sequence));
+  if (node["lang"].truthy()) {
+    JsValue subexit = JS.invoke(state, "enter", "codeFencedLang" + suffix);
+    JsValue langInfo = objectAssign(JS.object(), JS.invoke(tracker, "current"));
+    langInfo["before"] = value;
+    langInfo["after"] = " ";
     JsValue encode = JS.array();
     JS.push(encode, "`");
-    JS.set(langInfo, "encode", encode);
-    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, JS.get(node, "lang"), langInfo)));
+    langInfo["encode"] = encode;
+    value = value + jsString(JS.invoke(tracker, "move", JS.invoke(state, "safe", node["lang"], langInfo)));
     JS.call(subexit, undef());
   }
-  if (JS.get(node, "lang").truthy() && JS.get(node, "meta").truthy()) {
-    JsValue subexit = JS.call(JS.get(state, "enter"), state, "codeFencedMeta" + suffix);
-    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, " "));
-    JsValue metaInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
-    JS.set(metaInfo, "before", value);
-    JS.set(metaInfo, "after", "\n");
+  if (node["lang"].truthy() && node["meta"].truthy()) {
+    JsValue subexit = JS.invoke(state, "enter", "codeFencedMeta" + suffix);
+    value = value + jsString(JS.invoke(tracker, "move", " "));
+    JsValue metaInfo = objectAssign(JS.object(), JS.invoke(tracker, "current"));
+    metaInfo["before"] = value;
+    metaInfo["after"] = "\n";
     JsValue encode = JS.array();
     JS.push(encode, "`");
-    JS.set(metaInfo, "encode", encode);
-    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(state, "safe"), state, JS.get(node, "meta"), metaInfo)));
+    metaInfo["encode"] = encode;
+    value = value + jsString(JS.invoke(tracker, "move", JS.invoke(state, "safe", node["meta"], metaInfo)));
     JS.call(subexit, undef());
   }
-  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, "\n"));
+  value = value + jsString(JS.invoke(tracker, "move", "\n"));
   if (raw.length > 0) {
-    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, raw + "\n"));
+    value = value + jsString(JS.invoke(tracker, "move", raw + "\n"));
   }
-  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, sequence));
+  value = value + jsString(JS.invoke(tracker, "move", sequence));
   JS.call(exit, undef());
   return value;
 }

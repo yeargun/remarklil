@@ -4,7 +4,7 @@ export bool phrasing(JsValue node) {
   if (isNullish(node) || JS.typeOf(node) != "object") {
     return false;
   }
-  string t = jsString(JS.get(node, "type"));
+  string t = jsString(node["type"]);
   if (t == "break") {
     return true;
   }

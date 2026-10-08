@@ -14,16 +14,16 @@ export string indentLines(JsValue value, JsValue mapper) {
       break;
     }
     string piece = text.slice(start, jsIntIndex(found));
-    push(result, JS.call(mapper, undef(), piece, line, piece.length == 0));
-    push(result, found[0]);
+    JS.invoke(result, "push", JS.call(mapper, undef(), piece, line, piece.length == 0));
+    JS.invoke(result, "push", found[0]);
     start = jsIntIndex(found) + jsString(found[0]).length;
     line = line + 1;
   }
   string tail = text.slice(start);
-  push(result, JS.call(mapper, undef(), tail, line, tail.length == 0));
-  return jsString(JS.call(JS.get(result, "join"), result, ""));
+  JS.invoke(result, "push", JS.call(mapper, undef(), tail, line, tail.length == 0));
+  return jsString(JS.invoke(result, "join", ""));
 }
 
 int jsIntIndex(JsValue found) {
-  return JS.number(JS.get(found, "index")).toInt();
+  return JS.number(found["index"]).toInt();
 }

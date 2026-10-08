@@ -1,71 +1,45 @@
-import { push } from "../parse/micromark/host.lil";
+// mdast-util-to-markdown lib/unsafe.js: the default patterns, in upstream order and key order.
+JsValue fullPhrasingSpans = JS.array("autolink", "destinationLiteral", "destinationRaw", "reference", "titleQuote", "titleApostrophe");
 
-JsValue fullPhrasingSpans = JS.array();
-push(fullPhrasingSpans, "autolink");
-push(fullPhrasingSpans, "destinationLiteral");
-push(fullPhrasingSpans, "destinationRaw");
-push(fullPhrasingSpans, "reference");
-push(fullPhrasingSpans, "titleQuote");
-push(fullPhrasingSpans, "titleApostrophe");
-
-JsValue atxLang = JS.array();
-push(atxLang, "codeFencedLangGraveAccent");
-push(atxLang, "codeFencedLangTilde");
-
-JsValue crIn = JS.array();
-push(crIn, "codeFencedLangGraveAccent");
-push(crIn, "codeFencedLangTilde");
-push(crIn, "codeFencedMetaGraveAccent");
-push(crIn, "codeFencedMetaTilde");
-push(crIn, "destinationLiteral");
-push(crIn, "headingAtx");
-
-JsValue labelRef = JS.array();
-push(labelRef, "label");
-push(labelRef, "reference");
-
-JsValue graveMeta = JS.array();
-push(graveMeta, "codeFencedLangGraveAccent");
-push(graveMeta, "codeFencedMetaGraveAccent");
-
-export JsValue defaultUnsafe = JS.array();
-push(defaultUnsafe, JS.object("character", "\t", "after", "[\\r\\n]", "inConstruct", "phrasing"));
-push(defaultUnsafe, JS.object("character", "\t", "before", "[\\r\\n]", "inConstruct", "phrasing"));
-push(defaultUnsafe, JS.object("character", "\t", "inConstruct", atxLang));
-push(defaultUnsafe, JS.object("character", "\r", "inConstruct", crIn));
-push(defaultUnsafe, JS.object("character", "\n", "inConstruct", crIn));
-push(defaultUnsafe, JS.object("character", " ", "after", "[\\r\\n]", "inConstruct", "phrasing"));
-push(defaultUnsafe, JS.object("character", " ", "before", "[\\r\\n]", "inConstruct", "phrasing"));
-push(defaultUnsafe, JS.object("character", " ", "inConstruct", atxLang));
-push(defaultUnsafe, JS.object("character", "!", "after", "\\[", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
-push(defaultUnsafe, JS.object("character", "\"", "inConstruct", "titleQuote"));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "#"));
-push(defaultUnsafe, JS.object("character", "#", "inConstruct", "headingAtx", "after", "(?:[\r\n]|$)"));
-push(defaultUnsafe, JS.object("character", "&", "after", "[#A-Za-z]", "inConstruct", "phrasing"));
-push(defaultUnsafe, JS.object("character", "'", "inConstruct", "titleApostrophe"));
-push(defaultUnsafe, JS.object("character", "(", "inConstruct", "destinationRaw"));
-push(defaultUnsafe, JS.object("before", "\\]", "character", "(", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
-push(defaultUnsafe, JS.object("atBreak", true, "before", "\\d+", "character", ")"));
-push(defaultUnsafe, JS.object("character", ")", "inConstruct", "destinationRaw"));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "*", "after", "(?:[ \t\r\n*])"));
-push(defaultUnsafe, JS.object("character", "*", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "+", "after", "(?:[ \t\r\n])"));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "-", "after", "(?:[ \t\r\n-])"));
-push(defaultUnsafe, JS.object("atBreak", true, "before", "\\d+", "character", ".", "after", "(?:[ \t\r\n]|$)"));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "<", "after", "[!/?A-Za-z]"));
-push(defaultUnsafe, JS.object("character", "<", "after", "[!/?A-Za-z]", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
-push(defaultUnsafe, JS.object("character", "<", "inConstruct", "destinationLiteral"));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "="));
-push(defaultUnsafe, JS.object("atBreak", true, "character", ">"));
-push(defaultUnsafe, JS.object("character", ">", "inConstruct", "destinationLiteral"));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "["));
-push(defaultUnsafe, JS.object("character", "[", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
-push(defaultUnsafe, JS.object("character", "[", "inConstruct", labelRef));
-push(defaultUnsafe, JS.object("character", "\\", "after", "[\\r\\n]", "inConstruct", "phrasing"));
-push(defaultUnsafe, JS.object("character", "]", "inConstruct", labelRef));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "_"));
-push(defaultUnsafe, JS.object("character", "_", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "`"));
-push(defaultUnsafe, JS.object("character", "`", "inConstruct", graveMeta));
-push(defaultUnsafe, JS.object("character", "`", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans));
-push(defaultUnsafe, JS.object("atBreak", true, "character", "~"));
+export JsValue defaultUnsafe = JS.array(
+  JS.object("character", "\t", "after", "[\\r\\n]", "inConstruct", "phrasing"),
+  JS.object("character", "\t", "before", "[\\r\\n]", "inConstruct", "phrasing"),
+  JS.object("character", "\t", "inConstruct", JS.array("codeFencedLangGraveAccent", "codeFencedLangTilde")),
+  JS.object("character", "\r", "inConstruct", JS.array("codeFencedLangGraveAccent", "codeFencedLangTilde", "codeFencedMetaGraveAccent", "codeFencedMetaTilde", "destinationLiteral", "headingAtx")),
+  JS.object("character", "\n", "inConstruct", JS.array("codeFencedLangGraveAccent", "codeFencedLangTilde", "codeFencedMetaGraveAccent", "codeFencedMetaTilde", "destinationLiteral", "headingAtx")),
+  JS.object("character", " ", "after", "[\\r\\n]", "inConstruct", "phrasing"),
+  JS.object("character", " ", "before", "[\\r\\n]", "inConstruct", "phrasing"),
+  JS.object("character", " ", "inConstruct", JS.array("codeFencedLangGraveAccent", "codeFencedLangTilde")),
+  JS.object("character", "!", "after", "\\[", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans),
+  JS.object("character", "\"", "inConstruct", "titleQuote"),
+  JS.object("atBreak", true, "character", "#"),
+  JS.object("character", "#", "inConstruct", "headingAtx", "after", "(?:[\r\n]|$)"),
+  JS.object("character", "&", "after", "[#A-Za-z]", "inConstruct", "phrasing"),
+  JS.object("character", "'", "inConstruct", "titleApostrophe"),
+  JS.object("character", "(", "inConstruct", "destinationRaw"),
+  JS.object("before", "\\]", "character", "(", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans),
+  JS.object("atBreak", true, "before", "\\d+", "character", ")"),
+  JS.object("character", ")", "inConstruct", "destinationRaw"),
+  JS.object("atBreak", true, "character", "*", "after", "(?:[ \t\r\n*])"),
+  JS.object("character", "*", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans),
+  JS.object("atBreak", true, "character", "+", "after", "(?:[ \t\r\n])"),
+  JS.object("atBreak", true, "character", "-", "after", "(?:[ \t\r\n-])"),
+  JS.object("atBreak", true, "before", "\\d+", "character", ".", "after", "(?:[ \t\r\n]|$)"),
+  JS.object("atBreak", true, "character", "<", "after", "[!/?A-Za-z]"),
+  JS.object("character", "<", "after", "[!/?A-Za-z]", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans),
+  JS.object("character", "<", "inConstruct", "destinationLiteral"),
+  JS.object("atBreak", true, "character", "="),
+  JS.object("atBreak", true, "character", ">"),
+  JS.object("character", ">", "inConstruct", "destinationLiteral"),
+  JS.object("atBreak", true, "character", "["),
+  JS.object("character", "[", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans),
+  JS.object("character", "[", "inConstruct", JS.array("label", "reference")),
+  JS.object("character", "\\", "after", "[\\r\\n]", "inConstruct", "phrasing"),
+  JS.object("character", "]", "inConstruct", JS.array("label", "reference")),
+  JS.object("atBreak", true, "character", "_"),
+  JS.object("character", "_", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans),
+  JS.object("atBreak", true, "character", "`"),
+  JS.object("character", "`", "inConstruct", JS.array("codeFencedLangGraveAccent", "codeFencedMetaGraveAccent")),
+  JS.object("character", "`", "inConstruct", "phrasing", "notInConstruct", fullPhrasingSpans),
+  JS.object("atBreak", true, "character", "~")
+);

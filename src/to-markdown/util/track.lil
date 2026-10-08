@@ -7,19 +7,19 @@ export JsValue track(JsValue config) {
   if (!options.truthy()) {
     options = JS.object();
   }
-  JsValue now = JS.get(options, "now");
+  JsValue now = options["now"];
   if (!now.truthy()) {
     now = JS.object();
   }
   float lineShift = 0.0;
-  if (JS.get(options, "lineShift").truthy()) {
-    lineShift = JS.number(JS.get(options, "lineShift"));
+  if (options["lineShift"].truthy()) {
+    lineShift = JS.number(options["lineShift"]);
   }
-  JsValue lineV = JS.get(now, "line");
+  JsValue lineV = now["line"];
   if (!lineV.truthy()) {
     lineV = 1;
   }
-  JsValue columnV = JS.get(now, "column");
+  JsValue columnV = now["column"];
   if (!columnV.truthy()) {
     columnV = 1;
   }
@@ -45,7 +45,7 @@ export JsValue track(JsValue config) {
     if (input.truthy()) {
       value = jsString(input);
     }
-    string[] chunks = JS.assume(JS.call(JS.get(value, "split"), value, splitEol));
+    string[] chunks = JS.assume(JS.invoke(value, "split", splitEol));
     int n = chunks.length;
     string tail = chunks[n - 1];
     line = line + (n - 1) * 1.0;

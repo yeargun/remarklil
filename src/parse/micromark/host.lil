@@ -1,5 +1,10 @@
-import { Array, Error, Number, Object, String, TextDecoder } from "../../unified/host.lil";
+extern JsValue Object;
+extern JsValue String;
+extern JsValue Number;
+extern JsValue Array;
+extern JsValue Error;
 extern JsValue Math;
+extern JsValue TextDecoder;
 extern JsValue encodeURIComponent;
 
 export JsValue ObjectRef = Object;
@@ -8,6 +13,21 @@ export JsValue MathRef = Math;
 export JsValue ErrorRef = Error;
 
 export JsValue codeEof = null;
+
+// Typed views of the tokenizer's plain point and token objects: field reads and writes stay direct member
+// accesses with no conversion.
+export extern class TokenizerPoint {
+  float _bufferIndex;
+  float _index;
+  float line;
+  float column;
+  float offset;
+}
+
+export extern class TokenizerToken {
+  TokenizerPoint start;
+  TokenizerPoint end;
+}
 
 export JsValue undef() {
   return JS.undefined();
@@ -45,17 +65,12 @@ export bool isObj(JsValue value) {
   return !isNullish(value) && JS.typeOf(value) == "object";
 }
 
+// String() already gives "undefined" and "null" for those two values.
 export string jsString(JsValue value) {
   if (value is string) {
     return value;
   }
-  if (JS.isUndefined(value)) {
-    return "undefined";
-  }
-  if (JS.isNullish(value)) {
-    return "null";
-  }
-  return JS.string(JS.call(String, undef(), value));
+  return JS.assume(JS.call(String, JS.undefined(), value));
 }
 
 export float jsNum(JsValue value) {
@@ -111,11 +126,13 @@ export void objSetVal(JsValue obj, JsValue key, JsValue value) {
   JS.set(obj, JS.string(key), value);
 }
 
+JsValue hasOwnProperty = JS.get(JS.object(), "hasOwnProperty");
+
 export bool hasOwn(JsValue obj, JsValue key) {
   if (isNullish(obj)) {
     return false;
   }
-  return JS.call(JS.get(JS.get(Object, "prototype"), "hasOwnProperty"), obj, key).truthy();
+  return JS.call(hasOwnProperty, obj, key).truthy();
 }
 
 export bool hasOwnStr(JsValue obj, string key) {
@@ -221,15 +238,15 @@ export bool includesStr(JsValue list, string value) {
 }
 
 export string fromCharCode1(JsValue code) {
-  return jsString(JS.call(JS.get(String, "fromCharCode"), String, code));
+  return JS.assume(JS.invoke(String, "fromCharCode", code));
 }
 
 export string fromCharCode2(JsValue a, JsValue b) {
-  return jsString(JS.call(JS.get(String, "fromCharCode"), String, a, b));
+  return JS.assume(JS.invoke(String, "fromCharCode", a, b));
 }
 
 export string fromCodePoint(JsValue code) {
-  return jsString(JS.call(JS.get(String, "fromCodePoint"), String, code));
+  return JS.assume(JS.invoke(String, "fromCodePoint", code));
 }
 
 export float parseIntBase(string value, int base) {
@@ -252,14 +269,19 @@ export float mathTrunc(float value) {
   return JS.number(JS.call(JS.get(Math, "trunc"), Math, value));
 }
 
+// A construct list: an array as is, one construct as a list of one, nothing as an empty list.
+export JsValue asList(JsValue value) {
+  return if (value.isArray()) { value } else { if (value.truthy()) { JS.array(value) } else { JS.array() } };
+}
+
 export JsValue copyPoint(JsValue point) {
-  JsValue next = JS.object();
-  JS.set(next, "_bufferIndex", JS.get(point, "_bufferIndex"));
-  JS.set(next, "_index", JS.get(point, "_index"));
-  JS.set(next, "line", JS.get(point, "line"));
-  JS.set(next, "column", JS.get(point, "column"));
-  JS.set(next, "offset", JS.get(point, "offset"));
-  return next;
+  return JS.object(
+    "_bufferIndex", JS.get(point, "_bufferIndex"),
+    "_index", JS.get(point, "_index"),
+    "line", JS.get(point, "line"),
+    "column", JS.get(point, "column"),
+    "offset", JS.get(point, "offset")
+  );
 }
 
 export JsValue eventEnter(JsValue token, JsValue context) {
@@ -319,8 +341,7 @@ export string decodeBytes(JsValue value, JsValue encoding) {
   if (isNullish(enc)) {
     enc = undef();
   }
-  JsValue decoder = JS.construct(TextDecoder, enc);
-  return jsString(JS.call(JS.get(decoder, "decode"), decoder, value));
+  return JS.assume(JS.invoke(JS.construct(TextDecoder, enc), "decode", value));
 }
 
 export void fail(string message) {
@@ -348,7 +369,7 @@ export bool jsTruthy(JsValue value) {
 }
 
 export string encodeUriComp(string value) {
-  return jsString(JS.call(encodeURIComponent, undef(), value));
+  return JS.assume(JS.call(encodeURIComponent, JS.undefined(), value));
 }
 
 export JsValue regexExec(Regex pattern, string value) {
@@ -376,16 +397,11 @@ export JsValue replaceFn(JsValue value, Regex pattern, JsValue replacer) {
 }
 
 export JsValue makeConstruct(JsValue tokenize) {
-  JsValue c = JS.object();
-  JS.set(c, "tokenize", tokenize);
-  return c;
+  return JS.object("tokenize", tokenize);
 }
 
 export JsValue makeNamedConstruct(string name, JsValue tokenize) {
-  JsValue c = JS.object();
-  JS.set(c, "name", name);
-  JS.set(c, "tokenize", tokenize);
-  return c;
+  return JS.object("name", name, "tokenize", tokenize);
 }
 
 export void setCodeKey(JsValue map, int code, JsValue value) {

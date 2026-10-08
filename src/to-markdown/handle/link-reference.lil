@@ -8,36 +8,36 @@ JsValue linkReferenceHandle(JsValue _self, JsValue args) {
   JsValue node = args[0];
   JsValue state = args[2];
   JsValue info = args[3];
-  string typ = jsString(JS.get(node, "referenceType"));
-  JsValue exit = JS.call(JS.get(state, "enter"), state, "linkReference");
-  JsValue subexit = JS.call(JS.get(state, "enter"), state, "label");
-  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
-  string value = jsString(JS.call(JS.get(tracker, "move"), tracker, "["));
-  JsValue textInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
-  JS.set(textInfo, "before", value);
-  JS.set(textInfo, "after", "]");
-  string text = jsString(JS.call(JS.get(state, "containerPhrasing"), state, node, textInfo));
-  value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, text + "]["));
+  string typ = jsString(node["referenceType"]);
+  JsValue exit = JS.invoke(state, "enter", "linkReference");
+  JsValue subexit = JS.invoke(state, "enter", "label");
+  JsValue tracker = JS.invoke(state, "createTracker", info);
+  string value = jsString(JS.invoke(tracker, "move", "["));
+  JsValue textInfo = objectAssign(JS.object(), JS.invoke(tracker, "current"));
+  textInfo["before"] = value;
+  textInfo["after"] = "]";
+  string text = jsString(JS.invoke(state, "containerPhrasing", node, textInfo));
+  value = value + jsString(JS.invoke(tracker, "move", text + "]["));
   JS.call(subexit, undef());
-  JsValue stack = JS.get(state, "stack");
-  JS.set(state, "stack", JS.array());
-  subexit = JS.call(JS.get(state, "enter"), state, "reference");
-  JsValue refInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
-  JS.set(refInfo, "before", value);
-  JS.set(refInfo, "after", "]");
-  string reference = jsString(JS.call(JS.get(state, "safe"), state, JS.call(JS.get(state, "associationId"), state, node), refInfo));
+  JsValue stack = state["stack"];
+  state["stack"] = JS.array();
+  subexit = JS.invoke(state, "enter", "reference");
+  JsValue refInfo = objectAssign(JS.object(), JS.invoke(tracker, "current"));
+  refInfo["before"] = value;
+  refInfo["after"] = "]";
+  string reference = jsString(JS.invoke(state, "safe", JS.invoke(state, "associationId", node), refInfo));
   JS.call(subexit, undef());
-  JS.set(state, "stack", stack);
+  state["stack"] = stack;
   JS.call(exit, undef());
   if (typ == "full" || text.length == 0 || text != reference) {
-    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, reference + "]"));
+    value = value + jsString(JS.invoke(tracker, "move", reference + "]"));
   } else if (typ == "shortcut") {
     value = value.slice(0, value.length - 1);
   } else {
-    value = value + jsString(JS.call(JS.get(tracker, "move"), tracker, "]"));
+    value = value + jsString(JS.invoke(tracker, "move", "]"));
   }
   return value;
 }
 
 export JsValue linkReference = JS.methodRest(linkReferenceHandle);
-JS.set(linkReference, "peek", JS.method0(linkReferencePeek));
+linkReference["peek"] = JS.method0(linkReferencePeek);

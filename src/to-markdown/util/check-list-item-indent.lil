@@ -2,7 +2,7 @@ import { jsString } from "../../parse/micromark/host.lil";
 import { fail, opt } from "../js.lil";
 
 export string checkListItemIndent(JsValue state) {
-  JsValue styleV = JS.get(opt(state), "listItemIndent");
+  JsValue styleV = opt(state)["listItemIndent"];
   string style = "one";
   if (styleV.truthy()) {
     style = jsString(styleV);

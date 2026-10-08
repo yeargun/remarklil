@@ -24,5 +24,5 @@ bool listInScope(JsValue stack, JsValue list, bool none) {
 }
 
 export bool patternInScope(JsValue stack, JsValue pattern) {
-  return listInScope(stack, JS.get(pattern, "inConstruct"), true) && !listInScope(stack, JS.get(pattern, "notInConstruct"), false);
+  return listInScope(stack, pattern["inConstruct"], true) && !listInScope(stack, pattern["notInConstruct"], false);
 }

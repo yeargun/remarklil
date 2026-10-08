@@ -13,7 +13,7 @@ bool walkOne(JsValue node, JsValue visitor) {
     return false;
   }
   if (!isNullish(node) && JS.typeOf(node) == "object" && JS.in("children", node)) {
-    JsValue children = JS.get(node, "children");
+    JsValue children = node["children"];
     int i = 0;
     int n = arrLen(children);
     while (i < n) {

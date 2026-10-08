@@ -2,7 +2,7 @@ import { jsString } from "../../parse/micromark/host.lil";
 import { fail, opt } from "../js.lil";
 
 export string checkEmphasis(JsValue state) {
-  JsValue markerV = JS.get(opt(state), "emphasis");
+  JsValue markerV = opt(state)["emphasis"];
   string marker = "*";
   if (markerV.truthy()) {
     marker = jsString(markerV);

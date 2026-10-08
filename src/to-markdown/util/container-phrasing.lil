@@ -4,17 +4,17 @@ import { encodeCharacterReference } from "./encode-character-reference.lil";
 Regex trailingEol = new Regex("(\\r?\\n|\\r)$", "");
 
 export string containerPhrasing(JsValue parent, JsValue state, JsValue info) {
-  JsValue indexStack = JS.get(state, "indexStack");
-  JsValue children = JS.get(parent, "children");
+  JsValue indexStack = state["indexStack"];
+  JsValue children = parent["children"];
   if (!children.truthy()) {
     children = JS.array();
   }
   JsValue results = JS.array();
   int index = -1;
-  string before = jsString(JS.get(info, "before"));
+  string before = jsString(info["before"]);
   JsValue encodeAfter = undef();
-  push(indexStack, -1);
-  JsValue tracker = JS.call(JS.get(state, "createTracker"), state, info);
+  JS.invoke(indexStack, "push", -1);
+  JsValue tracker = JS.invoke(state, "createTracker", info);
   int n = arrLen(children);
   while (true) {
     index = index + 1;
@@ -25,51 +25,41 @@ export string containerPhrasing(JsValue parent, JsValue state, JsValue info) {
     string after = "";
     arrSet(indexStack, arrLen(indexStack) - 1, index);
     if (index + 1 < n) {
-      JsValue handle = JS.get(JS.get(JS.get(state, "handle"), "handlers"), jsString(JS.get(children[index + 1], "type")));
-      if (handle.truthy() && JS.get(handle, "peek").truthy()) {
-        handle = JS.get(handle, "peek");
+      JsValue handle = JS.get((state["handle"])["handlers"], jsString(children[index + 1]["type"]));
+      if (handle.truthy() && handle["peek"].truthy()) {
+        handle = handle["peek"];
       }
       if (handle.truthy()) {
-        JsValue peekInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
-        JS.set(peekInfo, "before", "");
-        JS.set(peekInfo, "after", "");
-        JsValue peekArgs = JS.array();
-        push(peekArgs, children[index + 1]);
-        push(peekArgs, parent);
-        push(peekArgs, state);
-        push(peekArgs, peekInfo);
-        string peeked = jsString(apply(handle, undef(), peekArgs));
+        JsValue peekInfo = objectAssign(JS.object(), JS.invoke(tracker, "current"));
+        peekInfo["before"] = "";
+        peekInfo["after"] = "";
+        string peeked = jsString(JS.call(handle, JS.undefined(), children[index + 1], parent, state, peekInfo));
         if (peeked.length > 0) {
           after = peeked.charAt(0);
         }
       }
     } else {
-      after = jsString(JS.get(info, "after"));
+      after = jsString(info["after"]);
     }
-    if (arrLen(results) > 0 && (before == "\r" || before == "\n") && jsString(JS.get(child, "type")) == "html") {
+    if (arrLen(results) > 0 && (before == "\r" || before == "\n") && jsString(child["type"]) == "html") {
       string last = jsString(results[arrLen(results) - 1]);
       arrSet(results, arrLen(results) - 1, replaceStr(last, trailingEol, " "));
       before = " ";
-      tracker = JS.call(JS.get(state, "createTracker"), state, info);
-      JS.call(JS.get(tracker, "move"), tracker, JS.call(JS.get(results, "join"), results, ""));
+      tracker = JS.invoke(state, "createTracker", info);
+      JS.invoke(tracker, "move", JS.invoke(results, "join", ""));
     }
-    JsValue childInfo = objectAssign(JS.object(), JS.call(JS.get(tracker, "current"), tracker));
-    JS.set(childInfo, "after", after);
-    JS.set(childInfo, "before", before);
-    JsValue handleArgs = JS.array();
-    push(handleArgs, child);
-    push(handleArgs, parent);
-    push(handleArgs, state);
-    push(handleArgs, childInfo);
-    string value = jsString(apply(JS.get(state, "handle"), state, handleArgs));
+    JsValue childInfo = objectAssign(JS.object(), JS.invoke(tracker, "current"));
+    childInfo["after"] = after;
+    childInfo["before"] = before;
+    string value = jsString(JS.invoke(state, "handle", child, parent, state, childInfo));
     if (encodeAfter.truthy() && jsString(encodeAfter) == value.slice(0, 1)) {
       value = encodeCharacterReference(jsString(encodeAfter).charCodeAt(0)) + value.slice(1);
     }
-    JsValue encodingInfo = JS.get(state, "attentionEncodeSurroundingInfo");
-    JS.set(state, "attentionEncodeSurroundingInfo", undef());
+    JsValue encodingInfo = state["attentionEncodeSurroundingInfo"];
+    state["attentionEncodeSurroundingInfo"] = undef();
     encodeAfter = undef();
     if (encodingInfo.truthy()) {
-      if (arrLen(results) > 0 && JS.get(encodingInfo, "before").truthy()) {
+      if (arrLen(results) > 0 && encodingInfo["before"].truthy()) {
         string last = jsString(results[arrLen(results) - 1]);
         string lastChar = "";
         if (last.length > 0) {
@@ -79,12 +69,12 @@ export string containerPhrasing(JsValue parent, JsValue state, JsValue info) {
           arrSet(results, arrLen(results) - 1, last.slice(0, last.length - 1) + encodeCharacterReference(before.charCodeAt(0)));
         }
       }
-      if (JS.get(encodingInfo, "after").truthy()) {
+      if (encodingInfo["after"].truthy()) {
         encodeAfter = after;
       }
     }
-    JS.call(JS.get(tracker, "move"), tracker, value);
-    push(results, value);
+    JS.invoke(tracker, "move", value);
+    JS.invoke(results, "push", value);
     if (value.length > 0) {
       before = value.slice(value.length - 1);
     } else {
@@ -92,5 +82,5 @@ export string containerPhrasing(JsValue parent, JsValue state, JsValue info) {
     }
   }
   pop(indexStack);
-  return jsString(JS.call(JS.get(results, "join"), results, ""));
+  return jsString(JS.invoke(results, "join", ""));
 }

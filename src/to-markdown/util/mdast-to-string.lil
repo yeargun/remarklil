@@ -1,0 +1,7 @@
+import { jsString } from "../../parse/micromark/host.lil";
+import { toString } from "../../parse/to-string.lil";
+
+// mdast-util-to-string with its defaults (includeImageAlt and includeHtml both true), as to-markdown calls it.
+export string mdastToString(JsValue value, JsValue _options) {
+  return jsString(toString(value));
+}
